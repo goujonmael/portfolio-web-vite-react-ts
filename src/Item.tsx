@@ -2,12 +2,12 @@ import React from "react";
 import { motion } from "framer-motion";
 import { LoremIpsum } from "react-lorem-ipsum";
 import { Link } from "react-router-dom";
-import { items } from "./data";
+import { projets } from "./projets";
 import { useEffect, useState } from "react";
 
 export function Item({ id }) {
   const [isMobile, setIsMobile] = useState(false);
-  const { level, title, description } = items.find((item) => item.id === id);
+  const { level, title, description, precedentLevels, precedentLevelsDescriptions, imageLink } = projets.find((item) => item.id === id);
 
   useEffect(() => {
     const handleResize = () => {
@@ -32,7 +32,7 @@ export function Item({ id }) {
         style={{ pointerEvents: "auto" }}
         className="overlay"
       >
-        <Link to="/competences" />
+        <Link to="/projets" />
       </motion.div>
       <motion.div
         className="card-content-container open"
@@ -46,7 +46,7 @@ export function Item({ id }) {
             className="card-image-container"
             layoutId={`card-image-container-${id}`}
           >
-            <img className="card-image" src={`/images/${id}.jpg`} alt="" />
+            <img className="card-image" src={imageLink} alt="" />
           </motion.div>
           <motion.div
             className="title-container"
@@ -56,8 +56,16 @@ export function Item({ id }) {
             <h2>{title}</h2>
           </motion.div>
 
+
+
           <motion.div className="content-container" animate>
             {description}
+            {precedentLevels.map((level, index) => (
+              <>
+                <div>{level}</div>
+                <div>{precedentLevelsDescriptions[index]}</div>
+              </>
+            ))}
           </motion.div>
         </motion.div>
       </motion.div>

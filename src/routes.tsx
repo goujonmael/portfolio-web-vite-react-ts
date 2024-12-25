@@ -20,7 +20,7 @@ function Store() {
         <>
             <div className="competences-div">
                 <h1 className="competences-title"
-                >Compétences</h1>
+                >Projets</h1>
             </div>
             <List selectedId={id} />
             <AnimatePresence>
@@ -46,8 +46,8 @@ export default function AppRoutes() {
                             <Me />
                         </>
                     } />
-                    <Route path="/competences/:id" element={<Store />} />
-                    <Route path="/competences" element={<Store />} />
+                    <Route path="/projets/:id" element={<Store />} />
+                    <Route path="/projets" element={<Store />} />
                     <Route path="/about" element={<About />} />
                 </Routes>
             </div>

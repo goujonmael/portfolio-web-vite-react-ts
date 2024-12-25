@@ -1,9 +1,9 @@
 import React from "react";
-import { items } from "./data";
+import { projets } from "./projets";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
-function Card({ id, title, level, theme }) {
+function Card({ id, title, level, theme, imageLink }) {
   return (
     <li className={`card ${theme}`}>
       <div className="card-content-container">
@@ -12,7 +12,7 @@ function Card({ id, title, level, theme }) {
             className="card-image-container"
             layoutId={`card-image-container-${id}`}
           >
-            <img className="card-image" src={`images/${id}.jpg`} alt="" />
+            <img className="card-image" src={imageLink} alt="" />
           </motion.div>
           <motion.div
             className="title-container"
@@ -23,14 +23,14 @@ function Card({ id, title, level, theme }) {
           </motion.div>
         </motion.div>
       </div>
-      <Link to={`/competences/${id}`} className={`card-open-link`} />    </li>
+      <Link to={`/projets/${id}`} className={`card-open-link`} />    </li>
   );
 }
 
 export function List({ selectedId }) {
   return (
     <ul className="card-list">
-      {items.map((card) => (
+      {projets.map((card) => (
         <Card key={card.id} {...card} isSelected={card.id === selectedId} />
       ))}
     </ul>
