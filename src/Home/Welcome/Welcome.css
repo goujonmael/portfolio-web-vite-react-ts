@@ -1,0 +1,43 @@
+.Welcome {
+    width: 100%;
+    text-align: center;
+    background-color: white;
+    height: 20vh;
+    /* align everything in the center */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hello {
+    font-size: 40px;
+    font-weight: 500;
+    font-family: var(--font-text);
+    font-weight: 400;
+    font-style: normal;
+    color: var(--text-dark);
+    line-height: 0.8;
+    text-align: left;
+}
+
+.portfolio-title {
+    font-size: 80px;
+    font-weight: 500;
+    font-family: var(--font-title);
+    font-weight: 800;
+    font-style: normal;
+    color: var(--text-dark);
+    line-height: 0.8;
+    text-align: left;
+}
+
+@media only screen and (max-width: 600px) {
+    .hello {
+        font-size: 30px;
+    }
+
+    .portfolio-title {
+        font-size: 60px;
+    }
+}
