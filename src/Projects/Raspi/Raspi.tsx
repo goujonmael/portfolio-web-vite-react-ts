@@ -135,6 +135,18 @@ export function RaspiDetails() {
                 <br />
                 Les LEDs s’illuminent proportionnellement au nombre de clients connectés grâce à un script Python.
             </p>
+            <h1>Problèmes rencontrés :</h1>
+            <p>
+                <h2>Carte SD corrompue :</h2>
+                L'utilisation d'une interface web complète pour l'administration de la box Internet, bien que pratique, s'est révélée gourmande en ressources. Cela a entraîné une surcharge des cycles d'écriture sur la carte SD, provoquant sa corruption.
+                <h3>Solution :</h3>
+                Nous avons résolu ce problème en flashant une image système réduite sur la carte SD, tout en configurant le Raspberry Pi pour démarrer sur un SSD externe branché en USB3. Cette solution a permis d'améliorer la fiabilité et de réduire la charge sur la carte SD.
+                <br />
+                <h2>Conflit entre AdGuard et RaspAP sur le DHCP :</h2>
+                L’installation conjointe d’AdGuard et de RaspAP a généré des conflits réseau. AdGuard a attribué des adresses IP fixes aux interfaces réseau, qui n’étaient pas sur le bon sous-réseau. Après un redémarrage, il était impossible d’accéder au Raspberry Pi via SSH.
+                <h3>Solution :</h3>
+                Pour corriger ce problème, nous avons utilisé un accès chroot sur la carte SD depuis un autre appareil. Cela nous a permis de modifier et régénérer les configurations réseau, rétablissant ainsi un fonctionnement normal du système.
+            </p>
         </div>
     );
 }
