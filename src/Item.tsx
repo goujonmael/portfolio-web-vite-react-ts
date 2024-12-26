@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 
 export function Item({ id }) {
   const [isMobile, setIsMobile] = useState(false);
-  const { level, title, description, precedentLevels, precedentLevelsDescriptions, imageLink, customComponent } = projets.find((item) => item.id === id);
+  const { level, title, description, precedentLevels, precedentLevelsDescriptions, imageLink, customComponent, details } = projets.find((item) => item.id === id);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -97,8 +97,15 @@ export function Item({ id }) {
             <h2>{title}</h2>
           </motion.div>
           <motion.div className="content-container" animate>
-            {customComponent}
-            {description}
+            <div>
+              {description}
+            </div>
+            <div>
+              {details}
+            </div>
+            <div>
+              {customComponent}
+            </div>
             {precedentLevels.map((level, index) => (
               <React.Fragment key={index}>
                 <div>{level}</div>

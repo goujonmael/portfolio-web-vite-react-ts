@@ -1,31 +1,4 @@
-import { Document, pdfjs, Page } from 'react-pdf';
-import { useState } from 'react';
-
-
-function MyApp() {
-    const [numPages, setNumPages] = useState<number>();
-    const [pageNumber, setPageNumber] = useState<number>(1);
-
-    function onDocumentLoadSuccess({ numPages }: { numPages: number }): void {
-        setNumPages(numPages);
-    }
-
-    return (
-        <div>
-            <Document file="/public/projects/Raspi/CR_Raspi.pdf" onLoadSuccess={onDocumentLoadSuccess}>
-                <Page renderAnnotationLayer={false} renderTextLayer={false} pageNumber={1} />
-            </Document>
-            <p>
-                Page {pageNumber} of {numPages}
-            </p>
-        </div>
-    );
-}
-
-pdfjs.GlobalWorkerOptions.workerSrc = new URL(
-    'pdfjs-dist/build/pdf.worker.min.mjs',
-    import.meta.url,
-).toString();
+import { RaspiDescription, RaspiDetails, RaspiPDF } from "./Projects/Raspi/Raspi";
 
 
 export const projets = [
@@ -35,8 +8,9 @@ export const projets = [
     imageLink: "/projects/Raspi/raspi.png",
     level: "Raspberry Pi",
     title: "Box internet",
-    description: "Ajouter un lien vers le fichier PDF",
-    customComponent: <MyApp />,
+    description: <RaspiDescription />,
+    customComponent: <RaspiPDF />,
+    details: <RaspiDetails />,
     precedentLevels: ["Niveau 2", "Niveau 1"],
     precedentLevelsDescriptions: ["Partir des exigences et aller jusqu’à une application complète", "Développer des applications informatiques simples"],
     pointOfInterest: 80,
