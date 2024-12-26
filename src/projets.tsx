@@ -12,7 +12,7 @@ function MyApp() {
 
     return (
         <div>
-            <Document file="/public/files/CV_GOUJON_Mael.pdf" onLoadSuccess={onDocumentLoadSuccess}>
+            <Document file="/public/projects/Raspi/CR_Raspi.pdf" onLoadSuccess={onDocumentLoadSuccess}>
                 <Page renderAnnotationLayer={false} renderTextLayer={false} pageNumber={1} />
             </Document>
             <p>
