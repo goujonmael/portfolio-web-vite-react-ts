@@ -1,3 +1,33 @@
+import { Document, pdfjs, Page } from 'react-pdf';
+import { useState } from 'react';
+
+
+function MyApp() {
+    const [numPages, setNumPages] = useState<number>();
+    const [pageNumber, setPageNumber] = useState<number>(1);
+
+    function onDocumentLoadSuccess({ numPages }: { numPages: number }): void {
+        setNumPages(numPages);
+    }
+
+    return (
+        <div>
+            <Document file="/public/files/CV_GOUJON_Mael.pdf" onLoadSuccess={onDocumentLoadSuccess}>
+                <Page renderAnnotationLayer={false} renderTextLayer={false} pageNumber={1} />
+            </Document>
+            <p>
+                Page {pageNumber} of {numPages}
+            </p>
+        </div>
+    );
+}
+
+pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+    'pdfjs-dist/build/pdf.worker.min.mjs',
+    import.meta.url,
+).toString();
+
+
 export const projets = [
   // Photo by ivan Torres on Unsplash
   {
@@ -6,6 +36,7 @@ export const projets = [
     level: "Raspberry Pi",
     title: "Box internet",
     description: "Ajouter un lien vers le fichier PDF",
+    customComponent: <MyApp />,
     precedentLevels: ["Niveau 2", "Niveau 1"],
     precedentLevelsDescriptions: ["Partir des exigences et aller jusqu’à une application complète", "Développer des applications informatiques simples"],
     pointOfInterest: 80,
@@ -13,7 +44,7 @@ export const projets = [
   },
   // Photo by Dennis Brendel on Unsplash
   {
-    id: "f",
+    id: "springboot",
     imageLink: "/projects/S3B01/springboot.png",
     level: "Java SpringBoot",
     title: "Suivi de formation",

@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 
 export function Item({ id }) {
   const [isMobile, setIsMobile] = useState(false);
-  const { level, title, description, precedentLevels, precedentLevelsDescriptions, imageLink } = projets.find((item) => item.id === id);
+  const { level, title, description, precedentLevels, precedentLevelsDescriptions, imageLink, customComponent } = projets.find((item) => item.id === id);
 
   useEffect(() => {
     const handleResize = () => {
@@ -19,6 +19,16 @@ export function Item({ id }) {
 
     return () => {
       window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    // Disable scrolling on the body when the modal is open
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      // Re-enable scrolling on the body when the modal is closed
+      document.body.style.overflow = 'auto';
     };
   }, []);
 
@@ -55,16 +65,14 @@ export function Item({ id }) {
             <span className="category">{level}</span>
             <h2>{title}</h2>
           </motion.div>
-
-
-
           <motion.div className="content-container" animate>
+            {customComponent}
             {description}
             {precedentLevels.map((level, index) => (
-              <>
+              <React.Fragment key={index}>
                 <div>{level}</div>
                 <div>{precedentLevelsDescriptions[index]}</div>
-              </>
+              </React.Fragment>
             ))}
           </motion.div>
         </motion.div>

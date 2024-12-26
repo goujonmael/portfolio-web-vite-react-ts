@@ -30,9 +30,6 @@ function Store() {
     );
 }
 
-
-
-
 export default function AppRoutes() {
     return (
         <div className="main">
