@@ -136,6 +136,7 @@ li {
   z-index: 1;
   overflow: hidden;
   padding: 10% 0;
+  z-index: 9999;
 }
 
 .card-content {
@@ -147,6 +148,39 @@ li {
   width: 100%;
   height: 100%;
   margin: 0 auto;
+}
+
+
+.modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay {
+  z-index: 9998;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: auto;
+}
+
+.overlay a {
+  display: block;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 100vw;
+  left: 50%;
+
+  transform: translateX(-50%);
 }
 
 .open .card-content {
@@ -228,28 +262,6 @@ h2 {
   text-transform: uppercase;
 }
 
-.overlay {
-  z-index: 9999;
-  position: fixed;
-  will-change: opacity;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  max-width: 990px;
-}
-
-.overlay a {
-  display: block;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  width: 100vw;
-  left: 50%;
-
-  transform: translateX(-50%);
-}
 
 .content-container {
   /* TODO : edit padding to avoid big header padding*/

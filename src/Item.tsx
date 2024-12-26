@@ -49,7 +49,7 @@ export function Item({ id }) {
 
 
   return (
-    <>
+    <div className="modal-container">
       {/*
       <motion.div
         initial={{ opacity: 0 }}
@@ -62,6 +62,7 @@ export function Item({ id }) {
         <Link to="/projets" />
       </motion.div>
       */}
+      <div className="overlay" onClick={() => navigate('/projets')} />
       <motion.div
         className="card-content-container open"
         initial={{ opacity: 1, backdropFilter: isMobile ? "none" : "blur(0px)" }}
@@ -107,6 +108,6 @@ export function Item({ id }) {
           </motion.div>
         </motion.div>
       </motion.div >
-    </>
+    </div>
   );
 }
