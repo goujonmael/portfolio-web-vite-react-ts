@@ -76,13 +76,9 @@ export function RaspiDetails() {
             <h1>
                 Services essentiels :
             </h1>
-            <p>
-                <h2>Configuration d’un point d’accès Wi-Fi (RaspAP)</h2>
-                <h2>
-                    Gestion des adresses IP avec DHCP</h2>
-                <h2>
-                    Translation de réseaux</h2>
-            </p>
+            <h2>Configuration d’un point d’accès Wi-Fi (RaspAP)</h2>
+            <h2>Gestion des adresses IP avec DHCP</h2>
+            <h2>Translation de réseaux</h2>
             <h1>
                 Services secondaires :
             </h1>
