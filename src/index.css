@@ -152,8 +152,12 @@ li {
 .open .card-content {
   /*height: auto;*/
   max-width: 700px;
+  /*
   overflow: hidden;
   pointer-events: none;
+  */
+  overflow: scroll;
+  pointer-events: all;
 }
 
 .card-open-link {
@@ -179,7 +183,8 @@ li {
   left: 0;
   overflow: hidden;
   height: 40vh;
-  width: 100vw;
+  /*width: 100vw;*/
+  width: 100%;
 }
 
 .open .card-image-container,

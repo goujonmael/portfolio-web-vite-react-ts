@@ -1,13 +1,14 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { LoremIpsum } from "react-lorem-ipsum";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { projets } from "./projets";
 import { useEffect, useState } from "react";
 
 export function Item({ id }) {
   const [isMobile, setIsMobile] = useState(false);
   const { level, title, description, precedentLevels, precedentLevelsDescriptions, imageLink, customComponent } = projets.find((item) => item.id === id);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleResize = () => {
@@ -32,8 +33,24 @@ export function Item({ id }) {
     };
   }, []);
 
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        navigate('/projets');
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [history]);
+
+
   return (
     <>
+      {/*
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -44,6 +61,7 @@ export function Item({ id }) {
       >
         <Link to="/projets" />
       </motion.div>
+      */}
       <motion.div
         className="card-content-container open"
         initial={{ opacity: 1, backdropFilter: isMobile ? "none" : "blur(0px)" }}
@@ -76,7 +94,7 @@ export function Item({ id }) {
             ))}
           </motion.div>
         </motion.div>
-      </motion.div>
+      </motion.div >
     </>
   );
 }
