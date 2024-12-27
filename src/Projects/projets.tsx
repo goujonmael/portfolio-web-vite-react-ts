@@ -39,25 +39,27 @@ export const projets = [
     pdf: "",
   },
   {
-    id: "g",
-    level: "Niveau 2",
-    title: "Gérer",
-    description: "Optimiser une base de données, interagir avec une application et mettre en œuvre la sécurité",
-    precedentLevels: ["Niveau 1"],
-    precedentLevelsDescriptions: ["Concevoir et mettre en place une base de données à partir d’un cahier des charges client"],
-    pointOfInterest: 200,
-    backgroundColor: "#8F986D"
+    id: "cabinet",
+    imageLink: "/projects/Cabinet/cabinet.jpg",
+    category: "PHP",
+    title: "Gestion de cabinet médical",
+    description: "Réaliser une application web en PHP permettant la gestion d'un cabinet médical",
+    customComponent: "",
+    details: "",
+    github: "https://github.com/maelgoujon/Cabinet-Medical-PHP",
+    pdf: "",
   },
   // Photo by Simone Hutsch on Unsplash
   {
-    id: "d",
-    level: "Niveau 2",
-    title: "Conduire",
-    description: "Appliquer une démarche de suivi de projet en fonction des besoins métiers des clients et des utilisateurs",
-    precedentLevels: ["Niveau 1"],
-    precedentLevelsDescriptions: ["Identifier les besoins métiers des clients et des utilisateurs"],
-    pointOfInterest: 150,
-    backgroundColor: "#FA6779"
+    id: "apiphp",
+    imageLink: "/projects/APIPHP/api.jpg",
+    category: "API PHP",
+    title: "API pour le cabinet médical",
+    description: "Réaliser une API en PHP pour la gestion d'un cabinet médical",
+    customComponent: "",
+    details: "",
+    github: "https://github.com/maelgoujon/Cabinet-Medical-API",
+    pdf: "",
   },
   // Photo by Siora Photography on Unsplash
   {

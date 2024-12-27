@@ -24,7 +24,7 @@ function Card({ id, title, category, theme, imageLink, github, pdf }) {
             <div className="Links" style={{ zIndex: 0 }}>
               {github && (
                 <div className="github-link">
-                  <Link to={github}>
+                  <Link to={github} target="_blank" rel="noopener noreferrer">
                     <img src="/images/git.svg" alt="github logo" className="github-logo" />
                   </Link>
                 </div>
@@ -40,7 +40,8 @@ function Card({ id, title, category, theme, imageLink, github, pdf }) {
           </motion.div>
         </motion.div>
       </div>
-      <Link to={`/projets/${id}`} className={`card-open-link`} />    </li>
+      <Link to={`/projets/${id}`} className={`card-open-link`} />
+    </li>
   );
 }
 
