@@ -44,13 +44,11 @@ body {
   /* align content to the center */
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   width: 100%;
   /*max-width: 990px;*/
   flex: 1 1 100%;
   padding-top: var(--header-padding);
-  padding-bottom: var(--header-padding);
   background-color: var(--dark-blue);
 }
 
@@ -327,7 +325,7 @@ p {
   }
 
   .card-content-container.open {
-    padding: 6vh 3vw 3vh 3vw;
+    padding: var(--header-padding) 3vw 3vh 3vw;
     /*top: auto !important;*/
     bottom: 0 !important;
   }

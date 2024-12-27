@@ -42,9 +42,10 @@
 .main {
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    background-color: var(--dark-blue);
     grid-row-start: 2;
     width: 100%;
+    height: 100vh;
 }
 
 .main ol {
