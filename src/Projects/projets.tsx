@@ -1,9 +1,10 @@
+import { title } from "framer-motion/client";
 import { JavaSpringBootDescription, JavaSpringBootDetails } from "./JavaSpringBoot/JavaSpringBoot";
 import { RaspiDescription, RaspiDetails, RaspiPDF } from "./Raspi/Raspi";
+import { ProxyFTPCDescription, ProxyFTPCDetails } from "./ProxyFTPC/ProxyFTPC";
 
 
 export const projets = [
-  // Photo by ivan Torres on Unsplash
   {
     id: "raspi",
     imageLink: "/projects/Raspi/raspi.png",
@@ -15,7 +16,6 @@ export const projets = [
     github: "",
     pdf: "/projects/Raspi/CR_Raspi.pdf",
   },
-  // Photo by Dennis Brendel on Unsplash
   {
     id: "springboot",
     imageLink: "/projects/S3B01/springboot.png",
@@ -27,18 +27,17 @@ export const projets = [
     github: "https://github.com/maelgoujon/Suivi-de-formation-Spring-Boot",
     pdf: "",
   },
-  // Photo by Alessandra Caretto on Unsplash
   {
-    id: "a",
-    level: "Niveau 3",
-    title: "Administrer",
-    description: "Faire évoluer et maintenir un système informatique communicant en conditions opérationnelles",
-    precedentLevels: ["Niveau 2", "Niveau 1"],
-    precedentLevelsDescriptions: ["Déployer des services dans une architecture réseau", "Installer et configurer un poste de travail"],
-    pointOfInterest: 260,
-    backgroundColor: "#5DBCD2"
+    id: "ftp",
+    imageLink: "/projects/ProxyFTPC/proxy.jpg",
+    category: "C",
+    title: "Proxy FTP",
+    description: <ProxyFTPCDescription />,
+    customComponent: <ProxyFTPCDetails />,
+    details: "",
+    github: "https://github.com/maelgoujon/ProxyFTP_C",
+    pdf: "",
   },
-  // Photo by Taneli Lahtinen on Unsplash
   {
     id: "g",
     level: "Niveau 2",
