@@ -96,7 +96,20 @@ export function Item({ id }) {
           >
             <span className="category">{level}</span>
             <h2>{title}</h2>
+            <div className="Links">
+              <div className="github-link">
+                <Link to={`/projets/${id}/github`}>
+                  <img src="/images/git.svg" alt="github logo" className="github-logo" />
+                </Link>
+              </div>
+              <div className="pdf-link">
+                <Link to={`/projets/${id}/pdf`}>
+                  <img src="/images/pdf.svg" alt="pdf logo" className="pdf-logo" />
+                </Link>
+              </div>
+            </div>
           </motion.div>
+
           <motion.div className="content-container" animate>
             <div>
               {description}
