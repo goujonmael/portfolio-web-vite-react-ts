@@ -1,0 +1,16 @@
+h1 {
+    font-weight: bold;
+    color: var(--yellow);
+    margin: 6px 0 12px;
+}
+
+h2 {
+    font-weight: bold;
+    color: #dddddd;
+    margin: 6px 12px;
+}
+
+p {
+    color: #9d9ca1;
+    margin: 6px 12px;
+}
