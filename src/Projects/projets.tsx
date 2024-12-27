@@ -1,4 +1,4 @@
-import { RaspiDescription, RaspiDetails, RaspiPDF } from "./Projects/Raspi/Raspi";
+import { RaspiDescription, RaspiDetails, RaspiPDF } from "./Raspi/Raspi";
 
 
 export const projets = [

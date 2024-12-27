@@ -4,6 +4,7 @@ import { LoremIpsum } from "react-lorem-ipsum";
 import { Link, useNavigate } from "react-router-dom";
 import { projets } from "./projets";
 import { useEffect, useState } from "react";
+import '../index.css';
 
 export function Item({ id }) {
   const [isMobile, setIsMobile] = useState(false);
