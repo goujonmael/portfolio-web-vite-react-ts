@@ -1,3 +1,4 @@
+import { JavaSpringBootDescription, JavaSpringBootDetails } from "./JavaSpringBoot/JavaSpringBoot";
 import { RaspiDescription, RaspiDetails, RaspiPDF } from "./Raspi/Raspi";
 
 
@@ -6,27 +7,25 @@ export const projets = [
   {
     id: "raspi",
     imageLink: "/projects/Raspi/raspi.png",
-    level: "Raspberry Pi",
+    category: "Raspberry Pi",
     title: "Box internet",
     description: <RaspiDescription />,
     customComponent: <RaspiPDF />,
     details: <RaspiDetails />,
-    precedentLevels: ["Niveau 2", "Niveau 1"],
-    precedentLevelsDescriptions: ["Partir des exigences et aller jusqu’à une application complète", "Développer des applications informatiques simples"],
-    pointOfInterest: 80,
-    backgroundColor: "#814A0E"
+    github: "",
+    pdf: "/projects/Raspi/CR_Raspi.pdf",
   },
   // Photo by Dennis Brendel on Unsplash
   {
     id: "springboot",
     imageLink: "/projects/S3B01/springboot.png",
-    level: "Java SpringBoot",
+    category: "Java SpringBoot",
     title: "Suivi de formation",
-    description: "https://github.com/maelgoujon/Suivi-de-formation-Spring-Boot",
-    precedentLevels: ["Niveau 1"],
-    precedentLevelsDescriptions: ["Appréhender et construire des algorithmes"],
-    pointOfInterest: 120,
-    backgroundColor: "#959684"
+    description: <JavaSpringBootDescription />,
+    customComponent: <JavaSpringBootDetails />,
+    details: "",
+    github: "https://github.com/maelgoujon/Suivi-de-formation-Spring-Boot",
+    pdf: "",
   },
   // Photo by Alessandra Caretto on Unsplash
   {

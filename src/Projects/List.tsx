@@ -3,7 +3,7 @@ import { projets } from "./projets";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
-function Card({ id, title, level, theme, imageLink }) {
+function Card({ id, title, category, theme, imageLink, github, pdf }) {
   return (
     <li className={`card ${theme}`}>
       <div className="card-content-container">
@@ -18,8 +18,25 @@ function Card({ id, title, level, theme, imageLink }) {
             className="title-container"
             layoutId={`title-container-${id}`}
           >
-            <span className="category">{level}</span>
+            <span className="category">{category}</span>
             <h2>{title}</h2>
+
+            <div className="Links" style={{ zIndex: 0 }}>
+              {github && (
+                <div className="github-link">
+                  <Link to={github}>
+                    <img src="/images/git.svg" alt="github logo" className="github-logo" />
+                  </Link>
+                </div>
+              )}
+              {pdf && (
+                <div className="pdf-link">
+                  <Link to={pdf} target="_blank" rel="noopener noreferrer">
+                    <img src="/images/pdf.svg" alt="pdf logo" className="pdf-logo" />
+                  </Link>
+                </div>
+              )}
+            </div>
           </motion.div>
         </motion.div>
       </div>

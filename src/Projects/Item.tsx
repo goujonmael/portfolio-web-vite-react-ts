@@ -8,7 +8,7 @@ import '../index.css';
 
 export function Item({ id }) {
   const [isMobile, setIsMobile] = useState(false);
-  const { level, title, description, precedentLevels, precedentLevelsDescriptions, imageLink, customComponent, details } = projets.find((item) => item.id === id);
+  const { category, title, description, imageLink, customComponent, details, github, pdf } = projets.find((item) => item.id === id);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -94,19 +94,23 @@ export function Item({ id }) {
             className="title-container"
             layoutId={`title-container-${id}`}
           >
-            <span className="category">{level}</span>
+            <span className="category">{category}</span>
             <h2>{title}</h2>
             <div className="Links">
-              <div className="github-link">
-                <Link to={`/projets/${id}/github`}>
-                  <img src="/images/git.svg" alt="github logo" className="github-logo" />
-                </Link>
-              </div>
-              <div className="pdf-link">
-                <Link to={`/projets/${id}/pdf`}>
-                  <img src="/images/pdf.svg" alt="pdf logo" className="pdf-logo" />
-                </Link>
-              </div>
+              {github && (
+                <div className="github-link">
+                  <Link to={github} target="_blank" rel="noopener noreferrer">
+                    <img src="/images/git.svg" alt="github logo" className="github-logo" />
+                  </Link>
+                </div>
+              )}
+              {pdf && (
+                <div className="pdf-link">
+                  <Link to={pdf} target="_blank" rel="noopener noreferrer">
+                    <img src="/images/pdf.svg" alt="pdf logo" className="pdf-logo" />
+                  </Link>
+                </div>
+              )}
             </div>
           </motion.div>
 
@@ -120,12 +124,6 @@ export function Item({ id }) {
             <div>
               {customComponent}
             </div>
-            {precedentLevels.map((level, index) => (
-              <React.Fragment key={index}>
-                <div>{level}</div>
-                <div>{precedentLevelsDescriptions[index]}</div>
-              </React.Fragment>
-            ))}
           </motion.div>
         </motion.div>
       </motion.div >
