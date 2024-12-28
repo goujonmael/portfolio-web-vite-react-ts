@@ -2,13 +2,13 @@ import React from "react";
 import { motion } from "framer-motion";
 import { LoremIpsum } from "react-lorem-ipsum";
 import { Link, useNavigate } from "react-router-dom";
-import { projets } from "./projets";
 import { useEffect, useState } from "react";
 import '../index.css';
+import { projetsUniv } from "./projetsUniv";
 
 export function Item({ id }) {
   const [isMobile, setIsMobile] = useState(false);
-  const { category, title, description, imageLink, customComponent, details, github, pdf } = projets.find((item) => item.id === id);
+  const { category, title, description, imageLink, customComponent, details, github, pdf } = projetsUniv.find((item) => item.id === id);
   const navigate = useNavigate();
 
   useEffect(() => {

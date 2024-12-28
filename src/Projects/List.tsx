@@ -1,7 +1,7 @@
 import React from "react";
-import { projets } from "./projets";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { projetsUniv } from "./projetsUniv";
 
 function Card({ id, title, category, theme, imageLink, github, pdf }) {
   return (
@@ -48,7 +48,7 @@ function Card({ id, title, category, theme, imageLink, github, pdf }) {
 export function List({ selectedId }) {
   return (
     <ul className="card-list">
-      {projets.map((card) => (
+      {projetsUniv.map((card) => (
         <Card key={card.id} {...card} isSelected={card.id === selectedId} />
       ))}
     </ul>

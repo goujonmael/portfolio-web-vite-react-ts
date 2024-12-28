@@ -2,9 +2,10 @@ import { title } from "framer-motion/client";
 import { JavaSpringBootDescription, JavaSpringBootDetails } from "./JavaSpringBoot/JavaSpringBoot";
 import { RaspiDescription, RaspiDetails, RaspiPDF } from "./Raspi/Raspi";
 import { ProxyFTPCDescription, ProxyFTPCDetails } from "./ProxyFTPC/ProxyFTPC";
+import { TakuzuDescription, TakuzuDetails } from "./Takuzu/Takuzu";
 
 
-export const projets = [
+export const projetsUniv = [
   {
     id: "raspi",
     imageLink: "/projects/Raspi/raspi.png",
@@ -63,14 +64,15 @@ export const projets = [
   },
   // Photo by Siora Photography on Unsplash
   {
-    id: "h",
-    level: "Niveau 3",
-    title: "Collaborer",
-    description: "Manager une équipe informatique",
-    precedentLevels: ["Niveau 2", "Niveau 1"],
-    precedentLevelsDescriptions: ["Situer son rôle et ses missions au sein d’une équipe informatique", "Identifier ses aptitudes pour travailler dans une équipe"],
-    pointOfInterest: 60,
-    backgroundColor: "#282F49"
+    id: "takuzu",
+    imageLink: "/projects/Takuzu/takuzu.jpg",
+    category: "Ada",
+    title: "Résolution de Takuzu",
+    description: <TakuzuDescription />,
+    customComponent: <TakuzuDetails />,
+    details: "",
+    github: "https://github.com/maelgoujon/Takuzu-Solver-ADA",
+    pdf: "",
   },
 ];
 
