@@ -4,11 +4,11 @@ import { LoremIpsum } from "react-lorem-ipsum";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import '../index.css';
-import { projetsUniv } from "./projetsUniv";
+import { projetsPerso } from "./projetsPerso";
 
-export function Item({ id }) {
+export function ItemPerso({ id }) {
   const [isMobile, setIsMobile] = useState(false);
-  const { category, title, description, imageLink, customComponent, details, github, pdf } = projetsUniv.find((item) => item.id === id);
+  const { category, title, description, imageLink, customComponent, details, github, pdf } = projetsPerso.find((item) => item.id === id);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -37,7 +37,7 @@ export function Item({ id }) {
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key === 'Escape') {
-        navigate('/projets-univ');
+        navigate('/projets-perso');
       }
     };
 
@@ -63,7 +63,7 @@ export function Item({ id }) {
         <Link to="/projets" />
       </motion.div>
       */}
-      <div className="overlay" onClick={() => navigate('/projets-univ')} />
+      <div className="overlay" onClick={() => navigate('/projets-perso')} />
       <motion.div
         className="card-content-container open"
         initial={{ opacity: 1, backdropFilter: isMobile ? "none" : "blur(0px)" }}
@@ -75,7 +75,7 @@ export function Item({ id }) {
           {/* close button */}
           <motion.button
             className="close-button"
-            onClick={() => navigate('/projets-univ')}
+            onClick={() => navigate('/projets-perso')}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
           >

@@ -10,9 +10,15 @@ import { AnimatePresence } from 'framer-motion'
 import { Item } from './Projects/Item'
 import Header from './Header/Header'
 import Footer from './Footer/Footer'
+import { ListPerso } from './Projects/ListPerso'
+import { ItemPerso } from './Projects/ItemPerso'
 
 
-function Store() {
+interface StoreProps {
+    typeOfList?: string;
+}
+
+const Store: React.FC<StoreProps> = ({ typeOfList }) => {
     let { id } = useParams<{ id: string }>();
     const imageHasLoaded = true;
 
@@ -20,11 +26,12 @@ function Store() {
         <>
             <div className="competences-div">
                 <h1 className="competences-title"
-                >Projets</h1>
+                >Projets {typeOfList === "univ" ? "Universitaires" : "Personnels"}</h1>
             </div>
-            <List selectedId={id} />
+            {typeOfList === "univ" ? <List selectedId={id} /> : <ListPerso selectedId={id} />}
             <AnimatePresence>
-                {id && imageHasLoaded && <Item id={id} key="item" />}
+                {typeOfList === "univ" && id && imageHasLoaded && <Item id={id} />}
+                {typeOfList === "perso" && id && imageHasLoaded && <ItemPerso id={id} />}
             </AnimatePresence>
         </>
     );
@@ -39,12 +46,14 @@ export default function AppRoutes() {
                     <Route path="/" element={
                         <>
                             <Welcome />
-                            <StarOfLife />
+                            <Route path="/projets/:id" element={<Store typeOfList="" />} />
                             <Me />
                         </>
                     } />
-                    <Route path="/projets/:id" element={<Store />} />
-                    <Route path="/projets" element={<Store />} />
+                    <Route path="/projets-univ/:id" element={<Store typeOfList="univ" />} />
+                    <Route path="/projets-perso/:id" element={<Store typeOfList="perso" />} />
+                    <Route path="/projets-univ" element={<Store typeOfList="univ" />} />
+                    <Route path="/projets-perso" element={<Store typeOfList="perso" />} />
                     <Route path="/about" element={<About />} />
                 </Routes>
             </div>

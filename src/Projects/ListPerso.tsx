@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { projetsUniv } from "./projetsUniv";
+import { projetsPerso } from "./projetsPerso";
 
-function Card({ id, title, category, theme, imageLink, github, pdf }) {
+function CardPerso({ id, title, category, theme, imageLink, github, pdf }) {
   return (
     <li className={`card ${theme}`}>
       <div className="card-content-container">
@@ -40,16 +40,16 @@ function Card({ id, title, category, theme, imageLink, github, pdf }) {
           </motion.div>
         </motion.div>
       </div>
-      <Link to={`/projets-univ/${id}`} className={`card-open-link`} />
+      <Link to={`/projets-perso/${id}`} className={`card-open-link`} />
     </li>
   );
 }
 
-export function List({ selectedId }) {
+export function ListPerso({ selectedId }) {
   return (
     <ul className="card-list">
-      {projetsUniv.map((card) => (
-        <Card key={card.id} {...card} isSelected={card.id === selectedId} />
+      {projetsPerso.map((card) => (
+        <CardPerso key={card.id} {...card} isSelected={card.id === selectedId} />
       ))}
     </ul>
   );
