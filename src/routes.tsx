@@ -46,7 +46,7 @@ export default function AppRoutes() {
                     <Route path="/" element={
                         <>
                             <Welcome />
-                            <Route path="/projets/:id" element={<Store typeOfList="" />} />
+                            <StarOfLife />
                             <Me />
                         </>
                     } />
@@ -54,7 +54,7 @@ export default function AppRoutes() {
                     <Route path="/projets-perso/:id" element={<Store typeOfList="perso" />} />
                     <Route path="/projets-univ" element={<Store typeOfList="univ" />} />
                     <Route path="/projets-perso" element={<Store typeOfList="perso" />} />
-                    <Route path="/about" element={<About />} />
+                    <Route path="/competences" element={<StarOfLife />} />
                 </Routes>
             </div>
             <Footer />
