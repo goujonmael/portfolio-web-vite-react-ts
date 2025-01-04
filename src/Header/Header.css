@@ -16,14 +16,14 @@
 }
 
 .header a {
-    color: var(--yellow);
+    color: var(--text);
     text-decoration: none;
     font-family: var(--font-text);
     font-weight: 400;
 }
 
 .header a:visited {
-    color: var(--yellow);
+    color: var(--text);
 }
 
 
@@ -67,24 +67,49 @@
     z-index: 1001;
 }
 
+.burger-menu.open .burger-bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.burger-menu.open .burger-bar:nth-child(2) {
+    opacity: 0;
+}
+
+.burger-menu.open .burger-bar:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
 .burger-bar {
     width: 100%;
     height: 3px;
     background-color: var(--yellow);
     border-radius: 10px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.nav-footer {
+    display: none;
 }
 
 @media (max-width: 768px) {
     .nav {
-        display: none;
         flex-direction: column;
         align-items: flex-start;
         background-color: #0c46516b;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
         position: absolute;
         top: var(--header-padding);
         right: 0;
-        padding: 10px;
-        
+        height: calc(100vh - var(--header-padding));
+        width: auto;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+        border-top: 2px solid var(--yellow);
+        border-bottom: 2px solid var(--yellow);
+        border-left: 2px solid var(--yellow);
     }
 
     .nav.open {
@@ -92,6 +117,10 @@
         background-color: #0c46516b;
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
+        height: calc(100vh - var(--header-padding));
+        width: auto;
+        transform: translateX(0);
+        transition: transform 0.3s ease-in-out;
     }
 
     .nav-link {
@@ -101,5 +130,39 @@
 
     .burger-menu {
         display: flex;
+    }
+
+    .nav-a {
+        padding: 10px;
+    }
+
+    .nav-a:hover {
+        text-decoration: underline;
+        text-underline-offset: 4px;
+    }
+
+    .nav-footer {
+        bottom: 0;
+        gap: 16px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 10px;
+        position: absolute;
+    }
+
+    .nav-footer a {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .nav-footer a:visited {
+        color: var(--text);
+    }
+
+    .nav-footer a:hover {
+        text-decoration: underline;
+        text-underline-offset: 4px;
     }
 }
