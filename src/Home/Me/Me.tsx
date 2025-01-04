@@ -15,6 +15,7 @@ export default function Me() {
                 className="me"
                 ref={constraintsRef}
             >
+
                 <div className="me_left">
                     <motion.div
                         className="profile"
@@ -31,7 +32,7 @@ export default function Me() {
                     </motion.div>
                 </div>
                 <div className="me_right">
-                    <motion.h1 style={{ fontSize: 40, fontWeight: 700, fontFamily: "Lato", color: "var(--yellow)" }}>
+                    <motion.h1 className="slash">
                         &lt;/&gt;
                     </motion.h1>
                     <motion.h1 className="name">

@@ -1,7 +1,7 @@
 .star_of_life {
     position: absolute;
     left: 2%;
-    transform: translate(0%, -50%);
+    transform: translate(-51%, -50%);
     height: 10vh;
 }
 

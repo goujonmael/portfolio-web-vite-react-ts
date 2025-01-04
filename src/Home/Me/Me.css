@@ -90,12 +90,12 @@
 
 /* 2 columns for profile picture and name */
 .me {
-    border: 2px solid var(--clear-blue);
+    border: 2px solid var(--dark-blue);
     border-radius: 20px;
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 3fr 2fr;
     align-items: center;
-    background-color: var(--dark-blue);
+    background-color: var(--clear-blue);
     /*width: fit-content;*/
     height: 30vh;
 }
@@ -107,6 +107,11 @@
     align-items: center;
     justify-content: center;
     height: 25vh;
+    background-image: url(/images/Home/star.svg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+
 }
 
 .me_right {
@@ -169,6 +174,12 @@
     text-decoration: underline;
 }
 
+.slash {
+    font-size: 40px;
+    color: var(--yellow);
+    font-weight: 700;
+    font-family: "Lato";
+}
 
 
 /* Enable hover only on non-touch devices */
@@ -192,15 +203,17 @@
 @media (max-width: 600px) {
 
     .me {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 2fr 3fr;
         gap: 0 !important;
         align-self: auto;
+        overflow: hidden;
     }
 
     .profile {
         justify-content: center;
         align-items: center;
         display: flex;
+        padding-left: 3vw;
     }
 
     .name {
@@ -211,6 +224,7 @@
     .description {
         font-size: 15px;
         line-height: 15px;
+        padding-left: 0 !important;
     }
 
     .page {
@@ -235,6 +249,23 @@
 
     .footer a {
         gap: 3px;
+    }
+
+    .me_left {
+        background-image: none;
+    }
+
+    .me_right {
+        gap: 0;
+        background-image: url(/images/Home/star.svg);
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .slash {
+        font-size: 30px;
+        margin: 0;
     }
 }
 
