@@ -12,6 +12,7 @@ import Header from './Header/Header'
 import Footer from './Footer/Footer'
 import { ListPerso } from './Projects/ListPerso'
 import { ItemPerso } from './Projects/ItemPerso'
+import Competences from './Competences/Competences'
 
 
 interface StoreProps {
@@ -54,7 +55,7 @@ export default function AppRoutes() {
                     <Route path="/projets-perso/:id" element={<Store typeOfList="perso" />} />
                     <Route path="/projets-univ" element={<Store typeOfList="univ" />} />
                     <Route path="/projets-perso" element={<Store typeOfList="perso" />} />
-                    <Route path="/competences" element={<StarOfLife />} />
+                    <Route path="/competences" element={<Competences />} />
                 </Routes>
             </div>
             <Footer />

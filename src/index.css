@@ -305,9 +305,14 @@ p {
     flex: 0 0 50%;
     max-width: 50%;
   }
+
 }
 
 @media only screen and (max-width: 600px) {
+  body {
+    --header-padding: 8vh;
+  }
+
   .card {
     flex: 1 0 100%;
     max-width: 100%;
@@ -332,6 +337,5 @@ p {
   .card-image-container {
     height: 25vh;
   }
-
 
 }
