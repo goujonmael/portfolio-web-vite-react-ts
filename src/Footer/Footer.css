@@ -10,7 +10,7 @@
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     color: var(--code-text);
-    z-index: 1000;
+    z-index: 100;
     height: var(--header-padding);
 }
 
