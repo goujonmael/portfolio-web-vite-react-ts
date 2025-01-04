@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import './Header.css';
+import { useLocation } from 'react-router-dom'
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+  const path = location.pathname.slice(1);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -10,11 +13,11 @@ export default function Header() {
 
   return (
     <header className="header">
-      <h1 className="headerTitle">Portfolio</h1>
+      <a href="/" className={path === '' ? 'headerTitle-active' : 'headerTitle'}>Portfolio</a>
       <div className={`nav ${isOpen ? 'open' : ''}`}>
-        <a href="/competences" className="nav-a">Compétences</a>
-        <a href="/projets-univ" className="nav-a">Projets universitaires</a>
-        <a href="/projets-perso" className="nav-a">Projets personnels</a>
+        <a href="/competences" className={path === 'competences' ? 'nav-a-active' : 'nav-a'}>Compétences</a>
+        <a href="/projets-univ" className={path === 'projets-univ' ? 'nav-a-active' : 'nav-a'}>Projets universitaires</a>
+        <a href="/projets-perso" className={path === 'projets-perso' ? 'nav-a-active' : 'nav-a'}>Projets personnels</a>
         <div className="nav-footer">
           <a
             href="https://www.linkedin.com/in/ma%C3%ABl-goujon-88635b227"

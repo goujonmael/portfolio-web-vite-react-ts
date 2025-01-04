@@ -15,14 +15,39 @@
     background-color: #0c46516b;
 }
 
-.header a {
+.header .nav-a {
     color: var(--text);
     text-decoration: none;
     font-family: var(--font-text);
     font-weight: 400;
+    padding-right: 20px;
+    font-size: 1.2rem;
 }
 
-.header a:visited {
+.header .nav-a-active {
+    color: var(--yellow) !important;
+    text-decoration: none;
+    font-family: var(--font-text);
+    font-weight: 400;
+    padding-right: 20px;
+    font-size: 1.2rem;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.header .nav-a-active:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-color: var(--yellow);
+}
+
+.header .nav-a:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-color: var(--yellow);
+}
+
+.header .nav-a:visited {
     color: var(--text);
 }
 
@@ -30,11 +55,32 @@
 .headerTitle {
     display: flex;
     align-items: center;
+    color: var(--text);
+    font-family: var(--font-text);
+    font-weight: 800;
+    font-style: italic;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+
+.headerTitle:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-color: var(--yellow);
+}
+
+.headerTitle-active {
+    display: flex;
+    align-items: center;
     color: var(--yellow);
     font-family: var(--font-text);
     font-weight: 800;
     font-style: italic;
     text-transform: uppercase;
+    font-size: 1.5rem;
+    text-decoration: underline;
+    text-underline-offset: 4px;
 }
 
 .nav {
