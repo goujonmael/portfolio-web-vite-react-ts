@@ -16,21 +16,17 @@ export default function Me() {
                 ref={constraintsRef}
             >
 
-                <div className="me_left">
-                    <motion.div
-                        className="profile"
-                        initial={{ opacity: 0, transform: "rotate(0deg)" }}
-                        animate={{ opacity: 1, transform: "rotate(5deg)" }}
-                        transition={{ duration: 0.5 }}
-                    >
+                <motion.div
+                    className="me_left"
+                >
+                    <div className="profile">
                         <img
                             className="profile_picture"
                             src="/images/Me/pp_shorted.jpg"
                             alt="Picture of Mael GOUJON"
                         />
-
-                    </motion.div>
-                </div>
+                    </div>
+                </motion.div>
                 <div className="me_right">
                     <motion.h1 className="slash">
                         &lt;/&gt;

@@ -37,15 +37,87 @@
     }
 }
 
-
-
 .main {
+    min-height: 100vh;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    background-color: var(--dark-blue);
     grid-row-start: 2;
     width: 100%;
-    height: 100vh;
+    background-size: 100% 100%;
+    position: relative;
+    /* Ensure the floating ball is positioned relative to the main container */
+}
+
+.floating-ball1 {
+    width: 20vw;
+    z-index: 0;
+    height: 20vw;
+    background-color: #86b9d2;
+    border-radius: 50%;
+    position: absolute;
+    top: 70%;
+    left: 15%;
+    animation: float1 5s ease-in-out infinite;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+.floating-ball2 {
+    width: 10vw;
+    z-index: 0;
+    height: 20vw;
+    rotate: 25deg;
+    background-color: #45768f;
+    border-radius: 20%;
+    position: absolute;
+    top: 30vh;
+    left: 50%;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+.floating-ball3 {
+    width: 60vw;
+    z-index: 0;
+    height: 70vw;
+    background-color: #ffffff41;
+    border-radius: 20%;
+    position: absolute;
+    top: 50%;
+    left: -30%;
+    animation: float3 10s ease-in-out infinite;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+@keyframes float2 {
+    0% {
+        transform: scaleX(1) scaleY(1);
+        opacity: 0.3;
+        border-radius: 45%
+    }
+
+    25% {
+        transform: scaleX(1.15) scaleY(1.15) rotate(45deg);
+        opacity: 0.2;
+        border-radius: 50%;
+    }
+
+    50% {
+        transform: scaleX(1) scaleY(1) rotate(45deg);
+        opacity: 0.3;
+        border-radius: 45%
+    }
+
+    75% {
+        transform: scaleX(1.15) scaleY(1.15) rotate(45deg);
+        opacity: 0.2;
+        border-radius: 50%;
+    }
+
+    100% {
+        transform: scaleX(1) scaleY(1);
+        opacity: 0.3;
+        border-radius: 45%
+    }
 }
 
 .main ol {
@@ -90,14 +162,12 @@
 
 /* 2 columns for profile picture and name */
 .me {
-    border: 2px solid var(--dark-blue);
     border-radius: 20px;
     display: grid;
-    grid-template-columns: 3fr 2fr;
+    grid-template-columns: 1fr 2fr;
     align-items: center;
-    background-color: var(--clear-blue);
-    /*width: fit-content;*/
     height: 30vh;
+    gap: 10vw;
 }
 
 .me_left {
@@ -107,11 +177,10 @@
     align-items: center;
     justify-content: center;
     height: 25vh;
-    background-image: url(/images/Home/star.svg);
-    background-size: 100%;
-    background-repeat: no-repeat;
-    background-position: center;
-
+    background-color: #ffffff41;
+    border-radius: 20%;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    z-index: 1;
 }
 
 .me_right {
@@ -141,14 +210,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /* pivoter de 5° */
-    transform: rotate(5deg);
 }
 
 .profile_picture {
     width: 100%;
     height: 100%;
-    border-radius: 25%;
+    border-radius: 15%;
     object-fit: cover;
 }
 
@@ -256,10 +323,6 @@
 
     .me_right {
         gap: 0;
-        background-image: url(/images/Home/star.svg);
-        background-size: 100%;
-        background-repeat: no-repeat;
-        background-position: center;
     }
 
     .slash {

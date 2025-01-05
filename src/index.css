@@ -7,13 +7,16 @@
   text-align: center;
 }
 
-
+html {
+  height: 100%;
+}
 
 body {
+  min-height: 100vh;
   margin: 0;
   padding: 0;
   background: black;
-  background-color: var(--dark-blue);
+  background: linear-gradient(135deg, #8BC6EC 0%, #0C4651 100%);
   overflow-y: scroll;
   --secondary: rgb(161, 161, 161);
   --divider: #343434;
@@ -26,6 +29,10 @@ body {
   --header-padding: 5vh;
   --font-text: 'Lato', sans-serif;
   --font-title: 'Turret Road', serif;
+}
+
+#root {
+  min-height: 100vh;
 }
 
 * {
@@ -42,6 +49,7 @@ body {
 }
 
 .container {
+  z-index: 1;
   /* align content to the center */
   display: flex;
   flex-direction: column;
@@ -49,8 +57,7 @@ body {
   width: 100%;
   /*max-width: 990px;*/
   flex: 1 1 100%;
-  padding-top: var(--header-padding);
-  background-color: var(--dark-blue);
+  margin-top: var(--header-padding);
 }
 
 h1 {
@@ -128,7 +135,7 @@ li {
 }
 
 .card-content-container.open {
-  
+
   padding: calc(1vh + var(--header-padding)) 2vw 2vh 2vw;
   top: 0;
   left: 0;

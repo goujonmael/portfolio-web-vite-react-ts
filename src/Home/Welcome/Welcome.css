@@ -1,8 +1,8 @@
 .Welcome {
     width: 100%;
     text-align: center;
-    background-color: white;
-    height: 20vh;
+    background-color: #c1c1c175;
+    height: 32vh;
     /* align everything in the center */
     display: flex;
     flex-direction: column;

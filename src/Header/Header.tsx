@@ -13,8 +13,8 @@ export default function Header() {
 
   return (
     <header className="header">
-      <a href="/" className={path === '' ? 'headerTitle-active' : 'headerTitle'}>Portfolio</a>
       <div className={`nav ${isOpen ? 'open' : ''}`}>
+        <a href="/" className={path === '' ? 'nav-a-active' : 'nav-a'}>Accueil</a>
         <a href="/competences" className={path === 'competences' ? 'nav-a-active' : 'nav-a'}>Compétences</a>
         <a href="/projets-univ" className={path === 'projets-univ' ? 'nav-a-active' : 'nav-a'}>Projets universitaires</a>
         <a href="/projets-perso" className={path === 'projets-perso' ? 'nav-a-active' : 'nav-a'}>Projets personnels</a>

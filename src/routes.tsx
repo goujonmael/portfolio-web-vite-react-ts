@@ -13,6 +13,8 @@ import Footer from './Footer/Footer'
 import { ListPerso } from './Projects/ListPerso'
 import { ItemPerso } from './Projects/ItemPerso'
 import Competences from './Competences/Competences'
+import React, { useEffect } from 'react';
+
 
 
 interface StoreProps {
@@ -39,8 +41,21 @@ const Store: React.FC<StoreProps> = ({ typeOfList }) => {
 }
 
 export default function AppRoutes() {
+
+    useEffect(() => {
+        const floatingBall = document.querySelector('.floating-ball3');
+        if (floatingBall) {
+            const randomTop = 20 + Math.random() * 30;
+            const randomLeft = 20 + Math.random() * 50;
+            floatingBall.style.setProperty('--random-top', `${randomTop}%`);
+            floatingBall.style.setProperty('--random-left', `${randomLeft}%`);
+        }
+    }, []);
     return (
         <div className="main">
+            <div className="floating-ball1"></div>
+            <div className="floating-ball2"></div>
+            <div className="floating-ball3"></div>
             <Header />
             <div className="container">
                 <Routes>

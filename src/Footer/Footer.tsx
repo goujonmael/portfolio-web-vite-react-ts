@@ -17,7 +17,9 @@ export default function Footer() {
                     width={30}
                     height={30}
                 />
-                LinkedIn
+                <p className="text">
+                    LinkedIn
+                </p>
             </a>
             <a
                 href="https://github.com/maelgoujon"
@@ -31,7 +33,7 @@ export default function Footer() {
                     width={30}
                     height={30}
                 />
-                Git Etudiant
+                <p className="text">Git Etudiant</p>
             </a>
             <a
                 href="https://github.com/goujonmael"
@@ -45,7 +47,9 @@ export default function Footer() {
                     width={30}
                     height={30}
                 />
-                Git Personnel
+                <p className="text">
+                    Git Personnel
+                </p>
             </a>
             <a
                 /* télécharger le CV */
@@ -60,7 +64,9 @@ export default function Footer() {
                     width={30}
                     height={30}
                 />
-                Mon CV
+                <p className="text">
+                    Mon CV
+                </p>
             </a>
             {/* prendre contact */}
             <a href="mailto:goujonmael@gmail.com">
@@ -71,7 +77,9 @@ export default function Footer() {
                     width={30}
                     height={30}
                 />
-                Contact
+                <p className="text">
+                    Contact
+                </p>
             </a>
 
         </footer>
