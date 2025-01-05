@@ -20,23 +20,6 @@ function Card({ id, title, category, theme, imageLink, github, pdf }) {
           >
             <span className="category">{category}</span>
             <h2>{title}</h2>
-
-            <div className="Links" style={{ zIndex: 0 }}>
-              {github && (
-                <div className="github-link">
-                  <Link to={github} target="_blank" rel="noopener noreferrer">
-                    <img src="/images/git.svg" alt="github logo" className="github-logo" />
-                  </Link>
-                </div>
-              )}
-              {pdf && (
-                <div className="pdf-link">
-                  <Link to={pdf} target="_blank" rel="noopener noreferrer">
-                    <img src="/images/pdf.svg" alt="pdf logo" className="pdf-logo" />
-                  </Link>
-                </div>
-              )}
-            </div>
           </motion.div>
         </motion.div>
       </div>

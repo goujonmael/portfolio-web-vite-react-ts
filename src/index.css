@@ -128,14 +128,13 @@ li {
 }
 
 .card-content-container.open {
+  
+  padding: calc(1vh + var(--header-padding)) 2vw 2vh 2vw;
   top: 0;
   left: 0;
   right: 0;
   position: fixed;
-  z-index: 1;
   overflow: hidden;
-  padding: 10% 0;
-  z-index: 9999;
 }
 
 .card-content {
@@ -162,7 +161,6 @@ li {
 }
 
 .overlay {
-  z-index: 9998;
   position: absolute;
   top: 0;
   left: 0;
@@ -183,7 +181,6 @@ li {
 }
 
 .open .card-content {
-  border: 1px solid #fff;
   /*height: auto;*/
   max-width: 900px;
   /*
@@ -329,9 +326,7 @@ p {
   }
 
   .card-content-container.open {
-    padding: var(--header-padding) 2vw 2vh 2vw;
     /*top: auto !important;*/
-    bottom: 0 !important;
   }
 
   .card-image-container {

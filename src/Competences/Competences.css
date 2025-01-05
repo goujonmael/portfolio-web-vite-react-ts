@@ -10,6 +10,7 @@
 .title-first-letter {
     color: var(--yellow);
     font-family: Turret Road;
+    font-weight: 800;
 }
 
 .description {
@@ -17,8 +18,8 @@
     font-weight: 400;
     font-family: Lato, sans-serif;
     color: var(--text);
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
     margin: 1rem 0;
 }
 
@@ -91,6 +92,7 @@
 @media only screen and (max-width: 768px) {
     .competence:hover {
         scale: 1;
+        border-radius: 10px;
     }
     .competence {
         width: 45%;

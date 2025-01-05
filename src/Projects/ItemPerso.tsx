@@ -96,6 +96,9 @@ export function ItemPerso({ id }) {
           >
             <span className="category">{category}</span>
             <h2>{title}</h2>
+          </motion.div>
+
+          <motion.div className="content-container" animate>
             <div className="Links">
               {github && (
                 <div className="github-link">
@@ -112,9 +115,6 @@ export function ItemPerso({ id }) {
                 </div>
               )}
             </div>
-          </motion.div>
-
-          <motion.div className="content-container" animate>
             <div>
               {description}
             </div>
