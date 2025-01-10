@@ -15,20 +15,25 @@ body {
   min-height: 100vh;
   margin: 0;
   padding: 0;
-  background: black;
-  background: linear-gradient(135deg, #8BC6EC 0%, #0C4651 100%);
   overflow-y: scroll;
+  background-color: #101010;
   --secondary: rgb(161, 161, 161);
   --divider: #343434;
   --text-dark: #0C4651;
   --text: #F5F5F5;
-  --yellow: #E6FF2A;
+  --yellow: #45768f;
   --grey: #D9D9D9;
   --clear-blue: #0C4651;
   --dark-blue: #073139;
   --header-padding: 5vh;
   --font-text: 'Lato', sans-serif;
   --font-title: 'Turret Road', serif;
+
+
+
+  transition: opacity 1s ease;
+  background: radial-gradient(circle at right center, #38457B, #BA97B5 50%, #FD9C71 95%, #FD9C71);
+  z-index: 1;
 }
 
 #root {
@@ -49,7 +54,6 @@ body {
 }
 
 .container {
-  z-index: 1;
   /* align content to the center */
   display: flex;
   flex-direction: column;

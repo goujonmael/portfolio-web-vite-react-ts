@@ -18,8 +18,6 @@
     font-weight: 400;
     font-family: Lato, sans-serif;
     color: var(--text);
-    padding-left: 2rem;
-    padding-right: 2rem;
     margin: 1rem 0;
 }
 
@@ -54,12 +52,21 @@
     margin: 0;
     padding: 1rem;
     border: 2px solid gray;
-    background-color: var(--dark-blue);
+    background-color: #07313982;
     width: 30%;
     min-width: 200px;
     transition: all 0.3s;
     border-radius: 10px;
     margin-bottom: 1rem;
+}
+
+.competence p {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--text);
+    margin: 1rem 0;
+    font-family: var(--font-text);
+    align-self: start;
 }
 
 .competence h2 {
@@ -74,9 +81,14 @@
 
 .competence:hover {
     border-color: var(--yellow);
+    background-color: #07313954;
     border-radius: 20px;
     scale: 1.15;
     z-index: 1;
+}
+
+.competence:hover p {
+    color: var(--yellow);
 }
 
 .level {

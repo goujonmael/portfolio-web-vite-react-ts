@@ -8,6 +8,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    -webkit-mask-image: linear-gradient(black, transparent);
+    mask-image: linear-gradient(black, transparent);
 }
 
 .hello {
@@ -39,5 +41,9 @@
 
     .portfolio-title {
         font-size: 60px;
+    }
+
+    .Welcome {
+        height: 20vh;
     }
 }

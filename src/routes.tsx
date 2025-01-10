@@ -56,6 +56,7 @@ export default function AppRoutes() {
             <div className="floating-ball1"></div>
             <div className="floating-ball2"></div>
             <div className="floating-ball3"></div>
+            <div className="blur-background"></div>
             <Header />
             <div className="container">
                 <Routes>

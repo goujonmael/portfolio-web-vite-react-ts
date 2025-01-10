@@ -67,7 +67,7 @@
     z-index: 0;
     height: 20vw;
     rotate: 25deg;
-    background-color: #45768f;
+    background-color: #cea0a6;
     border-radius: 20%;
     position: absolute;
     top: 30vh;
@@ -155,7 +155,6 @@
 }
 
 .me2 {
-    margin: 10px;
     width: 100%;
     max-width: 1000px;
 }
@@ -163,10 +162,8 @@
 /* 2 columns for profile picture and name */
 .me {
     border-radius: 20px;
-    display: grid;
-    grid-template-columns: 1fr 2fr;
+    display: flex;
     align-items: center;
-    height: 30vh;
     gap: 10vw;
 }
 
@@ -179,7 +176,6 @@
     height: 25vh;
     background-color: #ffffff41;
     border-radius: 20%;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
     z-index: 1;
 }
 
@@ -187,6 +183,11 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
+    z-index: 2;
+    border: 2px solid var(--yellow);
+    border-radius: 20%;
+    padding: 20px;
+    background-color: #ffffff41;
 }
 
 .description {
@@ -242,7 +243,7 @@
 }
 
 .slash {
-    font-size: 40px;
+    font-size: 60px;
     color: var(--yellow);
     font-weight: 700;
     font-family: "Lato";
@@ -270,7 +271,7 @@
 @media (max-width: 600px) {
 
     .me {
-        grid-template-columns: 2fr 3fr;
+        flex-direction: column;
         gap: 0 !important;
         align-self: auto;
         overflow: hidden;
@@ -280,7 +281,6 @@
         justify-content: center;
         align-items: center;
         display: flex;
-        padding-left: 3vw;
     }
 
     .name {
