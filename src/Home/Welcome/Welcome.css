@@ -1,15 +1,12 @@
 .Welcome {
     width: 100%;
     text-align: center;
-    background-color: #c1c1c175;
     height: 32vh;
     /* align everything in the center */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    -webkit-mask-image: linear-gradient(black, transparent);
-    mask-image: linear-gradient(black, transparent);
 }
 
 .hello {

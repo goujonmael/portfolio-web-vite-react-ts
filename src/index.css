@@ -20,7 +20,8 @@ body {
   --secondary: rgb(161, 161, 161);
   --divider: #343434;
   --text-dark: #0C4651;
-  --text: #F5F5F5;
+  --text: #404756;
+  --title: #23272f;
   --yellow: #45768f;
   --grey: #D9D9D9;
   --clear-blue: #0C4651;
@@ -32,7 +33,8 @@ body {
 
 
   transition: opacity 1s ease;
-  background: radial-gradient(circle at right center, #38457B, #BA97B5 50%, #FD9C71 95%, #FD9C71);
+  /*background: radial-gradient(circle at right center, #38457B, #BA97B5 50%, #FD9C71 95%, #FD9C71);*/
+  background-color: #ffffff;
   z-index: 1;
 }
 

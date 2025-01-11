@@ -8,7 +8,7 @@ export default function StarOfLife() {
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
         >
-            <svg className='star_of_life' id="full" fill='#e6ff2a' viewBox="-16 0 512 512" xmlns="http://www.w3.org/2000/svg">
+            <svg className='star_of_life' id="full" fill='#f3e1fa' viewBox="-16 0 512 512" xmlns="http://www.w3.org/2000/svg">
 
                 <g id="SVGRepo_bgCarrier" stroke-width="0" />
 

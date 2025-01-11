@@ -1,6 +1,6 @@
 .header {
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(16px) saturate(2);
+    -webkit-backdrop-filter: blur(16px) saturate(2);
     position: fixed;
     width: 100%;
     top: 0;
@@ -11,8 +11,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 10px;
-    background-color: #c1c1c175;
+    box-shadow: 0 0 #0000, 0 0 #0000, 0 16px 32px -16px rgba(0,0,0,.1),0 0 0 1px rgba(0,0,0,.1);
 }
 
 .header .nav-a {
