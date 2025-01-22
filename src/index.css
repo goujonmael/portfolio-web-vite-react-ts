@@ -49,6 +49,15 @@ body {
   height: 100%;
 }
 
+@keyframes blurIn {
+  from {
+    filter: blur(0px);
+  }
+  to {
+    filter: blur(50px);
+  }
+}
+
 #root::before {
   content: '';
   position: fixed;
@@ -59,7 +68,8 @@ body {
   background-image: url(/anneau.svg);
   background-position: center;
   background-size: 100% 100%; /* Force the image to cover the entire area */
-  filter: blur(50px);
+  filter: blur(0); /* Start with no blur */
+  animation: blurIn 3s forwards; /* Animate to 50px blur over 0.5 seconds */
   z-index: -1;
 }
 
