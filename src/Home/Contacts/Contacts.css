@@ -55,8 +55,19 @@
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
-  padding: 0.5rem;
   border-radius: 8px;
+  transition: all 0.3s;
+}
+
+/* Animation slide down */
+.mailDropdown .dropdown-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.mailDropdown.active .dropdown-content {
+  max-height: 200px; /* Ajustez cette valeur en fonction de la hauteur de votre contenu */
 }
 
 .subject {

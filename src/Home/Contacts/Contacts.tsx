@@ -3,20 +3,31 @@ import LinkedInIcon from "../../assets/Icons/LinkedInIcon";
 import GitHubIcon from "../../assets/Icons/GitHubIcon";
 import CVIcon from "../../assets/Icons/CVIcon";
 import MailIcon from "../../assets/Icons/MailIcon";
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 const Contacts = () => {
   const [isDropdownActive, setDropdownActive] = useState(false);
+  const sendButtonRef = useRef<HTMLButtonElement>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const dropdownClicked = () => {
     setDropdownActive(!isDropdownActive);
   };
+
+  useEffect(() => {
+    if (isDropdownActive && dropdownRef.current) {
+      setTimeout(() => {
+        dropdownRef.current?.scrollIntoView({ behavior: "smooth" });
+      }, 300); // Délai correspondant à la durée de l'animation CSS
+    }
+  }, [isDropdownActive]);
 
   const handleSendMail = () => {
     const subject = document.querySelector("input")?.value || "";
     const body = document.querySelector("textarea")?.value || "";
     window.open(`mailto:goujonmael@gmail.com` + `?subject=${subject}&body=${body}`);
   };
+
   return (
     <div>
       <h1 className="contacts-title">Contacts</h1>
@@ -65,16 +76,15 @@ const Contacts = () => {
             <p className="text">Contact</p>
             <i className={`arrow ${isDropdownActive ? 'up' : 'down'}`}></i>
           </a>
-          {isDropdownActive && (
-            <div className="dropdown-content">
-              {/* Email form */}
-              <input type="text" placeholder="Subject" className="subject" />
-              <textarea placeholder="Body" className="body"></textarea>
-              <button onClick={handleSendMail} className="sendButton">Send</button>
-            </div>
-          )}
+          <div className="dropdown-content">
+            {/* Email form */}
+            <input type="text" placeholder="Subject" className="subject" />
+            <textarea placeholder="Body" className="body"></textarea>
+            <button ref={sendButtonRef} onClick={handleSendMail} className="sendButton">Send</button>
+          </div>
         </div>
       </div>
+      <div ref={dropdownRef}/>
     </div>
   );
 };
