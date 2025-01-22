@@ -78,9 +78,9 @@ const Contacts = () => {
           </a>
           <div className="dropdown-content">
             {/* Email form */}
-            <input type="text" placeholder="Subject" className="subject" />
-            <textarea placeholder="Body" className="body"></textarea>
-            <button ref={sendButtonRef} onClick={handleSendMail} className="sendButton">Send</button>
+            <input type="text" placeholder="Sujet" className="subject" />
+            <textarea placeholder="Contenu" className="body"></textarea>
+            <button ref={sendButtonRef} onClick={handleSendMail} className="sendButton">Envoyer</button>
           </div>
         </div>
       </div>
