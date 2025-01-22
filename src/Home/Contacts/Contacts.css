@@ -27,7 +27,74 @@
   box-sizing: border-box;
   border-radius: 8px;
   text-align: center;
-  text-decoration: none;
+  text-decoration: none; /* alignn content in the center */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.link:last-child {
+  flex: 0 0 auto; /* Prevent the last item from growing */
+  /* width should be the size of the content */
+  width: fit-content;
+}
+
+.mailDropdown {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.dropdown-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: #242424;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  padding: 0.5rem;
+  border-radius: 8px;
+}
+
+.subject {
+  font-size: 15px;
+  line-height: 15px;
+  font-family: var(--font-text);
+  color: var(--text);
+  background-color: #242424;
+  border: 1px solid var(--yellow);
+  margin: 0.2rem;
+  line-height: 1.5;
+  border-radius: 8px;
+  padding: 0.5rem;
+}
+
+.body {
+  font-size: 15px;
+  line-height: 15px;
+  font-family: var(--font-text);
+  color: var(--text);
+  background-color: #242424;
+  border: 1px solid var(--yellow);
+  margin: 0.2rem;
+  border-radius: 8px;
+  padding: 0.5rem;
+  height: 100px;
+}
+
+.sendButton {
+  background-color: var(--yellow);
+  color: white;
+  font-size: 15px;
+  line-height: 15px;
+  font-family: var(--font-text);
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem;
+  cursor: pointer;
 }
 
 .link p {
@@ -35,4 +102,21 @@
   line-height: 15px;
   font-family: var(--font-text);
   color: var(--text);
+}
+
+.arrow {
+  border: solid var(--yellow);
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+.up {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
 }

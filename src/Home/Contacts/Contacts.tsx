@@ -1,17 +1,22 @@
-import React, { useRef, useState } from "react";
-import { motion, useSpring } from "framer-motion";
 import "./Contacts.css";
-import Image from "react-image";
-import { transform } from "typescript";
 import LinkedInIcon from "../../assets/Icons/LinkedInIcon";
 import GitHubIcon from "../../assets/Icons/GitHubIcon";
 import CVIcon from "../../assets/Icons/CVIcon";
 import MailIcon from "../../assets/Icons/MailIcon";
+import React, { useState } from "react";
 
-export default function Contacts() {
-  const [isIutHovered, setIsIutHovered] = useState(false);
-  const [isAirbusHovered, setIsAirbusHovered] = useState(false);
-  const constraintsRef = useRef(null);
+const Contacts = () => {
+  const [isDropdownActive, setDropdownActive] = useState(false);
+
+  const dropdownClicked = () => {
+    setDropdownActive(!isDropdownActive);
+  };
+
+  const handleSendMail = () => {
+    const subject = document.querySelector("input")?.value || "";
+    const body = document.querySelector("textarea")?.value || "";
+    window.open(`mailto:goujonmael@gmail.com` + `?subject=${subject}&body=${body}`);
+  };
   return (
     <div>
       <h1 className="contacts-title">Contacts</h1>
@@ -54,11 +59,24 @@ export default function Contacts() {
           <p className="text">Mon CV</p>
         </a>
         {/* prendre contact */}
-        <a href="mailto:goujonmael@gmail.com" className="link">
-          <MailIcon />
-          <p className="text">Contact</p>
-        </a>
+        <div className={`mailDropdown ${isDropdownActive ? "active" : ""}`}>
+          <a onClick={dropdownClicked} className="link">
+            <MailIcon />
+            <p className="text">Contact</p>
+            <i className={`arrow ${isDropdownActive ? 'up' : 'down'}`}></i>
+          </a>
+          {isDropdownActive && (
+            <div className="dropdown-content">
+              {/* Email form */}
+              <input type="text" placeholder="Subject" className="subject" />
+              <textarea placeholder="Body" className="body"></textarea>
+              <button onClick={handleSendMail} className="sendButton">Send</button>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
-}
+};
+
+export default Contacts;
