@@ -19,6 +19,7 @@ import { ListPerso } from "./Projects/ListPerso";
 import { ItemPerso } from "./Projects/ItemPerso";
 import Competences from "./Competences/Competences";
 import React, { useEffect } from "react";
+import Contacts from "./Home/Contacts/Contacts";
 
 interface StoreProps {
   typeOfList?: string;
@@ -76,6 +77,7 @@ export default function AppRoutes() {
                 <Welcome />
                 <StarOfLife />
                 <Me />
+                <Contacts />
               </>
             }
           />
@@ -92,7 +94,6 @@ export default function AppRoutes() {
           <Route path="/competences" element={<Competences />} />
         </Routes>
       </div>
-      <Footer />
     </div>
   );
 }
