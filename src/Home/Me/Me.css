@@ -191,6 +191,9 @@
   margin-left: 10px;
   position: relative;
   width: 100%;
+  display: flex;
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally if needed */
 }
 
 .me_left_background {
@@ -256,17 +259,20 @@
   font-style: normal;
   color: var(--title);
   line-height: 0.8;
+  margin: 0;
 }
 
 .airbus {
   /*color: rgb(7, 26, 61);*/
   color: var(--yellow);
   text-decoration: underline;
+  font-size: 20px;
 }
 
 .but {
   color: var(--yellow);
   text-decoration: underline;
+  font-size: 20px;
 }
 
 .slash {

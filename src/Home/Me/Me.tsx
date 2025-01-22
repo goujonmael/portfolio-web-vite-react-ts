@@ -30,9 +30,6 @@ export default function Me() {
                     </div>
                     <div className="me_right_container">
                         <div className="me_right">
-                            <motion.h1 className="slash">
-                                &lt;/&gt;
-                            </motion.h1>
                             <motion.h1 className="name">
                                 GOUJON
                                 <br />
