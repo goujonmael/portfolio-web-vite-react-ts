@@ -154,7 +154,6 @@
 }
 
 .me2 {
-  background-color: #ffffff3b;
   width: 100%;
   border-radius: 20px;
 }
@@ -260,6 +259,7 @@
   color: var(--title);
   line-height: 0.8;
   margin: 0;
+  margin-bottom: 1rem;
 }
 
 .airbus {

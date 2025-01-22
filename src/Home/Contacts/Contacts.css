@@ -10,7 +10,6 @@
   justify-content: space-between;
   padding: 0.625rem;
   margin: 1rem;
-  background-color: #ffffff3b;
   border-radius: 20px;
 }
 
@@ -19,11 +18,21 @@
   display: flex;
   align-items: center;
   margin: 0.25rem;
-  padding: 0.5rem;
-  flex: 1 1 calc(33.333% - 1rem);
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  flex: 1 1 calc(33% - 1rem); /* Occupy half of the screen width */
   background-color: #242424;
   box-sizing: border-box;
   border-radius: 8px;
   text-align: center;
   text-decoration: none;
+}
+
+.link p {
+  font-size: 15px;
+  line-height: 15px;
+  font-family: var(--font-text);
+  color: var(--text);
 }

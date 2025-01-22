@@ -2,8 +2,8 @@ import React from "react";
 
 const MailIcon = () => (
   <svg
-    width="50"
-    height="50"
+    width="45px"
+    height="45px"
     viewBox="0 0 90 90"
     preserveAspectRatio="xMidYMid meet"
     xmlns="http://www.w3.org/2000/svg"
