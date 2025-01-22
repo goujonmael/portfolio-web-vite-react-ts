@@ -9,114 +9,115 @@ export default function Me() {
     const [isAirbusHovered, setIsAirbusHovered] = useState(false);
     const constraintsRef = useRef(null);
     return (
-
-        <div className="me2">
-            <motion.div
-                className="me"
-                ref={constraintsRef}
-            >
-
+        <div className="borders">
+            <div className="me2">
                 <motion.div
-                    className="me_left"
+                    className="me"
+                    ref={constraintsRef}
                 >
-                    <div className="profile">
-                        <img
-                            className="profile_picture"
-                            src="/images/Me/pp_shorted.jpg"
-                            alt="Picture of Mael GOUJON"
-                        />
+                    <div className="me_left_container">
+                        <motion.div
+                            className="me_left"
+                        >
+                            <div className="profile">
+                                <img
+                                    className="profile_picture"
+                                    src="/images/Me/pp_shorted.jpg"
+                                    alt="Picture of Mael GOUJON"
+                                />
+                            </div>
+                        </motion.div>
                     </div>
-                </motion.div>
-                <div className="me_right_container">
-                    <div className="me_right">
-                        <motion.h1 className="slash">
-                            &lt;/&gt;
-                        </motion.h1>
-                        <motion.h1 className="name">
-                            GOUJON
-                            <br />
-                            Mael
-                        </motion.h1>
-                        <span className="description">
+                    <div className="me_right_container">
+                        <div className="me_right">
+                            <motion.h1 className="slash">
+                                &lt;/&gt;
+                            </motion.h1>
+                            <motion.h1 className="name">
+                                GOUJON
+                                <br />
+                                Mael
+                            </motion.h1>
+                            <span className="description">
 
-                            <table>
+                                <table>
 
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            •
-                                        </td>
-                                        <td>
-                                            <span>
-                                                {isIutHovered && (
-                                                    <motion.div
-                                                        animate={{
-                                                            x: [0, 10, 20, 30, 40, 50, 55],
-                                                            y: [-25],
-                                                            opacity: [0, 1],
-                                                        }}
-                                                        transition={{ duration: 1, type: "spring", bounce: 0.6, stiffness: 200 }}
-                                                        style={{
-                                                            width: 30,
-                                                            height: 30,
-                                                            position: "absolute",
-                                                            opacity: 0,
-                                                        }}
-                                                    >
-                                                        <img
-                                                            src="/images/Me/school.svg"
-                                                            alt=" "
-                                                            width={30}
-                                                            height={30}
-                                                        />
-                                                    </motion.div>
-                                                )}
-                                                Étudiant en <a className="but" href="https://www.univ-tlse3.fr/decouvrir-nos-diplomes/but-informatique-parcours-deploiement-dapplications-communicantes-et-securisees-toulouse"
-                                                    onMouseEnter={() => setIsIutHovered(true)} onMouseLeave={() => setIsIutHovered(false)}
-                                                >Informatique
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                •
+                                            </td>
+                                            <td>
+                                                <span>
+                                                    {isIutHovered && (
+                                                        <motion.div
+                                                            animate={{
+                                                                x: [0, 10, 20, 30, 40, 50, 55],
+                                                                y: [-25],
+                                                                opacity: [0, 1],
+                                                            }}
+                                                            transition={{ duration: 1, type: "spring", bounce: 0.6, stiffness: 200 }}
+                                                            style={{
+                                                                width: 30,
+                                                                height: 30,
+                                                                position: "absolute",
+                                                                opacity: 0,
+                                                            }}
+                                                        >
+                                                            <img
+                                                                src="/images/Me/school.svg"
+                                                                alt=" "
+                                                                width={30}
+                                                                height={30}
+                                                            />
+                                                        </motion.div>
+                                                    )}
+                                                    Étudiant en <a className="but" href="https://www.univ-tlse3.fr/decouvrir-nos-diplomes/but-informatique-parcours-deploiement-dapplications-communicantes-et-securisees-toulouse"
+                                                        onMouseEnter={() => setIsIutHovered(true)} onMouseLeave={() => setIsIutHovered(false)}
+                                                    >Informatique
+                                                    </a>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                •
+                                            </td>
+                                            <td>
+                                                Alternant chez <a className="airbus" href="https://www.airbus.com/en/products-services/space/telecommunications-and-navigation-satellites" onMouseEnter={() => setIsAirbusHovered(true)}
+                                                    onMouseLeave={() => setIsAirbusHovered(false)} style={{ position: 'relative', display: 'inline-block' }}>Airbus
+                                                    {isAirbusHovered && (
+                                                        <motion.div
+                                                            animate={{ x: [0, 50, 0] }}
+                                                            transition={{ duration: 1, ease: "linear" }}
+                                                            style={{
+                                                                width: 30,
+                                                                height: 30,
+                                                                position: "absolute",
+                                                            }}
+                                                        >
+                                                            <img
+                                                                src="/images/Me/satellite.svg"
+                                                                alt=" "
+                                                                width={30}
+                                                                height={30}
+                                                            />
+                                                        </motion.div>
+                                                    )}
                                                 </a>
-                                            </span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            •
-                                        </td>
-                                        <td>
-                                            Alternant chez <a className="airbus" href="https://www.airbus.com/en/products-services/space/telecommunications-and-navigation-satellites" onMouseEnter={() => setIsAirbusHovered(true)}
-                                                onMouseLeave={() => setIsAirbusHovered(false)} style={{ position: 'relative', display: 'inline-block' }}>Airbus
-                                                {isAirbusHovered && (
-                                                    <motion.div
-                                                        animate={{ x: [0, 50, 0] }}
-                                                        transition={{ duration: 1, ease: "linear" }}
-                                                        style={{
-                                                            width: 30,
-                                                            height: 30,
-                                                            position: "absolute",
-                                                        }}
-                                                    >
-                                                        <img
-                                                            src="/images/Me/satellite.svg"
-                                                            alt=" "
-                                                            width={30}
-                                                            height={30}
-                                                        />
-                                                    </motion.div>
-                                                )}
-                                            </a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
 
 
-                        </span>
+                            </span>
 
+                        </div>
                     </div>
-                    <div className="me_right_background" />
-                </div>
 
-            </motion.div>
+                </motion.div>
+            </div>
         </div>
     )
 }

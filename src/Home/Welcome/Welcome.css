@@ -15,7 +15,7 @@
     font-family: var(--font-text);
     font-weight: 400;
     font-style: normal;
-    color: var(--text-dark);
+    color: var(--yellow);
     line-height: 0.8;
     text-align: left;
 }
@@ -26,7 +26,7 @@
     font-family: var(--font-title);
     font-weight: 800;
     font-style: normal;
-    color: var(--text-dark);
+    color: var(--title);
     line-height: 0.8;
     text-align: left;
 }

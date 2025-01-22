@@ -1,6 +1,7 @@
 .header {
-    backdrop-filter: blur(16px) saturate(2);
-    -webkit-backdrop-filter: blur(16px) saturate(2);
+    background-color: #ffffff17;
+    backdrop-filter: blur(16px) saturate(0.8);
+    -webkit-backdrop-filter: blur(16px) saturate(0.8);
     position: fixed;
     width: 100%;
     top: 0;
@@ -18,29 +19,29 @@
     color: var(--text);
     text-decoration: none;
     font-family: var(--font-text);
-    font-weight: 400;
+    font-weight: 700;
     padding-right: 20px;
     font-size: 1.2rem;
-    border: 1px solid var(--yellow);
-    border-radius: 10px;
+    border: 1px solid rgb(22 24 29);
+    border-radius: 20px;
     padding: 10px;
-    margin-right: 10px;
+    margin-right: 20px;
+    text-transform: uppercase;
 }
 
 .header .nav-a-active {
+    background-color: var(--yellow);
+    color: white;
     text-decoration: none;
     font-family: var(--font-text);
-    font-weight: 400;
+    font-weight: 700;
     padding-right: 20px;
     font-size: 1.2rem;
-    text-decoration: underline;
-    text-underline-offset: 4px;
-    border: 1px solid var(--yellow);
-    border-radius: 10px;
+    border: 1px solid rgb(22 24 29);
+    border-radius: 20px;
     padding: 10px;
-    margin-right: 10px;
-    background-color: var(--yellow);
-    color: var(--dark-blue);
+    margin-right: 20px;
+    text-transform: uppercase;
 }
 
 .header .nav-a-active:hover {
