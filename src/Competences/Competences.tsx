@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 export default function Competences() {
     return (
-        <div>
+        <div className='competences-container'>
             <h1 className="title">
                 <span className="title-first-letter">C</span>ompétences
             </h1>

@@ -158,4 +158,8 @@
   .link {
     max-width: min-content;
   }
+  .contacts-tiles {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
 }
