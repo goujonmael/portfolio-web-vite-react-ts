@@ -18,7 +18,7 @@
 .contacts-tiles {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: center;
   padding: 0.625rem;
   margin: 1rem;
   border-radius: 20px;
