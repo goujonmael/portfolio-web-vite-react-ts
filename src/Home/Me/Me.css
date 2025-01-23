@@ -158,7 +158,6 @@
   border-radius: 20px;
 }
 
-
 .me {
   display: flex;
   align-items: center;
@@ -172,6 +171,7 @@
   z-index: 2;
   border-radius: 20px;
   margin: 20px;
+  height: 20vh;
 }
 
 .me_right {
@@ -229,14 +229,11 @@
 
 /* profile picture */
 .profile {
-  width: auto;
-  height: 90%;
+  width: max-content;
+  height: 100%;
   user-select: none;
-  /* Empêche la sélection de l'image */
   pointer-events: none;
-  /* Empêche les événements de la souris sur l'image */
   overflow: hidden;
-  /* positionner l'image au centre */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -307,7 +304,6 @@
 }
 
 @media (max-width: 600px) {
-
   .profile {
     justify-content: center;
     align-items: center;

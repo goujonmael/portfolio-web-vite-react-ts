@@ -7,10 +7,24 @@
 .contacts {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   padding: 0.625rem;
   margin: 1rem;
   border-radius: 20px;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.contacts-tiles {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding: 0.625rem;
+  margin: 1rem;
+  border-radius: 20px;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  margin-top: 0;
 }
 
 .link {
@@ -22,15 +36,15 @@
   padding-right: 0.5rem;
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
-  flex: 1 1 calc(33% - 1rem); /* Occupy half of the screen width */
+  flex: 1 1 auto; /* Allow the item to grow and shrink */
+  min-width: 25%; /* Minimum width of 25% of the screen */
+  max-width: calc(33% - 1rem); /* Maximum width to fit within the layout */
   background-color: #242424;
   box-sizing: border-box;
   border-radius: 8px;
   text-align: center;
-  text-decoration: none; /* alignn content in the center */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .link:last-child {
@@ -45,6 +59,10 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  padding: 0.625rem;
+  margin: 1rem;
+  margin-top: 0;
+  padding-top: 0;
 }
 
 .dropdown-content {
@@ -59,7 +77,6 @@
   transition: all 0.3s;
 }
 
-/* Animation slide down */
 .mailDropdown .dropdown-content {
   max-height: 0;
   overflow: hidden;
@@ -67,7 +84,7 @@
 }
 
 .mailDropdown.active .dropdown-content {
-  max-height: 200px; /* Ajustez cette valeur en fonction de la hauteur de votre contenu */
+  max-height: 200px;
 }
 
 .subject {
@@ -84,6 +101,7 @@
 }
 
 .body {
+  resize: none;
   font-size: 15px;
   line-height: 15px;
   font-family: var(--font-text);
@@ -114,6 +132,8 @@
   line-height: 15px;
   font-family: var(--font-text);
   color: var(--text);
+  margin: 6px 6px;
+  word-wrap: break-word;
 }
 
 .arrow {
@@ -131,4 +151,11 @@
 .up {
   transform: rotate(-135deg);
   -webkit-transform: rotate(-135deg);
+}
+
+/* responsive design */
+@media screen and (max-width: 768px) {
+  .link {
+    max-width: min-content;
+  }
 }
