@@ -1,6 +1,10 @@
-import React, { useState } from 'react';
-import './Header.css';
-import { useLocation } from 'react-router-dom'
+import React, { useState } from "react";
+import "./Header.css";
+import { useLocation } from "react-router-dom";
+import LinkedInIcon from "../assets/Icons/LinkedInIcon";
+import GitHubIcon from "../assets/Icons/GitHubIcon";
+import CVIcon from "../assets/Icons/CVIcon";
+import MailIcon from "../assets/Icons/MailIcon";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,25 +17,35 @@ export default function Header() {
 
   return (
     <header className="header">
-      <div className={`nav ${isOpen ? 'open' : ''}`}>
-        <a href="/" className={path === '' ? 'nav-a-active' : 'nav-a'}>Accueil</a>
-        <a href="/competences" className={path === 'competences' ? 'nav-a-active' : 'nav-a'}>Compétences</a>
-        <a href="/projets-univ" className={path === 'projets-univ' ? 'nav-a-active' : 'nav-a'}>Projets universitaires</a>
-        <a href="/projets-perso" className={path === 'projets-perso' ? 'nav-a-active' : 'nav-a'}>Projets personnels</a>
+      <div className={`nav ${isOpen ? "open" : ""}`}>
+        <a href="/" className={path === "" ? "nav-a-active" : "nav-a"}>
+          Accueil
+        </a>
+        <a
+          href="/competences"
+          className={path === "competences" ? "nav-a-active" : "nav-a"}
+        >
+          Compétences
+        </a>
+        <a
+          href="/projets-univ"
+          className={path === "projets-univ" ? "nav-a-active" : "nav-a"}
+        >
+          Projets universitaires
+        </a>
+        <a
+          href="/projets-perso"
+          className={path === "projets-perso" ? "nav-a-active" : "nav-a"}
+        >
+          Projets personnels
+        </a>
         <div className="nav-footer">
           <a
             href="https://www.linkedin.com/in/ma%C3%ABl-goujon-88635b227"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img
-              color="white"
-              aria-hidden
-              src="/images/linkedin.svg"
-              alt="LinkedIn icon"
-              width={30}
-              height={30}
-            />
+            <LinkedInIcon />
             LinkedIn
           </a>
           <a
@@ -39,13 +53,7 @@ export default function Header() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img
-              aria-hidden
-              src="/images/git.svg"
-              alt="GitHub icon"
-              width={30}
-              height={30}
-            />
+            <GitHubIcon />
             Git Etudiant
           </a>
           <a
@@ -53,13 +61,7 @@ export default function Header() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img
-              aria-hidden
-              src="/images/git.svg"
-              alt="GitHub icon"
-              width={30}
-              height={30}
-            />
+            <GitHubIcon />
             Git Personnel
           </a>
           <a
@@ -68,29 +70,20 @@ export default function Header() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img
-              aria-hidden
-              src="/images/cv.svg"
-              alt="CV icon"
-              width={30}
-              height={30}
-            />
+            <CVIcon />
             Mon CV
           </a>
           {/* prendre contact */}
           <a href="mailto:goujonmael@gmail.com">
-            <img
-              aria-hidden
-              src="/images/mail.svg"
-              alt="Mail icon"
-              width={30}
-              height={30}
-            />
+            <MailIcon />
             Contact
           </a>
         </div>
       </div>
-      <button className={`burger-menu ${isOpen ? 'open' : ''}`} onClick={toggleMenu}>
+      <button
+        className={`burger-menu ${isOpen ? "open" : ""}`}
+        onClick={toggleMenu}
+      >
         <span className="burger-bar"></span>
         <span className="burger-bar"></span>
         <span className="burger-bar"></span>

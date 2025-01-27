@@ -3,8 +3,8 @@ import React from "react";
 const CVIcon = () => (
   <div style={{ display: "flex", justifyContent: "flex-start" }}>
     <svg
-      width="40px"
-      height="40px"
+      width="45px"
+      height="45px"
       viewBox="0 0 24 24"
       preserveAspectRatio="xMidYMid meet"
       xmlns="http://www.w3.org/2000/svg"
