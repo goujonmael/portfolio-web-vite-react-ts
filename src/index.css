@@ -1,6 +1,5 @@
 /* google font */
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Turret+Road:wght@200;300;400;500;700;800&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Turret+Road:wght@200;300;400;500;700;800&display=swap");
 
 .App {
   font-family: sans-serif;
@@ -31,7 +30,7 @@ html {
 }
 
 :root {
-  --icon-color: #BA97B5; /* Définissez la couleur que vous souhaitez utiliser */
+  --icon-color: #ba97b5; /* Définissez la couleur que vous souhaitez utiliser */
 }
 
 body {
@@ -40,16 +39,16 @@ body {
   padding: 0;
   --secondary: rgb(161, 161, 161);
   --divider: #343434;
-  --text-dark: #0C4651;
+  --text-dark: #0c4651;
   --text: #a9a9a9;
-  --title: #FD9C71;
-  --yellow: #BA97B5;
-  --grey: #D9D9D9;
-  --clear-blue: #0C4651;
+  --title: #fd9c71;
+  --yellow: #ba97b5;
+  --grey: #d9d9d9;
+  --clear-blue: #0c4651;
   --dark-blue: #073139;
   --header-padding: 5vh;
-  --font-text: 'Lato', sans-serif;
-  --font-title: 'Turret Road', serif;
+  --font-text: "Lato", sans-serif;
+  --font-title: "Turret Road", serif;
   --background-color: #000000;
   transition: opacity 1s ease;
   /*background: radial-gradient(circle at right center, #38457B, #BA97B5 50%, #FD9C71 95%, #FD9C71);*/
@@ -81,7 +80,7 @@ body {
 }
 
 #root::before {
-  content: '';
+  content: "";
   position: fixed;
   top: 0;
   left: 0;
@@ -99,9 +98,8 @@ body {
   box-sizing: border-box;
   font-family: ".SFNSText", "SFProText-Regular", "SFUIText-Regular", ".SFUIText",
     Helvetica, Arial, sans-serif;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: #ffffff36;
 }
-
 
 .screen {
   width: 100%;
@@ -130,7 +128,6 @@ h1 {
   font-size: 14px;
   text-transform: uppercase;
 }
-
 
 .avatar {
   background: var(--divider);
@@ -194,8 +191,9 @@ li {
 }
 
 .card-content-container.open {
-
-  padding: calc(1vh + var(--header-padding)) 2vw 2vh 2vw;
+  margin-top: var(--header-padding) !important;
+  padding-bottom: calc( 1vh + var(--header-padding)) !important;
+  padding: 2vw 2vw 2vh 2vw;
   top: 0;
   left: 0;
   right: 0;
@@ -213,7 +211,6 @@ li {
   height: 100%;
   margin: 0 auto;
 }
-
 
 .modal-container {
   position: fixed;
@@ -242,7 +239,6 @@ li {
   bottom: 0;
   width: 100vw;
   left: 50%;
-
   transform: translateX(-50%);
 }
 
@@ -325,7 +321,6 @@ h2 {
   text-transform: uppercase;
 }
 
-
 .content-container {
   /* TODO : edit padding to avoid big header padding*/
   padding: 35px;
@@ -368,11 +363,9 @@ p {
     flex: 0 0 50%;
     max-width: 50%;
   }
-
 }
 
 @media only screen and (max-width: 600px) {
-
   .card {
     flex: 1 0 100%;
     max-width: 100%;
@@ -395,5 +388,4 @@ p {
   .card-image-container {
     height: 25vh;
   }
-
 }

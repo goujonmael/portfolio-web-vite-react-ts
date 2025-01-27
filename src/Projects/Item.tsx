@@ -66,9 +66,9 @@ export function Item({ id }) {
       <div className="overlay" onClick={() => navigate('/projets-univ')} />
       <motion.div
         className="card-content-container open"
-        initial={{ opacity: 1, backdropFilter: isMobile ? "none" : "blur(0px)" }}
-        animate={{ opacity: 1, backdropFilter: isMobile ? "none" : "blur(10px)" }}
-        exit={{ opacity: 0, backdropFilter: isMobile ? "none" : "blur(0px)" }}
+        initial={{ opacity: 1, backdropFilter: isMobile ? "none" : "blur(0px)", backgroundColor: "rgba(255, 255, 255, 0)" }}
+        animate={{ opacity: 1, backdropFilter: isMobile ? "none" : "blur(10px)", backgroundColor: "rgba(0, 0, 0, 0.59)" }}
+        exit={{ opacity: 0, backdropFilter: isMobile ? "none" : "blur(0px)", backgroundColor: "rgba(255, 255, 255, 0)" }}
         transition={{ duration: 0.5, ease: "easeInOut" }}
       >
         <motion.div className="card-content" layoutId={`card-container-${id}`}>
