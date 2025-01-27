@@ -2,7 +2,7 @@
     font-size: 3rem;
     font-weight: 700;
     font-family: Lato, sans-serif;
-    color: var(--text);
+    color: #d7d7d7;
     padding: 1rem;
     margin: 0;
 }
@@ -59,7 +59,7 @@
     margin: 0;
     padding: 1rem;
     border: 2px solid gray;
-    background-color: #07313982;
+    background-color: #43434345;
     width: 30%;
     min-width: 200px;
     transition: all 0.3s;
@@ -79,7 +79,7 @@
 .competence h2 {
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--text);
+    color: #d7d7d7;
     margin: 1rem 0;
     font-family: var(--font-text);
     align-self: start;
@@ -88,9 +88,8 @@
 
 .competence:hover {
     border-color: var(--yellow);
-    background-color: #07313954;
     border-radius: 20px;
-    scale: 1.15;
+    scale: 1.1;
     z-index: 1;
 }
 

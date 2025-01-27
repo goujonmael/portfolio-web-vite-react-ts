@@ -11,17 +11,14 @@ html {
   height: 100%;
   margin: 0;
   padding: 0;
-  overflow-x: hidden;  
-  overflow-y: scroll;
 }
 
-/* Custom scrollbar styles */
 ::-webkit-scrollbar {
-  width: 12px; /* Width of the scrollbar */
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--background-color);
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
