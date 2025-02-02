@@ -67,9 +67,9 @@ export function ItemPerso({ id }) {
       <div className="overlay" onClick={() => navigate('/projets-perso')} />
       <motion.div
         className="card-content-container open"
-        initial={{ opacity: 1, backdropFilter: isMobile ? "none" : "blur(0px)", backgroundColor: "rgba(255, 255, 255, 0)" }}
-        animate={{ opacity: 1, backdropFilter: isMobile ? "none" : "blur(10px)", backgroundColor: "rgba(0, 0, 0, 0.59)" }}
-        exit={{ opacity: 0, backdropFilter: isMobile ? "none" : "blur(0px)", backgroundColor: "rgba(255, 255, 255, 0)"  }}
+        initial={{ opacity: 1, backdropFilter: isMobile ? "none" : "blur(0px)"}}
+        animate={{ opacity: 1, backdropFilter: isMobile ? "none" : "blur(10px)"}}
+        exit={{ opacity: 0, backdropFilter: isMobile ? "none" : "blur(0px)"}}
         transition={{ duration: 0.5, ease: "easeInOut" }}
       >
         <motion.div className="card-content" layoutId={`card-container-${id}`}>

@@ -11,14 +11,14 @@ import Welcome from "./Home/Welcome/Welcome";
 import StarOfLife from "./Home/StarOfLife/StarOfLife";
 import Me from "./Home/Me/Me";
 import { List } from "./Projects/List";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { Item } from "./Projects/Item";
 import Header from "./Header/Header";
 import Footer from "./Footer/Footer";
 import { ListPerso } from "./Projects/ListPerso";
 import { ItemPerso } from "./Projects/ItemPerso";
 import Competences from "./Competences/Competences";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Contacts from "./Home/Contacts/Contacts";
 
 interface StoreProps {
@@ -59,6 +59,8 @@ const Store: React.FC<StoreProps> = ({ typeOfList }) => {
 };
 
 export default function AppRoutes() {
+  const [startGrayscale, setStartGrayscale] = useState(false);
+
   useEffect(() => {
     const floatingBall = document.querySelector(".floating-ball3");
     if (floatingBall) {
@@ -68,6 +70,14 @@ export default function AppRoutes() {
       floatingBall.style.setProperty("--random-left", `${randomLeft}%`);
     }
   }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setStartGrayscale(true);
+    }, 350); // Delay for the duration of the opacity animation
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="main">
       <div className="floating-ball1"></div>
@@ -75,7 +85,24 @@ export default function AppRoutes() {
       <div className="floating-ball3"></div>
       <div className="blur-background"></div>
       <Header />
-      <div className="container">
+      <motion.div
+        className="container"
+        initial={{
+          opacity: 0,
+          filter: "grayscale(100%)",
+          scale: 0.95, // Initial size at 95%
+        }}
+        animate={{
+          opacity: 1,
+          filter: "grayscale(0%)",
+          scale: 1, // Final size at 100%
+        }}
+        transition={{
+          opacity: { duration: 0.35, ease: "easeInOut" },
+          filter: { delay: 0.35, duration: 0.5, ease: "easeInOut" },
+          scale: { duration: 0.35, ease: "easeInOut" }, // Duration for size animation
+        }}
+      >
         <Routes>
           <Route
             path="/"
@@ -100,7 +127,7 @@ export default function AppRoutes() {
           <Route path="/projets-perso" element={<Store typeOfList="perso" />} />
           <Route path="/competences" element={<Competences />} />
         </Routes>
-      </div>
+      </motion.div>
     </div>
   );
 }

@@ -78,17 +78,14 @@ export function Item({ id }) {
         initial={{
           opacity: 1,
           backdropFilter: isMobile ? "none" : "blur(0px)",
-          backgroundColor: "rgba(255, 255, 255, 0)",
         }}
         animate={{
           opacity: 1,
           backdropFilter: isMobile ? "none" : "blur(10px)",
-          backgroundColor: "rgba(0, 0, 0, 0.59)",
         }}
         exit={{
           opacity: 0,
           backdropFilter: isMobile ? "none" : "blur(0px)",
-          backgroundColor: "rgba(255, 255, 255, 0)",
         }}
         transition={{ duration: 0.5, ease: "easeInOut" }}
       >
