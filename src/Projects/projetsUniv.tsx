@@ -10,6 +10,7 @@ import {
   CabinetPHPDescription,
   CabinetPHPDetails,
 } from "./CabinetPHP/CabinetPHP";
+import { APIPHPDescription, APIPHPDetails } from "./APIPHP/APIPHP";
 
 export const projetsUniv = [
   {
@@ -56,19 +57,17 @@ export const projetsUniv = [
     github: "https://github.com/maelgoujon/Cabinet-Medical-PHP",
     pdf: "",
   },
-  // Photo by Simone Hutsch on Unsplash
   {
     id: "apiphp",
     imageLink: "/projects/APIPHP/home.jpeg",
     category: "API PHP",
     title: "API pour le cabinet médical",
-    description: "Réaliser une API en PHP pour la gestion d'un cabinet médical",
-    customComponent: "",
+    description: <APIPHPDescription />,
+    customComponent: <APIPHPDetails />,
     details: "",
     github: "https://github.com/maelgoujon/Cabinet-Medical-API",
     pdf: "",
   },
-  // Photo by Siora Photography on Unsplash
   {
     id: "takuzu",
     imageLink: "/projects/Takuzu/takuzu.jpg",

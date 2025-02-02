@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import '../index.css';
 import { projetsPerso } from "./projetsPerso";
+import GitHubIcon from "../assets/Icons/GitHubIcon";
 
 export function ItemPerso({ id }) {
   const [isMobile, setIsMobile] = useState(false);
@@ -103,7 +104,7 @@ export function ItemPerso({ id }) {
               {github && (
                 <div className="github-link">
                   <Link to={github} target="_blank" rel="noopener noreferrer">
-                    <img src="/images/git.svg" alt="github logo" className="github-logo" />
+                    <GitHubIcon />
                   </Link>
                 </div>
               )}
