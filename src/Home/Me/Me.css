@@ -77,15 +77,15 @@
 .floating-ball3 {
   display: none;
   width: 60vw;
-  z-index: 0;
   height: 70vw;
   background-color: #ffffff41;
   border-radius: 20%;
-  position: absolute;
+  position: fixed;
   bottom: 10%;
   left: -30%;
   animation: float3 10s ease-in-out infinite;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  z-index: 10;
 }
 
 @keyframes float2 {
