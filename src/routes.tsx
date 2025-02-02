@@ -36,6 +36,13 @@ const Store: React.FC<StoreProps> = ({ typeOfList }) => {
           Projets {typeOfList === "univ" ? "Universitaires" : "Personnels"}
         </h1>
       </div>
+      <div className="competences-div">
+        <p className="projets-title">
+          {typeOfList === "univ"
+            ? "Réalisés au cours de mes études en informatique"
+            : "Réalisés en dehors de mes études"}
+        </p>
+      </div>
       {typeOfList === "univ" ? (
         <List selectedId={id} />
       ) : (

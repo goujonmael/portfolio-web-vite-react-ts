@@ -26,12 +26,12 @@
     font-weight: 400;
     font-family: Lato, sans-serif;
     color: var(--text);
+    padding: 1rem;
 }
 
 .description p {
-    line-height: 1.3rem;
+    line-height: 1.1rem;
     margin: 1rem 0;
-
     text-align: justify;
     text-justify: inter-word;
 }
@@ -71,7 +71,6 @@
     font-size: 1rem;
     font-weight: 400;
     color: var(--text);
-    margin: 1rem 0;
     font-family: var(--font-text);
     align-self: start;
 }

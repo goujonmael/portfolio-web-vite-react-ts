@@ -3,12 +3,21 @@ import { motion } from "framer-motion";
 import { LoremIpsum } from "react-lorem-ipsum";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import '../index.css';
+import "../index.css";
 import { projetsUniv } from "./projetsUniv";
 
 export function Item({ id }) {
   const [isMobile, setIsMobile] = useState(false);
-  const { category, title, description, imageLink, customComponent, details, github, pdf } = projetsUniv.find((item) => item.id === id);
+  const {
+    category,
+    title,
+    description,
+    imageLink,
+    customComponent,
+    details,
+    github,
+    pdf,
+  } = projetsUniv.find((item) => item.id === id);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -16,38 +25,37 @@ export function Item({ id }) {
       setIsMobile(window.innerWidth <= 768);
     };
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
     handleResize();
 
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
   useEffect(() => {
     // Disable scrolling on the body when the modal is open
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow = "hidden";
 
     return () => {
       // Re-enable scrolling on the body when the modal is closed
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = "auto";
     };
   }, []);
 
   useEffect(() => {
     const handleKeyDown = (event) => {
-      if (event.key === 'Escape') {
-        navigate('/projets-univ');
+      if (event.key === "Escape") {
+        navigate("/projets-univ");
       }
     };
 
-    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener("keydown", handleKeyDown);
 
     return () => {
-      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener("keydown", handleKeyDown);
     };
   }, [history]);
-
 
   return (
     <div className="modal-container">
@@ -63,23 +71,41 @@ export function Item({ id }) {
         <Link to="/projets" />
       </motion.div>
       */}
-      <div className="overlay" onClick={() => navigate('/projets-univ')} />
+      <div className="overlay" onClick={() => navigate("/projets-univ")} />
       <motion.div
         className="card-content-container open"
-        initial={{ opacity: 1, backdropFilter: isMobile ? "none" : "blur(0px)", backgroundColor: "rgba(255, 255, 255, 0)" }}
-        animate={{ opacity: 1, backdropFilter: isMobile ? "none" : "blur(10px)", backgroundColor: "rgba(0, 0, 0, 0.59)" }}
-        exit={{ opacity: 0, backdropFilter: isMobile ? "none" : "blur(0px)", backgroundColor: "rgba(255, 255, 255, 0)" }}
+        initial={{
+          opacity: 1,
+          backdropFilter: isMobile ? "none" : "blur(0px)",
+          backgroundColor: "rgba(255, 255, 255, 0)",
+        }}
+        animate={{
+          opacity: 1,
+          backdropFilter: isMobile ? "none" : "blur(10px)",
+          backgroundColor: "rgba(0, 0, 0, 0.59)",
+        }}
+        exit={{
+          opacity: 0,
+          backdropFilter: isMobile ? "none" : "blur(0px)",
+          backgroundColor: "rgba(255, 255, 255, 0)",
+        }}
         transition={{ duration: 0.5, ease: "easeInOut" }}
       >
         <motion.div className="card-content" layoutId={`card-container-${id}`}>
           {/* close button */}
           <motion.button
             className="close-button"
-            onClick={() => navigate('/projets-univ')}
+            onClick={() => navigate("/projets-univ")}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
           >
-            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 30 30" fill="var(--yellow)">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              x="0px"
+              y="0px"
+              viewBox="0 0 30 30"
+              fill="var(--yellow)"
+            >
               <path d="M 7 4 C 6.744125 4 6.4879687 4.0974687 6.2929688 4.2929688 L 4.2929688 6.2929688 C 3.9019687 6.6839688 3.9019687 7.3170313 4.2929688 7.7070312 L 11.585938 15 L 4.2929688 22.292969 C 3.9019687 22.683969 3.9019687 23.317031 4.2929688 23.707031 L 6.2929688 25.707031 C 6.6839688 26.098031 7.3170313 26.098031 7.7070312 25.707031 L 15 18.414062 L 22.292969 25.707031 C 22.682969 26.098031 23.317031 26.098031 23.707031 25.707031 L 25.707031 23.707031 C 26.098031 23.316031 26.098031 22.682969 25.707031 22.292969 L 18.414062 15 L 25.707031 7.7070312 C 26.098031 7.3170312 26.098031 6.6829688 25.707031 6.2929688 L 23.707031 4.2929688 C 23.316031 3.9019687 22.682969 3.9019687 22.292969 4.2929688 L 15 11.585938 L 7.7070312 4.2929688 C 7.5115312 4.0974687 7.255875 4 7 4 z"></path>
             </svg>
           </motion.button>
@@ -96,7 +122,6 @@ export function Item({ id }) {
           >
             <span className="category">{category}</span>
             <h2>{title}</h2>
-
           </motion.div>
 
           <motion.div className="content-container" animate>
@@ -104,30 +129,32 @@ export function Item({ id }) {
               {github && (
                 <div className="github-link">
                   <Link to={github} target="_blank" rel="noopener noreferrer">
-                    <img src="/images/git.svg" alt="github logo" className="github-logo" />
+                    <img
+                      src="/images/git.svg"
+                      alt="github logo"
+                      className="github-logo"
+                    />
                   </Link>
                 </div>
               )}
               {pdf && (
                 <div className="pdf-link">
                   <Link to={pdf} target="_blank" rel="noopener noreferrer">
-                    <img src="/images/pdf.svg" alt="pdf logo" className="pdf-logo" />
+                    <img
+                      src="/images/pdf.svg"
+                      alt="pdf logo"
+                      className="pdf-logo"
+                    />
                   </Link>
                 </div>
               )}
             </div>
-            <div>
-              {description}
-            </div>
-            <div>
-              {details}
-            </div>
-            <div>
-              {customComponent}
-            </div>
+            <div>{description}</div>
+            <div>{details}</div>
+            <div>{customComponent}</div>
           </motion.div>
         </motion.div>
-      </motion.div >
+      </motion.div>
     </div>
   );
 }

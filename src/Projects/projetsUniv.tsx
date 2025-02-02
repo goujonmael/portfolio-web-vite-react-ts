@@ -1,9 +1,15 @@
 import { title } from "framer-motion/client";
-import { JavaSpringBootDescription, JavaSpringBootDetails } from "./JavaSpringBoot/JavaSpringBoot";
+import {
+  JavaSpringBootDescription,
+  JavaSpringBootDetails,
+} from "./JavaSpringBoot/JavaSpringBoot";
 import { RaspiDescription, RaspiDetails, RaspiPDF } from "./Raspi/Raspi";
 import { ProxyFTPCDescription, ProxyFTPCDetails } from "./ProxyFTPC/ProxyFTPC";
 import { TakuzuDescription, TakuzuDetails } from "./Takuzu/Takuzu";
-
+import {
+  CabinetPHPDescription,
+  CabinetPHPDetails,
+} from "./CabinetPHP/CabinetPHP";
 
 export const projetsUniv = [
   {
@@ -41,11 +47,11 @@ export const projetsUniv = [
   },
   {
     id: "cabinet",
-    imageLink: "/projects/Cabinet/cabinet.jpg",
+    imageLink: "/projects/CabinetPHP/home.png",
     category: "PHP",
     title: "Gestion de cabinet médical",
-    description: "Réaliser une application web en PHP permettant la gestion d'un cabinet médical",
-    customComponent: "",
+    description: <CabinetPHPDescription />,
+    customComponent: <CabinetPHPDetails />,
     details: "",
     github: "https://github.com/maelgoujon/Cabinet-Medical-PHP",
     pdf: "",
@@ -53,7 +59,7 @@ export const projetsUniv = [
   // Photo by Simone Hutsch on Unsplash
   {
     id: "apiphp",
-    imageLink: "/projects/APIPHP/api.jpg",
+    imageLink: "/projects/APIPHP/home.jpeg",
     category: "API PHP",
     title: "API pour le cabinet médical",
     description: "Réaliser une API en PHP pour la gestion d'un cabinet médical",
