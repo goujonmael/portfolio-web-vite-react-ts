@@ -108,7 +108,7 @@ body {
 
 .container {
   /* align content to the center */
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
   align-items: center;
   width: 100%;
