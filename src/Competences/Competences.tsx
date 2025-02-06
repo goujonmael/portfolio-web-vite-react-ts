@@ -2,6 +2,7 @@ import React from "react";
 import { competences } from "./competences";
 import "./Competences.css";
 import { Link } from "react-router-dom";
+import { projetsUniv } from "../Projects/projetsUniv";
 
 export default function Competences() {
   return (
@@ -48,6 +49,21 @@ export default function Competences() {
             <p className="level">{competence.level}/3</p>
             <h2>{competence.title}</h2>
             <p>{competence.description}</p>
+            {/* check if there is a project that have the same competence */}
+            <div className="projects">
+              {projetsUniv.map((project) =>
+                project.competences.includes(competence.title) ? (
+                  <Link
+                    key={project.id}
+                    to={`/projets-univ/${project.id}`}
+                    className="project"
+                  >
+                    <img src={project.imageLink} alt={project.title} className="project-image" />
+                    <p className="project-p">{project.title}</p>
+                  </Link>
+                ) : null
+              )}
+            </div>
           </div>
         ))}
       </div>
