@@ -48,18 +48,26 @@ const Store: React.FC<StoreProps> = ({ typeOfList }) => {
       ) : (
         <ListPerso selectedId={id} />
       )}
-      <AnimatePresence>
-        {typeOfList === "univ" && id && imageHasLoaded && <Item id={id} />}
-        {typeOfList === "perso" && id && imageHasLoaded && (
-          <ItemPerso id={id} />
-        )}
-      </AnimatePresence>
     </>
   );
 };
 
+const ItemWrapper: React.FC = () => {
+  let { id } = useParams<{ id: string }>();
+  return <Item id={id} />;
+};
+
 export default function AppRoutes() {
   const [startGrayscale, setStartGrayscale] = useState(false);
+  // compter les px scrollés
+  const [scrollY, setScrollY] = useState(0);
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
     const floatingBall = document.querySelector(".floating-ball3");
@@ -117,7 +125,25 @@ export default function AppRoutes() {
           />
           <Route
             path="/projets-univ/:id"
-            element={<Store typeOfList="univ" />}
+            element={
+              <>
+                <Store typeOfList="univ" />
+                <div
+                  style={{
+                    position: "absolute",
+                    top: scrollY,
+                    left: 0,
+                    width: "100%",
+                    height: "auto",
+                    marginTop: "2vh",
+                  }}
+                >
+                  <AnimatePresence>
+                    <ItemWrapper />
+                  </AnimatePresence>
+                </div>
+              </>
+            }
           />
           <Route
             path="/projets-perso/:id"
