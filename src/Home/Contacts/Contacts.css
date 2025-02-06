@@ -2,6 +2,7 @@
   font-size: 40px;
   font-family: var(--font-text);
   text-align: center;
+  color: var(--title);
 }
 
 .contacts {
@@ -37,7 +38,6 @@
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
   flex: 1 1 auto; /* Allow the item to grow and shrink */
-  min-width: 25%; /* Minimum width of 25% of the screen */
   max-width: calc(33% - 1rem); /* Maximum width to fit within the layout */
   background-color: #242424;
   box-sizing: border-box;
@@ -141,6 +141,9 @@
   color: var(--text);
   margin: 6px 6px;
   word-wrap: break-word;
+  font-weight: 600;
+  text-align: center;
+  
 }
 
 .arrow {

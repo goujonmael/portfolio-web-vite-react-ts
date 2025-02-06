@@ -32,7 +32,7 @@ const Contacts = () => {
 
   return (
     <div>
-      <h1 className="contacts-title">Contacts</h1>
+      <h1 className="contacts-title">Contact</h1>
       <div className="contacts">
         <div className="contacts-tiles">
           <a

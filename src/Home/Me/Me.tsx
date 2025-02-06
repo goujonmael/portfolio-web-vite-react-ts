@@ -21,6 +21,7 @@ export default function Me() {
                   alt="Picture of Mael GOUJON"
                 />
               </div>
+              <div className="cadre" />
             </motion.div>
           </div>
           <div className="me_right_container">
