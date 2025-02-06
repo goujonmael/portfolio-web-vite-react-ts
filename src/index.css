@@ -337,7 +337,7 @@ h2 {
 
 p {
   color: #9d9ca1;
-  font-size: 20px;
+  font-size: 1rem;
   line-height: 28px;
 }
 
@@ -351,7 +351,7 @@ p {
 
 .projets-title {
   padding: 1rem;
-  font-size: 20px;
+  font-size: 1rem;
   font-weight: 500;
   font-family: var(--font-text);
   font-weight: 400;
@@ -363,7 +363,7 @@ p {
 
 .competences-title {
   padding: 1rem;
-  font-size: 60px;
+  font-size: 3.5rem;
   font-weight: 500;
   font-family: var(--font-text);
   font-weight: 400;

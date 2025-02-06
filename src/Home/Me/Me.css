@@ -154,7 +154,7 @@
 }
 
 .me2 {
-  width: 100%;
+  width: fit-content;
   border-radius: 20px;
 }
 
@@ -220,7 +220,7 @@
 }
 
 .description {
-  font-size: 20px;
+  font-size: 1rem;
   line-height: 20px;
   font-weight: 400;
   font-family: var(--font-text);
@@ -263,17 +263,17 @@
   /*color: rgb(7, 26, 61);*/
   color: var(--yellow);
   text-decoration: underline;
-  font-size: 20px;
+  font-size: 1rem;
 }
 
 .but {
   color: var(--yellow);
   text-decoration: underline;
-  font-size: 20px;
+  font-size: 1rem;
 }
 
 .slash {
-  font-size: 60px;
+  font-size: 3.5rem;
   color: var(--yellow);
   font-weight: 700;
   font-family: "Lato";
@@ -283,6 +283,11 @@
   background-color: rgba(0, 0, 0, 0);
   padding: 0.625rem;
   margin: 1rem;
+  /* align content to the center */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
 }
 
 /* Enable hover only on non-touch devices */
