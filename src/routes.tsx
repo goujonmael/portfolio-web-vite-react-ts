@@ -52,9 +52,13 @@ const Store: React.FC<StoreProps> = ({ typeOfList }) => {
   );
 };
 
-const ItemWrapper: React.FC = () => {
+interface ItemWrapperProps {
+  type: string;
+}
+
+const ItemWrapper: React.FC<ItemWrapperProps> = ({ type }) => {
   let { id } = useParams<{ id: string }>();
-  return <Item id={id} />;
+  return type === "univ" ? <Item id={id} /> : <ItemPerso id={id} />;
 };
 
 export default function AppRoutes() {
@@ -139,7 +143,7 @@ export default function AppRoutes() {
                   }}
                 >
                   <AnimatePresence>
-                    <ItemWrapper />
+                    <ItemWrapper type="univ" />
                   </AnimatePresence>
                 </div>
               </>
@@ -147,7 +151,25 @@ export default function AppRoutes() {
           />
           <Route
             path="/projets-perso/:id"
-            element={<Store typeOfList="perso" />}
+            element={
+              <>
+                <Store typeOfList="perso" />
+                <div
+                  style={{
+                    position: "absolute",
+                    top: scrollY,
+                    left: 0,
+                    width: "100%",
+                    height: "auto",
+                    marginTop: "2vh",
+                  }}
+                >
+                  <AnimatePresence>
+                    <ItemWrapper type="perso" />
+                  </AnimatePresence>
+                </div>
+              </>
+            }
           />
           <Route path="/projets-univ" element={<Store typeOfList="univ" />} />
           <Route path="/projets-perso" element={<Store typeOfList="perso" />} />
