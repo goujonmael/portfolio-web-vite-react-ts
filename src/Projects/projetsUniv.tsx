@@ -23,6 +23,7 @@ export const projetsUniv = [
     details: <RaspiDetails />,
     github: "",
     pdf: "/projects/Raspi/CR_Raspi.pdf",
+    competences: "Réaliser, Concevoir",
   },
   {
     id: "springboot",
@@ -34,6 +35,7 @@ export const projetsUniv = [
     details: "",
     github: "https://github.com/maelgoujon/Suivi-de-formation-Spring-Boot",
     pdf: "",
+    competences: "Réaliser, Optimiser, Administrer, Gérer, Conduire, Collaborer",
   },
   {
     id: "ftp",
@@ -45,6 +47,7 @@ export const projetsUniv = [
     details: "",
     github: "https://github.com/maelgoujon/ProxyFTP_C",
     pdf: "",
+    competences: "Réaliser",
   },
   {
     id: "cabinet",
@@ -56,6 +59,7 @@ export const projetsUniv = [
     details: "",
     github: "https://github.com/maelgoujon/Cabinet-Medical-PHP",
     pdf: "",
+    competences: "Réaliser",
   },
   {
     id: "apiphp",
@@ -67,6 +71,7 @@ export const projetsUniv = [
     details: "",
     github: "https://github.com/maelgoujon/Cabinet-Medical-API",
     pdf: "",
+    competences: "Gérer",
   },
   {
     id: "takuzu",
@@ -78,7 +83,20 @@ export const projetsUniv = [
     details: "",
     github: "https://github.com/maelgoujon/Takuzu-Solver-ADA",
     pdf: "",
+    competences: "Optimiser",
   },
+  {
+    id: "windev",
+    imageLink: "/projects/Windev/windev.jpg",
+    category: "Windev",
+    title: "Distributeur automatique",
+    description: "Application de guichet bancaire pour la ressource R3.10",
+    customComponent: "L'objectif de ce projet était de créer une application de guichet bancaire en utilisant des méthodes de travail SCRUM en équipe",
+    details: "",
+    github: "https://github.com/maelgoujon/Guichet-Bancaire-Windev",
+    pdf: "",
+    competences: "Conduire, Collaborer",
+  }
 ];
 
 export const openSpring = { type: "spring", stiffness: 200, damping: 30 };

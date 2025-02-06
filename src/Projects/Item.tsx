@@ -18,6 +18,7 @@ export function Item({ id }) {
     details,
     github,
     pdf,
+    competences,
   } = projetsUniv.find((item) => item.id === id);
   const navigate = useNavigate();
 
@@ -140,6 +141,11 @@ export function Item({ id }) {
                       className="pdf-logo"
                     />
                   </Link>
+                </div>
+              )}
+              {competences && (
+                <div className="competences">
+                  <span>Compétences : {competences}</span>
                 </div>
               )}
             </div>
