@@ -75,7 +75,7 @@ export const projetsUniv = [
   },
   {
     id: "takuzu",
-    imageLink: "/projects/Takuzu/takuzu.jpg",
+    imageLink: "/projects/Takuzu/takuzu.png",
     category: "Ada",
     title: "Résolution de Takuzu",
     description: <TakuzuDescription />,

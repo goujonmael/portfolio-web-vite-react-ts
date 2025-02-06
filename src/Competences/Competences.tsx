@@ -58,7 +58,12 @@ export default function Competences() {
                     to={`/projets-univ/${project.id}`}
                     className="project"
                   >
-                    <img src={project.imageLink} alt={project.title} className="project-image" />
+                    <img
+                      src={project.imageLink}
+                      alt={project.title}
+                      className="project-image"
+                      style={{ backgroundColor: "var(--divider)" }}
+                    />
                     <p className="project-p">{project.title}</p>
                   </Link>
                 ) : null
