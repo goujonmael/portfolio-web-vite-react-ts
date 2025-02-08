@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./Header.css";
 import { useLocation } from "react-router-dom";
 import LinkedInIcon from "../assets/Icons/LinkedInIcon";

@@ -3,12 +3,20 @@ import LinkedInIcon from "../../assets/Icons/LinkedInIcon";
 import GitHubIcon from "../../assets/Icons/GitHubIcon";
 import CVIcon from "../../assets/Icons/CVIcon";
 import MailIcon from "../../assets/Icons/MailIcon";
-import React, { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 
 const Contacts = () => {
   const [isDropdownActive, setDropdownActive] = useState(false);
   const sendButtonRef = useRef<HTMLButtonElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const mailDropdownRef = useRef<HTMLDivElement>(null);
+  const contactsTilesRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (contactsTilesRef.current && mailDropdownRef.current) {
+      mailDropdownRef.current.style.width = `${contactsTilesRef.current.offsetWidth}px`;
+    }
+  }, [isDropdownActive]);
 
   const dropdownClicked = () => {
     setDropdownActive(!isDropdownActive);
@@ -34,7 +42,7 @@ const Contacts = () => {
     <div>
       <h1 className="contacts-title">Contact</h1>
       <div className="contacts">
-        <div className="contacts-tiles">
+        <div ref={contactsTilesRef} className="contacts-tiles">
           <a
             href="https://www.linkedin.com/in/ma%C3%ABl-goujon-88635b227"
             target="_blank"
@@ -80,7 +88,7 @@ const Contacts = () => {
             <i className={`arrow ${isDropdownActive ? "up" : "down"}`}></i>
           </a>
         </div>
-        <div className={`mailDropdown ${isDropdownActive ? "active" : ""}`}>
+        <div ref={mailDropdownRef} className={`mailDropdown ${isDropdownActive ? "active" : ""}`}>
           <div className="dropdown-content">
             {/* Email form */}
             <input type="text" placeholder="Sujet" className="subject" />

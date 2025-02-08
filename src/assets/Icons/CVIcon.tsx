@@ -1,5 +1,3 @@
-import React from "react";
-
 const CVIcon = () => (
   <div style={{ display: "flex", justifyContent: "flex-start" }}>
     <svg

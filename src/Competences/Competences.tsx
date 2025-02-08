@@ -1,8 +1,14 @@
-import React from "react";
-import { competences } from "./competences";
 import "./Competences.css";
 import { Link } from "react-router-dom";
 import { projetsUniv } from "../Projects/projetsUniv";
+import { competences } from "./competences";
+
+interface Competence {
+  id: number;
+  level: number;
+  title: string;
+  description: string;
+}
 
 export default function Competences() {
   return (
@@ -44,7 +50,7 @@ export default function Competences() {
         </p>
       </div>
       <div className="competences">
-        {competences.map((competence) => (
+        {competences.map((competence: Competence) => (
           <div key={competence.id} className="competence">
             <p className="level">{competence.level}/3</p>
             <h2>{competence.title}</h2>

@@ -1,4 +1,3 @@
-import React from 'react';
 import './JavaSpringBoot.css';
 
 export function JavaSpringBootDescription() {

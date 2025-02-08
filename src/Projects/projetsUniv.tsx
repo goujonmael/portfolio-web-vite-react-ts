@@ -1,4 +1,3 @@
-import { title } from "framer-motion/client";
 import {
   JavaSpringBootDescription,
   JavaSpringBootDetails,

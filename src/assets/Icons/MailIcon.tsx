@@ -1,5 +1,3 @@
-import React from "react";
-
 const MailIcon = () => (
   <svg
     width="45px"

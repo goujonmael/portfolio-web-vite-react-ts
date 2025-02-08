@@ -1,8 +1,6 @@
-import React, { useRef, useState } from "react";
-import { motion, useSpring } from "framer-motion";
+import { useRef, useState } from "react";
+import { motion } from "framer-motion";
 import "./Me.css";
-import Image from "react-image";
-import { transform } from "typescript";
 
 export default function Me() {
   const [isIutHovered, setIsIutHovered] = useState(false);

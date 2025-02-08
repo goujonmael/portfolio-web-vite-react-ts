@@ -1,12 +1,4 @@
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  useParams,
-} from "react-router-dom";
-import App from "./App";
-import About from "./about";
-import Home from "./Home";
+import { Route, Routes, useParams } from "react-router-dom";
 import Welcome from "./Home/Welcome/Welcome";
 import StarOfLife from "./Home/StarOfLife/StarOfLife";
 import Me from "./Home/Me/Me";
@@ -14,7 +6,6 @@ import { List } from "./Projects/List";
 import { AnimatePresence, motion } from "framer-motion";
 import { Item } from "./Projects/Item";
 import Header from "./Header/Header";
-import Footer from "./Footer/Footer";
 import { ListPerso } from "./Projects/ListPerso";
 import { ItemPerso } from "./Projects/ItemPerso";
 import Competences from "./Competences/Competences";
@@ -27,7 +18,6 @@ interface StoreProps {
 
 const Store: React.FC<StoreProps> = ({ typeOfList }) => {
   let { id } = useParams<{ id: string }>();
-  const imageHasLoaded = true;
 
   return (
     <>
@@ -44,9 +34,9 @@ const Store: React.FC<StoreProps> = ({ typeOfList }) => {
         </p>
       </div>
       {typeOfList === "univ" ? (
-        <List selectedId={id} />
+        <List selectedId={id ?? ""} />
       ) : (
-        <ListPerso selectedId={id} />
+        <ListPerso selectedId={id ?? ""} />
       )}
     </>
   );
@@ -58,11 +48,10 @@ interface ItemWrapperProps {
 
 const ItemWrapper: React.FC<ItemWrapperProps> = ({ type }) => {
   let { id } = useParams<{ id: string }>();
-  return type === "univ" ? <Item id={id} /> : <ItemPerso id={id} />;
+  return type === "univ" ? <Item id={id ?? ""} /> : <ItemPerso id={id ?? ""} />;
 };
 
 export default function AppRoutes() {
-  const [startGrayscale, setStartGrayscale] = useState(false);
   // compter les px scrollés
   const [scrollY, setScrollY] = useState(0);
   useEffect(() => {
@@ -74,20 +63,15 @@ export default function AppRoutes() {
   }, []);
 
   useEffect(() => {
-    const floatingBall = document.querySelector(".floating-ball3");
+    const floatingBall = document.querySelector(
+      ".floating-ball3"
+    ) as HTMLElement;
     if (floatingBall) {
       const randomTop = 20 + Math.random() * 30;
       const randomLeft = 20 + Math.random() * 50;
       floatingBall.style.setProperty("--random-top", `${randomTop}%`);
       floatingBall.style.setProperty("--random-left", `${randomLeft}%`);
     }
-  }, []);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setStartGrayscale(true);
-    }, 350); // Delay for the duration of the opacity animation
-    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -139,7 +123,7 @@ export default function AppRoutes() {
                     left: 0,
                     width: "100%",
                     height: "auto",
-                    marginTop: "2vh",
+                    marginTop: "1vh",
                   }}
                 >
                   <AnimatePresence>

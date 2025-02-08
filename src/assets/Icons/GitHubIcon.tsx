@@ -1,5 +1,3 @@
-import React from "react";
-
 const GitHubIcon = () => (
   <div style={{ display: "flex", justifyContent: "center" }}>
     <svg

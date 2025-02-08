@@ -1,5 +1,3 @@
-import { Document, pdfjs, Page } from 'react-pdf';
-import { useState } from 'react';
 import '../Projects.css';
 
 

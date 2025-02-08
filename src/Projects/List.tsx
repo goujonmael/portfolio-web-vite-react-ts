@@ -1,11 +1,20 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { projetsUniv } from "./projetsUniv";
 
-function Card({ id, title, category, theme, imageLink, github, pdf }) {
+interface CardProps {
+  id: string;
+  title: string;
+  category: string;
+  imageLink: string;
+  github: string;
+  pdf: string;
+  isSelected: boolean;
+}
+
+function Card({ id, title, category, imageLink }: CardProps) {
   return (
-    <li className={`card ${theme}`}>
+    <li className={`card`}>
       <div className="card-content-container">
         <motion.div className="card-content" layoutId={`card-container-${id}`}>
           <motion.div
@@ -28,7 +37,11 @@ function Card({ id, title, category, theme, imageLink, github, pdf }) {
   );
 }
 
-export function List({ selectedId }) {
+interface ListProps {
+  selectedId: string;
+}
+
+export function List({ selectedId }: ListProps) {
   return (
     <ul className="card-list">
       {projetsUniv.map((card) => (

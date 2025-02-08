@@ -1,11 +1,26 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { projetsPerso } from "./projetsPerso";
 
-function CardPerso({ id, title, category, theme, imageLink, github, pdf }) {
+interface CardPersoProps {
+  id: string;
+  title: string;
+  category: string;
+  imageLink: string;
+  github: string;
+  pdf: string;
+  isSelected: boolean;
+}
+
+function CardPerso({
+  id,
+  title,
+  category,
+  imageLink,
+  isSelected,
+}: CardPersoProps) {
   return (
-    <li className={`card ${theme}`}>
+    <li className={`card`}>
       <div className="card-content-container">
         <motion.div className="card-content" layoutId={`card-container-${id}`}>
           <motion.div
@@ -14,6 +29,14 @@ function CardPerso({ id, title, category, theme, imageLink, github, pdf }) {
           >
             <img className="card-image" src={imageLink} alt="" />
           </motion.div>
+          {isSelected && (
+            <motion.div
+              className="card-image-overlay"
+              layoutId={`card-image-overlay-${id}`}
+            >
+              <p>En savoir plus</p>
+            </motion.div>
+          )}
           <motion.div
             className="title-container"
             layoutId={`title-container-${id}`}
@@ -28,11 +51,19 @@ function CardPerso({ id, title, category, theme, imageLink, github, pdf }) {
   );
 }
 
-export function ListPerso({ selectedId }) {
+interface ListPersoProps {
+  selectedId: string;
+}
+
+export function ListPerso({ selectedId }: ListPersoProps) {
   return (
     <ul className="card-list">
       {projetsPerso.map((card) => (
-        <CardPerso key={card.id} {...card} isSelected={card.id === selectedId} />
+        <CardPerso
+          key={card.id}
+          {...card}
+          isSelected={card.id === selectedId}
+        />
       ))}
     </ul>
   );

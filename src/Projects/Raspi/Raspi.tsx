@@ -17,7 +17,7 @@ function PDF() {
 
     function handleNextPage(event: React.MouseEvent) {
         event.preventDefault();
-        setPageNumber((prevPageNumber) => Math.min(prevPageNumber + 1, numPages));
+        setPageNumber((prevPageNumber) => Math.min(prevPageNumber + 1, numPages ?? 1));
     }
 
     return (

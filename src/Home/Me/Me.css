@@ -168,7 +168,6 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin: 20px;
   height: 20vh;
 }
 
@@ -176,13 +175,11 @@
   border: 2px solid var(--title);
   z-index: 1;
   transform: rotate(5deg);
-  height: 95%;
+  height: 100%;
   position: absolute;
-  width: 95%;
+  width: 100%;
   border-radius: 20px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
-  margin-top: 2.5%;
-  margin-left: 2.5%;
 }
 
 .me_right {
@@ -198,7 +195,7 @@
 }
 
 .me_right_container {
-  margin-left: 10px;
+  margin-left: 2vw;
   position: relative;
   width: 100%;
   display: flex;
