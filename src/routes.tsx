@@ -74,6 +74,7 @@ export default function AppRoutes() {
     }
   }, []);
 
+
   return (
     <div className="main">
       <div className="floating-ball1"></div>
@@ -86,7 +87,7 @@ export default function AppRoutes() {
         initial={{
           opacity: 0,
           filter: "grayscale(100%)",
-          scale: 0.95, // Initial size at 95%
+          scale: 1.05, // Initial size at 95%
         }}
         animate={{
           opacity: 1,
