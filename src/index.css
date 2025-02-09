@@ -192,6 +192,7 @@ li {
   position: relative;
   display: block;
   pointer-events: none;
+  padding-top: 1vh;
 }
 
 .card-content-container.open {
@@ -220,6 +221,8 @@ li {
 .modal-container {
   width: 100%;
   height: 100%;
+  padding: 1vw;
+  padding-top: 0;
 }
 
 .modal-container:focus {
@@ -328,7 +331,7 @@ h2 {
 
 .content-container {
   /* TODO : edit padding to avoid big header padding */
-  padding: 15px;
+  padding: 3rem;
   padding-top: 0;
   color: var(--text);
   position: relative;
@@ -336,13 +339,13 @@ h2 {
 }
 
 .content-container::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 0;
   height: 1px;
-  background: #fff;
+  background: var(--yellow);
   animation: borderExpand 1s forwards;
 }
 
@@ -362,15 +365,14 @@ p {
 }
 
 .competences-div {
-  width: 100%;
-  max-width: 1000px;
   display: flex;
-  flex-wrap: wrap;
-  align-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
 }
 
 .projets-title {
-  padding: 1rem;
   font-size: 1rem;
   font-weight: 500;
   font-family: var(--font-text);
@@ -382,20 +384,19 @@ p {
 }
 
 .competences-title {
+  font-size: 3rem;
+  font-weight: 700;
+  font-family: Lato, sans-serif;
+  color: #d7d7d7;
   padding: 1rem;
-  font-size: 3.5rem;
-  font-weight: 500;
-  font-family: var(--font-text);
-  font-weight: 400;
-  font-style: normal;
-  color: var(--text);
-  line-height: 0.8;
-  text-align: left;
-  margin: 1rem;
-  margin-bottom: 0;
+  margin: 0;
 }
 
 @media only screen and (max-width: 800px) {
+  .competences-title {
+    font-size: 2.5rem;
+  }
+
   .card {
     flex: 0 0 50%;
     max-width: 50%;

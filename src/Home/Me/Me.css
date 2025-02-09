@@ -174,12 +174,21 @@
 .cadre {
   border: 2px solid var(--title);
   z-index: 1;
-  transform: rotate(5deg);
   height: 100%;
   position: absolute;
   width: 100%;
   border-radius: 20px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  animation: turnright 1s forwards;
+}
+
+@keyframes turnright {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(5deg);
+  }
 }
 
 .me_right {

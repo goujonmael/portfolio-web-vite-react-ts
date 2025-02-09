@@ -22,11 +22,11 @@ const Store: React.FC<StoreProps> = ({ typeOfList }) => {
   return (
     <>
       <div className="competences-div">
-        <h1 className="competences-title">
-          Projets {typeOfList === "univ" ? "Universitaires" : "Personnels"}
+        <h1 className="title">
+          <span className="title-first-letter">P</span>rojets {typeOfList === "univ" ? "Universitaires" : "Personnels"}
         </h1>
       </div>
-      <div className="competences-div">
+      <div className="description">
         <p className="projets-title">
           {typeOfList === "univ"
             ? "Réalisés au cours de mes études en informatique"
@@ -122,8 +122,7 @@ export default function AppRoutes() {
                     top: scrollY,
                     left: 0,
                     width: "100%",
-                    height: "auto",
-                    marginTop: "1vh",
+                    height: "100%",
                   }}
                 >
                   <AnimatePresence>
@@ -145,7 +144,6 @@ export default function AppRoutes() {
                     left: 0,
                     width: "100%",
                     height: "auto",
-                    marginTop: "2vh",
                   }}
                 >
                   <AnimatePresence>
