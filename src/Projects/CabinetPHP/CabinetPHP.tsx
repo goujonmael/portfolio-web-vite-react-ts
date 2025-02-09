@@ -1,7 +1,7 @@
 export function CabinetPHPDescription() {
   return (
     <div>
-      <h1>Description :</h1>
+      <h1>Description:</h1>
       <p>
         Réaliser une application web en PHP permettant la gestion d'un cabinet
         médical

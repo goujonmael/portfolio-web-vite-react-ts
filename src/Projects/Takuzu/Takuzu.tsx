@@ -5,7 +5,7 @@ export function TakuzuDescription() {
     return (
         <div>
             <h1>
-                Description :
+                Description:
             </h1>
             <p>
                 Implémentation de différents algorithmes de résolution de takuzu en Ada.
@@ -22,7 +22,7 @@ export function TakuzuDetails() {
     return (
         <div>
             <h1>
-                Règles du jeu :
+                Règles du jeu:
             </h1>
             <p>
                 - Il ne peut pas y avoir plus de deux chiffres identiques consécutifs dans une ligne ou une colonne.
@@ -32,7 +32,7 @@ export function TakuzuDetails() {
                 - 2 lignes ou 2 colonnes ne peuvent être identiques.
             </p>
             <h1>
-                Fonctionnalités :
+                Fonctionnalités:
             </h1>
             <p>
                 - Résolution automatique des grilles Takuzu.

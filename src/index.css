@@ -158,7 +158,6 @@ li {
   flex-wrap: wrap;
   align-content: center;
   margin-bottom: 2rem;
-  justify-content: center;
   margin: auto;
 }
 
@@ -337,6 +336,11 @@ h2 {
   color: var(--text);
   position: relative;
   overflow: hidden;
+}
+
+.content-container p {
+  margin-top: 0;
+  margin-bottom: 1rem;
 }
 
 .content-container::before {

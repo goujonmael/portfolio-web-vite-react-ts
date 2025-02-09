@@ -76,7 +76,7 @@ export function RaspiPDF() {
 export function RaspiDescription() {
   return (
     <div>
-      <h1>Description :</h1>
+      <h1>Description:</h1>
       <p>
         Ce mini-projet avait pour objectif de transformer un Raspberry Pi 5 en
         une box Internet capable de gérer différents services réseau.
@@ -93,46 +93,46 @@ export function RaspiDescription() {
 export function RaspiDetails() {
   return (
     <div>
-      <h1>Services essentiels :</h1>
+      <h1>Services essentiels:</h1>
       <h2>Configuration d’un point d’accès Wi-Fi</h2>
       <p>- RaspAP</p>
       <h2>Gestion des adresses IP</h2>
       <p>- DHCP et dnsmasq</p>
       <h2>Translation de réseaux</h2>
       <p>- NAT et iptables</p>
-      <h1>Services secondaires :</h1>
-      <h2>Partage de fichiers (Samba) :</h2>
+      <h1>Services secondaires:</h1>
+      <h2>Partage de fichiers (Samba):</h2>
       <p>- Installation et configuration de répertoires partagés.</p>
       <p>- Gestion des permissions et des utilisateurs.</p>
-      <h2>Serveur FTP :</h2>
+      <h2>Serveur FTP:</h2>
       <p>
         - Mise en place de vsftpd avec accès restreint à chaque utilisateur.
       </p>
-      <h2>VPN (WireGuard) :</h2>
+      <h2>VPN (WireGuard):</h2>
       <p>- Installation via Docker pour un accès sécurisé au réseau local.</p>
-      <h2>Seedbox :</h2>
+      <h2>Seedbox:</h2>
       <p>
         - Installation et configuration de qBittorrent en mode sans interface
         graphique.
       </p>
-      <h2>AdGuard Home (remplaçant Pi-hole) :</h2>
+      <h2>AdGuard Home (remplaçant Pi-hole):</h2>
       <p>- Installation d’un serveur DNS avec blocage de publicités.</p>
       <p>
         - Configuration sur le port 5300 pour éviter les conflits avec dnsmasq
         de RaspAP.
       </p>
-      <h1>Fonctionnalités supplémentaires :</h1>
+      <h1>Fonctionnalités supplémentaires:</h1>
       <h2>Utilisation de la board GPIO</h2>
       <p>Les boutons GPIO permettent d’activer/désactiver le Wi-Fi.</p>
-      <p>Les LEDs indiquent l’état du hotspot :</p>
+      <p>Les LEDs indiquent l’état du hotspot:</p>
       <p>- Une LED verte indique que le hotspot est actif.</p>
       <p>- Une LED rouge indique qu’il est désactivé.</p>
       <p>
         Les LEDs s’illuminent proportionnellement au nombre de clients connectés
         grâce à un script Python.
       </p>
-      <h1>Problèmes rencontrés :</h1>
-      <h2>Carte SD corrompue :</h2>
+      <h1>Problèmes rencontrés:</h1>
+      <h2>Carte SD corrompue:</h2>
       <p>
         L'utilisation d'une interface web complète pour l'administration de la
         box Internet, bien que pratique, s'est révélée gourmande en ressources.
@@ -141,7 +141,7 @@ export function RaspiDetails() {
         Cela a entraîné une surcharge des cycles d'écriture sur la carte SD,
         provoquant sa corruption.
       </p>
-      <h3>Solution :</h3>
+      <h3>Solution:</h3>
       <p>
         Nous avons résolu ce problème en flashant une image système réduite sur
         la carte SD, tout en configurant le Raspberry Pi pour démarrer sur un
@@ -151,7 +151,7 @@ export function RaspiDetails() {
         Cette solution a permis d'améliorer la fiabilité et de réduire la charge
         sur la carte SD.
       </p>
-      <h2>Conflit entre AdGuard et RaspAP sur le DHCP :</h2>
+      <h2>Conflit entre AdGuard et RaspAP sur le DHCP:</h2>
       <p>
         L’installation conjointe d’AdGuard et de RaspAP a généré des conflits
         réseau.
@@ -164,7 +164,7 @@ export function RaspiDetails() {
         Après un redémarrage, il était impossible d’accéder au Raspberry Pi via
         SSH.
       </p>
-      <h3>Solution :</h3>
+      <h3>Solution:</h3>
       <p>
         Pour corriger ce problème, nous avons utilisé un accès chroot sur la
         carte SD depuis un autre appareil.

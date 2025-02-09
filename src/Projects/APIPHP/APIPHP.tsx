@@ -1,7 +1,7 @@
 export function APIPHPDescription() {
   return (
     <div>
-      <h1>Description :</h1>
+      <h1>Description:</h1>
       <p>
         Amélioration du projet de gestion de cabinet médical en ajoutant une API
         en PHP.

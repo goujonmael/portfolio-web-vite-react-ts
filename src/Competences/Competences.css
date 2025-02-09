@@ -28,6 +28,8 @@
   font-family: Lato, sans-serif;
   color: var(--text);
   padding: 1rem;
+  width: 90%;
+  margin: 0 auto;
 }
 
 .description p {

@@ -3,7 +3,7 @@ import "./JavaSpringBoot.css";
 export function JavaSpringBootDescription() {
   return (
     <div>
-      <h1>Description :</h1>
+      <h1>Description:</h1>
       <p>Le projet visait à créer une application web de suivi de formation.</p>
       <p>
         Il s'adresse à une association accompagnant des handicapés sur la région
@@ -27,7 +27,7 @@ export function JavaSpringBootDetails() {
       <h2>Évaluation du travail</h2>
       <p>- Par le formateur et l'apprenti.</p>
       <h2>Canal de discussion</h2>
-      <p>- Messages : texte, audio et images.</p>
+      <p>- Messages: texte, audio et images.</p>
       <h2>Connexion personnelle</h2>
       <p>
         - Avec mot de passe pour le formateur - Avec un schéma pour l'apprenti
