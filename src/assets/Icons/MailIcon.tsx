@@ -1,7 +1,7 @@
 const MailIcon = () => (
   <svg
-    width="45px"
-    height="45px"
+    width="1.7rem"
+    height="1.7rem"
     viewBox="0 0 90 90"
     preserveAspectRatio="xMidYMid meet"
     xmlns="http://www.w3.org/2000/svg"

@@ -39,6 +39,7 @@ export default function Header() {
         >
           Projets personnels
         </a>
+        <div className="separator"></div>
         <div className="nav-footer">
           <a
             href="https://www.linkedin.com/in/ma%C3%ABl-goujon-88635b227"
