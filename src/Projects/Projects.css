@@ -6,7 +6,7 @@ h1 {
 
 h2 {
     font-weight: bold;
-    color: #dddddd;
+    font-size: 1.2rem;
     margin: 6px 12px;
 }
 
@@ -19,6 +19,7 @@ h3 {
 p {
     color: #9d9ca1;
     margin: 6px 12px;
+    line-height: 1.1rem;
 }
 
 .title-container h2 {
