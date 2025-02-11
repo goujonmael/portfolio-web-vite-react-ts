@@ -337,6 +337,10 @@ h2 {
   overflow: hidden;
 }
 
+.content-container img{
+  max-width: 100%;
+}
+
 .content-container p {
   margin-top: 0;
   margin-bottom: 1rem;

@@ -3,6 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "../index.css";
 import Markdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
+
 
 //import { projetsPerso } from "./projetsPerso";
 import GitHubIcon from "../assets/Icons/GitHubIcon";
@@ -198,7 +200,7 @@ export function ItemPerso({ projetsPerso, id }: ItemPersoProps) {
             </div>
             {loading && <div className="loading">Loading...</div>}
             <div>{description}</div>
-            <Markdown>{details}</Markdown>
+            <Markdown rehypePlugins={[rehypeRaw]}>{details}</Markdown>
             <div>{customComponent}</div>
           </motion.div>
         </motion.div>
