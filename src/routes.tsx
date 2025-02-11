@@ -23,21 +23,40 @@ const Store: React.FC<StoreProps> = ({ typeOfList }) => {
     <>
       <div className="competences-div">
         <h1 className="title">
-          <span className="title-first-letter">P</span>rojets {typeOfList === "univ" ? "Universitaires" : "Personnels"}
+          <span className="title-first-letter">P</span>rojets{" "}
+          {typeOfList === "univ" ? "Universitaires" : "Personnels"}
         </h1>
       </div>
-      <div className="description">
-        <p className="projets-title">
-          {typeOfList === "univ"
-            ? "Réalisés au cours de mes études en informatique"
-            : "Réalisés en dehors de mes études"}
-        </p>
+      <div className="content">
+        <div className="description">
+          <div className="projets-title">
+            {typeOfList === "univ" ? (
+              <div>
+                <p>
+                  Projets réalisés dans le cadre de mes études en informatique.
+                </p>
+                <p>
+                  Tous ont étés effectués en groupe grâce aux méthodes agiles et
+                  Kanban.
+                </p>
+              </div>
+            ) : (
+              <div>
+                <p>Projets réalisés en dehors du cadre universitaire.</p>
+                <p>
+                  Ces travaux résultent de ma curiosité pour l'informatique, l'électronique et
+                  les nouvelles technologies.
+                </p>
+              </div>
+            )}
+          </div>
+        </div>
+        {typeOfList === "univ" ? (
+          <List selectedId={id ?? ""} />
+        ) : (
+          <ListPerso selectedId={id ?? ""} />
+        )}
       </div>
-      {typeOfList === "univ" ? (
-        <List selectedId={id ?? ""} />
-      ) : (
-        <ListPerso selectedId={id ?? ""} />
-      )}
     </>
   );
 };
@@ -73,7 +92,6 @@ export default function AppRoutes() {
       floatingBall.style.setProperty("--random-left", `${randomLeft}%`);
     }
   }, []);
-
 
   return (
     <div className="main">

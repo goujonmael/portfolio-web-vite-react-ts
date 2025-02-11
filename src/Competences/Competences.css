@@ -27,15 +27,15 @@
   font-weight: 400;
   font-family: Lato, sans-serif;
   color: var(--text);
-  padding: 1rem;
-  width: 90%;
-  margin: 0 auto;
+  padding: 3rem 0;
 }
 
 .description p {
   line-height: 1.1rem;
   text-align: justify;
   text-justify: inter-word;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .underline {
@@ -46,10 +46,15 @@
   cursor: pointer;
 }
 
+.content {
+  width: 90%;
+  margin: auto;
+}
+
 .competences {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: space-between;
   /*padding-left: 5rem;
   padding-right: 5rem;*/
 }
