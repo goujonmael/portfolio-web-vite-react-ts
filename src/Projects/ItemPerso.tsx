@@ -2,16 +2,30 @@ import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "../index.css";
-import Markdown from 'react-markdown'
+import Markdown from "react-markdown";
 
 //import { projetsPerso } from "./projetsPerso";
 import GitHubIcon from "../assets/Icons/GitHubIcon";
 
+interface Projet {
+  id: string;
+  name: string;
+  category: string;
+  title: string;
+  description: string;
+  imageLink: string;
+  customComponent: React.ReactNode;
+  github: string;
+  pdf: string;
+  html_url: string;
+}
+
 interface ItemPersoProps {
+  projetsPerso: Projet[];
   id: string;
 }
 
-export function ItemPerso({ projetsPerso, id }) {
+export function ItemPerso({ projetsPerso, id }: ItemPersoProps) {
   console.log("id", id);
   const [isMobile, setIsMobile] = useState(false);
   const {
@@ -24,26 +38,30 @@ export function ItemPerso({ projetsPerso, id }) {
     pdf,
   } = projetsPerso.find((item) => item.id == id) || {};
 
-  const name = projetsPerso.find((item) => item.id == id).name;
-  console.log("item", projetsPerso.find((item) => item.id == id));
-  // if github is not defined then set it to google.fr
-  const githubUrl = github || projetsPerso.find((item) => item.id == id).html_url;
-
+  const foundProject = projetsPerso.find((item) => item.id == id);
+  const name = foundProject ? foundProject.name : "Projet Personnel";
+  console.log(
+    "item",
+    projetsPerso.find((item) => item.id == id)
+  );
+  // if github is not defined then set it to html_url
+  const githubUrl =
+    github || projetsPerso.find((item) => item.id == id)?.html_url;
 
   // getting the readme.md from https://raw.githubusercontent.com/goujonmael/{name}/master/README.md
   const [details, setDetails] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(true);
-  
+
   useEffect(() => {
-    fetch(`https://raw.githubusercontent.com/goujonmael/${name}/master/README.md`)
+    fetch(
+      `https://raw.githubusercontent.com/goujonmael/${name}/master/README.md`
+    )
       .then((response) => response.text())
       .then((text) => {
         setDetails(text);
         setLoading(false);
       });
   }, []);
-
-
 
   // created_at
   // html_url
@@ -138,7 +156,12 @@ export function ItemPerso({ projetsPerso, id }) {
             className="card-image-container"
             layoutId={`card-image-container-${id}`}
           >
-            <img className="card-image" src={imageLink} alt="" style={{ backgroundColor: "white" }} />
+            <img
+              className="card-image"
+              src={imageLink}
+              alt=""
+              style={{ backgroundColor: "white" }}
+            />
           </motion.div>
           <motion.div
             className="title-container"
@@ -152,7 +175,11 @@ export function ItemPerso({ projetsPerso, id }) {
             <div className="Links">
               {githubUrl && (
                 <div className="github-link">
-                  <Link to={githubUrl} target="_blank" rel="noopener noreferrer">
+                  <Link
+                    to={githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <GitHubIcon />
                   </Link>
                 </div>
@@ -169,6 +196,7 @@ export function ItemPerso({ projetsPerso, id }) {
                 </div>
               )}
             </div>
+            {loading && <div className="loading">Loading...</div>}
             <div>{description}</div>
             <Markdown>{details}</Markdown>
             <div>{customComponent}</div>

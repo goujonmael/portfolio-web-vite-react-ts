@@ -397,6 +397,29 @@ p {
   margin: 0;
 }
 
+/* loading animation */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 1rem;
+  width: 100%;
+  animation: loading 2s forwards;
+  background: var(--yellow);
+  border-radius: 10px;
+}
+
+@keyframes loading {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+
+
 @media only screen and (max-width: 800px) {
   .competences-title {
     font-size: 2.5rem;

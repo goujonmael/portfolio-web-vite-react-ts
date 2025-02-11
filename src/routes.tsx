@@ -89,7 +89,7 @@ export default function AppRoutes() {
     return type === "univ" ? (
       <Item id={id ?? ""} />
     ) : (
-      <ItemPerso id={id ?? ""} projetsPerso={projetsPerso} />
+      <ItemPerso id={id ?? ""} projetsPerso={projetsPerso ?? []} />
     );
   };
 

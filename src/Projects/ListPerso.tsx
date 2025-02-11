@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
 
 interface CardPersoProps {
   id: string;
@@ -86,6 +85,10 @@ export function ListPerso({ selectedId, projets }: ListPersoProps) {
           key={card.id}
           id={card.id}
           title={card.name}
+          category={card.category}
+          imageLink={card.imageLink}
+          github={card.github}
+          pdf={card.pdf}
           isSelected={card.id === selectedId}
         />
       ))}
