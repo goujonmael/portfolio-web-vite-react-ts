@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "../index.css";
+import Markdown from 'react-markdown'
+
 //import { projetsPerso } from "./projetsPerso";
 import GitHubIcon from "../assets/Icons/GitHubIcon";
 
@@ -24,7 +26,8 @@ export function ItemPerso({ projetsPerso, id }) {
 
   const name = projetsPerso.find((item) => item.id == id).name;
   console.log("item", projetsPerso.find((item) => item.id == id));
-
+  // if github is not defined then set it to google.fr
+  const githubUrl = github || projetsPerso.find((item) => item.id == id).html_url;
 
 
   // getting the readme.md from https://raw.githubusercontent.com/goujonmael/{name}/master/README.md
@@ -147,9 +150,9 @@ export function ItemPerso({ projetsPerso, id }) {
 
           <motion.div className="content-container" animate>
             <div className="Links">
-              {github && (
+              {githubUrl && (
                 <div className="github-link">
-                  <Link to={github} target="_blank" rel="noopener noreferrer">
+                  <Link to={githubUrl} target="_blank" rel="noopener noreferrer">
                     <GitHubIcon />
                   </Link>
                 </div>
@@ -167,7 +170,7 @@ export function ItemPerso({ projetsPerso, id }) {
               )}
             </div>
             <div>{description}</div>
-            <div>{details}</div>
+            <Markdown>{details}</Markdown>
             <div>{customComponent}</div>
           </motion.div>
         </motion.div>

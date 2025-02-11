@@ -68,6 +68,7 @@ interface Projet {
 }
 
 export function ListPerso({ selectedId, projets }: ListPersoProps) {
+  console.log(projets);
   return (
     <ul className="card-list">
       {projets.map((card) => (

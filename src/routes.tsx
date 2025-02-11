@@ -19,12 +19,7 @@ interface StoreProps {
 
 const Store: React.FC<StoreProps> = ({ typeOfList, projets }) => {
   let { id } = useParams<{ id: string }>();
-  if (typeOfList !== "univ") {
-    console.log(
-      "Store projet for the id ",
-      projets.find((item) => item.id === Number(id))
-    );
-  }
+
   return (
     <>
       <div className="competences-div">
@@ -81,7 +76,7 @@ export default function AppRoutes() {
       "https://api.github.com/users/goujonmael/repos"
     );
     const data = await response.json();
-    console.log(data);
+    //console.log(data);
     setProjets(data);
   }, []);
 
