@@ -9,16 +9,22 @@ import Header from "./Header/Header";
 import { ListPerso } from "./Projects/ListPerso";
 import { ItemPerso } from "./Projects/ItemPerso";
 import Competences from "./Competences/Competences";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import Contacts from "./Home/Contacts/Contacts";
 
 interface StoreProps {
   typeOfList?: string;
+  projets?: any[];
 }
 
-const Store: React.FC<StoreProps> = ({ typeOfList }) => {
+const Store: React.FC<StoreProps> = ({ typeOfList, projets }) => {
   let { id } = useParams<{ id: string }>();
-
+  if (typeOfList !== "univ") {
+    console.log(
+      "Store projet for the id ",
+      projets.find((item) => item.id === Number(id))
+    );
+  }
   return (
     <>
       <div className="competences-div">
@@ -44,8 +50,8 @@ const Store: React.FC<StoreProps> = ({ typeOfList }) => {
               <div>
                 <p>Projets réalisés en dehors du cadre universitaire.</p>
                 <p>
-                  Ces travaux résultent de ma curiosité pour l'informatique, l'électronique et
-                  les nouvelles technologies.
+                  Ces travaux résultent de ma curiosité pour l'informatique,
+                  l'électronique et les nouvelles technologies.
                 </p>
               </div>
             )}
@@ -54,7 +60,7 @@ const Store: React.FC<StoreProps> = ({ typeOfList }) => {
         {typeOfList === "univ" ? (
           <List selectedId={id ?? ""} />
         ) : (
-          <ListPerso selectedId={id ?? ""} />
+          <ListPerso selectedId={id ?? ""} projets={projets ?? []} />
         )}
       </div>
     </>
@@ -63,16 +69,38 @@ const Store: React.FC<StoreProps> = ({ typeOfList }) => {
 
 interface ItemWrapperProps {
   type: string;
+  projetsPerso?: any[];
 }
 
-const ItemWrapper: React.FC<ItemWrapperProps> = ({ type }) => {
-  let { id } = useParams<{ id: string }>();
-  return type === "univ" ? <Item id={id ?? ""} /> : <ItemPerso id={id ?? ""} />;
-};
-
 export default function AppRoutes() {
+  const [projets, setProjets] = useState<any[]>([]);
+
+  
+  const fetchData = useCallback(async () => {
+    const response = await fetch(
+      "https://api.github.com/users/goujonmael/repos"
+    );
+    const data = await response.json();
+    console.log(data);
+    setProjets(data);
+  }, []);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
+
+  const ItemWrapper: React.FC<ItemWrapperProps> = ({ type, projetsPerso }) => {
+    let { id } = useParams<{ id: string }>();
+    return type === "univ" ? (
+      <Item id={id ?? ""} />
+    ) : (
+      <ItemPerso id={id ?? ""} projetsPerso={projetsPerso} />
+    );
+  };
+
   // compter les px scrollés
   const [scrollY, setScrollY] = useState(0);
+
   useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY);
@@ -134,7 +162,7 @@ export default function AppRoutes() {
             path="/projets-univ/:id"
             element={
               <>
-                <Store typeOfList="univ" />
+                <Store typeOfList="univ" projets={projets} />
                 <div
                   style={{
                     position: "absolute",
@@ -155,7 +183,7 @@ export default function AppRoutes() {
             path="/projets-perso/:id"
             element={
               <>
-                <Store typeOfList="perso" />
+                <Store typeOfList="perso" projets={projets} />
                 <div
                   style={{
                     position: "absolute",
@@ -166,14 +194,17 @@ export default function AppRoutes() {
                   }}
                 >
                   <AnimatePresence>
-                    <ItemWrapper type="perso" />
+                    <ItemWrapper type="perso" projetsPerso={projets} />
                   </AnimatePresence>
                 </div>
               </>
             }
           />
           <Route path="/projets-univ" element={<Store typeOfList="univ" />} />
-          <Route path="/projets-perso" element={<Store typeOfList="perso" />} />
+          <Route
+            path="/projets-perso"
+            element={<Store typeOfList="perso" projets={projets} />}
+          />
           <Route path="/competences" element={<Competences />} />
         </Routes>
       </motion.div>

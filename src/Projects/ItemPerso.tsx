@@ -2,14 +2,15 @@ import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "../index.css";
-import { projetsPerso } from "./projetsPerso";
+//import { projetsPerso } from "./projetsPerso";
 import GitHubIcon from "../assets/Icons/GitHubIcon";
 
 interface ItemPersoProps {
   id: string;
 }
 
-export function ItemPerso({ id }: ItemPersoProps) {
+export function ItemPerso({ projetsPerso, id }) {
+  console.log("id", id);
   const [isMobile, setIsMobile] = useState(false);
   const {
     category,
@@ -17,10 +18,34 @@ export function ItemPerso({ id }: ItemPersoProps) {
     description,
     imageLink,
     customComponent,
-    details,
     github,
     pdf,
-  } = projetsPerso.find((item) => item.id === id) || {};
+  } = projetsPerso.find((item) => item.id == id) || {};
+
+  const name = projetsPerso.find((item) => item.id == id).name;
+  console.log("item", projetsPerso.find((item) => item.id == id));
+
+
+
+  // getting the readme.md from https://raw.githubusercontent.com/goujonmael/{name}/master/README.md
+  const [details, setDetails] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(true);
+  
+  useEffect(() => {
+    fetch(`https://raw.githubusercontent.com/goujonmael/${name}/master/README.md`)
+      .then((response) => response.text())
+      .then((text) => {
+        setDetails(text);
+        setLoading(false);
+      });
+  }, []);
+
+
+
+  // created_at
+  // html_url
+  // language
+  // pushed_at
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -117,7 +142,7 @@ export function ItemPerso({ id }: ItemPersoProps) {
             layoutId={`title-container-${id}`}
           >
             <span className="category">{category}</span>
-            <h2>{title}</h2>
+            <h2>{title ? title : name}</h2>
           </motion.div>
 
           <motion.div className="content-container" animate>

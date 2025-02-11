@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { projetsPerso } from "./projetsPerso";
+import { useEffect, useState } from "react";
 
 interface CardPersoProps {
   id: string;
@@ -12,13 +12,15 @@ interface CardPersoProps {
   isSelected: boolean;
 }
 
-function CardPerso({
+
+
+const CardPerso: React.FC<CardPersoProps> = ({
   id,
   title,
   category,
   imageLink,
   isSelected,
-}: CardPersoProps) {
+}) => {
   return (
     <li className={`card`}>
       <div className="card-content-container">
@@ -49,22 +51,33 @@ function CardPerso({
       <Link to={`/projets-perso/${id}`} className={`card-open-link`} />
     </li>
   );
-}
+};
 
 interface ListPersoProps {
   selectedId: string;
+  projets: Projet[];
 }
 
-export function ListPerso({ selectedId }: ListPersoProps) {
+interface Projet {
+  id: string;
+  name: string;
+  category: string;
+  imageLink: string;
+  github: string;
+  pdf: string;
+}
+
+export function ListPerso({ selectedId, projets }: ListPersoProps) {
   return (
     <ul className="card-list">
-      {projetsPerso.map((card) => (
+      {projets.map((card) => (
         <CardPerso
           key={card.id}
-          {...card}
+          id={card.id}
+          title={card.name}
           isSelected={card.id === selectedId}
         />
       ))}
     </ul>
   );
-}
+};
