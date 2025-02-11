@@ -70,13 +70,17 @@ interface ItemWrapperProps {
 export default function AppRoutes() {
   const [projets, setProjets] = useState<any[]>([]);
 
-  
   const fetchData = useCallback(async () => {
     const response = await fetch(
       "https://api.github.com/users/goujonmael/repos"
     );
     const data = await response.json();
-    //console.log(data);
+    // sort data by pushed_at
+    data.sort(
+      (a: { pushed_at: string }, b: { pushed_at: string }) =>
+        new Date(b.pushed_at).getTime() - new Date(a.pushed_at).getTime()
+    );
+    console.log(data);
     setProjets(data);
   }, []);
 
