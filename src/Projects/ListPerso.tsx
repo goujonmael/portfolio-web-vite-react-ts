@@ -12,8 +12,6 @@ interface CardPersoProps {
   isSelected: boolean;
 }
 
-
-
 const CardPerso: React.FC<CardPersoProps> = ({
   id,
   title,
@@ -24,7 +22,19 @@ const CardPerso: React.FC<CardPersoProps> = ({
   return (
     <li className={`card`}>
       <div className="card-content-container">
-        <motion.div className="card-content" layoutId={`card-container-${id}`}>
+        <motion.div
+          layoutId={`card-container-${id}`}
+          style={{
+            pointerEvents: "auto",
+            position: "relative",
+            borderRadius: "20px",
+            background: imageLink ? "#1c1c1e" : "rgb(28 28 30 / 65%)",
+            overflow: "hidden",
+            width: "100%",
+            height: "100%",
+            margin: "0 auto",
+          }}
+        >
           <motion.div
             className="card-image-container"
             layoutId={`card-image-container-${id}`}
@@ -81,4 +91,4 @@ export function ListPerso({ selectedId, projets }: ListPersoProps) {
       ))}
     </ul>
   );
-};
+}

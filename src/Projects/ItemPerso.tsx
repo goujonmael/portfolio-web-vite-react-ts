@@ -138,7 +138,7 @@ export function ItemPerso({ projetsPerso, id }) {
             className="card-image-container"
             layoutId={`card-image-container-${id}`}
           >
-            <img className="card-image" src={imageLink} alt="" />
+            <img className="card-image" src={imageLink} alt="" style={{ backgroundColor: "white" }} />
           </motion.div>
           <motion.div
             className="title-container"
