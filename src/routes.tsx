@@ -11,6 +11,7 @@ import { ItemPerso } from "./Projects/ItemPerso";
 import Competences from "./Competences/Competences";
 import React, { useEffect, useState, useCallback } from "react";
 import Contacts from "./Home/Contacts/Contacts";
+import Scolarite from "./Scolarite/Scolarite";
 
 interface StoreProps {
   typeOfList?: string;
@@ -205,6 +206,8 @@ export default function AppRoutes() {
             element={<Store typeOfList="perso" projets={projets} />}
           />
           <Route path="/competences" element={<Competences />} />
+          <Route path="/scolarite" element={<Scolarite/>} />
+          <Route path="*" element={<div>Page not found</div>} />
         </Routes>
       </motion.div>
     </div>

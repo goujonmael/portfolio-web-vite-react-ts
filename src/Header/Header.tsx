@@ -22,6 +22,12 @@ export default function Header() {
           Accueil
         </a>
         <a
+          href="/scolarite"
+          className={path === "scolarite" ? "nav-a-active" : "nav-a"}
+        >
+          Scolarité
+        </a>
+        <a
           href="/competences"
           className={path === "competences" ? "nav-a-active" : "nav-a"}
         >

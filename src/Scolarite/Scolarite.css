@@ -1,0 +1,118 @@
+.styled-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.styled-box {
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.scolarite-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.scolarite-container h1 {
+    text-align: center;
+    color: #333;
+}
+
+.scolarite-container h2 {
+    color: #444;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+}
+
+h2 {
+    margin-top: 20px;
+    color: #2c3e50;
+}
+
+h1 {
+    margin-top: 30px;
+}
+
+.date {
+    font-size: 0.9em;
+    color: #666;
+    white-space: nowrap;
+    /* Empêche la date de revenir à la ligne */
+    margin-left: 10px;
+    /* Espace entre le titre de la formation et la date */
+}
+
+.formation-container {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    /* Permet le retour à la ligne si nécessaire */
+}
+
+.formation-etablissement {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex: 1;
+    /* Permet à la formation de prendre l'espace disponible */
+    min-width: 0;
+    /* Permet à la formation de rétrécir si nécessaire */
+}
+
+.etablissement {
+    font-style: italic;
+    color: #555;
+}
+
+.formation {
+    font-weight: bold;
+    color: #333;
+    word-break: break-word;
+    /* Permet le retour à la ligne si nécessaire */
+    overflow-wrap: break-word;
+    /* Permet le retour à la ligne si nécessaire */
+}
+
+.specialite {
+    font-style: italic;
+    color: #777;
+}
+
+.formation-title-container {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.formation-title-container::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background-color: var(--title);
+    border-radius: 5px; /* Arrondi des bords */
+}
+
+
+.formation-title {
+    font-weight: bold;
+    color: #333;
+    word-break: break-word;
+    /* Permet le retour à la ligne si nécessaire */
+    overflow-wrap: break-word;
+    /* Permet le retour à la ligne si nécessaire */
+    flex: 1;
+    /* Permet au titre de prendre l'espace disponible */
+    min-width: 0;
+    /* Permet au titre de rétrécir si nécessaire */
+}

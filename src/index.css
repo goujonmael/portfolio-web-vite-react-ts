@@ -49,7 +49,7 @@ body {
   --header-padding: 5vh;
   --font-text: "Lato", sans-serif;
   --font-title: "Turret Road", serif;
-  --background-color: #000000;
+  --background-color: #d7d7d7;
   transition: opacity 1s ease;
   /*background: radial-gradient(circle at right center, #38457B, #BA97B5 50%, #FD9C71 95%, #FD9C71);*/
   background-color: var(--background-color);
