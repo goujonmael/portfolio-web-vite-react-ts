@@ -3,7 +3,7 @@ name: Deploy React App to Netlify
 on:
   push:
     branches:
-      - main  # Set this to your default branch
+      - main
 
 jobs:
   build-and-deploy:
@@ -18,11 +18,14 @@ jobs:
       with:
         node-version: '22'
 
+    - name: Install Yarn
+      run: npm install -g yarn
+
     - name: Install dependencies
-      run: npm install
+      run: yarn install
 
     - name: Build React app
-      run: npm run build
+      run: yarn run build
 
     - name: Deploy to Netlify
       uses: netlify/actions/cli@master
