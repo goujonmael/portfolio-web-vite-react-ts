@@ -354,7 +354,7 @@ h2 {
   width: 0;
   height: 1px;
   background: var(--yellow);
-  animation: borderExpand 1s forwards;
+  /*animation: borderExpand 1s forwards;*/
 }
 
 @keyframes borderExpand {
@@ -408,7 +408,7 @@ p {
   align-items: center;
   height: 1rem;
   width: 100%;
-  animation: loading 2s forwards;
+  /*animation: loading 2s forwards;*/
   background: var(--yellow);
   border-radius: 10px;
 }

@@ -130,21 +130,7 @@ export default function AppRoutes() {
       <Header />
       <motion.div
         className="container"
-        initial={{
-          opacity: 0,
-          filter: "grayscale(100%)",
-          scale: 1.05, // Initial size at 95%
-        }}
-        animate={{
-          opacity: 1,
-          filter: "grayscale(0%)",
-          scale: 1, // Final size at 100%
-        }}
-        transition={{
-          opacity: { duration: 0.35, ease: "easeInOut" },
-          filter: { delay: 0.35, duration: 0.5, ease: "easeInOut" },
-          scale: { duration: 0.35, ease: "easeInOut" }, // Duration for size animation
-        }}
+
       >
         <Routes>
           <Route
