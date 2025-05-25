@@ -15,7 +15,7 @@ export default function Me() {
               <div className="profile">
                 <img
                   className="profile_picture"
-                  src="/images/Me/pp_shorted.jpg"
+                  src="/images/Me/me_square.jpg"
                   alt="Picture of Mael GOUJON"
                 />
               </div>

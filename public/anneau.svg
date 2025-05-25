@@ -3,8 +3,7 @@
     <defs>
         <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" style="stop-color:#FD9C71;stop-opacity:1" />
-            <stop offset="40%" style="stop-color:#BA97B5;stop-opacity:1" />
-            <stop offset="100%" style="stop-color:#0F173A;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#daae6e;stop-opacity:1" />
         </linearGradient>
     </defs>
     <g stroke="null">
