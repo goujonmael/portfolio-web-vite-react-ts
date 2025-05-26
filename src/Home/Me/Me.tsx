@@ -5,7 +5,9 @@ import "./Me.css";
 export default function Me() {
   const [isIutHovered, setIsIutHovered] = useState(false);
   const [isAirbusHovered, setIsAirbusHovered] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
   const constraintsRef = useRef(null);
+
   return (
     <div className="borders">
       <div className="me2">
@@ -14,9 +16,10 @@ export default function Me() {
             <motion.div className="me_left">
               <div className="profile">
                 <img
-                  className="profile_picture"
+                  className={`profile_picture ${imageLoaded ? "fade-in" : ""}`}
                   src="/images/Me/me_square.jpg"
                   alt="Picture of Mael GOUJON"
+                  onLoad={() => setImageLoaded(true)}
                 />
               </div>
               <div className="cadre" />
