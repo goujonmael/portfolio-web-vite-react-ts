@@ -72,17 +72,31 @@ export default function AppRoutes() {
   const [projets, setProjets] = useState<any[]>([]);
 
   const fetchData = useCallback(async () => {
-    const response = await fetch(
-      "https://api.github.com/users/goujonmael/repos"
-    );
-    const data = await response.json();
-    // sort data by pushed_at
-    data.sort(
-      (a: { pushed_at: string }, b: { pushed_at: string }) =>
-        new Date(b.pushed_at).getTime() - new Date(a.pushed_at).getTime()
-    );
-    console.log(data);
-    setProjets(data);
+    try {
+      const cachedData = localStorage.getItem("github_repos");
+      if (cachedData) {
+        setProjets(JSON.parse(cachedData));
+        return;
+      }
+
+      const response = await fetch(
+        "https://api.github.com/users/goujonmael/repos"
+      );
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      if (Array.isArray(data)) {
+        data.sort(
+          (a: { pushed_at: string }, b: { pushed_at: string }) =>
+            new Date(b.pushed_at).getTime() - new Date(a.pushed_at).getTime()
+        );
+        setProjets(data);
+        localStorage.setItem("github_repos", JSON.stringify(data));
+      } else {
+        console.error("Unexpected API response format:", data);
+      }
+    } catch (error) { }
   }, []);
 
   useEffect(() => {
@@ -128,10 +142,7 @@ export default function AppRoutes() {
       <div className="floating-ball3"></div>
       <div className="blur-background"></div>
       <Header />
-      <motion.div
-        className="container"
-
-      >
+      <motion.div className="container">
         <Routes>
           <Route
             path="/"
@@ -139,7 +150,7 @@ export default function AppRoutes() {
               <>
                 <Welcome />
                 <StarOfLife />
-                <Me />
+                  <Me />
                 <Contacts />
               </>
             }
@@ -192,7 +203,7 @@ export default function AppRoutes() {
             element={<Store typeOfList="perso" projets={projets} />}
           />
           <Route path="/competences" element={<Competences />} />
-          <Route path="/scolarite" element={<Scolarite/>} />
+          <Route path="/scolarite" element={<Scolarite />} />
           <Route path="*" element={<div>Page not found</div>} />
         </Routes>
       </motion.div>

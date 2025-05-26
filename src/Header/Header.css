@@ -1,7 +1,7 @@
 .header {
-  background-color: #ffffff17;
-  backdrop-filter: blur(16px) saturate(0.8);
-  -webkit-backdrop-filter: blur(16px) saturate(0.8);
+  background-color: #5c5c5c9f;
+  /*backdrop-filter: blur(16px) saturate(0.8);
+  -webkit-backdrop-filter: blur(16px) saturate(0.8);*/
   position: fixed;
   width: 100%;
   top: 0;
