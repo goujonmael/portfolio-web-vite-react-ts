@@ -83,7 +83,7 @@ export default function Header() {
           {/* prendre contact */}
           <a href="mailto:goujonmael@gmail.com">
             <MailIcon />
-            Contact
+            Contacts
           </a>
         </div>
       </div>

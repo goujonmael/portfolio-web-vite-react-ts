@@ -149,8 +149,7 @@ export default function AppRoutes() {
             element={
               <>
                 <Welcome />
-                <StarOfLife />
-                  <Me />
+                <Me />
                 <Contacts />
               </>
             }

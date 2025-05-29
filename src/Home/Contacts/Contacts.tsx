@@ -40,7 +40,7 @@ const Contacts = () => {
 
   return (
     <div>
-      <h1 className="contacts-title">Contact</h1>
+      <h1 className="contacts-title">Contacts</h1>
       <div className="contacts">
         <div ref={contactsTilesRef} className="contacts-tiles">
           <a
@@ -84,7 +84,7 @@ const Contacts = () => {
 
           <a onClick={dropdownClicked} className="link">
             <MailIcon />
-            <p className="text">Contact</p>
+            <p className="text">Contacst</p>
             <i className={`arrow ${isDropdownActive ? "up" : "down"}`}></i>
           </a>
         </div>

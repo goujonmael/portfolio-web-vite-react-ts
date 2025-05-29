@@ -78,7 +78,7 @@ export default function Footer() {
                     height={30}
                 />
                 <p className="text">
-                    Contact
+                    Contacts
                 </p>
             </a>
 

@@ -1,6 +1,6 @@
 .contacts-title {
   font-size: 40px;
-  font-family: var(--font-text);
+  font-family: var(--font-title);
   text-align: center;
   color: var(--title);
 }
@@ -35,8 +35,10 @@
   align-items: center;
   margin: 0.25rem;
   padding: 0.7rem;
-  flex: 1 1 auto; /* Allow the item to grow and shrink */
-  max-width: calc(33% - 1rem); /* Maximum width to fit within the layout */
+  flex: 1 1 auto;
+  /* Allow the item to grow and shrink */
+  max-width: calc(33% - 1rem);
+  /* Maximum width to fit within the layout */
   background-color: #242424;
   box-sizing: border-box;
   border: 1px solid transparent;
@@ -53,7 +55,8 @@
 }
 
 .link:last-child {
-  flex: 0 0 auto; /* Prevent the last item from growing */
+  flex: 0 0 auto;
+  /* Prevent the last item from growing */
   /* width should be the size of the content */
   width: fit-content;
 }
@@ -167,6 +170,7 @@
   .link {
     max-width: min-content;
   }
+
   .contacts-tiles {
     margin: 0 !important;
     padding: 0 !important;
