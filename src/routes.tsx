@@ -1,4 +1,4 @@
-import { Route, Routes, useParams } from "react-router-dom";
+import { Route, Routes, useParams, Link } from "react-router-dom";
 import Welcome from "./Home/Welcome/Welcome";
 import StarOfLife from "./Home/StarOfLife/StarOfLife";
 import Me from "./Home/Me/Me";
@@ -18,7 +18,7 @@ interface StoreProps {
   projets?: any[];
 }
 
-const Store: React.FC<StoreProps> = ({ typeOfList, projets }) => {
+const Store: React.FC<StoreProps> = React.memo(({ typeOfList, projets }) => {
   let { id } = useParams<{ id: string }>();
 
   return (
@@ -61,15 +61,25 @@ const Store: React.FC<StoreProps> = ({ typeOfList, projets }) => {
       </div>
     </>
   );
-};
+});
 
 interface ItemWrapperProps {
   type: string;
   projetsPerso?: any[];
 }
 
+const ItemWrapper: React.FC<ItemWrapperProps> = React.memo(({ type, projetsPerso }) => {
+  let { id } = useParams<{ id: string }>();
+  return type === "univ" ? (
+    <Item id={id ?? ""} />
+  ) : (
+    <ItemPerso id={id ?? ""} projetsPerso={projetsPerso ?? []} />
+  );
+});
+
 export default function AppRoutes() {
   const [projets, setProjets] = useState<any[]>([]);
+  const [scrollY, setScrollY] = useState(0);
 
   const fetchData = useCallback(async () => {
     try {
@@ -96,24 +106,14 @@ export default function AppRoutes() {
       } else {
         console.error("Unexpected API response format:", data);
       }
-    } catch (error) { }
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
   }, []);
 
   useEffect(() => {
     fetchData();
   }, [fetchData]);
-
-  const ItemWrapper: React.FC<ItemWrapperProps> = ({ type, projetsPerso }) => {
-    let { id } = useParams<{ id: string }>();
-    return type === "univ" ? (
-      <Item id={id ?? ""} />
-    ) : (
-      <ItemPerso id={id ?? ""} projetsPerso={projetsPerso ?? []} />
-    );
-  };
-
-  // compter les px scrollés
-  const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {

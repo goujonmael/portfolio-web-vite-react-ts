@@ -1,16 +1,14 @@
 .header {
   background-color: #5c5c5c9f;
-  /*backdrop-filter: blur(16px) saturate(0.8);
-  -webkit-backdrop-filter: blur(16px) saturate(0.8);*/
   position: fixed;
   width: 100%;
   top: 0;
   z-index: 1000;
-  padding: 20px;
+  padding: 15px;
   border-bottom: 2px solid var(--gray-alpha-200);
   height: var(--header-padding);
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   box-shadow: 0 0 #0000, 0 0 #0000, 0 16px 32px -16px rgba(0, 0, 0, 0.1),
     0 0 0 1px rgba(0, 0, 0, 0.1);
@@ -19,18 +17,16 @@
 .header .nav-a,
 .header .nav-a-active {
   position: relative;
-  padding: 10px 20px;
+  padding: 10px 15px;
   text-decoration: none;
   color: var(--text);
   font-family: var(--font-text);
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 0.9rem;
   border-radius: 20px;
-  margin-right: 20px;
+  margin-right: 10px;
   text-transform: uppercase;
-
-  transition: color 0.3s;
-  transition: transform 0.3s ease-out;
+  transition: color 0.3s, transform 0.3s ease-out;
 }
 
 .header .nav-a-active::before {
@@ -48,7 +44,6 @@
 .header .nav-a-active:hover::before,
 .header .nav-a-active::before {
   transform-origin: bottom left;
-
   transition: transform 0.3s ease-out;
 }
 
@@ -80,8 +75,9 @@
   font-weight: 800;
   font-style: italic;
   text-transform: uppercase;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   text-decoration: none;
+  margin-left: auto;
 }
 
 .headerTitle:hover {
@@ -98,7 +94,7 @@
   font-weight: 800;
   font-style: italic;
   text-transform: uppercase;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   text-decoration: underline;
   text-underline-offset: 4px;
 }
@@ -113,7 +109,7 @@
   text-decoration: none;
   font-family: var(--font-text);
   font-weight: 400;
-  margin-left: 20px;
+  margin-left: 15px;
 }
 
 .nav-link:hover {
@@ -131,6 +127,7 @@
   cursor: pointer;
   padding: 0;
   z-index: 1001;
+  margin-right: 10px;
 }
 
 .burger-menu.open .burger-bar:nth-child(1) {
@@ -163,7 +160,15 @@
 
 @media (max-width: 768px) {
   .header {
-    justify-content: flex-end;
+    justify-content: space-between;
+    padding: 10px;
+  }
+
+  .headerTitle {
+    margin-left: 0;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   .separator {
@@ -181,7 +186,7 @@
     top: var(--header-padding);
     right: 0;
     height: calc(100vh - var(--header-padding));
-    width: auto;
+    width: 80%;
     transform: translateX(100%);
     transition: transform 0.3s ease-in-out;
     border-top-left-radius: 10px;
@@ -194,12 +199,13 @@
 
   .header .nav-a,
   .header .nav-a-active {
-    font-size: 1rem;
+    font-size: 0.9rem;
+    padding: 12px 15px;
   }
 
   .nav.open {
     display: flex;
-    width: auto;
+    width: 80%;
     transform: translateX(0);
     transition: transform 0.3s ease-in-out;
     z-index: 1000;
@@ -209,15 +215,17 @@
   .nav-link {
     margin-left: 0;
     margin-bottom: 10px;
+    padding: 10px 15px;
   }
 
   .burger-menu {
     display: flex;
+    margin-left: auto;
   }
 
   .nav-a,
   .nav-a-active {
-    padding: 10px;
+    padding: 12px 15px;
     width: 100%;
     border: none !important;
     border-radius: 0 !important;
@@ -235,7 +243,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    padding: 10px;
+    padding: 10px 15px;
     position: absolute;
   }
 
@@ -246,6 +254,7 @@
     color: var(--text);
     text-decoration: none;
     margin-left: 0.5rem;
+    padding: 8px 0;
   }
 
   .nav-footer a:visited {
