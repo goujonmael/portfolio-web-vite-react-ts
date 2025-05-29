@@ -142,7 +142,7 @@ export default function AppRoutes() {
       <div className="floating-ball3"></div>
       <div className="blur-background"></div>
       <Header />
-      <motion.div className="container">
+      <div className="container">
         <Routes>
           <Route
             path="/"
@@ -168,9 +168,7 @@ export default function AppRoutes() {
                     height: "100%",
                   }}
                 >
-                  <AnimatePresence>
-                    <ItemWrapper type="univ" />
-                  </AnimatePresence>
+                  <ItemWrapper type="univ" />
                 </div>
               </>
             }
@@ -189,9 +187,7 @@ export default function AppRoutes() {
                     height: "auto",
                   }}
                 >
-                  <AnimatePresence>
-                    <ItemWrapper type="perso" projetsPerso={projets} />
-                  </AnimatePresence>
+                  <ItemWrapper type="perso" projetsPerso={projets} />
                 </div>
               </>
             }
@@ -205,7 +201,7 @@ export default function AppRoutes() {
           <Route path="/scolarite" element={<Scolarite />} />
           <Route path="*" element={<div>Page not found</div>} />
         </Routes>
-      </motion.div>
+      </div>
     </div>
   );
 }

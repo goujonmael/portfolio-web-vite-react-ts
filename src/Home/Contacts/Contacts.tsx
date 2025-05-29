@@ -84,7 +84,7 @@ const Contacts = () => {
 
           <a onClick={dropdownClicked} className="link">
             <MailIcon />
-            <p className="text">Contacst</p>
+            <p className="text">Contacts</p>
             <i className={`arrow ${isDropdownActive ? "up" : "down"}`}></i>
           </a>
         </div>
