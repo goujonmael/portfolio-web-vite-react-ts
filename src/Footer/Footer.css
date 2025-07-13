@@ -41,7 +41,7 @@
 
     .footer a:hover {
         text-decoration: underline;
-        text-decoration-color: var(--yellow);
+        text-decoration-color: var(--title1);
         text-underline-offset: 4px;
     }
 }

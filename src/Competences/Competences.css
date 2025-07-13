@@ -18,7 +18,7 @@
 }
 
 .title-first-letter {
-  color: var(--yellow);
+  color: var(--title1);
   font-family: Turret Road;
   font-weight: 800;
 }
@@ -40,7 +40,7 @@
 
 .underline {
   text-decoration: underline;
-  text-decoration-color: var(--yellow);
+  text-decoration-color: var(--title1);
   text-decoration-thickness: 0.1rem;
   color: var(--text);
   cursor: pointer;
@@ -127,11 +127,11 @@
   margin: 1rem 0;
   font-family: var(--font-text);
   align-self: start;
-  border-bottom: 2px solid var(--yellow);
+  border-bottom: 2px solid var(--title1);
 }
 
 .competence:hover {
-  border-color: var(--yellow);
+  border-color: var(--title1);
   border-radius: 20px;
   z-index: 1;
 }
@@ -139,7 +139,7 @@
 .level {
   font-size: 0.8rem;
   font-weight: 700;
-  color: var(--yellow);
+  color: var(--title1);
   position: absolute;
   top: 0;
   right: 0;

@@ -11,37 +11,15 @@
 }
 
 .hello {
-    font-size: 2.5rem;
-    font-weight: 500;
-    font-family: var(--font-text);
-    font-weight: 400;
-    font-style: normal;
-    color: var(--yellow);
-    line-height: 0.8;
-    text-align: center;
-    margin: 0;
+    font-size: 1.875rem;
 }
 
 .portfolio-title {
-    font-size: 5rem;
-    font-weight: 500;
-    font-family: var(--font-title);
-    font-weight: 800;
-    font-style: normal;
-    color: var(--title);
-    line-height: 0.8;
-    text-align: center;
-    margin: 0;
+    font-size: 3rem;
 }
 
 @media only screen and (max-width: 600px) {
-    .hello {
-        font-size: 1.875rem;
-    }
 
-    .portfolio-title {
-        font-size: 3rem;
-    }
 
     .Welcome {
         height: fit-content;
