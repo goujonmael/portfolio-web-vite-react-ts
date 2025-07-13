@@ -1,9 +1,7 @@
-import { Route, Routes, useParams, Link } from "react-router-dom";
+import { Route, Routes, useParams } from "react-router-dom";
 import Welcome from "./Home/Welcome/Welcome";
-import StarOfLife from "./Home/StarOfLife/StarOfLife";
 import Me from "./Home/Me/Me";
 import { List } from "./Projects/List";
-import { AnimatePresence, motion } from "framer-motion";
 import { Item } from "./Projects/Item";
 import Header from "./Header/Header";
 import { ListPerso } from "./Projects/ListPerso";
