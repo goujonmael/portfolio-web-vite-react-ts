@@ -10,9 +10,9 @@ export default function Welcome() {
             className='Welcome'
         >
             <motion.div>
-                <motion.h1 className='hello'>
+                <motion.h2 className='hello'>
                     Bienvenue sur mon
-                </motion.h1>
+                </motion.h2>
                 <motion.h1 className='portfolio-title'>
                     Portfolio <span style={{ fontFamily: "Lato" }}>{'/>'}</span>
                 </motion.h1>

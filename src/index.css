@@ -29,10 +29,6 @@ html {
   background: var(--title1);
 }
 
-:root {
-  --icon-color: #ba97b5;
-  /* Définissez la couleur que vous souhaitez utiliser */
-}
 
 body {
   min-height: 100vh;
@@ -45,6 +41,7 @@ body {
   --link: #B59973;
   --title1: #FFC268;
   --title2: #DAAE6E;
+  --important: #FFC268;
   --grey: #d9d9d9;
   --clear-blue: #0c4651;
   --dark-blue: #073139;
@@ -52,8 +49,8 @@ body {
   --font-text: "Lato", sans-serif;
   --font-title: "Turret Road", serif;
   --background-color: #58534C;
+  --icon-color: var(--title1);
   transition: opacity 1s ease;
-  /*background: radial-gradient(circle at right center, #38457B, #BA97B5 50%, #FD9C71 95%, #FD9C71);*/
   background-color: var(--background-color);
   z-index: 1;
 }

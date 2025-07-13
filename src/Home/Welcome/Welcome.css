@@ -1,28 +1,29 @@
 .Welcome {
     width: 100%;
     text-align: center;
-    height: 32vh;
+    height: fit-content;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
-    padding: 1rem;
-}
-
-.hello {
-    font-size: 1.875rem;
+    padding: 4rem;
 }
 
 .portfolio-title {
-    font-size: 3rem;
+    font-size: 2.5rem;
+    font-weight: 500;
+    font-family: var(--font-title);
+    font-weight: 800;
+    font-style: normal;
+    color: var(--important);
+    letter-spacing: 0.1rem;
 }
 
 @media only screen and (max-width: 600px) {
 
 
     .Welcome {
-        height: fit-content;
         padding: 1.5rem;
     }
 }
