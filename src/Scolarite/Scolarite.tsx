@@ -1,21 +1,24 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import './Scolarite.css';
 
 const Scolarite: React.FC = () => {
+    const { t } = useTranslation();
+    
     return (
         <div className="scolarite-container">
             <div className="scolarite-header">
-                <h1 className="scolarite-title">Scolarité</h1>
+                <h1 className="scolarite-title">{t('education.title')}</h1>
             </div>
 
             <section>
-                <h2 className="section-title">Alternance et stages</h2>
+                <h2 className="section-title">{t('education.internshipsTitle')}</h2>
                 <div className="formation-list">
                     <div className="formation-card">
                         <div className="formation-header">
                             <div className="formation-info">
-                                <h3 className="formation-title">Alternance - 24 mois</h3>
-                                <p className="formation-etablissement">Airbus Constellations Satellites</p>
+                                <h3 className="formation-title">{t('education.internship')} - 24 {t('education.months')}</h3>
+                                <p className="formation-etablissement">{t('education.airbusSatellites')}</p>
                             </div>
                             <div className="formation-date">09/2024 - 08/2026</div>
                         </div>
@@ -23,8 +26,8 @@ const Scolarite: React.FC = () => {
                     <div className="formation-card">
                         <div className="formation-header">
                             <div className="formation-info">
-                                <h3 className="formation-title">Stage - 11 semaines</h3>
-                                <p className="formation-etablissement">Airbus OneWeb</p>
+                                <h3 className="formation-title">{t('education.internshipShort')} - 11 {t('education.weeks')}</h3>
+                                <p className="formation-etablissement">{t('education.airbusOneWeb')}</p>
                             </div>
                             <div className="formation-date">04/2024 - 06/2024</div>
                         </div>
@@ -32,9 +35,8 @@ const Scolarite: React.FC = () => {
                 </div>
             </section>
 
-
             <section>
-                <h2 className="section-title">Parcours Académique</h2>
+                <h2 className="section-title">{t('education.educationTitle')}</h2>
                 <div className="formation-list">
                     <div className="formation-card">
                         <div className="formation-header">

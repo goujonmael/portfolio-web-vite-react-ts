@@ -158,6 +158,12 @@
   display: none;
 }
 
+.language-switch-container {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
 @media (max-width: 768px) {
   .header {
     justify-content: space-between;
@@ -269,5 +275,10 @@
   .nav-a-active {
     color: white !important;
     background-color: var(--title1) !important;
+  }
+
+  .language-switch-container {
+    position: absolute;
+    margin-right: 0;
   }
 }

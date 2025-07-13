@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import "./Me.css";
 
 export default function Me() {
@@ -7,6 +8,7 @@ export default function Me() {
   const [isAirbusHovered, setIsAirbusHovered] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
   const constraintsRef = useRef(null);
+  const { t } = useTranslation();
 
   return (
     <div className="borders">
@@ -55,7 +57,7 @@ export default function Me() {
 
                       </td>
                       <td>
-                        <span style={{ color: "var(--text)" }}>
+                        <span style={{ color: "var(--text)", paddingLeft: "0.3rem" }}>
                           {isIutHovered && (
                             <motion.div
                               animate={{
@@ -93,14 +95,14 @@ export default function Me() {
                               </svg>
                             </motion.div>
                           )}
-                          Étudiant en{" "}
+                          {t('home.about.student')}{" "}
                           <a
                             className="but"
                             href="https://www.univ-tlse3.fr/decouvrir-nos-diplomes/but-informatique-parcours-deploiement-dapplications-communicantes-et-securisees-toulouse"
                             onMouseEnter={() => setIsIutHovered(true)}
                             onMouseLeave={() => setIsIutHovered(false)}
                           >
-                            Informatique
+                            {t('home.about.computerScience')}
                           </a>
                         </span>
                       </td>
@@ -126,8 +128,8 @@ export default function Me() {
                         </svg>
                       </td>
                       <td>
-                        <span style={{ color: "var(--text)" }}>
-                          Alternant chez{" "}
+                        <span style={{ color: "var(--text)", paddingLeft: "0.3rem" }}>
+                          {t('home.about.internAt')}{" "}
                           <a
                             className="airbus"
                             href="https://www.airbus.com/en/products-services/space/telecommunications-and-navigation-satellites"

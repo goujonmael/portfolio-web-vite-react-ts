@@ -1,4 +1,5 @@
 import "./Contacts.css";
+import { useTranslation } from "react-i18next";
 import LinkedInIcon from "../../assets/Icons/LinkedInIcon";
 import GitHubIcon from "../../assets/Icons/GitHubIcon";
 import CVIcon from "../../assets/Icons/CVIcon";
@@ -6,13 +7,14 @@ import MailIcon from "../../assets/Icons/MailIcon";
 import THMIcon from "../../assets/Icons/THMIcon";
 
 const Contacts = () => {
+  const { t } = useTranslation();
 
   return (
     <div className="contacts-container">
       <div className="contacts-header">
-        <h1 className="contacts-title">Restons en contact</h1>
+        <h1 className="contacts-title">{t('home.contact.stayInTouch')}</h1>
         <p className="contacts-subtitle">
-          N'hésitez pas à me contacter pour discuter de vos projets ou opportunités
+          {t('home.contact.subtitle')}
         </p>
       </div>
 
@@ -24,8 +26,8 @@ const Contacts = () => {
               <LinkedInIcon />
             </div>
             <div className="contact-card-info">
-              <h3>LinkedIn</h3>
-              <p>Connectons-nous professionnellement</p>
+              <h3>{t('home.contact.linkedin')}</h3>
+              <p>{t('home.contact.linkedinDesc')}</p>
             </div>
           </div>
           <div className="contact-card-footer">
@@ -33,7 +35,7 @@ const Contacts = () => {
               onClick={() => window.open("https://www.linkedin.com/in/ma%C3%ABl-goujon-88635b227", "_blank", "noopener,noreferrer")}
               className="contact-button"
             >
-              Voir le profil
+              {t('home.contact.viewProfile')}
             </button>
           </div>
         </div>
@@ -44,8 +46,8 @@ const Contacts = () => {
               <CVIcon />
             </div>
             <div className="contact-card-info">
-              <h3>Mon CV</h3>
-              <p>Téléchargez mon curriculum vitae</p>
+              <h3>{t('home.contact.cv')}</h3>
+              <p>{t('home.contact.cvDesc')}</p>
             </div>
           </div>
           <div className="contact-card-footer">
@@ -53,7 +55,7 @@ const Contacts = () => {
               onClick={() => window.open("/files/CV_GOUJON_Mael.pdf", "_blank", "noopener,noreferrer")}
               className="contact-button"
             >
-              Télécharger PDF
+              {t('home.contact.downloadPDF')}
             </button>
           </div>
         </div>
@@ -64,8 +66,8 @@ const Contacts = () => {
               <MailIcon />
             </div>
             <div className="contact-card-info">
-              <h3>Par courriel</h3>
-              <p>Contactez-moi aussi par mail</p>
+              <h3>{t('home.contact.byEmail')}</h3>
+              <p>{t('home.contact.emailDesc')}</p>
             </div>
           </div>
           <div className="contact-card-footer">
@@ -73,16 +75,16 @@ const Contacts = () => {
               onClick={() => window.open("mailto:goujonmael@gmail.com", "_blank", "noopener,noreferrer")}
               className="contact-button"
             >
-              Envoyer un email
+              {t('home.contact.emailAction')}
             </button>
           </div>
         </div>
       </div>
 
       <div className="contacts-header">
-        <h1 className="contacts-title">Me retrouver</h1>
+        <h1 className="contacts-title">{t('home.contact.findMe')}</h1>
         <p className="contacts-subtitle">
-          Vous pouvez aussi me retrouver sur les plateformes suivantes :
+          {t('home.contact.platformsSubtitle')}
         </p>
       </div>
       <div className="contacts-grid">
@@ -95,7 +97,7 @@ const Contacts = () => {
             </div>
             <div className="contact-card-info">
               <h3>TryHackMe</h3>
-              <p>Accédez à mes classements et exploits</p>
+              <p>{t('home.contact.tryhackmeDesc')}</p>
             </div>
           </div>
           <div className="contact-card-footer">
@@ -103,7 +105,7 @@ const Contacts = () => {
               onClick={() => window.open("https://tryhackme.com/p/GoGoGadg3t", "_blank", "noopener,noreferrer")}
               className="contact-button"
             >
-              Voir le profil
+              {t('home.contact.viewProfile')}
             </button>
           </div>
         </div>
@@ -114,8 +116,8 @@ const Contacts = () => {
               <GitHubIcon />
             </div>
             <div className="contact-card-info">
-              <h3>GitHub Personnel</h3>
-              <p>Explorez mes projets personnels</p>
+              <h3>{t('home.contact.githubPersonal')}</h3>
+              <p>{t('home.contact.githubPersonalDesc')}</p>
             </div>
           </div>
           <div className="contact-card-footer">
@@ -123,7 +125,7 @@ const Contacts = () => {
               onClick={() => window.open("https://github.com/goujonmael", "_blank", "noopener,noreferrer")}
               className="contact-button"
             >
-              Voir les projets
+              {t('home.contact.viewProjects')}
             </button>
           </div>
         </div>
@@ -134,8 +136,8 @@ const Contacts = () => {
               <GitHubIcon />
             </div>
             <div className="contact-card-info">
-              <h3>GitHub Étudiant</h3>
-              <p>Découvrez mes projets académiques</p>
+              <h3>{t('home.contact.githubStudent')}</h3>
+              <p>{t('home.contact.githubStudentDesc')}</p>
             </div>
           </div>
           <div className="contact-card-footer">
@@ -143,7 +145,7 @@ const Contacts = () => {
               onClick={() => window.open("https://github.com/maelgoujon", "_blank", "noopener,noreferrer")}
               className="contact-button"
             >
-              Voir les projets
+              {t('home.contact.viewProjects')}
             </button>
           </div>
         </div>

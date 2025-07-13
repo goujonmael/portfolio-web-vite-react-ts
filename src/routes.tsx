@@ -10,6 +10,7 @@ import Competences from "./Competences/Competences";
 import React, { useEffect, useState, useCallback } from "react";
 import Contacts from "./Home/Contacts/Contacts";
 import Scolarite from "./Scolarite/Scolarite";
+import { useTranslation } from "react-i18next";
 
 interface StoreProps {
   typeOfList?: string;
@@ -18,13 +19,14 @@ interface StoreProps {
 
 const Store: React.FC<StoreProps> = React.memo(({ typeOfList, projets }) => {
   let { id } = useParams<{ id: string }>();
+  const { t } = useTranslation();
 
   return (
     <>
       <div className="competences-div">
         <h1 className="title">
           <span className="title-first-letter">P</span>rojets{" "}
-          {typeOfList === "univ" ? "Universitaires" : "Personnels"}
+          {typeOfList === "univ" ? t('projects.university.title').split(' ')[1] : t('projects.personal.title').split(' ')[1]}
         </h1>
       </div>
       <div className="content">
@@ -33,19 +35,17 @@ const Store: React.FC<StoreProps> = React.memo(({ typeOfList, projets }) => {
             {typeOfList === "univ" ? (
               <div>
                 <p>
-                  Projets réalisés dans le cadre de mes études en informatique.
+                  {t('projects.university.description')}
                 </p>
                 <p>
-                  Tous ont étés effectués en groupe grâce aux méthodes agiles et
-                  Kanban.
+                  {t('projects.university.teamwork')}
                 </p>
               </div>
             ) : (
               <div>
-                <p>Projets réalisés en dehors du cadre universitaire.</p>
+                <p>{t('projects.personal.description')}</p>
                 <p>
-                  Ces travaux résultent de ma curiosité pour l'informatique,
-                  l'électronique et les nouvelles technologies.
+                  {t('projects.personal.motivation')}
                 </p>
               </div>
             )}

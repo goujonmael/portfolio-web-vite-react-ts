@@ -1,7 +1,10 @@
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import './Welcome.css';
 
 export default function Welcome() {
+    const { t } = useTranslation();
+
     return (
         <motion.div
             initial={{ opacity: 0 }}
@@ -11,7 +14,7 @@ export default function Welcome() {
         >
             <motion.div>
                 <motion.h2 className='hello'>
-                    Bienvenue sur mon
+                    {t('home.welcome.title')}
                 </motion.h2>
                 <motion.h1 className='portfolio-title'>
                     Portfolio <span style={{ fontFamily: "Lato" }}>{'/>'}</span>

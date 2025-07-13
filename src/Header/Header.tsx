@@ -1,15 +1,18 @@
 import { useState } from "react";
 import "./Header.css";
 import { useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import LinkedInIcon from "../assets/Icons/LinkedInIcon";
 import GitHubIcon from "../assets/Icons/GitHubIcon";
 import CVIcon from "../assets/Icons/CVIcon";
 import MailIcon from "../assets/Icons/MailIcon";
+import LanguageSwitch from "../components/LanguageSwitch/LanguageSwitch";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
   const path = location.pathname.slice(1);
+  const { t } = useTranslation();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -17,33 +20,36 @@ export default function Header() {
 
   return (
     <header className="header">
+      <div className="language-switch-container">
+        <LanguageSwitch />
+      </div>
       <div className={`nav ${isOpen ? "open" : ""}`}>
         <a href="/" className={path === "" ? "nav-a-active" : "nav-a"}>
-          Accueil
+          {t('header.home')}
         </a>
         <a
           href="/scolarite"
           className={path === "scolarite" ? "nav-a-active" : "nav-a"}
         >
-          Scolarité
+          {t('header.education')}
         </a>
         <a
           href="/competences"
           className={path === "competences" ? "nav-a-active" : "nav-a"}
         >
-          Compétences
+          {t('header.skills')}
         </a>
         <a
           href="/projets-univ"
           className={path === "projets-univ" ? "nav-a-active" : "nav-a"}
         >
-          Projets universitaires
+          {t('header.universityProjects')}
         </a>
         <a
           href="/projets-perso"
           className={path === "projets-perso" ? "nav-a-active" : "nav-a"}
         >
-          Projets personnels
+          {t('header.personalProjects')}
         </a>
         <div className="separator"></div>
         <div className="nav-footer">
@@ -53,7 +59,7 @@ export default function Header() {
             rel="noopener noreferrer"
           >
             <LinkedInIcon />
-            LinkedIn
+            {t('home.contact.linkedin')}
           </a>
           <a
             href="https://github.com/maelgoujon"
@@ -78,12 +84,12 @@ export default function Header() {
             rel="noopener noreferrer"
           >
             <CVIcon />
-            Mon CV
+            {t('home.contact.cv')}
           </a>
           {/* prendre contact */}
           <a href="mailto:goujonmael@gmail.com">
             <MailIcon />
-            Contacts
+            {t('home.contact.title')}
           </a>
         </div>
       </div>

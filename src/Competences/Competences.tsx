@@ -1,5 +1,6 @@
 import "./Competences.css";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { projetsUniv } from "../Projects/projetsUniv";
 import { competences } from "./competences";
 
@@ -11,6 +12,8 @@ interface Competence {
 }
 
 export default function Competences() {
+  const { t } = useTranslation();
+
   return (
     <div className="competences-container">
       <h1 className="title">
@@ -19,26 +22,24 @@ export default function Competences() {
       <div className="content">
         <div className="description">
           <p>
-            Acquises lors de ma formation en informatique, spécialité{" "}
+            {t('skills.intro')}{" "}
             <Link
               className="underline"
               to="https://www.univ-tlse3.fr/decouvrir-nos-diplomes/but-informatique-parcours-deploiement-dapplications-communicantes-et-securisees-toulouse"
               target="_blank"
             >
-              réseau et sécurité
+              {t('skills.networkSecurity')}
             </Link>
             .
           </p>
           <p>
-            Niveau 1 acquis en première année, niveau 2 en deuxième année, etc.
+            {t('skills.levelsExplanation')}
           </p>
           <p>
-            Les niveaux sont communs à toutes les spécialités (développement,
-            bases de données, réseau et sécurité).
+            {t('skills.commonLevels')}
           </p>
           <p>
-            Le niveau 3 n'est atteint que pour les compétences en réseau et
-            sécurité.
+            {t('skills.networkSecurityLevel')}
           </p>
           <p>
             <Link
@@ -46,7 +47,7 @@ export default function Competences() {
               to="https://www.univ-tlse3.fr/decouvrir-nos-diplomes/but-informatique-parcours-deploiement-dapplications-communicantes-et-securisees-toulouse#programme"
               target="_blank"
             >
-              Programme national de formation
+              {t('skills.nationalTrainingProgram')}
             </Link>
           </p>
         </div>
