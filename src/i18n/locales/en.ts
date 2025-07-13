@@ -17,6 +17,7 @@ export const enTranslations = {
       description: "I am a computer science student passionate about web development and new technologies. I love creating modern and performant web applications.",
       student: "Student in",
       computerScience: "Computer Science",
+      motivations: "Motivated by Cyber-Security and IT",
       internAt: "Apprentice at"
     },
     contact: {

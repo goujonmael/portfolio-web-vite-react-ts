@@ -4,7 +4,7 @@ import './Scolarite.css';
 
 const Scolarite: React.FC = () => {
     const { t } = useTranslation();
-    
+
     return (
         <div className="scolarite-container">
             <div className="scolarite-header">
@@ -18,6 +18,7 @@ const Scolarite: React.FC = () => {
                         <div className="formation-header">
                             <div className="formation-info">
                                 <h3 className="formation-title">{t('education.internship')} - 24 {t('education.months')}</h3>
+                                <p className="formation-specialite">Software Developer, CI/CD, Java</p>
                                 <p className="formation-etablissement">{t('education.airbusSatellites')}</p>
                             </div>
                             <div className="formation-date">09/2024 - 08/2026</div>
@@ -27,6 +28,7 @@ const Scolarite: React.FC = () => {
                         <div className="formation-header">
                             <div className="formation-info">
                                 <h3 className="formation-title">{t('education.internshipShort')} - 11 {t('education.weeks')}</h3>
+                                <p className="formation-specialite">System Administrator, Ansible, Linux servers</p>
                                 <p className="formation-etablissement">{t('education.airbusOneWeb')}</p>
                             </div>
                             <div className="formation-date">04/2024 - 06/2024</div>
@@ -42,6 +44,7 @@ const Scolarite: React.FC = () => {
                         <div className="formation-header">
                             <div className="formation-info">
                                 <h3 className="formation-title">L3 Informatique Réseaux et Telecoms</h3>
+                                <p className="formation-specialite">Telecommunications, Networks and CyberSecurity</p>
                                 <p className="formation-etablissement">Universite de Toulouse (Paul Sabatier)</p>
                             </div>
                             <div className="formation-date">2025 - Présent</div>
@@ -79,7 +82,7 @@ const Scolarite: React.FC = () => {
                     </div>
                 </div>
             </section>
-            
+
         </div>
     );
 };
