@@ -19,14 +19,16 @@
   position: relative;
   padding: 10px 15px;
   text-decoration: none;
-  color: var(--text);
+  color: var(--title1);
   font-family: var(--font-text);
   font-weight: 700;
   font-size: 0.9rem;
-  border-radius: 20px;
-  margin-right: 10px;
   text-transform: uppercase;
-  transition: color 0.3s, transform 0.3s ease-out;
+  transition: border-radius 0.5s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+
+  background-color: transparent;
+  box-shadow: none;
+  border-radius: 0;
 }
 
 .header .nav-a-active::before {
@@ -34,11 +36,15 @@
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 100%;
+  width: 70%;
   height: 2px;
   background-color: var(--title1);
   transform-origin: bottom right;
   transition: transform 0.3s ease-out;
+  /* center the underline */
+  transform: translateX(-50%);
+  left: 50%;
+  transition: width 0.3s ease-out;
 }
 
 .header .nav-a-active:hover::before,
@@ -52,8 +58,11 @@
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 100%;
+  width: 70%;
   height: 2px;
+  /* center the underline */
+  transform: translateX(-50%);
+  left: 50%;
   background-color: var(--title1);
   transform-origin: bottom;
   transition: transform 0.3s ease-out;
@@ -163,6 +172,19 @@
   align-items: center;
   margin-right: 20px;
 }
+
+
+
+
+
+.nav-a:hover {
+  background-color: rgba(255, 194, 104, 0.5);
+  box-shadow: 0 10px 30px rgba(255, 194, 104, 0.5);
+  border-radius: 5px; /* La valeur finale du border-radius */
+}
+
+
+
 
 @media (max-width: 768px) {
   .header {
