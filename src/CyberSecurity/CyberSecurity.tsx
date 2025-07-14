@@ -43,15 +43,33 @@ const CyberSecurity: React.FC = () => {
         const fetchData = async () => {
             try {
                 const profileResponse = await axios.get('/api');
-                const profileData = profileResponse.data.data;
-                const { topPercentage, rank, completedRoomsNumber, badgesNumber } = profileData;
-                setBadges(badgesNumber);
-                setCompletionPercentage(completedRoomsNumber);
-                setRanking(topPercentage + '%' + ' (' + rank + ')');
+                const profileData = profileResponse.data?.data;
+                
+                if (profileData) {
+                    const { 
+                        topPercentage = 0, 
+                        rank = 0, 
+                        completedRoomsNumber = 0, 
+                        badgesNumber = 0 
+                    } = profileData;
+                    
+                    setBadges(badgesNumber);
+                    setCompletionPercentage(completedRoomsNumber);
+                    setRanking(topPercentage + '%' + ' (' + rank + ')');
+                } else {
+                    console.warn('Profile data is undefined');
+                }
                 setIsLoadingStats(false);
 
                 const certificatesResponse = await axios.get('/certificates');
-                setCertificates(certificatesResponse.data.data.docs);
+                const certificatesData = certificatesResponse.data?.data?.docs;
+                
+                if (certificatesData && Array.isArray(certificatesData)) {
+                    setCertificates(certificatesData);
+                } else {
+                    console.warn('Certificates data is undefined or not an array');
+                    setCertificates([]);
+                }
                 setIsLoadingCertificates(false);
             } catch (error) {
                 console.error('Error fetching data:', error);
