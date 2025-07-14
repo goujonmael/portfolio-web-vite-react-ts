@@ -38,6 +38,7 @@ body {
   --divider: #343434;
   --text-dark: #0c4651;
   --text: #a9a9a9;
+  --text-secondary: #a9a9a9;
   --link: #B59973;
   --title1: #FFC268;
   --title2: #DAAE6E;
@@ -48,6 +49,10 @@ body {
   --header-padding: 5vh;
   --font-text: "Lato", sans-serif;
   --font-title: "Turret Road", serif;
+  --font-mono: "Courier New", monospace;
+  --success-color: #22c55e;
+  --warning-color: #f59e0b;
+  --danger-color: #ef4444;
   --background-color: #58534C;
   --icon-color: var(--title1);
   transition: opacity 1s ease;

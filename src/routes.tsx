@@ -10,6 +10,7 @@ import Competences from "./Competences/Competences";
 import React, { useEffect, useState, useCallback } from "react";
 import Contacts from "./Home/Contacts/Contacts";
 import Scolarite from "./Scolarite/Scolarite";
+import CyberSecurity from "./CyberSecurity/CyberSecurity";
 import { useTranslation } from "react-i18next";
 
 interface StoreProps {
@@ -152,6 +153,8 @@ export default function AppRoutes() {
               </>
             }
           />
+
+          <Route path="/cybersecurity" element={<CyberSecurity />} />
           <Route
             path="/projets-univ/:id"
             element={

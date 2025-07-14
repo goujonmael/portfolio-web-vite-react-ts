@@ -4,7 +4,8 @@
     "education": "Scolarité",
     "skills": "Compétences",
     "universityProjects": "Projets universitaires",
-    "personalProjects": "Projets personnels"
+    "personalProjects": "Projets personnels",
+    "cybersecurity": "CyberSécurité"
   },
   "home": {
     "welcome": {
@@ -60,6 +61,60 @@
   "education": {
     "title": "Scolarité",
     "description": "Mon parcours scolaire et académique"
+  },
+  "cybersecurity": {
+    "title": "CyberSécurité",
+    "subtitle": "Mes certifications et compétences en cybersécurité obtenues sur TryHackMe",
+    "tryhackme": {
+      "description": "Plateforme d'apprentissage en cybersécurité où j'ai développé mes compétences en sécurité informatique à travers des défis pratiques et des laboratoires virtuels."
+    },
+    "stats": {
+      "badges": "Badges",
+      "certificates": "Certificats",
+      "completion": "Progression",
+      "ranking": "Classement"
+    },
+    "certificates": {
+      "title": "Certificats Obtenus",
+      "viewCertificate": "Voir le Certificat",
+      "preSecurity": {
+        "description": "Introduction aux concepts fondamentaux de la cybersécurité et aux principes de base de la sécurité informatique."
+      },
+      "introCyber": {
+        "description": "Aperçu complet des carrières en cybersécurité, des menaces communes et des mesures de protection."
+      },
+      "webFundamentals": {
+        "description": "Fondamentaux de la sécurité web, vulnérabilités courantes et techniques de sécurisation des applications web."
+      },
+      "jrPenTester": {
+        "description": "Certification avancée couvrant les méthodologies de test de pénétration et les techniques d'évaluation de sécurité."
+      },
+      "completeBeginner": {
+        "description": "Parcours complet pour débutants couvrant les bases de la cybersécurité et les outils essentiels."
+      },
+      "offensivePentesting": {
+        "description": "Techniques avancées de test de pénétration offensif et d'exploitation de vulnérabilités."
+      },
+      "webAppSec": "Sécurité des applications web et protection contre les vulnérabilités courantes",
+      "networkSec": "Fondamentaux de la sécurité réseau et protection des infrastructures",
+      "penTest": "Techniques de base du test de pénétration et évaluation de sécurité",
+      "digitalForensics": "Analyse forensique numérique et investigation d'incidents de sécurité"
+    },
+    "skills": {
+      "title": "Compétences Développées",
+      "categories": {
+        "penetrationTesting": "Test de Pénétration",
+        "networkSecurity": "Sécurité Réseau",
+        "systemSecurity": "Sécurité Système"
+      }
+    },
+    "profile": {
+      "title": "Profil TryHackMe",
+      "tryhackmeProfile": "Mon Profil TryHackMe",
+      "description": "Consultez mon profil complet sur TryHackMe pour voir mes progrès, mes statistiques et mes réalisations en cybersécurité.",
+      "viewProfile": "Voir le Profil"
+    },
+    "verified": "Vérifié"
   },
   "skills": {
     "title": "Compétences",

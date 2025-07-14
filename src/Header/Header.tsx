@@ -34,6 +34,12 @@ export default function Header() {
           {t('header.education')}
         </a>
         <a
+          href="/cybersecurity"
+          className={path === "cybersecurity" ? "nav-a-active" : "nav-a"}
+        >
+          {t('header.cybersecurity')}
+        </a>
+        <a
           href="/competences"
           className={path === "competences" ? "nav-a-active" : "nav-a"}
         >

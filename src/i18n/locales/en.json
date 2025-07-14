@@ -4,7 +4,8 @@
     "education": "Education",
     "skills": "Skills",
     "universityProjects": "University Projects",
-    "personalProjects": "Personal Projects"
+    "personalProjects": "Personal Projects",
+    "cybersecurity": "CyberSecurity"
   },
   "home": {
     "welcome": {
@@ -60,6 +61,60 @@
   "education": {
     "title": "Education",
     "description": "My educational and academic background"
+  },
+  "cybersecurity": {
+    "title": "CyberSecurity",
+    "subtitle": "My cybersecurity certifications and skills obtained on TryHackMe",
+    "tryhackme": {
+      "description": "Cybersecurity learning platform where I developed my computer security skills through practical challenges and virtual laboratories."
+    },
+    "stats": {
+      "badges": "Badges",
+      "certificates": "Certificates",
+      "completion": "Completion",
+      "ranking": "Ranking"
+    },
+    "certificates": {
+      "title": "Obtained Certificates",
+      "viewCertificate": "View Certificate",
+      "preSecurity": {
+        "description": "Introduction to fundamental cybersecurity concepts and basic computer security principles."
+      },
+      "introCyber": {
+        "description": "Comprehensive overview of cybersecurity careers, common threats, and protection measures."
+      },
+      "webFundamentals": {
+        "description": "Web security fundamentals, common vulnerabilities, and web application security techniques."
+      },
+      "jrPenTester": {
+        "description": "Advanced certification covering penetration testing methodologies and security assessment techniques."
+      },
+      "completeBeginner": {
+        "description": "Complete beginner path covering cybersecurity basics and essential tools."
+      },
+      "offensivePentesting": {
+        "description": "Advanced offensive penetration testing techniques and vulnerability exploitation."
+      },
+      "webAppSec": "Web application security and protection against common vulnerabilities",
+      "networkSec": "Network security fundamentals and infrastructure protection",
+      "penTest": "Basic penetration testing techniques and security assessment",
+      "digitalForensics": "Digital forensics analysis and security incident investigation"
+    },
+    "skills": {
+      "title": "Developed Skills",
+      "categories": {
+        "penetrationTesting": "Penetration Testing",
+        "networkSecurity": "Network Security",
+        "systemSecurity": "System Security"
+      }
+    },
+    "profile": {
+      "title": "TryHackMe Profile",
+      "tryhackmeProfile": "My TryHackMe Profile",
+      "description": "Check out my complete TryHackMe profile to see my progress, statistics, and cybersecurity achievements.",
+      "viewProfile": "View Profile"
+    },
+    "verified": "Verified"
   },
   "skills": {
     "title": "Skills",
