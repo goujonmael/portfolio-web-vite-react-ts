@@ -4,14 +4,6 @@ import './CyberSecurity.css';
 import THMIcon from '../assets/Icons/THMIcon';
 import axios from 'axios';
 
-interface Certificate {
-    name: string;
-    category: string;
-    level: string;
-    date: string;
-    description: string;
-}
-
 interface CertificateData {
     _id: string;
     name: string;
@@ -29,36 +21,48 @@ const CyberSecurity: React.FC = () => {
     const [completionPercentage, setCompletionPercentage] = useState(0);
     const [ranking, setRanking] = useState('');
     const [certificates, setCertificates] = useState<CertificateData[]>([]);
+    const [isLoadingStats, setIsLoadingStats] = useState(true);
+    const [isLoadingCertificates, setIsLoadingCertificates] = useState(true);
+
+    const StatLoader = () => (
+        <div className="stat-loader">
+            <div className="stat-loader-pulse"></div>
+        </div>
+    );
+
+    const CertificateLoader = () => (
+        <div className="certificate-loader">
+            <div className="certificate-loader-image"></div>
+            <div className="certificate-loader-title"></div>
+            <div className="certificate-loader-date"></div>
+            <div className="certificate-loader-description"></div>
+        </div>
+    );
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const profileResponse = await axios.get('/api');
                 const profileData = profileResponse.data.data;
-                const { topPercentage, username, level, rank, isInTopTenPercent, completedRoomsNumber, badgesNumber } = profileData;
+                const { topPercentage, rank, completedRoomsNumber, badgesNumber } = profileData;
                 setBadges(badgesNumber);
                 setCompletionPercentage(completedRoomsNumber);
                 setRanking(topPercentage + '%' + ' (' + rank + ')');
+                setIsLoadingStats(false);
 
                 const certificatesResponse = await axios.get('/certificates');
                 setCertificates(certificatesResponse.data.data.docs);
+                setIsLoadingCertificates(false);
             } catch (error) {
                 console.error('Error fetching data:', error);
+                setIsLoadingStats(false);
+                setIsLoadingCertificates(false);
             }
         };
 
 
         fetchData();
     }, []);
-
-    const getLevelColor = (level: string) => {
-        switch (level) {
-            case 'Beginner': return 'var(--success-color)';
-            case 'Intermediate': return 'var(--warning-color)';
-            case 'Advanced': return 'var(--danger-color)';
-            default: return 'var(--title1)';
-        }
-    };
 
     return (
         <div className="cybersecurity-container">
@@ -76,16 +80,34 @@ const CyberSecurity: React.FC = () => {
                         <p className="platform-description">{t('cybersecurity.tryhackme.description')}</p>
                         <div className="platform-stats">
                             <div className="stat">
-                                <span className="stat-value">{badges}</span>
-                                <span className="stat-label">{t('cybersecurity.stats.badges')}</span>
+                                {isLoadingStats ? (
+                                    <StatLoader />
+                                ) : (
+                                    <>
+                                        <span className="stat-value">{badges}</span>
+                                        <span className="stat-label">{t('cybersecurity.stats.badges')}</span>
+                                    </>
+                                )}
                             </div>
                             <div className="stat">
-                                <span className="stat-value">{completionPercentage}</span>
-                                <span className="stat-label">{t('cybersecurity.stats.completion')}</span>
+                                {isLoadingStats ? (
+                                    <StatLoader />
+                                ) : (
+                                    <>
+                                        <span className="stat-value">{completionPercentage}</span>
+                                        <span className="stat-label">{t('cybersecurity.stats.completion')}</span>
+                                    </>
+                                )}
                             </div>
                             <div className="stat">
-                                <span className="stat-value">{ranking}</span>
-                                <span className="stat-label">{t('cybersecurity.stats.ranking')}</span>
+                                {isLoadingStats ? (
+                                    <StatLoader />
+                                ) : (
+                                    <>
+                                        <span className="stat-value">Top {ranking}</span>
+                                        <span className="stat-label">{t('cybersecurity.stats.ranking')}</span>
+                                    </>
+                                )}
                             </div>
                         </div>
                         <div className="profile-actions">
@@ -142,17 +164,24 @@ const CyberSecurity: React.FC = () => {
             <section className="certificates-section">
                 <h2 className="section-title">{t('cybersecurity.certificates.title')}</h2>
                 <div className="certificates-grid">
-                    {certificates.map((certificate) => (
-                        <div key={certificate._id} className="certificate-card">
-                            <img src={certificate.imageUrl} alt={certificate.title} className="certificate-image" />
-                            <h3 className="certificate-title">{certificate.title}</h3>
-                            <p className="certificate-date">{new Date(certificate.achieved).toLocaleDateString()}</p>
-                            <p className="certificate-description" dangerouslySetInnerHTML={{ __html: certificate.description }}></p>
-                            <a href={certificate.url} target="_blank" rel="noopener noreferrer" className="certificate-link">
-                                {t('cybersecurity.certificates.viewCertificate')}
-                            </a>
-                        </div>
-                    ))}
+                    {isLoadingCertificates ? (
+                        // Affichage de 3 loaders de certificats par défaut
+                        Array.from({ length: 3 }, (_, index) => (
+                            <CertificateLoader key={`loader-${index}`} />
+                        ))
+                    ) : (
+                        certificates.map((certificate) => (
+                            <div key={certificate._id} className="certificate-card">
+                                <img src={certificate.imageUrl} alt={certificate.title} className="certificate-image" />
+                                <h3 className="certificate-title">{certificate.title}</h3>
+                                <p className="certificate-date">{new Date(certificate.achieved).toLocaleDateString()}</p>
+                                <p className="certificate-description" dangerouslySetInnerHTML={{ __html: certificate.description }}></p>
+                                <a href={certificate.url} target="_blank" rel="noopener noreferrer" className="certificate-link">
+                                    {t('cybersecurity.certificates.viewCertificate')}
+                                </a>
+                            </div>
+                        ))
+                    )}
                 </div>
             </section>
         </div>
