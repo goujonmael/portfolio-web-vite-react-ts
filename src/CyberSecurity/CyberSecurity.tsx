@@ -41,8 +41,8 @@ const CyberSecurity: React.FC = () => {
         </div>
     );
 
-    const stripHtmlTags = (html) => {
-        let strippedHtml = html.replace(/<p>(.*?)<\/p>/g, (match, content) => {
+    const stripHtmlTags = (html: string): string => {
+        let strippedHtml = html.replace(/<p>(.*?)<\/p>/g, (_match: string, content: string) => {
             if (content.trim() === '') {
                 return '';
             }
