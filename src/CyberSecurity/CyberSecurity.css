@@ -76,8 +76,11 @@
 
 .platform-description {
   color: var(--text-secondary);
-  font-size: 1.1rem;
+  font-size: 1rem;
+  /* Adjust font size for better fit */
   margin-bottom: 1.5rem;
+  word-wrap: break-word;
+  /* Ensure long words break to the next line */
 }
 
 .platform-stats {
@@ -374,6 +377,25 @@
   flex-shrink: 0;
 }
 
+
+.thm-badge {
+  width: 329px;
+  height: 88px;
+  position: relative;
+  overflow: hidden;
+  display: block;
+}
+
+
+.thm-badge iframe {
+  width: 329px;
+  height: 88px;
+  display: block;
+  border: none;
+}
+
+
+
 /* Loaders */
 .stat-loader {
   display: flex;
@@ -426,26 +448,31 @@
 
 
 .certificate-description ul {
-  list-style-type: none; /* Supprime les puces par défaut */
+  list-style-type: none;
+  /* Supprime les puces par défaut */
   padding-left: 0;
 }
 
 .certificate-description li::before {
   padding-right: 8px;
-  color: var(--text-secondary); /* Assurez-vous que la couleur correspond à votre thème */
+  color: var(--text-secondary);
+  /* Assurez-vous que la couleur correspond à votre thème */
 }
 
 .certificate-description {
   color: var(--text-secondary);
   line-height: 1.6;
   margin-bottom: 1.5rem;
-  white-space: pre-line; /* Respecte les sauts de ligne */
+  white-space: pre-line;
+  /* Respecte les sauts de ligne */
 }
 
 .certificate-description p {
-  margin: 0 0 0.5em 0; /* Ajoute un peu d'espace après chaque paragraphe */
+  margin: 0 0 0.5em 0;
+  /* Ajoute un peu d'espace après chaque paragraphe */
   position: relative;
-  padding-left: 1.2em; /* Espace pour la puce */
+  padding-left: 1.2em;
+  /* Espace pour la puce */
 }
 
 
@@ -489,6 +516,7 @@
   0% {
     background-position: 200% 0;
   }
+
   100% {
     background-position: -200% 0;
   }
@@ -499,6 +527,7 @@
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -510,81 +539,86 @@
   .cybersecurity-container {
     padding: 1rem;
   }
-  
+
   .cybersecurity-title {
     font-size: 2rem;
   }
-  
+
   .certificates-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .platform-info {
     flex-direction: column;
     text-align: center;
   }
-  
+
   .platform-stats {
-    justify-content: center;
-    flex-wrap: wrap;
+    align-items: flex-start;
     gap: 1rem;
   }
-  
-  .stat {
-    flex: 1;
-    min-width: 140px;
-    max-width: 200px;
+
+  .platform-details {
+    width: 100%;
   }
-  
+
+  .platform-description {
+    font-size: 0.9rem;
+    /* Further reduce font size on smaller screens */
+  }
+
+  .stat {
+    width: 100%;
+  }
+
   .profile-actions {
     justify-content: center;
     margin-top: 1.5rem;
     width: 100%;
   }
-  
+
   .profile-actions .profile-link {
     padding: 0.75rem 1.5rem;
     font-size: 0.9rem;
     min-width: 0;
   }
-  
+
   .profile-actions .profile-link svg {
     width: 1.1rem;
     height: 1.1rem;
   }
-  
+
   .skills-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .profile-content {
     flex-direction: column;
     text-align: center;
   }
-  
+
   .certificate-header {
     flex-direction: column;
     text-align: center;
   }
+
 }
 
 @media (max-width: 640px) {
   .platform-stats {
-    flex-direction: column;
     align-items: center;
   }
-  
+
   .stat {
     width: 100%;
-    max-width: 300px;
     min-width: auto;
   }
-  
+
   .profile-actions {
     justify-content: center;
     width: 100%;
   }
-  
+
   .profile-actions .profile-link {
     padding: 0.75rem 1.5rem;
     font-size: 0.9rem;
@@ -596,39 +630,41 @@
   .cybersecurity-title {
     font-size: 1.8rem;
   }
-  
-  .platform-stats {
-    flex-direction: column;
+
+  .platform-stats {    
     gap: 1rem;
   }
-  
+
+  .platform-description {
+    font-size: 0.8rem; /* Even smaller font size for very small screens */
+  }
+
   .stat {
     min-width: auto;
     width: 100%;
-    max-width: none;
   }
-  
+
   .profile-actions {
     justify-content: center;
     width: 100%;
   }
-  
+
   .profile-actions .profile-link {
     padding: 0.7rem 1.2rem;
     font-size: 0.85rem;
     gap: 0.4rem;
     white-space: nowrap;
   }
-  
+
   .profile-actions .profile-link svg {
     width: 1rem;
     height: 1rem;
   }
-  
+
   .certificate-card {
     padding: 1.5rem;
   }
-  
+
   .skill-category {
     padding: 1.5rem;
   }
@@ -640,14 +676,17 @@
     width: 60px;
     height: 24px;
   }
-  
+
   .stat-loader-pulse::after {
     width: 45px;
     height: 12px;
   }
-  
+
   .certificate-loader-image {
     height: 150px;
   }
-}
 
+  .cybersecurity-container {
+    padding: 1.5rem;
+  }
+}

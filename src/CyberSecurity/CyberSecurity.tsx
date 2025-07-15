@@ -232,13 +232,13 @@ const CyberSecurity: React.FC = () => {
                                     </>
                                 )}
                             </div>
-                            <div style={{ width: '329px', height: '88px' }} className="thm-badge">
+                            <div style={{ width: '100%' }} className="thm-badge">
                                 <iframe
                                     src="https://tryhackme.com/api/v2/badges/public-profile?userPublicId=295697"
-                                    style={{ border: 'none', width: '100%', height: '100px', display: 'block' }}
                                     title="TryHackMe Badge"
                                 ></iframe>
                             </div>
+
                         </div>
                         <div className="profile-actions">
                             <a

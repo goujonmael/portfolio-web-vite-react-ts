@@ -484,4 +484,8 @@ p {
   .card-image-container {
     height: 25vh;
   }
+
+  .container {
+    width: 90%;
+  }
 }
