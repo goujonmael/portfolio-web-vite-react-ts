@@ -60,36 +60,6 @@ const CyberSecurity: React.FC = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-<<<<<<< HEAD
-                const profileResponse = await axios.get('/api');
-                const profileData = profileResponse.data?.data;
-                
-                if (profileData) {
-                    const {
-                        topPercentage = 0,
-                        rank = 0,
-                        completedRoomsNumber = 0,
-                        badgesNumber = 0
-                    } = profileData;
-                    
-                    setBadges(badgesNumber);
-                    setCompletionPercentage(completedRoomsNumber);
-                    setRanking(topPercentage + '%' + ' (' + rank + ')');
-                } else {
-                    console.warn('Profile data is undefined');
-                }
-                setIsLoadingStats(false);
-
-                const certificatesResponse = await axios.get('/certificates');
-                const certificatesData = certificatesResponse.data?.data?.docs;
-                
-                if (certificatesData && Array.isArray(certificatesData)) {
-                    setCertificates(certificatesData);
-                } else {
-                    console.warn('Certificates data is undefined or not an array');
-                    setCertificates([]);
-                }
-=======
                 const profileData = {
                     _id: "5fe8edca26b8416e6267b047",
                     id: 295697,
@@ -206,7 +176,6 @@ const CyberSecurity: React.FC = () => {
                     }
                 };
                 setCertificates(certificatesResponse.data.docs);
->>>>>>> iframe
                 setIsLoadingCertificates(false);
             } catch (error) {
                 console.error('Error fetching data:', error);
