@@ -2,7 +2,7 @@ const https = require('https');
 
 exports.handler = async (event, context) => {
   const { httpMethod } = event;
-  
+
   // Gérer les requêtes OPTIONS pour CORS
   if (httpMethod === 'OPTIONS') {
     return {
@@ -10,12 +10,11 @@ exports.handler = async (event, context) => {
       headers: {
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Methods': 'GET, OPTIONS',
-        'Access-Control-Allow-Headers': 'Content-Type'
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With',
       }
     };
   }
-  
-  // Autoriser seulement les requêtes GET
+
   if (httpMethod !== 'GET') {
     return {
       statusCode: 405,
@@ -27,14 +26,14 @@ exports.handler = async (event, context) => {
     };
   }
 
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     const options = {
       hostname: 'tryhackme.com',
       port: 443,
       path: '/api/v2/public-profile?username=GoGoGadg3t',
       method: 'GET',
       headers: {
-        'User-Agent': 'Mozilla/5.0 (compatible; Portfolio/1.0)',
+        'User-Agent': 'Mozilla/5.0',
         'Accept': 'application/json'
       }
     };
@@ -47,28 +46,29 @@ exports.handler = async (event, context) => {
       });
 
       res.on('end', () => {
+        // Log pour debug
+        console.log('Status:', res.statusCode);
+        console.log('Headers:', res.headers);
+        console.log('Raw data:', data);
+
+        let body;
         try {
-          const parsedData = JSON.parse(data);
-          resolve({
-            statusCode: 200,
-            headers: {
-              'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': '*',
-              'Access-Control-Allow-Methods': 'GET, OPTIONS',
-              'Access-Control-Allow-Headers': 'Content-Type'
-            },
-            body: JSON.stringify(parsedData)
-          });
-        } catch (error) {
-          resolve({
-            statusCode: 500,
-            headers: {
-              'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': '*'
-            },
-            body: JSON.stringify({ error: 'Parse error' })
-          });
+          body = JSON.stringify(JSON.parse(data));
+        } catch (e) {
+          // Si ce n'est pas du JSON, retourne le texte brut
+          body = JSON.stringify({ raw: data });
         }
+
+        resolve({
+          statusCode: res.statusCode,
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With',
+          },
+          body
+        });
       });
     });
 
@@ -77,9 +77,11 @@ exports.handler = async (event, context) => {
         statusCode: 500,
         headers: {
           'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*'
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'GET, OPTIONS',
+          'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With',
         },
-        body: JSON.stringify({ error: 'Request failed' })
+        body: JSON.stringify({ error: 'Request failed', details: error.message })
       });
     });
 
