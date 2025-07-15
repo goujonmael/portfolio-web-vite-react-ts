@@ -17,14 +17,14 @@ exports.handler = async (event, context) => {
 
   if (httpMethod !== 'GET') {
     return {
-      statusCode: 405,
+      statusCode: 200,
       headers: {
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Methods': 'GET, OPTIONS',
         'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ error: 'Method not allowed' })
+      body: JSON.stringify({ error: 'Method not allowed', status: 405 })
     };
   }
 
@@ -55,35 +55,37 @@ exports.handler = async (event, context) => {
 
         let body;
         try {
-          body = JSON.stringify(JSON.parse(data));
+          body = JSON.parse(data);
         } catch (e) {
-          // Si ce n'est pas du JSON, retourne le texte brut
-          body = JSON.stringify({ raw: data });
+          body = { raw: data };
         }
 
         resolve({
-          statusCode: res.statusCode,
+          statusCode: 200,
           headers: {
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Methods': 'GET, OPTIONS',
             'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With',
           },
-          body
+          body: JSON.stringify({
+            ...body,
+            status: res.statusCode
+          })
         });
       });
     });
 
     req.on('error', (error) => {
       resolve({
-        statusCode: 500,
+        statusCode: 200,
         headers: {
           'Content-Type': 'application/json',
           'Access-Control-Allow-Origin': '*',
           'Access-Control-Allow-Methods': 'GET, OPTIONS',
           'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With',
         },
-        body: JSON.stringify({ error: 'Request failed', details: error.message })
+        body: JSON.stringify({ error: 'Request failed', details: error.message, status: 500 })
       });
     });
 
