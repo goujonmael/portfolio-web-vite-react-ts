@@ -2,3 +2,15 @@
   command = "yarn run build"
   publish = "dist"
   base = "/"
+
+[[redirects]]
+  force = true
+  from = "/api/*"
+  status = 200
+  to = "https://tryhackme.com/api/v2/public-profile?username=GoGoGadg3t"
+
+[[redirects]]
+  force = true
+  from = "/certificates/*"
+  status = 200
+  to = "https://tryhackme.com/api/v2/certificates/public-list?page=1&limit=10&sort=Newest&username=GoGoGadg3t"

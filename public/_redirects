@@ -1,6 +1,2 @@
-# Proxy pour l'API TryHackMe via Netlify Functions
-/api/* /.netlify/functions/api 200
-/certificates/* /.netlify/functions/certificates 200
-
 # Fallback pour le routing SPA
 /* /index.html 200

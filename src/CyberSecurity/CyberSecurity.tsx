@@ -42,15 +42,15 @@ const CyberSecurity: React.FC = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const profileResponse = await axios.get('https://tryhackme.com/api/v2/public-profile?username=GoGoGadg3t');
+                const profileResponse = await axios.get('/api');
                 const profileData = profileResponse.data?.data;
                 
                 if (profileData) {
-                    const { 
-                        topPercentage = 0, 
-                        rank = 0, 
-                        completedRoomsNumber = 0, 
-                        badgesNumber = 0 
+                    const {
+                        topPercentage = 0,
+                        rank = 0,
+                        completedRoomsNumber = 0,
+                        badgesNumber = 0
                     } = profileData;
                     
                     setBadges(badgesNumber);
@@ -77,7 +77,6 @@ const CyberSecurity: React.FC = () => {
                 setIsLoadingCertificates(false);
             }
         };
-
 
         fetchData();
     }, []);
