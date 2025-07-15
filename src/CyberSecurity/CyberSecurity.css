@@ -217,12 +217,6 @@
   font-family: var(--font-mono);
 }
 
-.certificate-description {
-  color: var(--text-secondary);
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
-}
-
 .certificate-image {
   width: 100%;
   height: auto;
@@ -430,6 +424,40 @@
   animation: pulse 1.5s ease-in-out infinite;
 }
 
+
+.certificate-description ul {
+  list-style-type: none; /* Supprime les puces par défaut */
+  padding-left: 0;
+}
+
+.certificate-description li::before {
+  padding-right: 8px;
+  color: var(--text-secondary); /* Assurez-vous que la couleur correspond à votre thème */
+}
+
+.certificate-description {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  white-space: pre-line; /* Respecte les sauts de ligne */
+}
+
+.certificate-description p {
+  margin: 0 0 0.5em 0; /* Ajoute un peu d'espace après chaque paragraphe */
+  position: relative;
+  padding-left: 1.2em; /* Espace pour la puce */
+}
+
+
+.data-refresh-date {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  font-family: var(--font-text);
+}
+
+
+
 .certificate-loader-title {
   width: 70%;
   height: 24px;
@@ -622,3 +650,4 @@
     height: 150px;
   }
 }
+
