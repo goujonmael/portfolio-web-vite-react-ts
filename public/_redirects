@@ -1,1 +1,6 @@
+# Proxy pour l'API TryHackMe en production
+/api/* https://tryhackme.com/api/v2/public-profile?username=GoGoGadg3t 200
+/certificates/* https://tryhackme.com/api/v2/certificates/public-list?page=1&limit=10&sort=Newest&username=GoGoGadg3t 200
+
+# Fallback pour le routing SPA
 /* /index.html 200

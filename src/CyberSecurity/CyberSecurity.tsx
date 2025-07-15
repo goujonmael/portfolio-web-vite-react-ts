@@ -42,7 +42,7 @@ const CyberSecurity: React.FC = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const profileResponse = await axios.get('/api');
+                const profileResponse = await axios.get('https://tryhackme.com/api/v2/public-profile?username=GoGoGadg3t');
                 const profileData = profileResponse.data?.data;
                 
                 if (profileData) {
