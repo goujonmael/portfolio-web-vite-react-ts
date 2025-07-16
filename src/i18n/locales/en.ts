@@ -41,7 +41,8 @@ export const enTranslations = {
       githubStudentDesc: "Discover my academic projects",
       viewProfile: "View profile",
       viewProjects: "View projects",
-      downloadPDF: "Download PDF",
+      downloadPDFdev: "Software Developer",
+      downloadPDFcyber: "Cyber-Security",
       tryhackmeDesc: "Access my rankings and exploits",
       byEmail: "By email"
     }
@@ -85,7 +86,7 @@ export const enTranslations = {
     stats: {
       badges: "Badges",
       certificates: "Certificates",
-      completion: "Completion",
+      completion: "Rooms Completed",
       ranking: "Ranking"
     },
     certificates: {

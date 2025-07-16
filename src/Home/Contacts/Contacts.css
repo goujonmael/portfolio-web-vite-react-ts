@@ -131,6 +131,7 @@
 }
 
 .contact-card-footer {
+  gap: 0.5rem;
   display: flex;
   justify-content: flex-start;
 }

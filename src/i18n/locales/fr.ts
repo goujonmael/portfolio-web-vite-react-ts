@@ -41,7 +41,8 @@ export const frTranslations = {
       githubStudentDesc: "Découvrez mes projets académiques",
       viewProfile: "Voir le profil",
       viewProjects: "Voir les projets",
-      downloadPDF: "Télécharger PDF",
+      downloadPDFdev: "Développeur Logiciel",
+      downloadPDFcyber: "Cyber-Sécurité",
       tryhackmeDesc: "Accédez à mes classements et exploits",
       byEmail: "Par courriel"
     }
@@ -85,7 +86,7 @@ export const frTranslations = {
     stats: {
       badges: "Badges",
       certificates: "Certificats",
-      completion: "Progression",
+      completion: "Rooms Complétées",
       ranking: "Classement"
     },
     certificates: {

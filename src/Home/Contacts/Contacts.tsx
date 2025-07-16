@@ -52,10 +52,16 @@ const Contacts = () => {
           </div>
           <div className="contact-card-footer">
             <button
-              onClick={() => window.open("/files/CV_GOUJON_Mael.pdf", "_blank", "noopener,noreferrer")}
+              onClick={() => window.open("/files/CV_GOUJON_dev.pdf", "_blank", "noopener,noreferrer")}
               className="contact-button"
             >
-              {t('home.contact.downloadPDF')}
+              {t('home.contact.downloadPDFdev')}
+            </button>
+            <button
+              onClick={() => window.open("/files/CV_GOUJON_cyber.pdf", "_blank", "noopener,noreferrer")}
+              className="contact-button"
+            >
+              {t('home.contact.downloadPDFcyber')}
             </button>
           </div>
         </div>
