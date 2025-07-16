@@ -1,6 +1,8 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import './Scolarite.css';
+import LinkedInIcon from '../assets/Icons/LinkedInIcon';
+import MailIcon from '../assets/Icons/MailIcon';
 
 const Scolarite: React.FC = () => {
     const { t } = useTranslation();
@@ -10,7 +12,21 @@ const Scolarite: React.FC = () => {
             <div className="scolarite-header">
                 <h1 className="scolarite-title">{t('education.title')}</h1>
             </div>
-
+            <div className="banner">
+                <div className="banner-content">
+                    <div>{t('education.lookingfor')}</div>
+                    <div>{t('education.lookingforduration')}</div>
+                    <div>{t('education.lookingforstartmonth')}</div>
+                </div>
+                <div className="banner-icons">
+                    <a href="https://www.linkedin.com/in/maël-goujon-88635b227" target="_blank" rel="noopener noreferrer">
+                        <LinkedInIcon />
+                    </a>
+                    <a href="mailto:goujonmael@gmail.com" target="_blank" rel="noopener noreferrer">
+                        <MailIcon />
+                    </a>
+                </div>
+            </div>
             <section>
                 <h2 className="section-title">{t('education.internshipsTitle')}</h2>
                 <div className="formation-list">
@@ -36,7 +52,6 @@ const Scolarite: React.FC = () => {
                     </div>
                 </div>
             </section>
-
             <section>
                 <h2 className="section-title">{t('education.educationTitle')}</h2>
                 <div className="formation-list">
@@ -82,7 +97,6 @@ const Scolarite: React.FC = () => {
                     </div>
                 </div>
             </section>
-
         </div>
     );
 };

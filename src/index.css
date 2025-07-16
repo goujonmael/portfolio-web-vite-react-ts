@@ -41,6 +41,7 @@ body {
   --text-secondary: #a9a9a9;
   --link: #B59973;
   --title1: #FFC268;
+  --title1-rgba: rgba(255, 194, 104, 0.5);
   --title2: #DAAE6E;
   --important: #FFC268;
   --grey: #d9d9d9;
