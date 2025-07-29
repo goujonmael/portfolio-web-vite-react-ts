@@ -6,7 +6,7 @@ export const educationData = {
     internships: [
       {
         title: "Alternance",
-        specialite: "Software Developer, CI/CD, Java",
+        specialite: "DevOps, Java, React, GitLab CI/CD",
         etablissement: "Airbus Defence and Space - Satellites",
         dateDebut: "2024-09",
         duree: "24 mois"
@@ -56,7 +56,7 @@ export const educationData = {
     internships: [
       {
         title: "Apprenticeship",
-        specialite: "Software Developer, CI/CD, Java",
+        specialite: "DevOps, Java, React, GitLab CI/CD",
         etablissement: "Airbus Defence and Space - Satellites",
         dateDebut: "2024-09",
         duree: "24 months"
