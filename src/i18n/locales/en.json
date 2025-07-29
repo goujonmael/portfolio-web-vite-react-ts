@@ -61,7 +61,12 @@
   },
   "education": {
     "title": "Education",
-    "description": "My educational and academic background"
+    "description": "My educational and academic background",
+    "lookingfor": "Actively looking for an internship or apprenticeship",
+    "lookingforduration": "Duration: 6 months minimum",
+    "lookingforstartmonth": "Desired start: February 2025",
+    "internshipsTitle": "Internships and Apprenticeships",
+    "educationTitle": "Education"
   },
   "cybersecurity": {
     "title": "CyberSecurity",

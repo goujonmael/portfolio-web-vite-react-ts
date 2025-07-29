@@ -61,7 +61,12 @@
   },
   "education": {
     "title": "Scolarité",
-    "description": "Mon parcours scolaire et académique"
+    "description": "Mon parcours scolaire et académique",
+    "lookingfor": "Recherche activement un stage ou une alternance",
+    "lookingforduration": "Durée : 6 mois minimum",
+    "lookingforstartmonth": "Début souhaité : Février 2025",
+    "internshipsTitle": "Stages et Alternances",
+    "educationTitle": "Formation"
   },
   "cybersecurity": {
     "title": "CyberSécurité",
