@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./Header.css";
-import { useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import LinkedInIcon from "../assets/Icons/LinkedInIcon";
 import GitHubIcon from "../assets/Icons/GitHubIcon";
@@ -10,8 +10,6 @@ import LanguageSwitch from "../components/LanguageSwitch/LanguageSwitch";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
-  const location = useLocation();
-  const path = location.pathname.slice(1);
   const { t } = useTranslation();
 
   const toggleMenu = () => {
@@ -29,39 +27,24 @@ export default function Header() {
           <LanguageSwitch />
         </div>
         <nav className="nav-desktop">
-          <a href="/" className={path === "" ? "nav-a-active" : "nav-a"}>
+          <NavLink to="/" className={({ isActive }) => (isActive ? "nav-a-active" : "nav-a")} end>
             {t('header.home')}
-          </a>
-          <a
-            href="/scolarite"
-            className={path === "scolarite" ? "nav-a-active" : "nav-a"}
-          >
+          </NavLink>
+          <NavLink to="/scolarite" className={({ isActive }) => (isActive ? "nav-a-active" : "nav-a")}>
             {t('header.education')}
-          </a>
-          <a
-            href="/cybersecurity"
-            className={path === "cybersecurity" ? "nav-a-active" : "nav-a"}
-          >
+          </NavLink>
+          <NavLink to="/cybersecurity" className={({ isActive }) => (isActive ? "nav-a-active" : "nav-a")}>
             {t('header.cybersecurity')}
-          </a>
-          <a
-            href="/competences"
-            className={path === "competences" ? "nav-a-active" : "nav-a"}
-          >
+          </NavLink>
+          <NavLink to="/competences" className={({ isActive }) => (isActive ? "nav-a-active" : "nav-a")}>
             {t('header.skills')}
-          </a>
-          <a
-            href="/projets-univ"
-            className={path === "projets-univ" ? "nav-a-active" : "nav-a"}
-          >
+          </NavLink>
+          <NavLink to="/projets-univ" className={({ isActive }) => (isActive ? "nav-a-active" : "nav-a")}>
             {t('header.universityProjects')}
-          </a>
-          <a
-            href="/projets-perso"
-            className={path === "projets-perso" ? "nav-a-active" : "nav-a"}
-          >
+          </NavLink>
+          <NavLink to="/projets-perso" className={({ isActive }) => (isActive ? "nav-a-active" : "nav-a")}>
             {t('header.personalProjects')}
-          </a>
+          </NavLink>
         </nav>
         <div className="nav-footer-desktop">
           <a
@@ -89,7 +72,7 @@ export default function Header() {
             Git Personnel
           </a>
           <a
-            href="/files/CV_GOUJON_Mael.pdf"
+            href="/files/CV_GOUJON_dev.pdf"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -115,49 +98,37 @@ export default function Header() {
           <span className="burger-bar"></span>
         </button>
       </div>
-      <div className={`nav-overlay ${isOpen ? "open" : ""}`} onClick={closeMenu}></div>
+      <button
+        type="button"
+        aria-label="Close navigation"
+        className={`nav-overlay ${isOpen ? "open" : ""}`}
+        onClick={closeMenu}
+        onKeyDown={(e) => {
+          if (e.key === 'Escape') closeMenu();
+        }}
+      />
       <div className={`nav-sidebar ${isOpen ? "open" : ""}`}>
         <div className="nav-header">
         </div>
         <nav className="nav-links">
-          <a href="/" className={path === "" ? "nav-a-active" : "nav-a"} onClick={closeMenu}>
+          <NavLink to="/" className={({ isActive }) => (isActive ? "nav-a-active" : "nav-a")} end onClick={closeMenu}>
             {t('header.home')}
-          </a>
-          <a
-            href="/scolarite"
-            className={path === "scolarite" ? "nav-a-active" : "nav-a"}
-            onClick={closeMenu}
-          >
+          </NavLink>
+          <NavLink to="/scolarite" className={({ isActive }) => (isActive ? "nav-a-active" : "nav-a")} onClick={closeMenu}>
             {t('header.education')}
-          </a>
-          <a
-            href="/cybersecurity"
-            className={path === "cybersecurity" ? "nav-a-active" : "nav-a"}
-            onClick={closeMenu}
-          >
+          </NavLink>
+          <NavLink to="/cybersecurity" className={({ isActive }) => (isActive ? "nav-a-active" : "nav-a")} onClick={closeMenu}>
             {t('header.cybersecurity')}
-          </a>
-          <a
-            href="/competences"
-            className={path === "competences" ? "nav-a-active" : "nav-a"}
-            onClick={closeMenu}
-          >
+          </NavLink>
+          <NavLink to="/competences" className={({ isActive }) => (isActive ? "nav-a-active" : "nav-a")} onClick={closeMenu}>
             {t('header.skills')}
-          </a>
-          <a
-            href="/projets-univ"
-            className={path === "projets-univ" ? "nav-a-active" : "nav-a"}
-            onClick={closeMenu}
-          >
+          </NavLink>
+          <NavLink to="/projets-univ" className={({ isActive }) => (isActive ? "nav-a-active" : "nav-a")} onClick={closeMenu}>
             {t('header.universityProjects')}
-          </a>
-          <a
-            href="/projets-perso"
-            className={path === "projets-perso" ? "nav-a-active" : "nav-a"}
-            onClick={closeMenu}
-          >
+          </NavLink>
+          <NavLink to="/projets-perso" className={({ isActive }) => (isActive ? "nav-a-active" : "nav-a")} onClick={closeMenu}>
             {t('header.personalProjects')}
-          </a>
+          </NavLink>
         </nav>
         <div className="nav-footer">
           <a
@@ -188,7 +159,7 @@ export default function Header() {
             Git Personnel
           </a>
           <a
-            href="/files/CV_GOUJON_Mael.pdf"
+            href="/files/CV_GOUJON_dev.pdf"
             target="_blank"
             rel="noopener noreferrer"
             onClick={closeMenu}
