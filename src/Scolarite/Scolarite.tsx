@@ -64,7 +64,7 @@ const Scolarite: React.FC = () => {
                     <a href="https://www.linkedin.com/in/maël-goujon-88635b227" target="_blank" rel="noopener noreferrer">
                         <LinkedInIcon />
                     </a>
-                    <a href="mailto:goujonmael@gmail.com" target="_blank" rel="noopener noreferrer">
+                    <a href="mailto:contact@maelg.com" target="_blank" rel="noopener noreferrer">
                         <MailIcon />
                     </a>
                 </div>

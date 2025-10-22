@@ -79,7 +79,7 @@ export default function Header() {
             <CVIcon />
             {t('home.contact.cv')}
           </a>
-          <a href="mailto:goujonmael@gmail.com">
+          <a href="mailto:contact@maelg.com">
             <MailIcon />
             {t('home.contact.title')}
           </a>
@@ -167,7 +167,7 @@ export default function Header() {
             <CVIcon />
             {t('home.contact.cv')}
           </a>
-          <a href="mailto:goujonmael@gmail.com" onClick={closeMenu}>
+          <a href="mailto:contact@maelg.com" onClick={closeMenu}>
             <MailIcon />
             {t('home.contact.title')}
           </a>

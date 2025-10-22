@@ -78,7 +78,7 @@ const Contacts = () => {
           </div>
           <div className="contact-card-footer">
             <button
-              onClick={() => window.open("mailto:goujonmael@gmail.com", "_blank", "noopener,noreferrer")}
+              onClick={() => window.open("mailto:contact@maelg.com", "_blank", "noopener,noreferrer")}
               className="contact-button"
             >
               {t('home.contact.emailAction')}

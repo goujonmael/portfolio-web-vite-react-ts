@@ -69,7 +69,7 @@ export default function Footer() {
                 </p>
             </a>
             {/* prendre contact */}
-            <a href="mailto:goujonmael@gmail.com">
+            <a href="mailto:contact@maelg.com">
                 <img
                     aria-hidden
                     src="/images/mail.svg"
