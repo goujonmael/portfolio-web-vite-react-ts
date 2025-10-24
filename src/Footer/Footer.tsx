@@ -3,7 +3,7 @@ import './Footer.css';
 
 export default function Footer() {
     return (
-        <footer className="footer">
+        <footer className="footer" role="contentinfo" aria-label="Site footer">
             <a
                 href="https://www.linkedin.com/in/ma%C3%ABl-goujon-88635b227"
                 target="_blank"
@@ -16,6 +16,7 @@ export default function Footer() {
                     alt="LinkedIn icon"
                     width={30}
                     height={30}
+                    loading="lazy"
                 />
                 <p className="text">
                     LinkedIn
@@ -32,6 +33,7 @@ export default function Footer() {
                     alt="GitHub icon"
                     width={30}
                     height={30}
+                    loading="lazy"
                 />
                 <p className="text">Git Etudiant</p>
             </a>
@@ -46,6 +48,7 @@ export default function Footer() {
                     alt="GitHub icon"
                     width={30}
                     height={30}
+                    loading="lazy"
                 />
                 <p className="text">
                     Git Personnel
@@ -63,6 +66,7 @@ export default function Footer() {
                     alt="CV icon"
                     width={30}
                     height={30}
+                    loading="lazy"
                 />
                 <p className="text">
                     Mon CV
@@ -76,6 +80,7 @@ export default function Footer() {
                     alt="Mail icon"
                     width={30}
                     height={30}
+                    loading="lazy"
                 />
                 <p className="text">
                     Contacts

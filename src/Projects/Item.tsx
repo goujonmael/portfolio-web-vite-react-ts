@@ -129,7 +129,7 @@ export function Item({ id }: ItemProps) {
             className="card-image-container"
             layoutId={`card-image-container-${id}`}
           >
-            <img className="card-image" src={imageLink} alt="" />
+            <img className="card-image" src={imageLink} alt="" loading="lazy" />
           </motion.div>
           <motion.div
             className="title-container"

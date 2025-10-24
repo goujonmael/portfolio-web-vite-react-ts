@@ -21,6 +21,7 @@ export default function Me() {
                   className={`profile_picture ${imageLoaded ? "fade-in" : ""}`}
                   src="/images/Me/me_square.jpg"
                   alt="Picture of Mael GOUJON"
+                  loading="lazy"
                   onLoad={() => setImageLoaded(true)}
                 />
               </div>

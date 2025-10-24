@@ -21,7 +21,7 @@ export default function Header() {
   };
 
   return (
-    <header className="header">
+  <header className="header" role="banner" aria-label="Main header">
       <div className="header-desktop">
         <div className="language-switch-container">
           <LanguageSwitch />

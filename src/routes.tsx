@@ -1,17 +1,20 @@
 import { Route, Routes, useParams } from "react-router-dom";
-import Welcome from "./Home/Welcome/Welcome";
-import Me from "./Home/Me/Me";
-import { List } from "./Projects/List";
-import { Item } from "./Projects/Item";
 import Header from "./Header/Header";
-import { ListPerso } from "./Projects/ListPerso";
-import { ItemPerso } from "./Projects/ItemPerso";
-import Competences from "./Competences/Competences";
-import React, { useEffect, useState, useCallback } from "react";
-import Contacts from "./Home/Contacts/Contacts";
-import Scolarite from "./Scolarite/Scolarite";
-import CyberSecurity from "./CyberSecurity/CyberSecurity";
+import React, { Suspense, lazy, useEffect, useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
+import { fetchWithCache } from "./utils/fetchWithCache";
+
+// Lazy-loaded route components for better performance
+const Welcome = lazy(() => import("./Home/Welcome/Welcome"));
+const Me = lazy(() => import("./Home/Me/Me"));
+const Contacts = lazy(() => import("./Home/Contacts/Contacts"));
+const CyberSecurity = lazy(() => import("./CyberSecurity/CyberSecurity"));
+const List = lazy(() => import("./Projects/List").then((m) => ({ default: m.List })));
+const Item = lazy(() => import("./Projects/Item").then((m) => ({ default: m.Item })));
+const ListPerso = lazy(() => import("./Projects/ListPerso").then((m) => ({ default: m.ListPerso })));
+const ItemPerso = lazy(() => import("./Projects/ItemPerso").then((m) => ({ default: m.ItemPerso })));
+const Competences = lazy(() => import("./Competences/Competences"));
+const Scolarite = lazy(() => import("./Scolarite/Scolarite"));
 
 interface StoreProps {
   typeOfList?: string;
@@ -82,31 +85,29 @@ export default function AppRoutes() {
 
   const fetchData = useCallback(async () => {
     try {
-      const cachedData = localStorage.getItem("github_repos");
-      if (cachedData) {
-        setProjets(JSON.parse(cachedData));
-        return;
-      }
-
-      const response = await fetch(
-        "https://api.github.com/users/goujonmael/repos"
+      // Use fetchWithCache util with 1 hour TTL
+      const data = await fetchWithCache<any[]>(
+        "https://api.github.com/users/goujonmael/repos",
+        { key: "github_repos", ttlMs: 1000 * 60 * 60 }
       );
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      const data = await response.json();
       if (Array.isArray(data)) {
         data.sort(
           (a: { pushed_at: string }, b: { pushed_at: string }) =>
             new Date(b.pushed_at).getTime() - new Date(a.pushed_at).getTime()
         );
         setProjets(data);
-        localStorage.setItem("github_repos", JSON.stringify(data));
       } else {
         console.error("Unexpected API response format:", data);
       }
     } catch (error) {
       console.error("Error fetching data:", error);
+      // try to fall back to any stale cache if fetch failed
+      try {
+        const raw = localStorage.getItem("github_repos");
+        if (raw) setProjets(JSON.parse(raw));
+      } catch (_) {
+        // ignore
+      }
     }
   }, []);
 
@@ -142,7 +143,8 @@ export default function AppRoutes() {
       <div className="blur-background"></div>
       <Header />
       <div className="container">
-        <Routes>
+        <Suspense fallback={<div aria-busy="true">Loading…</div>}>
+          <Routes>
           <Route
             path="/"
             element={
@@ -201,7 +203,8 @@ export default function AppRoutes() {
           <Route path="/competences" element={<Competences />} />
           <Route path="/scolarite" element={<Scolarite />} />
           <Route path="*" element={<div>Page not found</div>} />
-        </Routes>
+          </Routes>
+        </Suspense>
       </div>
     </div>
   );
