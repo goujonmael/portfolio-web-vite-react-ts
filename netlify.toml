@@ -3,6 +3,12 @@
   publish = "dist"
   base = "/"
   
+[build.environment]
+# Allow Netlify's secrets scanner to omit these Vite keys when they are set as environment
+# variables (the values should not be checked into the repository). This avoids failing
+# builds when the secret values are injected at build time.
+  SECRETS_SCAN_OMIT_KEYS = "VITE_UMAMI_SCRIPT_URL,VITE_UMAMI_WEBSITE_ID"
+  
 [[redirects]]
   force = true
   from = "/api/*"
