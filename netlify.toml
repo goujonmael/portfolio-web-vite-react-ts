@@ -2,7 +2,7 @@
   command = "yarn run build"
   publish = "dist"
   base = "/"
-
+  
 [[redirects]]
   force = true
   from = "/api/*"
@@ -14,3 +14,12 @@
   from = "/certificates/*"
   status = 200
   to = "https://tryhackme.com/api/v2/certificates/public-list?page=1&limit=10&sort=Newest&username=GoGoGadg3t"
+
+[[_headers]]
+  for = "/*"
+  [[_headers.values]]
+    Content-Security-Policy = "default-src 'self'; script-src 'self' https://stats.maelg.com; connect-src 'self' https://api.github.com https://tryhackme.com; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com;"
+    X-Frame-Options = "DENY"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
+    X-Content-Type-Options = "nosniff"

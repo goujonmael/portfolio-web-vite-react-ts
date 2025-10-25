@@ -11,15 +11,15 @@ import GitHubIcon from "../assets/Icons/GitHubIcon";
 
 interface Projet {
   id: string;
-  name: string;
-  category: string;
-  title: string;
-  description: string;
-  imageLink: string;
-  customComponent: React.ReactNode;
-  github: string;
-  pdf: string;
-  html_url: string;
+  name?: string;
+  category?: string;
+  title?: string;
+  description?: string;
+  imageLink?: string;
+  customComponent?: React.ReactNode;
+  github?: string;
+  pdf?: string;
+  html_url?: string;
 }
 
 interface ItemPersoProps {
@@ -55,15 +55,25 @@ export function ItemPerso({ projetsPerso, id }: ItemPersoProps) {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    fetch(
-      `https://raw.githubusercontent.com/goujonmael/${name}/master/README.md`
-    )
+    // fetch README for the project's repository name (if present)
+    if (!name) {
+      setDetails('');
+      setLoading(false);
+      return;
+    }
+
+    fetch(`https://raw.githubusercontent.com/goujonmael/${name}/master/README.md`)
       .then((response) => response.text())
       .then((text) => {
         setDetails(text);
         setLoading(false);
+      })
+      .catch((e) => {
+        console.warn('Failed to fetch README', e);
+        setDetails('');
+        setLoading(false);
       });
-  }, []);
+  }, [name]);
 
   // created_at
   // html_url
@@ -106,7 +116,7 @@ export function ItemPerso({ projetsPerso, id }: ItemPersoProps) {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [history]);
+  }, [navigate]);
 
   return (
     <div className="modal-container">

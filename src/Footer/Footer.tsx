@@ -1,4 +1,5 @@
 import './Footer.css';
+import LazyImage from '../components/LazyImage/LazyImage';
 
 
 export default function Footer() {
@@ -9,14 +10,12 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
             >
-                <img
-                    color="white"
-                    aria-hidden
+                <LazyImage
                     src="/images/linkedin.svg"
                     alt="LinkedIn icon"
                     width={30}
                     height={30}
-                    loading="lazy"
+                    aria-hidden="true"
                 />
                 <p className="text">
                     LinkedIn
@@ -27,14 +26,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
             >
-                <img
-                    aria-hidden
-                    src="/images/git.svg"
-                    alt="GitHub icon"
-                    width={30}
-                    height={30}
-                    loading="lazy"
-                />
+                <LazyImage src="/images/git.svg" alt="GitHub icon" width={30} height={30} aria-hidden="true" />
                 <p className="text">Git Etudiant</p>
             </a>
             <a
@@ -42,14 +34,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
             >
-                <img
-                    aria-hidden
-                    src="/images/git.svg"
-                    alt="GitHub icon"
-                    width={30}
-                    height={30}
-                    loading="lazy"
-                />
+                <LazyImage src="/images/git.svg" alt="GitHub icon" width={30} height={30} aria-hidden="true" />
                 <p className="text">
                     Git Personnel
                 </p>
@@ -60,28 +45,14 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
             >
-                <img
-                    aria-hidden
-                    src="/images/cv.svg"
-                    alt="CV icon"
-                    width={30}
-                    height={30}
-                    loading="lazy"
-                />
+                <LazyImage src="/images/cv.svg" alt="CV icon" width={30} height={30} aria-hidden="true" />
                 <p className="text">
                     Mon CV
                 </p>
             </a>
             {/* prendre contact */}
             <a href="mailto:contact@maelg.com">
-                <img
-                    aria-hidden
-                    src="/images/mail.svg"
-                    alt="Mail icon"
-                    width={30}
-                    height={30}
-                    loading="lazy"
-                />
+                <LazyImage src="/images/mail.svg" alt="Mail icon" width={30} height={30} aria-hidden="true" />
                 <p className="text">
                     Contacts
                 </p>

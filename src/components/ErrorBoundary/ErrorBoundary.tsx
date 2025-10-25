@@ -5,8 +5,9 @@ interface State {
   error?: Error | null;
 }
 
-class ErrorBoundary extends React.Component<React.PropsWithChildren<{}>, State> {
-  constructor(props: React.PropsWithChildren<{}>) {
+// Use `unknown` for props generic to avoid `{}` lint warning
+class ErrorBoundary extends React.Component<React.PropsWithChildren<unknown>, State> {
+  constructor(props: React.PropsWithChildren<unknown>) {
     super(props);
     this.state = { hasError: false, error: null };
   }
@@ -15,12 +16,12 @@ class ErrorBoundary extends React.Component<React.PropsWithChildren<{}>, State> 
     return { hasError: true, error };
   }
 
-  componentDidCatch(error: Error, info: any) {
+  componentDidCatch(error: Error, info: React.ErrorInfo) {
     // Log to console - can be replaced with external logging
     console.error('Uncaught error:', error, info);
   }
 
-  render() {
+  render(): React.ReactNode {
     if (this.state.hasError) {
       return (
         <main role="main" aria-live="polite" style={{ padding: 24 }}>
@@ -30,7 +31,7 @@ class ErrorBoundary extends React.Component<React.PropsWithChildren<{}>, State> 
       );
     }
 
-    return this.props.children as React.ReactElement;
+    return this.props.children;
   }
 }
 

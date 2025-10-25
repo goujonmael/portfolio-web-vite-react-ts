@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { projetsUniv } from "../Projects/projetsUniv";
 import { competences } from "./competences";
+import LazyImage from "../components/LazyImage/LazyImage";
 
 interface Competence {
   id: number;
@@ -66,9 +67,9 @@ export default function Competences() {
                       to={`/projets-univ/${project.id}`}
                       className="project"
                     >
-                      <img
-                        src={project.imageLink}
-                        alt={project.title}
+                      <LazyImage
+                        src={project.imageLink ?? ''}
+                        alt={project.title ?? ''}
                         className="project-image"
                         style={{ backgroundColor: "var(--divider)" }}
                       />

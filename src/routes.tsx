@@ -1,4 +1,4 @@
-import { Route, Routes, useParams } from "react-router-dom";
+import { Route, Routes, useParams, useLocation } from "react-router-dom";
 import Header from "./Header/Header";
 import React, { Suspense, lazy, useEffect, useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
@@ -16,13 +16,30 @@ const ItemPerso = lazy(() => import("./Projects/ItemPerso").then((m) => ({ defau
 const Competences = lazy(() => import("./Competences/Competences"));
 const Scolarite = lazy(() => import("./Scolarite/Scolarite"));
 
+interface GitHubRepo {
+  id: number | string;
+  name?: string;
+  pushed_at?: string;
+  html_url?: string;
+  [key: string]: unknown;
+}
+
+// Lightweight UI-facing project shape (id as string for UI keys)
+interface ProjetUI {
+  id: string;
+  name?: string;
+  html_url?: string;
+  [key: string]: unknown;
+}
+
 interface StoreProps {
   typeOfList?: string;
-  projets?: any[];
+  // can be GitHubRepo[] (for university projects) or a local personal projets shape
+  projets?: unknown[];
 }
 
 const Store: React.FC<StoreProps> = React.memo(({ typeOfList, projets }) => {
-  let { id } = useParams<{ id: string }>();
+  const { id } = useParams<{ id: string }>();
   const { t } = useTranslation();
 
   return (
@@ -58,7 +75,8 @@ const Store: React.FC<StoreProps> = React.memo(({ typeOfList, projets }) => {
         {typeOfList === "univ" ? (
           <List selectedId={id ?? ""} />
         ) : (
-          <ListPerso selectedId={id ?? ""} projets={projets ?? []} />
+          // Cast to the expected personal project shape for ListPerso
+          <ListPerso selectedId={id ?? ""} projets={(projets ?? []) as PersoProjet[]} />
         )}
       </div>
     </>
@@ -67,33 +85,80 @@ const Store: React.FC<StoreProps> = React.memo(({ typeOfList, projets }) => {
 
 interface ItemWrapperProps {
   type: string;
-  projetsPerso?: any[];
+  projetsPerso?: unknown[];
+}
+
+// Local representation for personal project items used by ItemPerso/ListPerso
+interface PersoProjet {
+  id: string;
+  name?: string;
+  category?: string;
+  imageLink?: string;
+  github?: string;
+  pdf?: string;
+  title?: string;
+  description?: string;
+  customComponent?: React.ReactNode;
+  html_url?: string;
+  [key: string]: unknown;
 }
 
 const ItemWrapper: React.FC<ItemWrapperProps> = React.memo(({ type, projetsPerso }) => {
-  let { id } = useParams<{ id: string }>();
+  const { id } = useParams<{ id: string }>();
   return type === "univ" ? (
     <Item id={id ?? ""} />
   ) : (
-    <ItemPerso id={id ?? ""} projetsPerso={projetsPerso ?? []} />
+    // Cast to the personal project shape expected by ItemPerso
+    <ItemPerso id={id ?? ""} projetsPerso={(projetsPerso ?? []) as PersoProjet[]} />
   );
 });
 
 export default function AppRoutes() {
-  const [projets, setProjets] = useState<any[]>([]);
+  const location = useLocation();
+  const { t } = useTranslation();
+
+  // Update document title and meta description on route change for basic SEO
+  useEffect(() => {
+    const path = location.pathname;
+    let title = t('meta.title', 'Portfolio de Mael Goujon');
+    const description = t('meta.description', 'Découvrez le portfolio de Mael Goujon, étudiant en informatique.');
+
+    if (path.startsWith('/projets-univ')) {
+      title = t('projects.university.title', 'Projets universitaires') + ' — ' + title;
+    } else if (path.startsWith('/projets-perso')) {
+      title = t('projects.personal.title', 'Projets personnels') + ' — ' + title;
+    } else if (path.startsWith('/cybersecurity')) {
+      title = t('cybersecurity.title', 'CyberSecurity') + ' — ' + title;
+    } else if (path.startsWith('/competences')) {
+      title = t('header.skills', 'Compétences') + ' — ' + title;
+    }
+
+    document.title = title;
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.setAttribute('content', description);
+  }, [location, t]);
+  const [projets, setProjets] = useState<GitHubRepo[]>([]);
   const [scrollY, setScrollY] = useState(0);
+
+  // Map GitHubRepo (id:number|string) to a lightweight UI-friendly Projet shape with id as string
+  const projetsForUI: ProjetUI[] = projets.map((p) => ({
+    ...p,
+    id: String(p.id),
+    name: (p.name as string) ?? undefined,
+    html_url: (p.html_url as string) ?? undefined,
+  }));
 
   const fetchData = useCallback(async () => {
     try {
       // Use fetchWithCache util with 1 hour TTL
-      const data = await fetchWithCache<any[]>(
+      const data = await fetchWithCache<GitHubRepo[]>(
         "https://api.github.com/users/goujonmael/repos",
         { key: "github_repos", ttlMs: 1000 * 60 * 60 }
       );
       if (Array.isArray(data)) {
         data.sort(
-          (a: { pushed_at: string }, b: { pushed_at: string }) =>
-            new Date(b.pushed_at).getTime() - new Date(a.pushed_at).getTime()
+          (a: { pushed_at?: string }, b: { pushed_at?: string }) =>
+            new Date(b.pushed_at ?? 0).getTime() - new Date(a.pushed_at ?? 0).getTime()
         );
         setProjets(data);
       } else {
@@ -104,9 +169,12 @@ export default function AppRoutes() {
       // try to fall back to any stale cache if fetch failed
       try {
         const raw = localStorage.getItem("github_repos");
-        if (raw) setProjets(JSON.parse(raw));
-      } catch (_) {
-        // ignore
+        if (raw) {
+          const parsed = JSON.parse(raw) as GitHubRepo[];
+          setProjets(parsed);
+        }
+      } catch (e) {
+        console.warn('fetchData: fallback cache read failed', e);
       }
     }
   }, []);
@@ -180,7 +248,7 @@ export default function AppRoutes() {
             path="/projets-perso/:id"
             element={
               <>
-                <Store typeOfList="perso" projets={projets} />
+                <Store typeOfList="perso" projets={projetsForUI} />
                 <div
                   style={{
                     position: "absolute",
@@ -190,7 +258,7 @@ export default function AppRoutes() {
                     height: "auto",
                   }}
                 >
-                  <ItemWrapper type="perso" projetsPerso={projets} />
+                  <ItemWrapper type="perso" projetsPerso={projetsForUI} />
                 </div>
               </>
             }
@@ -198,7 +266,7 @@ export default function AppRoutes() {
           <Route path="/projets-univ" element={<Store typeOfList="univ" />} />
           <Route
             path="/projets-perso"
-            element={<Store typeOfList="perso" projets={projets} />}
+            element={<Store typeOfList="perso" projets={projetsForUI} />}
           />
           <Route path="/competences" element={<Competences />} />
           <Route path="/scolarite" element={<Scolarite />} />

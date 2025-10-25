@@ -8,6 +8,8 @@ const CVIcon = () => (
       xmlns="http://www.w3.org/2000/svg"
       fillRule="evenodd"
       clipRule="evenodd"
+      aria-hidden="true"
+      focusable="false"
     >
       <path
         fill="var(--icon-color)"

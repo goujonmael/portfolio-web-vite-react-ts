@@ -7,6 +7,8 @@ const FrenchFlag: React.FC<{ className?: string }> = ({ className = '' }) => (
     viewBox="0 0 24 18"
     className={className}
     xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+    focusable="false"
   >
     <rect width="8" height="18" fill="#0052CC" />
     <rect x="8" width="8" height="18" fill="#FFFFFF" />

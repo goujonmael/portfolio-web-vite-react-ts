@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "../index.css";
 import { projetsUniv } from "./projetsUniv";
+import LazyImage from "../components/LazyImage/LazyImage";
 import GitHubIcon from "../assets/Icons/GitHubIcon";
 
 interface ItemProps {
@@ -59,7 +60,7 @@ export function Item({ id }: ItemProps) {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [history]);
+  }, [navigate]);
 
   return (
     <div className="modal-container">
@@ -129,7 +130,7 @@ export function Item({ id }: ItemProps) {
             className="card-image-container"
             layoutId={`card-image-container-${id}`}
           >
-            <img className="card-image" src={imageLink} alt="" loading="lazy" />
+            <LazyImage className="card-image" src={imageLink ?? ''} alt={title ?? ''} />
           </motion.div>
           <motion.div
             className="title-container"
@@ -151,7 +152,7 @@ export function Item({ id }: ItemProps) {
               {pdf && (
                 <div className="pdf-link">
                   <Link to={pdf} target="_blank" rel="noopener noreferrer">
-                    <img
+                    <LazyImage
                       src="/images/pdf.svg"
                       alt="pdf logo"
                       className="pdf-logo"

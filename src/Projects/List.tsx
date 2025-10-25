@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { projetsUniv } from "./projetsUniv";
+import LazyImage from "../components/LazyImage/LazyImage";
 
 interface CardProps {
   id: string;
@@ -21,7 +22,7 @@ function Card({ id, title, category, imageLink }: CardProps) {
             className="card-image-container"
             layoutId={`card-image-container-${id}`}
           >
-            <img className="card-image" src={imageLink} alt="" loading="lazy" />
+            <LazyImage className="card-image" src={imageLink ?? ''} alt={title ?? ''} />
           </motion.div>
           <motion.div
             className="title-container"

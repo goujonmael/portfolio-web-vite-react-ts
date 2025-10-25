@@ -4,6 +4,8 @@ const LinkedInIcon = () => (
     viewBox="0 0 50 50"
     width="1.7rem"
     height="1.7rem"
+    aria-hidden="true"
+    focusable="false"
   >
     <path
       fill="var(--icon-color)"

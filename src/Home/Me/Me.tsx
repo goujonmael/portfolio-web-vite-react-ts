@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import "./Me.css";
+import LazyImage from "../../components/LazyImage/LazyImage";
 
 export default function Me() {
   const [isIutHovered, setIsIutHovered] = useState(false);
@@ -17,11 +18,10 @@ export default function Me() {
           <div className="me_left_container">
             <motion.div className="me_left">
               <div className="profile">
-                <img
+                <LazyImage
                   className={`profile_picture ${imageLoaded ? "fade-in" : ""}`}
                   src="/images/Me/me_square.jpg"
                   alt="Picture of Mael GOUJON"
-                  loading="lazy"
                   onLoad={() => setImageLoaded(true)}
                 />
               </div>

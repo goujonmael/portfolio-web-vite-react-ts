@@ -13,11 +13,13 @@ const LanguageSwitch: React.FC = () => {
   };
 
   return (
-    <div className="language-switch">
+    <div className="language-switch" role="tablist" aria-label="Language switch">
       <button
         className={`language-btn ${i18n.language === 'fr' ? 'active' : ''}`}
         onClick={() => changeLanguage('fr')}
         aria-label="Français"
+        aria-pressed={i18n.language === 'fr'}
+        title="Français"
       >
         <FrenchFlag />
       </button>
@@ -25,6 +27,8 @@ const LanguageSwitch: React.FC = () => {
         className={`language-btn ${i18n.language === 'en' ? 'active' : ''}`}
         onClick={() => changeLanguage('en')}
         aria-label="English"
+        aria-pressed={i18n.language === 'en'}
+        title="English"
       >
         <BritishFlag />
       </button>

@@ -1,4 +1,5 @@
 import '../Projects.css';
+import LazyImage from '../../components/LazyImage/LazyImage';
 
 export function FrameworkLaptopDescription() {
     return (
@@ -21,13 +22,13 @@ export function FrameworkLaptopDetails() {
             </h1>
             <h2>Gestion de la batterie</h2>
             <p>Switch entre les modes de charge complète et limitée et affichage du mode selectionné via une notification.</p>
-            <img className="container-image" src="/public/projects/FW/battery.png" alt="battery" />
+            <LazyImage className="container-image" src="/projects/FW/battery.png" alt="battery" />
             <h1>
                 Configurations:
             </h1>
 
             <h2>Hyprland:</h2>
-            <img className="container-image" src="/public/projects/FW/hyprland.png" alt="hyprland" />
+            <LazyImage className="container-image" src="/projects/FW/hyprland.png" alt="hyprland" />
             <p>
                 - Bordures blanches pour la fenêtre active.
                 <br />
@@ -44,7 +45,7 @@ export function FrameworkLaptopDetails() {
             <h2>
                 Waybar:
             </h2>
-            <img className="container-image" src="/public/projects/FW/waybar.png" alt="waybar" />
+            <LazyImage className="container-image" src="/projects/FW/waybar.png" alt="waybar" />
             <p>
                 Left-side:
                 <br />

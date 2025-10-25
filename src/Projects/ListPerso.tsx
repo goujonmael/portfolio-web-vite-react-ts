@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import LazyImage from "../components/LazyImage/LazyImage";
 
 interface CardPersoProps {
   id: string;
@@ -38,7 +39,7 @@ const CardPerso: React.FC<CardPersoProps> = ({
             className="card-image-container"
             layoutId={`card-image-container-${id}`}
           >
-            <img className="card-image" src={imageLink} alt="" />
+            <LazyImage className="card-image" src={imageLink ?? ''} alt={title ?? ''} />
           </motion.div>
           {isSelected && (
             <motion.div
@@ -69,11 +70,12 @@ interface ListPersoProps {
 
 interface Projet {
   id: string;
-  name: string;
-  category: string;
-  imageLink: string;
-  github: string;
-  pdf: string;
+  name?: string;
+  category?: string;
+  imageLink?: string;
+  github?: string;
+  pdf?: string;
+  [key: string]: unknown;
 }
 
 export function ListPerso({ selectedId, projets }: ListPersoProps) {
@@ -84,11 +86,11 @@ export function ListPerso({ selectedId, projets }: ListPersoProps) {
         <CardPerso
           key={card.id}
           id={card.id}
-          title={card.name}
-          category={card.category}
-          imageLink={card.imageLink}
-          github={card.github}
-          pdf={card.pdf}
+          title={(card.name as string) ?? ''}
+          category={(card.category as string) ?? ''}
+          imageLink={(card.imageLink as string) ?? ''}
+          github={(card.github as string) ?? ''}
+          pdf={(card.pdf as string) ?? ''}
           isSelected={card.id === selectedId}
         />
       ))}

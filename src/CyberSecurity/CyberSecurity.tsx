@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import './CyberSecurity.css';
+import LazyImage from '../components/LazyImage/LazyImage';
 import THMIcon from '../assets/Icons/THMIcon';
 
 interface CertificateData {
@@ -302,7 +303,7 @@ const CyberSecurity: React.FC = () => {
                     ) : (
                         certificates.map((certificate) => (
                             <div key={certificate._id} className="certificate-card">
-                                <img src={certificate.imageUrl} alt={certificate.title} className="certificate-image" />
+                                <LazyImage src={certificate.imageUrl ?? ''} alt={certificate.title ?? ''} className="certificate-image" />
                                 <h2 className="certificate-title">{certificate.title}</h2>
                                 <p className="certificate-date">{new Date(certificate.achieved).toLocaleDateString()}</p>
                                 <div
