@@ -13,8 +13,8 @@ describe('Header', () => {
         <Header />
       </MemoryRouter>
     );
-    const navs = getAllByRole('navigation');
-    expect(navs.length).toBeGreaterThan(0);
+    const header = getAllByRole('banner');
+    expect(header.length).toBeGreaterThan(0);
     // Vérifie la présence d'au moins un lien interne (Home ou Projets)
     const links = getAllByRole('link');
     expect(links.length).toBeGreaterThan(0);
@@ -26,8 +26,8 @@ describe('Header', () => {
         <Header />
       </MemoryRouter>
     );
-    const nav = screen.getAllByRole('navigation')[0];
-    expect(nav).toBeInTheDocument();
+    const header = screen.getByRole('banner');
+    expect(header).toBeInTheDocument();
   });
 
   it('contains navigation links to main sections', () => {

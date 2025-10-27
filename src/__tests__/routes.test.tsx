@@ -3,8 +3,18 @@ import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { MemoryRouter } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import AppRoutes from '../routes';
 import '../i18n/i18n';
+
+// Helper to wrap components with necessary providers
+const renderWithProviders = (ui: React.ReactElement) => {
+  return render(
+    <HelmetProvider>
+      {ui}
+    </HelmetProvider>
+  );
+};
 
 describe('AppRoutes', () => {
   beforeEach(() => {
@@ -17,15 +27,15 @@ describe('AppRoutes', () => {
   });
 
   it('renders the home route with all sections', async () => {
-    const { container } = render(
+    const { container } = renderWithProviders(
       <MemoryRouter initialEntries={['/']}>
         <AppRoutes />
       </MemoryRouter>
     );
 
     // Header should be present
-    const navigation = screen.getAllByRole('navigation');
-    expect(navigation.length).toBeGreaterThan(0);
+    const header = screen.getByRole('banner');
+    expect(header).toBeInTheDocument();
 
     // Container should be present
     await waitFor(() => {
@@ -35,7 +45,7 @@ describe('AppRoutes', () => {
   });
 
   it('renders the competences route', async () => {
-    render(
+    renderWithProviders(
       <MemoryRouter initialEntries={['/competences']}>
         <AppRoutes />
       </MemoryRouter>
@@ -48,7 +58,7 @@ describe('AppRoutes', () => {
   });
 
   it('renders the scolarite route', async () => {
-    render(
+    renderWithProviders(
       <MemoryRouter initialEntries={['/scolarite']}>
         <AppRoutes />
       </MemoryRouter>
@@ -61,7 +71,7 @@ describe('AppRoutes', () => {
   });
 
   it('renders the cybersecurity route', async () => {
-    render(
+    renderWithProviders(
       <MemoryRouter initialEntries={['/cybersecurity']}>
         <AppRoutes />
       </MemoryRouter>
@@ -74,7 +84,7 @@ describe('AppRoutes', () => {
   });
 
   it('renders 404 page for unknown routes', async () => {
-    render(
+    renderWithProviders(
       <MemoryRouter initialEntries={['/unknown-route']}>
         <AppRoutes />
       </MemoryRouter>
@@ -100,7 +110,7 @@ describe('AppRoutes', () => {
       })
     ) as unknown as typeof fetch;
 
-    render(
+    renderWithProviders(
       <MemoryRouter initialEntries={['/']}>
         <AppRoutes />
       </MemoryRouter>
@@ -120,7 +130,7 @@ describe('AppRoutes', () => {
       Promise.reject(new Error('Network error'))
     ) as unknown as typeof fetch;
 
-    render(
+    renderWithProviders(
       <MemoryRouter initialEntries={['/']}>
         <AppRoutes />
       </MemoryRouter>
@@ -128,8 +138,8 @@ describe('AppRoutes', () => {
 
     // Should still render without crashing
     await waitFor(() => {
-      const navigation = screen.getAllByRole('navigation');
-      expect(navigation.length).toBeGreaterThan(0);
+      const header = screen.getByRole('banner');
+      expect(header).toBeInTheDocument();
     });
   });
 
@@ -144,7 +154,7 @@ describe('AppRoutes', () => {
       data: cachedRepos
     }));
 
-    render(
+    renderWithProviders(
       <MemoryRouter initialEntries={['/']}>
         <AppRoutes />
       </MemoryRouter>
@@ -152,13 +162,13 @@ describe('AppRoutes', () => {
 
     // Should not call fetch if cache is valid
     await waitFor(() => {
-      const navigation = screen.getAllByRole('navigation');
-      expect(navigation.length).toBeGreaterThan(0);
+      const header = screen.getByRole('banner');
+      expect(header).toBeInTheDocument();
     });
   });
 
   it('updates document title on route change', async () => {
-    render(
+    renderWithProviders(
       <MemoryRouter initialEntries={['/']}>
         <AppRoutes />
       </MemoryRouter>
@@ -169,11 +179,11 @@ describe('AppRoutes', () => {
     });
 
     // Document title should be set
-    expect(document.title).toContain('Portfolio');
+    expect(document.title).toContain('Maël Goujon');
   });
 
   it('renders floating decorative elements', () => {
-    const { container } = render(
+    const { container } = renderWithProviders(
       <MemoryRouter initialEntries={['/']}>
         <AppRoutes />
       </MemoryRouter>
@@ -184,7 +194,7 @@ describe('AppRoutes', () => {
   });
 
   it('renders blur background', () => {
-    const { container } = render(
+    const { container } = renderWithProviders(
       <MemoryRouter initialEntries={['/']}>
         <AppRoutes />
       </MemoryRouter>
@@ -208,7 +218,7 @@ describe('AppRoutes', () => {
       })
     ) as unknown as typeof fetch;
 
-    render(
+    renderWithProviders(
       <MemoryRouter initialEntries={['/']}>
         <AppRoutes />
       </MemoryRouter>
@@ -226,7 +236,7 @@ describe('AppRoutes', () => {
   });
 
   it('handles scroll events', async () => {
-    render(
+    renderWithProviders(
       <MemoryRouter initialEntries={['/']}>
         <AppRoutes />
       </MemoryRouter>
@@ -237,13 +247,13 @@ describe('AppRoutes', () => {
     window.dispatchEvent(new Event('scroll'));
 
     await waitFor(() => {
-      const navigation = screen.getAllByRole('navigation');
-      expect(navigation.length).toBeGreaterThan(0);
+      const header = screen.getByRole('banner');
+      expect(header).toBeInTheDocument();
     });
   });
 
   it('renders university projects route', async () => {
-    render(
+    renderWithProviders(
       <MemoryRouter initialEntries={['/projets-univ']}>
         <AppRoutes />
       </MemoryRouter>
@@ -257,7 +267,7 @@ describe('AppRoutes', () => {
   });
 
   it('renders personal projects route', async () => {
-    render(
+    renderWithProviders(
       <MemoryRouter initialEntries={['/projets-perso']}>
         <AppRoutes />
       </MemoryRouter>
@@ -271,7 +281,7 @@ describe('AppRoutes', () => {
   });
 
   it('renders suspense fallback during lazy loading', () => {
-    const { container } = render(
+    const { container } = renderWithProviders(
       <MemoryRouter initialEntries={['/competences']}>
         <AppRoutes />
       </MemoryRouter>
@@ -282,15 +292,15 @@ describe('AppRoutes', () => {
   });
 
   it('renders without meta description errors', async () => {
-    render(
+    renderWithProviders(
       <MemoryRouter initialEntries={['/']}>
         <AppRoutes />
       </MemoryRouter>
     );
 
     await waitFor(() => {
-      const navigation = screen.getAllByRole('navigation');
-      expect(navigation.length).toBeGreaterThan(0);
+      const header = screen.getByRole('banner');
+      expect(header).toBeInTheDocument();
     });
     
     // Meta description might not exist in test environment

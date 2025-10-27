@@ -81,6 +81,7 @@
 
 TODO:
 fix header trop large
-fix header invisible en mode mobile
 Ameliorer la page error boundary
 Ameliorer la page Loading
+Titres entre pages homogènes en style
+Ajouter une fleche pour scroll sur la page d'accueil

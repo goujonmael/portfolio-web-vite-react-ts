@@ -8,13 +8,13 @@ import { MemoryRouter } from 'react-router-dom';
 
 describe('App', () => {
   it('renders without crashing and shows header', () => {
-    const { getAllByRole } = render(
+    const { getByRole } = render(
       <MemoryRouter>
         <App />
       </MemoryRouter>
     );
-    const navs = getAllByRole('navigation');
-    expect(navs.length).toBeGreaterThan(0);
+    const header = getByRole('banner');
+    expect(header).toBeInTheDocument();
   });
 
   it('renders the application container with proper structure', () => {
@@ -34,8 +34,8 @@ describe('App', () => {
       </MemoryRouter>
     );
     // Le header devrait être présent
-    const navigation = screen.getAllByRole('navigation');
-    expect(navigation.length).toBeGreaterThan(0);
+    const header = screen.getByRole('banner');
+    expect(header).toBeInTheDocument();
   });
 
   it('renders different routes correctly', () => {

@@ -132,6 +132,7 @@
   text-align: center;
   position: relative;
   z-index: 1;
+  padding-top: 1rem;
   /* Assure que le titre reste au-dessus */
 }
 

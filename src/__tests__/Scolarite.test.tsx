@@ -5,6 +5,16 @@ import '@testing-library/jest-dom';
 import Scolarite from '../Scolarite/Scolarite';
 import '../i18n/i18n';
 import i18n from '../i18n/i18n';
+import { HelmetProvider } from 'react-helmet-async';
+
+// Helper to wrap components with necessary providers
+const renderWithProviders = (ui: React.ReactElement) => {
+  return render(
+    <HelmetProvider>
+      {ui}
+    </HelmetProvider>
+  );
+};
 
 describe('Scolarite', () => {
   beforeEach(() => {
@@ -12,19 +22,19 @@ describe('Scolarite', () => {
   });
 
   it('renders the scolarite page with title', () => {
-    render(<Scolarite />);
+    renderWithProviders(<Scolarite />);
     const title = screen.getByRole('heading', { level: 1 });
     expect(title).toBeInTheDocument();
   });
 
   it('displays the looking for work banner', () => {
-    const { container } = render(<Scolarite />);
+    const { container } = renderWithProviders(<Scolarite />);
     const banner = container.querySelector('.banner');
     expect(banner).toBeInTheDocument();
   });
 
   it('displays contact icons in the banner', () => {
-    const { container } = render(<Scolarite />);
+    const { container } = renderWithProviders(<Scolarite />);
     const banner = container.querySelector('.banner');
     expect(banner).toBeInTheDocument();
     
@@ -46,7 +56,7 @@ describe('Scolarite', () => {
   });
 
   it('displays internships section', () => {
-    render(<Scolarite />);
+    renderWithProviders(<Scolarite />);
     const headings = screen.getAllByRole('heading', { level: 2 });
     const internshipsHeading = headings.find(h => 
       h.textContent?.includes('Alternance') || 
@@ -57,20 +67,20 @@ describe('Scolarite', () => {
   });
 
   it('displays education section', () => {
-    render(<Scolarite />);
+    renderWithProviders(<Scolarite />);
     const educationHeading = screen.getAllByRole('heading', { level: 2 })
       .find(h => h.textContent?.includes('Formation') || h.textContent?.includes('Education'));
     expect(educationHeading).toBeInTheDocument();
   });
 
   it('displays formation cards', () => {
-    const { container } = render(<Scolarite />);
+    const { container } = renderWithProviders(<Scolarite />);
     const formationCards = container.querySelectorAll('.formation-card');
     expect(formationCards.length).toBeGreaterThan(0);
   });
 
   it('displays dates for formations', () => {
-    const { container } = render(<Scolarite />);
+    const { container } = renderWithProviders(<Scolarite />);
     const dates = container.querySelectorAll('.formation-date');
     expect(dates.length).toBeGreaterThan(0);
     dates.forEach(date => {
@@ -79,7 +89,7 @@ describe('Scolarite', () => {
   });
 
   it('changes language correctly', () => {
-    const { rerender } = render(<Scolarite />);
+    const { rerender } = renderWithProviders(<Scolarite />);
     
     // French version
     let title = screen.getByRole('heading', { level: 1 });
@@ -87,7 +97,11 @@ describe('Scolarite', () => {
     
     // Change to English
     i18n.changeLanguage('en');
-    rerender(<Scolarite />);
+    rerender(
+      <HelmetProvider>
+        <Scolarite />
+      </HelmetProvider>
+    );
     
     title = screen.getByRole('heading', { level: 1 });
     const englishText = title.textContent;
@@ -97,19 +111,19 @@ describe('Scolarite', () => {
   });
 
   it('displays establishment names', () => {
-    const { container } = render(<Scolarite />);
+    const { container } = renderWithProviders(<Scolarite />);
     const establishments = container.querySelectorAll('.formation-etablissement');
     expect(establishments.length).toBeGreaterThan(0);
   });
 
   it('displays specialties for formations', () => {
-    const { container } = render(<Scolarite />);
+    const { container } = renderWithProviders(<Scolarite />);
     const specialties = container.querySelectorAll('.formation-specialite');
     expect(specialties.length).toBeGreaterThan(0);
   });
 
   it('formats dates correctly for ongoing studies', () => {
-    const { container } = render(<Scolarite />);
+    const { container } = renderWithProviders(<Scolarite />);
     const dates = container.querySelectorAll('.formation-date');
     // At least check that dates are displayed
     expect(dates.length).toBeGreaterThan(0);
@@ -120,7 +134,7 @@ describe('Scolarite', () => {
   });
 
   it('opens external links in new tab', () => {
-    const { container } = render(<Scolarite />);
+    const { container } = renderWithProviders(<Scolarite />);
     const links = container.querySelectorAll('.banner-icons a');
     
     links.forEach(link => {
@@ -130,13 +144,13 @@ describe('Scolarite', () => {
   });
 
   it('renders section titles as h2 headings', () => {
-    render(<Scolarite />);
+    renderWithProviders(<Scolarite />);
     const h2Headings = screen.getAllByRole('heading', { level: 2 });
     expect(h2Headings.length).toBeGreaterThanOrEqual(2); // Internships + Education
   });
 
   it('each formation card has a title', () => {
-    const { container } = render(<Scolarite />);
+    const { container } = renderWithProviders(<Scolarite />);
     const formationTitles = container.querySelectorAll('.formation-title');
     expect(formationTitles.length).toBeGreaterThan(0);
     formationTitles.forEach(title => {

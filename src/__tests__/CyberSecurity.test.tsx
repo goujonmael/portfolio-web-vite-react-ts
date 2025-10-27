@@ -5,6 +5,16 @@ import '@testing-library/jest-dom';
 import CyberSecurity from '../CyberSecurity/CyberSecurity';
 import '../i18n/i18n';
 import i18n from '../i18n/i18n';
+import { HelmetProvider } from 'react-helmet-async';
+
+// Helper to wrap components with necessary providers
+const renderWithProviders = (ui: React.ReactElement) => {
+  return render(
+    <HelmetProvider>
+      {ui}
+    </HelmetProvider>
+  );
+};
 
 describe('CyberSecurity', () => {
   beforeEach(() => {
@@ -12,33 +22,33 @@ describe('CyberSecurity', () => {
   });
 
   it('renders the cybersecurity page with title', () => {
-    render(<CyberSecurity />);
+    renderWithProviders(<CyberSecurity />);
     const title = screen.getByRole('heading', { level: 1 });
     expect(title).toBeInTheDocument();
   });
 
   it('displays the subtitle', () => {
-    const { container } = render(<CyberSecurity />);
+    const { container } = renderWithProviders(<CyberSecurity />);
     const subtitle = container.querySelector('.cybersecurity-subtitle');
     expect(subtitle).toBeInTheDocument();
   });
 
   it('displays TryHackMe section', () => {
-    const { container } = render(<CyberSecurity />);
+    const { container } = renderWithProviders(<CyberSecurity />);
     const thmTitle = container.querySelector('.platform-title');
     expect(thmTitle).toBeInTheDocument();
     expect(thmTitle?.textContent).toContain('TryHackMe');
   });
 
   it('loads stats without errors', () => {
-    const { container } = render(<CyberSecurity />);
+    const { container } = renderWithProviders(<CyberSecurity />);
     // Stats load synchronously with static data, so loaders won't show
     const statsSection = container.querySelector('.platform-stats');
     expect(statsSection).toBeInTheDocument();
   });
 
   it('displays stats after loading', async () => {
-    render(<CyberSecurity />);
+    renderWithProviders(<CyberSecurity />);
     
     await waitFor(() => {
       const badges = screen.getByText(/22/);
@@ -50,20 +60,20 @@ describe('CyberSecurity', () => {
   });
 
   it('displays skills section', () => {
-    render(<CyberSecurity />);
+    renderWithProviders(<CyberSecurity />);
     const skillsHeading = screen.getAllByRole('heading')
       .find(h => h.textContent?.includes('Compétences') || h.textContent?.includes('Skills'));
     expect(skillsHeading).toBeInTheDocument();
   });
 
   it('displays skill categories', () => {
-    const { container } = render(<CyberSecurity />);
+    const { container } = renderWithProviders(<CyberSecurity />);
     const categories = container.querySelectorAll('.skill-category');
     expect(categories.length).toBeGreaterThanOrEqual(3); // Penetration Testing, Network Security, System Security
   });
 
   it('displays skill tags', () => {
-    const { container } = render(<CyberSecurity />);
+    const { container } = renderWithProviders(<CyberSecurity />);
     const skillTags = container.querySelectorAll('.skill-tag');
     expect(skillTags.length).toBeGreaterThan(0);
     
@@ -74,21 +84,21 @@ describe('CyberSecurity', () => {
   });
 
   it('displays certificates section', () => {
-    render(<CyberSecurity />);
+    renderWithProviders(<CyberSecurity />);
     const certificatesHeading = screen.getAllByRole('heading')
       .find(h => h.textContent?.includes('Certificat') || h.textContent?.includes('Certificate'));
     expect(certificatesHeading).toBeInTheDocument();
   });
 
   it('loads certificates without errors', () => {
-    const { container} = render(<CyberSecurity />);
+    const { container} = renderWithProviders(<CyberSecurity />);
     // Certificates load synchronously with static data
     const certificatesSection = container.querySelector('.certificates-section');
     expect(certificatesSection).toBeInTheDocument();
   });
 
   it('displays certificates after loading', async () => {
-    render(<CyberSecurity />);
+    renderWithProviders(<CyberSecurity />);
     
     await waitFor(() => {
       const certificates = screen.getAllByText(/Web Application Pentesting|Jr Penetration Tester|Pre Security/i);
@@ -97,7 +107,7 @@ describe('CyberSecurity', () => {
   });
 
   it('displays TryHackMe profile link', async () => {
-    render(<CyberSecurity />);
+    renderWithProviders(<CyberSecurity />);
     
     await waitFor(() => {
       const profileLink = screen.getByRole('link', { name: /voir le profil|view profile/i });
@@ -107,7 +117,7 @@ describe('CyberSecurity', () => {
   });
 
   it('profile link opens in new tab', async () => {
-    render(<CyberSecurity />);
+    renderWithProviders(<CyberSecurity />);
     
     await waitFor(() => {
       const profileLink = screen.getByRole('link', { name: /voir le profil|view profile/i });
@@ -117,7 +127,7 @@ describe('CyberSecurity', () => {
   });
 
   it('displays certificate images', async () => {
-    const { container } = render(<CyberSecurity />);
+    const { container } = renderWithProviders(<CyberSecurity />);
     
     await waitFor(() => {
       const images = container.querySelectorAll('.certificate-image');
@@ -126,7 +136,7 @@ describe('CyberSecurity', () => {
   });
 
   it('displays certificate details', async () => {
-    const { container } = render(<CyberSecurity />);
+    const { container } = renderWithProviders(<CyberSecurity />);
     
     await waitFor(() => {
       const certificateDetails = container.querySelectorAll('.certificate-details');
@@ -135,7 +145,7 @@ describe('CyberSecurity', () => {
   });
 
   it('certificate links open in new tab', async () => {
-    render(<CyberSecurity />);
+    renderWithProviders(<CyberSecurity />);
     
     await waitFor(() => {
       const certificateLinks = screen.getAllByRole('link', { name: /voir le certificat|view certificate/i });
@@ -147,20 +157,20 @@ describe('CyberSecurity', () => {
   });
 
   it('displays data refresh date', () => {
-    const { container } = render(<CyberSecurity />);
+    const { container } = renderWithProviders(<CyberSecurity />);
     const refreshDate = container.querySelector('.data-refresh-date');
     expect(refreshDate).toBeInTheDocument();
   });
 
   it('displays TryHackMe badge iframe', () => {
-    const { container } = render(<CyberSecurity />);
+    const { container } = renderWithProviders(<CyberSecurity />);
     const iframe = container.querySelector('iframe[title="TryHackMe Badge"]');
     expect(iframe).toBeInTheDocument();
     expect(iframe).toHaveAttribute('src', expect.stringContaining('tryhackme.com'));
   });
 
   it('changes language correctly', async () => {
-    const { rerender } = render(<CyberSecurity />);
+    const { rerender } = renderWithProviders(<CyberSecurity />);
     
     // French version
     let title = screen.getByRole('heading', { level: 1 });
@@ -168,14 +178,18 @@ describe('CyberSecurity', () => {
     
     // Change to English
     i18n.changeLanguage('en');
-    rerender(<CyberSecurity />);
+    rerender(
+      <HelmetProvider>
+        <CyberSecurity />
+      </HelmetProvider>
+    );
     
     title = screen.getByRole('heading', { level: 1 });
     expect(title).toBeInTheDocument();
   });
 
   it('displays all three stat categories', async () => {
-    const { container } = render(<CyberSecurity />);
+    const { container } = renderWithProviders(<CyberSecurity />);
     
     await waitFor(() => {
       const stats = container.querySelectorAll('.stat');
@@ -184,7 +198,7 @@ describe('CyberSecurity', () => {
   });
 
   it('displays certificate titles', async () => {
-    const { container } = render(<CyberSecurity />);
+    const { container } = renderWithProviders(<CyberSecurity />);
     
     await waitFor(() => {
       const certificateTitles = container.querySelectorAll('.certificate-title');
@@ -196,7 +210,7 @@ describe('CyberSecurity', () => {
   });
 
   it('displays certificate dates', async () => {
-    const { container } = render(<CyberSecurity />);
+    const { container } = renderWithProviders(<CyberSecurity />);
     
     await waitFor(() => {
       const certificateDates = container.querySelectorAll('.certificate-date');

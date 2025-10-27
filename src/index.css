@@ -124,7 +124,7 @@ body {
   width: 100%;
   /*max-width: 990px;*/
   flex: 1 1 100%;
-  margin-top: var(--header-padding);
+  margin-top: calc(var(--header-padding) + 2rem);
   height: 100%;
 }
 
@@ -478,9 +478,9 @@ p {
     max-width: 100%;
   }
 
-  .card-content-container.open {
-    /*top: auto !important;*/
-  }
+  /* .card-content-container.open {
+    top: auto !important;
+  } */
 
   .card-image-container {
     height: 25vh;
