@@ -27,12 +27,13 @@ const PageLayout: React.FC<PageLayoutProps> = ({
   className = ''
 }) => {
   return (
-    <motion.div 
+    <motion.main 
       className={`page-layout ${className}`}
       initial="initial"
       animate="animate"
       exit="exit"
       variants={pageVariants}
+      role="main"
     >
       <SEO
         title={seoTitle}
@@ -47,7 +48,7 @@ const PageLayout: React.FC<PageLayoutProps> = ({
       <div className="page-layout-content">
         {children}
       </div>
-    </motion.div>
+    </motion.main>
   );
 };
 

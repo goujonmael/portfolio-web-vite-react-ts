@@ -262,7 +262,7 @@ describe('AppRoutes', () => {
     await waitFor(() => {
       const heading = screen.getByRole('heading', { level: 1 });
       expect(heading).toBeInTheDocument();
-      expect(heading.textContent).toMatch(/projet/i);
+      expect(heading.textContent).toMatch(/projects/i);
     });
   });
 
@@ -276,7 +276,7 @@ describe('AppRoutes', () => {
     await waitFor(() => {
       const heading = screen.getByRole('heading', { level: 1 });
       expect(heading).toBeInTheDocument();
-      expect(heading.textContent).toMatch(/projet/i);
+      expect(heading.textContent).toMatch(/projects/i);
     });
   });
 

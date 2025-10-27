@@ -29,7 +29,7 @@ describe('CyberSecurity', () => {
 
   it('displays the subtitle', () => {
     const { container } = renderWithProviders(<CyberSecurity />);
-    const subtitle = container.querySelector('.cybersecurity-subtitle');
+    const subtitle = container.querySelector('.page-layout-subtitle');
     expect(subtitle).toBeInTheDocument();
   });
 
