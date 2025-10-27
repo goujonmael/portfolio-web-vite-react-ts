@@ -19,12 +19,14 @@ export default function Competences() {
   return (
     <PageLayout
       title={t('header.skills')}
-      subtitle={t('seo.skills.description')}
       seoTitle={t('seo.skills.title')}
-      seoDescription={undefined}
+      seoDescription={t('seo.skills.description')}
       seoKeywords={t('seo.skills.keywords')}
       seoUrl="/competences"
     >
+      <div className="description">
+        <p>{t('skills.intro')}</p>
+      </div>
       <div className="competences">
         {competences.map((competence: Competence) => (
           <div

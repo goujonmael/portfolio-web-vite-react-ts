@@ -29,7 +29,6 @@ const CyberSecurity: React.FC = () => {
     const [certificates, setCertificates] = useState<CertificateData[]>([]);
     const [isLoadingStats, setIsLoadingStats] = useState(true);
     const [isLoadingCertificates, setIsLoadingCertificates] = useState(true);
-    const [isBadgeLoaded, setIsBadgeLoaded] = useState(false);
 
     const StatLoader = () => (
         <div className="stat-loader">
@@ -252,23 +251,12 @@ const CyberSecurity: React.FC = () => {
                                     </>
                                 )}
                             </motion.div>
-                            <motion.div 
-                                style={{ width: '100%' }} 
-                                className="thm-badge"
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: isBadgeLoaded ? 1 : 0 }}
-                                transition={{ duration: 0.8, ease: "easeOut" }}
-                            >
+                            <div style={{ width: '100%' }} className="thm-badge">
                                 <iframe
                                     src="https://tryhackme.com/api/v2/badges/public-profile?userPublicId=295697"
                                     title="TryHackMe Badge"
-                                    onLoad={() => {
-                                        // Petit délai pour s'assurer que le contenu de l'iframe est rendu
-                                        setTimeout(() => setIsBadgeLoaded(true), 300);
-                                    }}
-                                    style={{ opacity: isBadgeLoaded ? 1 : 0, transition: 'opacity 0.5s ease-out' }}
                                 ></iframe>
-                            </motion.div>
+                            </div>
 
                         </motion.div>
                         <div className="profile-actions">

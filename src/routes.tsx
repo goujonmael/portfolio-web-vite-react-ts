@@ -60,13 +60,14 @@ const Store: React.FC<StoreProps> = React.memo(({ typeOfList, projets }) => {
   return (
     <PageLayout
       title={`${t('projects.title')} ${typeOfList === "univ" ? t('projects.university.type') : t('projects.personal.type')}`}
-      subtitle={typeOfList === "univ" ? t('yprojectDescription}projects.personal.description
       seoTitle={typeOfList === "univ" ? t('seo.projectsUniv.title') : t('seo.projectsPerso.title')}
       seoDescription={typeOfList === "univ" ? t('seo.projectsUniv.description') : t('seo.projectsPerso.description')}
       seoKeywords={typeOfList === "univ" ? t('seo.projectsUniv.keywords') : t('seo.projectsPerso.keywords')}
       seoUrl={typeOfList === "univ" ? "/projets-univ" : "/projets-perso"}
-      className="projects-page"
     >
+      <div className="description">
+        {projectDescription}
+      </div>
       {typeOfList === "univ" ? (
         <List selectedId={id ?? ""} />
       ) : (
