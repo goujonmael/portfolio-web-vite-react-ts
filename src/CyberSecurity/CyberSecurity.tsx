@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import SEO from '../components/SEO/SEO';
 import { motion } from 'framer-motion';
-import { pageVariants, scrollReveal, staggerContainer, staggerItem, fadeIn } from '../utils/animations';
+import { scrollReveal, staggerContainer, staggerItem } from '../utils/animations';
 import './CyberSecurity.css';
 import LazyImage from '../components/LazyImage/LazyImage';
 import THMIcon from '../assets/Icons/THMIcon';
+import PageLayout from '../components/PageLayout/PageLayout';
 
 interface CertificateData {
     _id: string;
@@ -193,28 +193,14 @@ const CyberSecurity: React.FC = () => {
     }, []);
 
     return (
-        <motion.div 
-            className="cybersecurity-container"
-            initial="initial"
-            animate="animate"
-            exit="exit"
-            variants={pageVariants}
+        <PageLayout
+            title={t('header.cybersecurity')}
+            subtitle={t('cybersecurity.subtitle')}
+            seoTitle={t('seo.cybersecurity.title')}
+            seoDescription={t('seo.cybersecurity.description')}
+            seoKeywords={t('seo.cybersecurity.keywords')}
+            seoUrl="/cybersecurity"
         >
-            <SEO
-                title={t('seo.cybersecurity.title')}
-                description={t('seo.cybersecurity.description')}
-                keywords={t('seo.cybersecurity.keywords')}
-                url="/cybersecurity"
-            />
-            <motion.div 
-                className="cybersecurity-header"
-                variants={fadeIn}
-                initial="hidden"
-                animate="visible"
-            >
-                <h1 className="cybersecurity-title">{t('cybersecurity.title')}</h1>
-                <p className="cybersecurity-subtitle">{t('cybersecurity.subtitle')}</p>
-            </motion.div>
             <motion.div 
                 className="tryhackme-section"
                 variants={scrollReveal}
@@ -389,7 +375,7 @@ const CyberSecurity: React.FC = () => {
                     )}
                 </motion.div>
             </motion.section>
-        </motion.div>
+        </PageLayout>
     );
 };
 

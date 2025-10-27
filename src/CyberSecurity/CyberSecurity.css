@@ -3,39 +3,18 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
+  padding-top: 2rem;
 }
 
 /* Header de la section */
 .cybersecurity-header {
   text-align: center;
-  margin-bottom: 3rem;
-  padding-top: 1rem;
-}
-
-.cybersecurity-title {
-  font-size: 2.5rem;
-  font-family: var(--font-title);
-  color: var(--title1);
-  margin-bottom: 1rem;
-  position: relative;
-}
-
-.cybersecurity-title::after {
-  content: '';
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 3px;
-  background: linear-gradient(90deg, var(--title1), var(--title2));
-  border-radius: 2px;
+  margin-bottom: 2rem;
 }
 
 .cybersecurity-subtitle {
   font-size: 1.2rem;
   color: var(--text-secondary);
-  margin-top: 1rem;
   font-family: var(--font-text);
 }
 
@@ -628,10 +607,6 @@
 }
 
 @media (max-width: 480px) {
-  .cybersecurity-title {
-    font-size: 1.8rem;
-  }
-
   .platform-stats {    
     gap: 1rem;
   }

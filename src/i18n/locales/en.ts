@@ -48,13 +48,16 @@ export const enTranslations = {
     }
   },
   projects: {
+    title: "Projects",
     university: {
       title: "University Projects",
+      type: "University",
       description: "Projects carried out as part of my computer science studies.",
       teamwork: "All were carried out in groups using agile methods and Kanban."
     },
     personal: {
       title: "Personal Projects",
+      type: "Personal",
       description: "Projects carried out outside the university framework.",
       motivation: "These works result from my curiosity for computer science, electronics and new technologies."
     }

@@ -1,33 +1,22 @@
-.title {
-  font-size: 3rem;
-  font-weight: 700;
-  font-family: Lato, sans-serif;
-  color: #d7d7d7;
-  padding: 1rem;
-  margin: 0;
-  text-align: center;
-}
-
 .competences-container {
   display: flex;
   flex-direction: column;
-  /*align-items: center;*/
-  justify-content: center;
-  padding: 1rem;
-  margin: 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  padding-top: 2rem;
 }
 
-.title-first-letter {
-  color: var(--title1);
-  font-family: Turret Road;
-  font-weight: 800;
+.competences-header {
+  text-align: center;
+  margin-bottom: 2rem;
 }
 
 .description {
   font-weight: 400;
   font-family: Lato, sans-serif;
   color: white;
-  padding: 3rem 0;
+  padding-bottom: 2rem;
 }
 
 .description p {

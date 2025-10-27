@@ -48,13 +48,16 @@ export const frTranslations = {
     }
   },
   projects: {
+    title: "Projets",
     university: {
       title: "Projets Universitaires",
+      type: "Universitaires",
       description: "Projets réalisés dans le cadre de mes études en informatique.",
       teamwork: "Tous ont étés effectués en groupe grâce aux méthodes agiles et Kanban."
     },
     personal: {
       title: "Projets Personnels",
+      type: "Personnels",
       description: "Projets réalisés en dehors du cadre universitaire.",
       motivation: "Ces travaux résultent de ma curiosité pour l'informatique, l'électronique et les nouvelles technologies."
     }

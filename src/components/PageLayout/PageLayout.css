@@ -1,0 +1,52 @@
+/* Container principal uniforme pour toutes les pages */
+.page-layout {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header de page avec titre et subtitle */
+.page-layout-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* Subtitle optionnel sous le titre */
+.page-layout-subtitle {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  margin-top: 1rem;
+  font-family: var(--font-text);
+  line-height: 1.6;
+}
+
+/* Contenu principal de la page */
+.page-layout-content {
+  flex: 1;
+}
+
+/* Media queries pour responsive */
+@media (max-width: 768px) {
+  .page-layout {
+    padding: 1.5rem;
+    padding-top: 1.5rem;
+  }
+
+  .page-layout-subtitle {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-layout {
+    padding: 1rem;
+    padding-top: 1rem;
+  }
+
+  .page-layout-subtitle {
+    font-size: 0.9rem;
+  }
+}

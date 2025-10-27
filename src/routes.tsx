@@ -3,9 +3,9 @@ import Header from "./Header/Header";
 import React, { Suspense, lazy, useEffect, useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { fetchWithCache } from "./utils/fetchWithCache";
-import SEO from "./components/SEO/SEO";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { pageVariants } from "./utils/animations";
+import PageLayout from "./components/PageLayout/PageLayout";
 
 // Lazy-loaded route components for better performance
 const Welcome = lazy(() => import("./Home/Welcome/Welcome"));
@@ -45,55 +45,35 @@ const Store: React.FC<StoreProps> = React.memo(({ typeOfList, projets }) => {
   const { id } = useParams<{ id: string }>();
   const { t } = useTranslation();
 
+  const projectDescription = typeOfList === "univ" ? (
+    <div>
+      <p>{t('projects.university.description')}</p>
+      <p>{t('projects.university.teamwork')}</p>
+    </div>
+  ) : (
+    <div>
+      <p>{t('projects.personal.description')}</p>
+      <p>{t('projects.personal.motivation')}</p>
+    </div>
+  );
+
   return (
-    <motion.div
-      initial="initial"
-      animate="animate"
-      exit="exit"
-      variants={pageVariants}
+    <PageLayout
+      title={`${t('projects.title')} ${typeOfList === "univ" ? t('projects.university.type') : t('projects.personal.type')}`}
+      subtitle={typeOfList === "univ" ? t('yprojectDescription}projects.personal.description
+      seoTitle={typeOfList === "univ" ? t('seo.projectsUniv.title') : t('seo.projectsPerso.title')}
+      seoDescription={typeOfList === "univ" ? t('seo.projectsUniv.description') : t('seo.projectsPerso.description')}
+      seoKeywords={typeOfList === "univ" ? t('seo.projectsUniv.keywords') : t('seo.projectsPerso.keywords')}
+      seoUrl={typeOfList === "univ" ? "/projets-univ" : "/projets-perso"}
+      className="projects-page"
     >
-      <SEO
-        title={typeOfList === "univ" ? t('seo.projectsUniv.title') : t('seo.projectsPerso.title')}
-        description={typeOfList === "univ" ? t('seo.projectsUniv.description') : t('seo.projectsPerso.description')}
-        keywords={typeOfList === "univ" ? t('seo.projectsUniv.keywords') : t('seo.projectsPerso.keywords')}
-        url={typeOfList === "univ" ? "/projets-univ" : "/projets-perso"}
-      />
-      <div className="competences-div">
-        <h1 className="title">
-          <span className="title-first-letter">P</span>rojets{" "}
-          {typeOfList === "univ" ? t('projects.university.title').split(' ')[1] : t('projects.personal.title').split(' ')[1]}
-        </h1>
-      </div>
-      <div className="content">
-        <div className="description">
-          <div className="projets-title">
-            {typeOfList === "univ" ? (
-              <div>
-                <p>
-                  {t('projects.university.description')}
-                </p>
-                <p>
-                  {t('projects.university.teamwork')}
-                </p>
-              </div>
-            ) : (
-              <div>
-                <p>{t('projects.personal.description')}</p>
-                <p>
-                  {t('projects.personal.motivation')}
-                </p>
-              </div>
-            )}
-          </div>
-        </div>
-        {typeOfList === "univ" ? (
-          <List selectedId={id ?? ""} />
-        ) : (
-          // Cast to the expected personal project shape for ListPerso
-          <ListPerso selectedId={id ?? ""} projets={(projets ?? []) as PersoProjet[]} />
-        )}
-      </div>
-    </motion.div>
+      {typeOfList === "univ" ? (
+        <List selectedId={id ?? ""} />
+      ) : (
+        // Cast to the expected personal project shape for ListPerso
+        <ListPerso selectedId={id ?? ""} projets={(projets ?? []) as PersoProjet[]} />
+      )}
+    </PageLayout>
   );
 });
 
