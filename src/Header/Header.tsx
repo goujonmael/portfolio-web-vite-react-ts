@@ -1,4 +1,6 @@
-import { useState } from "react";
+
+import { useState, useRef, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import "./Header.css";
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -8,44 +10,72 @@ import CVIcon from "../assets/Icons/CVIcon";
 import MailIcon from "../assets/Icons/MailIcon";
 import LanguageSwitch from "../components/LanguageSwitch/LanguageSwitch";
 
+
 export default function Header() {
-  const [isOpen, setIsOpen] = useState(false);
   const { t } = useTranslation();
+  const location = useLocation();
+  const navRef = useRef<HTMLDivElement>(null);
+  const [highlightStyle, setHighlightStyle] = useState<React.CSSProperties>({ opacity: 0 });
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+  // Liste des liens pour mapping et gestion hover
+  const navLinks = [
+    { to: '/', label: t('header.home'), end: true },
+    { to: '/scolarite', label: t('header.education') },
+    { to: '/cybersecurity', label: t('header.cybersecurity') },
+    { to: '/competences', label: t('header.skills') },
+    { to: '/projets-univ', label: t('header.universityProjects') },
+    { to: '/projets-perso', label: t('header.personalProjects') },
+  ];
 
-  const closeMenu = () => {
-    setIsOpen(false);
-  };
+  useEffect(() => {
+    if (!navRef.current) return;
+    const nav = navRef.current;
+    let target: HTMLElement | null = null;
+    if (hoveredIndex !== null) {
+      // Prend le lien survolé
+      const links = nav.querySelectorAll('.nav-a, .nav-a-active');
+      target = links[hoveredIndex] as HTMLElement;
+    } else {
+      // Prend le lien actif
+      target = nav.querySelector('.nav-a-active') as HTMLElement;
+    }
+    if (target) {
+      const navRect = nav.getBoundingClientRect();
+      const targetRect = target.getBoundingClientRect();
+      setHighlightStyle({
+        left: targetRect.left - navRect.left + nav.scrollLeft,
+        width: targetRect.width,
+        top: targetRect.top - navRect.top + nav.scrollTop,
+        height: targetRect.height,
+        opacity: 1,
+      });
+    } else {
+      setHighlightStyle({ opacity: 0 });
+    }
+  }, [location, t, hoveredIndex]);
 
   return (
-  <header className="header" role="banner" aria-label="Main header">
+    <header className="header" role="banner" aria-label="Main header">
       <div className="header-desktop">
         <div className="language-switch-container">
           <LanguageSwitch />
         </div>
-        <nav className="nav-desktop">
-          <NavLink to="/" className={({ isActive }) => (isActive ? "nav-a-active" : "nav-a")} end>
-            {t('header.home')}
-          </NavLink>
-          <NavLink to="/scolarite" className={({ isActive }) => (isActive ? "nav-a-active" : "nav-a")}>
-            {t('header.education')}
-          </NavLink>
-          <NavLink to="/cybersecurity" className={({ isActive }) => (isActive ? "nav-a-active" : "nav-a")}>
-            {t('header.cybersecurity')}
-          </NavLink>
-          <NavLink to="/competences" className={({ isActive }) => (isActive ? "nav-a-active" : "nav-a")}>
-            {t('header.skills')}
-          </NavLink>
-          <NavLink to="/projets-univ" className={({ isActive }) => (isActive ? "nav-a-active" : "nav-a")}>
-            {t('header.universityProjects')}
-          </NavLink>
-          <NavLink to="/projets-perso" className={({ isActive }) => (isActive ? "nav-a-active" : "nav-a")}>
-            {t('header.personalProjects')}
-          </NavLink>
-        </nav>
+        <div className="nav-desktop" ref={navRef} style={{ position: 'relative' }}>
+          <div className="nav-highlight" style={highlightStyle} />
+          {navLinks.map((link, idx) => (
+            <NavLink
+              key={link.to}
+              to={link.to}
+              className={({ isActive }) => (isActive ? "nav-a-active" : "nav-a")}
+              end={link.end}
+              onMouseEnter={() => setHoveredIndex(idx)}
+              onMouseLeave={() => setHoveredIndex(null)}
+            >
+              {link.label}
+            </NavLink>
+          ))}
+        </div>
         <div className="nav-footer-desktop">
           <a
             href="https://www.linkedin.com/in/ma%C3%ABl-goujon-88635b227"
@@ -80,94 +110,6 @@ export default function Header() {
             {t('home.contact.cv')}
           </a>
           <a href="mailto:contact@maelg.com">
-            <MailIcon />
-            {t('home.contact.title')}
-          </a>
-        </div>
-      </div>
-      <div className="header-mobile">
-        <div className="language-switch-container">
-          <LanguageSwitch />
-        </div>
-        <button
-          className={`burger-menu ${isOpen ? "open" : ""}`}
-          onClick={toggleMenu}
-        >
-          <span className="burger-bar"></span>
-          <span className="burger-bar"></span>
-          <span className="burger-bar"></span>
-        </button>
-      </div>
-      <button
-        type="button"
-        aria-label="Close navigation"
-        className={`nav-overlay ${isOpen ? "open" : ""}`}
-        onClick={closeMenu}
-        onKeyDown={(e) => {
-          if (e.key === 'Escape') closeMenu();
-        }}
-      />
-      <div className={`nav-sidebar ${isOpen ? "open" : ""}`}>
-        <div className="nav-header">
-        </div>
-        <nav className="nav-links">
-          <NavLink to="/" className={({ isActive }) => (isActive ? "nav-a-active" : "nav-a")} end onClick={closeMenu}>
-            {t('header.home')}
-          </NavLink>
-          <NavLink to="/scolarite" className={({ isActive }) => (isActive ? "nav-a-active" : "nav-a")} onClick={closeMenu}>
-            {t('header.education')}
-          </NavLink>
-          <NavLink to="/cybersecurity" className={({ isActive }) => (isActive ? "nav-a-active" : "nav-a")} onClick={closeMenu}>
-            {t('header.cybersecurity')}
-          </NavLink>
-          <NavLink to="/competences" className={({ isActive }) => (isActive ? "nav-a-active" : "nav-a")} onClick={closeMenu}>
-            {t('header.skills')}
-          </NavLink>
-          <NavLink to="/projets-univ" className={({ isActive }) => (isActive ? "nav-a-active" : "nav-a")} onClick={closeMenu}>
-            {t('header.universityProjects')}
-          </NavLink>
-          <NavLink to="/projets-perso" className={({ isActive }) => (isActive ? "nav-a-active" : "nav-a")} onClick={closeMenu}>
-            {t('header.personalProjects')}
-          </NavLink>
-        </nav>
-        <div className="nav-footer">
-          <a
-            href="https://www.linkedin.com/in/ma%C3%ABl-goujon-88635b227"
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={closeMenu}
-          >
-            <LinkedInIcon />
-            {t('home.contact.linkedin')}
-          </a>
-          <a
-            href="https://github.com/maelgoujon"
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={closeMenu}
-          >
-            <GitHubIcon />
-            Git Etudiant
-          </a>
-          <a
-            href="https://github.com/goujonmael"
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={closeMenu}
-          >
-            <GitHubIcon />
-            Git Personnel
-          </a>
-          <a
-            href="/files/CV_GOUJON_dev.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={closeMenu}
-          >
-            <CVIcon />
-            {t('home.contact.cv')}
-          </a>
-          <a href="mailto:contact@maelg.com" onClick={closeMenu}>
             <MailIcon />
             {t('home.contact.title')}
           </a>
