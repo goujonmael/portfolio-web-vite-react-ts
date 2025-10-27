@@ -164,16 +164,13 @@ describe('CyberSecurity', () => {
     
     // French version
     let title = screen.getByRole('heading', { level: 1 });
-    const frenchText = title.textContent;
+    expect(title).toBeInTheDocument();
     
     // Change to English
     i18n.changeLanguage('en');
     rerender(<CyberSecurity />);
     
     title = screen.getByRole('heading', { level: 1 });
-    const englishText = title.textContent;
-    
-    // Texts should be different (if translations exist)
     expect(title).toBeInTheDocument();
   });
 

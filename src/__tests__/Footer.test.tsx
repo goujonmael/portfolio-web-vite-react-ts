@@ -14,7 +14,7 @@ describe('Footer', () => {
   });
 
   it('renders all main links with correct hrefs', () => {
-    const { getByRole, getAllByRole } = render(<Footer />);
+    const { getByRole } = render(<Footer />);
     const linkedin = getByRole('link', { name: /linkedin/i });
     expect(linkedin).toHaveAttribute('href', expect.stringContaining('linkedin.com'));
     const githubStudent = getByRole('link', { name: /git etudiant/i });
@@ -25,14 +25,9 @@ describe('Footer', () => {
     expect(cv).toHaveAttribute('href', expect.stringContaining('/files/CV_GOUJON_Mael.pdf'));
     const contact = getByRole('link', { name: /contacts/i });
     expect(contact).toHaveAttribute('href', expect.stringContaining('mailto:contact@maelg.com'));
-    // Vérifie qu'il y a au moins 5 liens
-    const links = getAllByRole('link') || [];
-    expect(Array.isArray(links)).toBe(true);
-    expect(links.length).toBeGreaterThanOrEqual(5);
   });
 
   it('renders all icons (images) with correct alt', () => {
-    const { getAllByRole } = render(<Footer />);
     const { container } = render(<Footer />);
     const images = container.querySelectorAll('img');
     expect(images.length).toBeGreaterThanOrEqual(5);

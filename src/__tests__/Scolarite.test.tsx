@@ -111,11 +111,12 @@ describe('Scolarite', () => {
   it('formats dates correctly for ongoing studies', () => {
     const { container } = render(<Scolarite />);
     const dates = container.querySelectorAll('.formation-date');
-    const hasOngoingDate = Array.from(dates).some(date => 
-      date.textContent?.includes('Présent') || date.textContent?.includes('Present')
-    );
     // At least check that dates are displayed
     expect(dates.length).toBeGreaterThan(0);
+    // Check that dates contain valid formatting
+    dates.forEach(date => {
+      expect(date.textContent).toBeTruthy();
+    });
   });
 
   it('opens external links in new tab', () => {
