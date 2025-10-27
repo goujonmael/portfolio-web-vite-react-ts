@@ -16,14 +16,14 @@ export default function Competences() {
   const { t } = useTranslation();
 
   return (
-    <div className="competences-container">
+    <main className="competences-container">
       <h1 className="title">
         <span className="title-first-letter">C</span>ompétences
       </h1>
       <div className="content">
         <div className="description">
           <p>
-            {t('skills.intro')}{" "}
+            {t('skills.intro')} {" "}
             <Link
               className="underline"
               to="https://www.univ-tlse3.fr/decouvrir-nos-diplomes/but-informatique-parcours-deploiement-dapplications-communicantes-et-securisees-toulouse"
@@ -82,6 +82,6 @@ export default function Competences() {
           ))}
         </div>
       </div>
-    </div>
+    </main>
   );
 }
