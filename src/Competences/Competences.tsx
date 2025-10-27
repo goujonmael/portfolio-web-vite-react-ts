@@ -1,6 +1,7 @@
 import "./Competences.css";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import SEO from "../components/SEO/SEO";
 import { projetsUniv } from "../Projects/projetsUniv";
 import { competences } from "./competences";
 import LazyImage from "../components/LazyImage/LazyImage";
@@ -17,6 +18,12 @@ export default function Competences() {
 
   return (
     <main className="competences-container">
+      <SEO
+        title={t('seo.skills.title')}
+        description={t('seo.skills.description')}
+        keywords={t('seo.skills.keywords')}
+        url="/competences"
+      />
       <h1 className="title">
         <span className="title-first-letter">C</span>ompétences
       </h1>

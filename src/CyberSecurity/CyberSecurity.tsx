@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import SEO from '../components/SEO/SEO';
 import './CyberSecurity.css';
 import LazyImage from '../components/LazyImage/LazyImage';
 import THMIcon from '../assets/Icons/THMIcon';
@@ -190,6 +191,12 @@ const CyberSecurity: React.FC = () => {
 
     return (
         <div className="cybersecurity-container">
+            <SEO
+                title={t('seo.cybersecurity.title')}
+                description={t('seo.cybersecurity.description')}
+                keywords={t('seo.cybersecurity.keywords')}
+                url="/cybersecurity"
+            />
             <div className="cybersecurity-header">
                 <h1 className="cybersecurity-title">{t('cybersecurity.title')}</h1>
                 <p className="cybersecurity-subtitle">{t('cybersecurity.subtitle')}</p>

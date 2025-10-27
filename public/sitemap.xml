@@ -1,22 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <!-- Homepage -->
   <url>
     <loc>https://maelg.com/</loc>
+    <lastmod>2025-10-27</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://maelg.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://maelg.com/"/>
   </url>
-  <url>
-    <loc>https://maelg.com/projets-univ</loc>
-  </url>
-  <url>
-    <loc>https://maelg.com/projets-perso</loc>
-  </url>
-  <url>
-    <loc>https://maelg.com/competences</loc>
-  </url>
-  <url>
-    <loc>https://maelg.com/cybersecurity</loc>
-  </url>
+  
+  <!-- Education -->
   <url>
     <loc>https://maelg.com/scolarite</loc>
+    <lastmod>2025-10-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://maelg.com/scolarite"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://maelg.com/scolarite"/>
+  </url>
+  
+  <!-- Cybersecurity -->
+  <url>
+    <loc>https://maelg.com/cybersecurity</loc>
+    <lastmod>2025-10-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://maelg.com/cybersecurity"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://maelg.com/cybersecurity"/>
+  </url>
+  
+  <!-- Skills -->
+  <url>
+    <loc>https://maelg.com/competences</loc>
+    <lastmod>2025-10-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://maelg.com/competences"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://maelg.com/competences"/>
+  </url>
+  
+  <!-- University Projects -->
+  <url>
+    <loc>https://maelg.com/projets-univ</loc>
+    <lastmod>2025-10-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://maelg.com/projets-univ"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://maelg.com/projets-univ"/>
+  </url>
+  
+  <!-- Personal Projects -->
+  <url>
+    <loc>https://maelg.com/projets-perso</loc>
+    <lastmod>2025-10-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://maelg.com/projets-perso"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://maelg.com/projets-perso"/>
   </url>
 </urlset>

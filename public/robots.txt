@@ -1,0 +1,12 @@
+# robots.txt for maelg.com
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://maelg.com/sitemap.xml
+
+# Crawl-delay (optional, for polite crawlers)
+Crawl-delay: 1
+
+# Disallow certain paths if needed (currently allowing all)
+# Disallow: /private/

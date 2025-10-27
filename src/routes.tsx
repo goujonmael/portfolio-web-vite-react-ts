@@ -3,6 +3,7 @@ import Header from "./Header/Header";
 import React, { Suspense, lazy, useEffect, useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { fetchWithCache } from "./utils/fetchWithCache";
+import SEO from "./components/SEO/SEO";
 
 // Lazy-loaded route components for better performance
 const Welcome = lazy(() => import("./Home/Welcome/Welcome"));
@@ -44,6 +45,12 @@ const Store: React.FC<StoreProps> = React.memo(({ typeOfList, projets }) => {
 
   return (
     <>
+      <SEO
+        title={typeOfList === "univ" ? t('seo.projectsUniv.title') : t('seo.projectsPerso.title')}
+        description={typeOfList === "univ" ? t('seo.projectsUniv.description') : t('seo.projectsPerso.description')}
+        keywords={typeOfList === "univ" ? t('seo.projectsUniv.keywords') : t('seo.projectsPerso.keywords')}
+        url={typeOfList === "univ" ? "/projets-univ" : "/projets-perso"}
+      />
       <div className="competences-div">
         <h1 className="title">
           <span className="title-first-letter">P</span>rojets{" "}

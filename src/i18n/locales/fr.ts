@@ -10,7 +10,7 @@ export const frTranslations = {
   home: {
     welcome: {
       title: "Bienvenue sur mon",
-      subtitle: "Développeur Full Stack",
+      subtitle: "DevOps",
       description: "Étudiant en informatique passionné par le développement web et les nouvelles technologies."
     },
     about: {
@@ -144,5 +144,40 @@ export const frTranslations = {
     loading: "Chargement...",
     error: "Une erreur s'est produite",
     backToHome: "Retour à l'accueil"
+  },
+  seo: {
+    defaultTitle: "Maël Goujon - DevOps & Cyber-Sécurité",
+    defaultDescription: "Portfolio de Maël Goujon, étudiant en informatique passionné par le développement web, la cyber-sécurité et les nouvelles technologies. Découvrez mes projets et compétences.",
+    defaultKeywords: "Maël Goujon, DevOps, cyber-sécurité, développeur web, portfolio informatique, BUT informatique, React, TypeScript, TryHackMe, développeur Toulouse",
+    home: {
+      title: "Accueil",
+      description: "Bienvenue sur le portfolio de Maël Goujon. DevOps et passionné de cyber-sécurité, découvrez mes projets universitaires et personnels.",
+      keywords: "développeur, full stack, portfolio, accueil, projets web"
+    },
+    education: {
+      title: "Scolarité & Formation",
+      description: "Mon parcours académique : BUT Informatique à l'IUT Toulouse III Paul Sabatier, alternance chez Airbus, spécialité réseau et sécurité.",
+      keywords: "formation informatique, BUT informatique, IUT Toulouse, Airbus alternance, études développement"
+    },
+    cybersecurity: {
+      title: "Cyber-Sécurité & Certifications",
+      description: "Mes compétences en cyber-sécurité acquises sur TryHackMe : test de pénétration, sécurité réseau, certifications et badges obtenus.",
+      keywords: "cyber-sécurité, TryHackMe, pentest, test pénétration, sécurité réseau, certifications"
+    },
+    skills: {
+      title: "Compétences Techniques",
+      description: "Mes compétences en développement web et cyber-sécurité : React, TypeScript, Node.js, Python, Docker, Linux, sécurité réseau.",
+      keywords: "compétences, React, TypeScript, Node.js, Python, Docker, Linux, développement web"
+    },
+    projectsUniv: {
+      title: "Projets Universitaires",
+      description: "Projets réalisés lors de ma formation en informatique : applications web, bases de données, développement en équipe avec méthodes agiles.",
+      keywords: "projets universitaires, développement web, BUT informatique, projets étudiants, méthodes agiles"
+    },
+    projectsPerso: {
+      title: "Projets Personnels",
+      description: "Mes projets personnels en développement web, électronique et nouvelles technologies. Explorez mes créations et expérimentations.",
+      keywords: "projets personnels, portfolio projets, développement web, électronique, side projects"
+    }
   }
 };

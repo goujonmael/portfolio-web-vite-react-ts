@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import SEO from '../components/SEO/SEO';
 import './Scolarite.css';
 import LinkedInIcon from '../assets/Icons/LinkedInIcon';
 import MailIcon from '../assets/Icons/MailIcon';
@@ -51,6 +52,12 @@ const Scolarite: React.FC = () => {
 
     return (
         <div className="scolarite-container">
+            <SEO
+                title={t('seo.education.title')}
+                description={t('seo.education.description')}
+                keywords={t('seo.education.keywords')}
+                url="/scolarite"
+            />
             <div className="scolarite-header">
                 <h1 className="scolarite-title">{t('education.title')}</h1>
             </div>
