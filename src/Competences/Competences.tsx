@@ -1,6 +1,8 @@
 import "./Competences.css";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { motion } from "framer-motion";
+import { pageVariants } from "../utils/animations";
 import SEO from "../components/SEO/SEO";
 import { projetsUniv } from "../Projects/projetsUniv";
 import { competences } from "./competences";
@@ -17,7 +19,13 @@ export default function Competences() {
   const { t } = useTranslation();
 
   return (
-    <main className="competences-container">
+    <motion.main 
+      className="competences-container"
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      variants={pageVariants}
+    >
       <SEO
         title={t('seo.skills.title')}
         description={t('seo.skills.description')}
@@ -61,7 +69,10 @@ export default function Competences() {
         </div>
         <div className="competences">
           {competences.map((competence: Competence) => (
-            <div key={competence.id} className="competence">
+            <div 
+              key={competence.id} 
+              className="competence"
+            >
               <p className="level">{competence.level}/3</p>
               <h2>{competence.title}</h2>
               <p>{competence.description}</p>
@@ -89,6 +100,6 @@ export default function Competences() {
           ))}
         </div>
       </div>
-    </main>
+    </motion.main>
   );
 }

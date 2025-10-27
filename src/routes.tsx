@@ -4,6 +4,8 @@ import React, { Suspense, lazy, useEffect, useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { fetchWithCache } from "./utils/fetchWithCache";
 import SEO from "./components/SEO/SEO";
+import { motion, AnimatePresence } from "framer-motion";
+import { pageVariants } from "./utils/animations";
 
 // Lazy-loaded route components for better performance
 const Welcome = lazy(() => import("./Home/Welcome/Welcome"));
@@ -44,7 +46,12 @@ const Store: React.FC<StoreProps> = React.memo(({ typeOfList, projets }) => {
   const { t } = useTranslation();
 
   return (
-    <>
+    <motion.div
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      variants={pageVariants}
+    >
       <SEO
         title={typeOfList === "univ" ? t('seo.projectsUniv.title') : t('seo.projectsPerso.title')}
         description={typeOfList === "univ" ? t('seo.projectsUniv.description') : t('seo.projectsPerso.description')}
@@ -86,7 +93,7 @@ const Store: React.FC<StoreProps> = React.memo(({ typeOfList, projets }) => {
           <ListPerso selectedId={id ?? ""} projets={(projets ?? []) as PersoProjet[]} />
         )}
       </div>
-    </>
+    </motion.div>
   );
 });
 
@@ -219,66 +226,73 @@ export default function AppRoutes() {
       <Header />
       <div className="container">
         <Suspense fallback={<div aria-busy="true">Loading…</div>}>
-          <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <Welcome />
-                <Me />
-                <Contacts />
-              </>
-            }
-          />
+          <AnimatePresence mode="wait">
+            <Routes location={location} key={location.pathname}>
+              <Route
+                path="/"
+                element={
+                  <motion.div
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                    variants={pageVariants}
+                  >
+                    <Welcome />
+                    <Me />
+                    <Contacts />
+                  </motion.div>
+                }
+              />
 
-          <Route path="/cybersecurity" element={<CyberSecurity />} />
-          <Route
-            path="/projets-univ/:id"
-            element={
-              <>
-                <Store typeOfList="univ" projets={projets} />
-                <div
-                  style={{
-                    position: "absolute",
-                    top: scrollY,
-                    left: 0,
-                    width: "100%",
-                    height: "100%",
-                  }}
-                >
-                  <ItemWrapper type="univ" />
-                </div>
-              </>
-            }
-          />
-          <Route
-            path="/projets-perso/:id"
-            element={
-              <>
-                <Store typeOfList="perso" projets={projetsForUI} />
-                <div
-                  style={{
-                    position: "absolute",
-                    top: scrollY,
-                    left: 0,
-                    width: "100%",
-                    height: "auto",
-                  }}
-                >
-                  <ItemWrapper type="perso" projetsPerso={projetsForUI} />
-                </div>
-              </>
-            }
-          />
-          <Route path="/projets-univ" element={<Store typeOfList="univ" />} />
-          <Route
-            path="/projets-perso"
-            element={<Store typeOfList="perso" projets={projetsForUI} />}
-          />
-          <Route path="/competences" element={<Competences />} />
-          <Route path="/scolarite" element={<Scolarite />} />
-          <Route path="*" element={<div>Page not found</div>} />
-          </Routes>
+              <Route path="/cybersecurity" element={<CyberSecurity />} />
+              <Route
+                path="/projets-univ/:id"
+                element={
+                  <>
+                    <Store typeOfList="univ" projets={projets} />
+                    <div
+                      style={{
+                        position: "absolute",
+                        top: scrollY,
+                        left: 0,
+                        width: "100%",
+                        height: "100%",
+                      }}
+                    >
+                      <ItemWrapper type="univ" />
+                    </div>
+                  </>
+                }
+              />
+              <Route
+                path="/projets-perso/:id"
+                element={
+                  <>
+                    <Store typeOfList="perso" projets={projetsForUI} />
+                    <div
+                      style={{
+                        position: "absolute",
+                        top: scrollY,
+                        left: 0,
+                        width: "100%",
+                        height: "auto",
+                      }}
+                    >
+                      <ItemWrapper type="perso" projetsPerso={projetsForUI} />
+                    </div>
+                  </>
+                }
+              />
+              <Route path="/projets-univ" element={<Store typeOfList="univ" />} />
+              <Route
+                path="/projets-perso"
+                element={<Store typeOfList="perso" projets={projetsForUI} />}
+              />
+              <Route path="/competences" element={<Competences />} />
+              <Route path="/scolarite" element={<Scolarite />} />
+              <Route path="*" element={<div>Page not found</div>} />
+            </Routes>
+          </AnimatePresence>
         </Suspense>
       </div>
     </div>

@@ -27,6 +27,7 @@ class ErrorBoundary extends React.Component<React.PropsWithChildren<unknown>, St
         <main role="main" aria-live="polite" style={{ padding: 24 }}>
           <h1>Une erreur est survenue</h1>
           <p>Rechargez la page ou consultez la console pour plus de détails.</p>
+          <button onClick={() => window.location.href = '/'}>Retour à l'accueil</button>
         </main>
       );
     }

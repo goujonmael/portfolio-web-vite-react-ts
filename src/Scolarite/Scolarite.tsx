@@ -1,6 +1,8 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import SEO from '../components/SEO/SEO';
+import { motion } from 'framer-motion';
+import { pageVariants } from '../utils/animations';
 import './Scolarite.css';
 import LinkedInIcon from '../assets/Icons/LinkedInIcon';
 import MailIcon from '../assets/Icons/MailIcon';
@@ -51,7 +53,13 @@ const Scolarite: React.FC = () => {
     };
 
     return (
-        <div className="scolarite-container">
+        <motion.div 
+            className="scolarite-container"
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            variants={pageVariants}
+        >
             <SEO
                 title={t('seo.education.title')}
                 description={t('seo.education.description')}
@@ -77,10 +85,21 @@ const Scolarite: React.FC = () => {
                 </div>
             </div>
             <section>
-                <h2 className="section-title">{t('education.internshipsTitle')}</h2>
+                <motion.h2 
+                    className="section-title"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                    viewport={{ once: true }}
+                >
+                    {t('education.internshipsTitle')}
+                </motion.h2>
                 <div className="formation-list">
                     {internships.map((internship, index) => (
-                        <div key={index} className="formation-card">
+                        <div 
+                            key={index} 
+                            className="formation-card"
+                        >
                             <div className="formation-header">
                                 <div className="formation-info">
                                     <h3 className="formation-title">{internship.title}</h3>
@@ -94,10 +113,21 @@ const Scolarite: React.FC = () => {
                 </div>
             </section>
             <section>
-                <h2 className="section-title">{t('education.educationTitle')}</h2>
+                <motion.h2 
+                    className="section-title"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                    viewport={{ once: true }}
+                >
+                    {t('education.educationTitle')}
+                </motion.h2>
                 <div className="formation-list">
                     {formations.map((formation, index) => (
-                        <div key={index} className="formation-card">
+                        <div 
+                            key={index} 
+                            className="formation-card"
+                        >
                             <div className="formation-header">
                                 <div className="formation-info">
                                     <h3 className="formation-title">{formation.title}</h3>
@@ -110,7 +140,7 @@ const Scolarite: React.FC = () => {
                     ))}
                 </div>
             </section>
-        </div>
+        </motion.div>
     );
 };
 

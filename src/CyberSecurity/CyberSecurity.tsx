@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import SEO from '../components/SEO/SEO';
+import { motion } from 'framer-motion';
+import { pageVariants, scrollReveal, staggerContainer, staggerItem, fadeIn } from '../utils/animations';
 import './CyberSecurity.css';
 import LazyImage from '../components/LazyImage/LazyImage';
 import THMIcon from '../assets/Icons/THMIcon';
@@ -27,6 +29,7 @@ const CyberSecurity: React.FC = () => {
     const [certificates, setCertificates] = useState<CertificateData[]>([]);
     const [isLoadingStats, setIsLoadingStats] = useState(true);
     const [isLoadingCertificates, setIsLoadingCertificates] = useState(true);
+    const [isBadgeLoaded, setIsBadgeLoaded] = useState(false);
 
     const StatLoader = () => (
         <div className="stat-loader">
@@ -190,18 +193,35 @@ const CyberSecurity: React.FC = () => {
     }, []);
 
     return (
-        <div className="cybersecurity-container">
+        <motion.div 
+            className="cybersecurity-container"
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            variants={pageVariants}
+        >
             <SEO
                 title={t('seo.cybersecurity.title')}
                 description={t('seo.cybersecurity.description')}
                 keywords={t('seo.cybersecurity.keywords')}
                 url="/cybersecurity"
             />
-            <div className="cybersecurity-header">
+            <motion.div 
+                className="cybersecurity-header"
+                variants={fadeIn}
+                initial="hidden"
+                animate="visible"
+            >
                 <h1 className="cybersecurity-title">{t('cybersecurity.title')}</h1>
                 <p className="cybersecurity-subtitle">{t('cybersecurity.subtitle')}</p>
-            </div>
-            <div className="tryhackme-section">
+            </motion.div>
+            <motion.div 
+                className="tryhackme-section"
+                variants={scrollReveal}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+            >
                 <div className="platform-info">
                     <div className="platform-logo">
                         <THMIcon />
@@ -209,8 +229,14 @@ const CyberSecurity: React.FC = () => {
                     <div className="platform-details">
                         <h2 className="platform-title">TryHackMe</h2>
                         <p className="platform-description">{t('cybersecurity.tryhackme.description')}</p>
-                        <div className="platform-stats">
-                            <div className="stat">
+                        <motion.div 
+                            className="platform-stats"
+                            variants={staggerContainer}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true }}
+                        >
+                            <motion.div className="stat" variants={staggerItem}>
                                 {isLoadingStats ? (
                                     <StatLoader />
                                 ) : (
@@ -219,8 +245,8 @@ const CyberSecurity: React.FC = () => {
                                         <span className="stat-label">{t('cybersecurity.stats.badges')}</span>
                                     </>
                                 )}
-                            </div>
-                            <div className="stat">
+                            </motion.div>
+                            <motion.div className="stat" variants={staggerItem}>
                                 {isLoadingStats ? (
                                     <StatLoader />
                                 ) : (
@@ -229,8 +255,8 @@ const CyberSecurity: React.FC = () => {
                                         <span className="stat-label">{t('cybersecurity.stats.completion')}</span>
                                     </>
                                 )}
-                            </div>
-                            <div className="stat">
+                            </motion.div>
+                            <motion.div className="stat" variants={staggerItem}>
                                 {isLoadingStats ? (
                                     <StatLoader />
                                 ) : (
@@ -239,15 +265,26 @@ const CyberSecurity: React.FC = () => {
                                         <span className="stat-label">{t('cybersecurity.stats.ranking')}</span>
                                     </>
                                 )}
-                            </div>
-                            <div style={{ width: '100%' }} className="thm-badge">
+                            </motion.div>
+                            <motion.div 
+                                style={{ width: '100%' }} 
+                                className="thm-badge"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: isBadgeLoaded ? 1 : 0 }}
+                                transition={{ duration: 0.8, ease: "easeOut" }}
+                            >
                                 <iframe
                                     src="https://tryhackme.com/api/v2/badges/public-profile?userPublicId=295697"
                                     title="TryHackMe Badge"
+                                    onLoad={() => {
+                                        // Petit délai pour s'assurer que le contenu de l'iframe est rendu
+                                        setTimeout(() => setIsBadgeLoaded(true), 300);
+                                    }}
+                                    style={{ opacity: isBadgeLoaded ? 1 : 0, transition: 'opacity 0.5s ease-out' }}
                                 ></iframe>
-                            </div>
+                            </motion.div>
 
-                        </div>
+                        </motion.div>
                         <div className="profile-actions">
                             <a
                                 href="https://tryhackme.com/p/GoGoGadg3t"
@@ -262,8 +299,14 @@ const CyberSecurity: React.FC = () => {
                     </div>
 
                 </div>
-            </div>
-            <section className="skills-section">
+            </motion.div>
+            <motion.section 
+                className="skills-section"
+                variants={scrollReveal}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+            >
                 <h2 className="section-title">{t('cybersecurity.skills.title')}</h2>
                 <div className="skills-grid">
                     <div className="skill-category">
@@ -298,18 +341,34 @@ const CyberSecurity: React.FC = () => {
                         </div>
                     </div>
                 </div>
-            </section>
-            <section className="certificates-section">
+            </motion.section>
+            <motion.section 
+                className="certificates-section"
+                variants={scrollReveal}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+            >
                 <h2 className="section-title">{t('cybersecurity.certificates.title')}</h2>
                 <p className="data-refresh-date">Data refreshed on: 15 July 2025</p>
-                <div className="certificates-grid">
+                <motion.div 
+                    className="certificates-grid"
+                    variants={staggerContainer}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                >
                     {isLoadingCertificates ? (
                         Array.from({ length: 3 }, (_, index) => (
                             <CertificateLoader key={`loader-${index}`} />
                         ))
                     ) : (
                         certificates.map((certificate) => (
-                            <div key={certificate._id} className="certificate-card">
+                            <motion.div 
+                                key={certificate._id} 
+                                className="certificate-card"
+                                variants={staggerItem}
+                            >
                                 <LazyImage src={certificate.imageUrl ?? ''} alt={certificate.title ?? ''} className="certificate-image" />
                                 <h2 className="certificate-title">{certificate.title}</h2>
                                 <p className="certificate-date">{new Date(certificate.achieved).toLocaleDateString()}</p>
@@ -325,12 +384,12 @@ const CyberSecurity: React.FC = () => {
                                 <a href={certificate.url} target="_blank" rel="noopener noreferrer" className="certificate-link">
                                     {t('cybersecurity.certificates.viewCertificate')}
                                 </a>
-                            </div>
+                            </motion.div>
                         ))
                     )}
-                </div>
-            </section>
-        </div>
+                </motion.div>
+            </motion.section>
+        </motion.div>
     );
 };
 

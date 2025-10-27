@@ -1,6 +1,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
 import "./Header.css";
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -58,11 +59,25 @@ export default function Header() {
   return (
     <header className="header" role="banner" aria-label="Main header">
       <div className="header-desktop">
-        <div className="language-switch-container">
+        <motion.div 
+          className="language-switch-container"
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
           <LanguageSwitch />
-        </div>
+        </motion.div>
         <div className="nav-desktop" ref={navRef} style={{ position: 'relative' }}>
-          <div className="nav-highlight" style={highlightStyle} />
+          <motion.div 
+            className="nav-highlight" 
+            style={highlightStyle}
+            layout
+            transition={{
+              type: "spring",
+              stiffness: 380,
+              damping: 30,
+            }}
+          />
           {navLinks.map((link, idx) => (
             <NavLink
               key={link.to}
@@ -72,48 +87,71 @@ export default function Header() {
               onMouseEnter={() => setHoveredIndex(idx)}
               onMouseLeave={() => setHoveredIndex(null)}
             >
-              {link.label}
+              <motion.span
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              >
+                {link.label}
+              </motion.span>
             </NavLink>
           ))}
         </div>
-        <div className="nav-footer-desktop">
-          <a
+        <motion.div 
+          className="nav-footer-desktop"
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+        >
+          <motion.a
             href="https://www.linkedin.com/in/ma%C3%ABl-goujon-88635b227"
             target="_blank"
             rel="noopener noreferrer"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
             <LinkedInIcon />
             {t('home.contact.linkedin')}
-          </a>
-          <a
+          </motion.a>
+          <motion.a
             href="https://github.com/maelgoujon"
             target="_blank"
             rel="noopener noreferrer"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
             <GitHubIcon />
             Git Etudiant
-          </a>
-          <a
+          </motion.a>
+          <motion.a
             href="https://github.com/goujonmael"
             target="_blank"
             rel="noopener noreferrer"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
             <GitHubIcon />
             Git Personnel
-          </a>
-          <a
+          </motion.a>
+          <motion.a
             href="/files/CV_GOUJON_dev.pdf"
             target="_blank"
             rel="noopener noreferrer"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
             <CVIcon />
             {t('home.contact.cv')}
-          </a>
-          <a href="mailto:contact@maelg.com">
+          </motion.a>
+          <motion.a 
+            href="mailto:contact@maelg.com"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
             <MailIcon />
             {t('home.contact.title')}
-          </a>
-        </div>
+          </motion.a>
+        </motion.div>
       </div>
     </header>
   );

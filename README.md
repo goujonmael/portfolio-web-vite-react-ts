@@ -78,3 +78,9 @@
  ---
 
  Pour plus de détails, voir les fichiers de documentation dans le projet (`TRANSLATION_README.md`, `src/data/README.md`).
+
+TODO:
+fix header trop large
+fix header invisible en mode mobile
+Ameliorer la page error boundary
+Ameliorer la page Loading
