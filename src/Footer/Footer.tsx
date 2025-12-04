@@ -6,7 +6,7 @@ export default function Footer() {
     return (
         <footer className="footer" role="contentinfo" aria-label="Site footer">
             <a
-                href="https://www.linkedin.com/in/ma%C3%ABl-goujon-88635b227"
+                href="https://www.linkedin.com/in/mael-goujon-88635b227"
                 target="_blank"
                 rel="noopener noreferrer"
             >
@@ -41,7 +41,7 @@ export default function Footer() {
             </a>
             <a
                 /* télécharger le CV */
-                href="/files/CV_GOUJON_Mael.pdf"
+                href="/files/CV_GOUJON_dev.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
             >
