@@ -204,7 +204,7 @@ export default function Header() {
                   Git Personnel
                 </a>
                 <a
-                  href="/files/CV_GOUJON_dev.pdf"
+                  href="/files/CV_GOUJON_cyber.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
