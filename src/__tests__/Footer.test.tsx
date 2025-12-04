@@ -22,7 +22,7 @@ describe('Footer', () => {
     const githubPersonal = getByRole('link', { name: /git personnel/i });
     expect(githubPersonal).toHaveAttribute('href', 'https://github.com/goujonmael');
     const cv = getByRole('link', { name: /mon cv/i });
-    expect(cv).toHaveAttribute('href', expect.stringContaining('/files/CV_GOUJON_Mael.pdf'));
+    expect(cv).toHaveAttribute('href', expect.stringContaining('/files/CV_GOUJON_cyber.pdf'));
     const contact = getByRole('link', { name: /contacts/i });
     expect(contact).toHaveAttribute('href', expect.stringContaining('mailto:contact@maelg.com'));
   });
