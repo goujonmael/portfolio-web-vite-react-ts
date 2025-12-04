@@ -51,7 +51,7 @@ const Contacts = () => {
           </div>
           <div className="contact-card-footer">
             <button
-              onClick={() => window.open("https://www.linkedin.com/in/ma%C3%ABl-goujon-88635b227", "_blank", "noopener,noreferrer")}
+              onClick={() => window.open("https://www.linkedin.com/in/mael-goujon-88635b227", "_blank", "noopener,noreferrer")}
               className="contact-button"
             >
               {t('home.contact.viewProfile')}
