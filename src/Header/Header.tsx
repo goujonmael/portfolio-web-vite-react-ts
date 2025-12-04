@@ -180,7 +180,7 @@ export default function Header() {
               </nav>
               <div className="nav-footer">
                 <a
-                  href="https://www.linkedin.com/in/ma%C3%ABl-goujon-88635b227"
+                  href="https://www.linkedin.com/in/mael-goujon-88635b227"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
