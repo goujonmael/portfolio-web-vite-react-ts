@@ -41,7 +41,7 @@ export default function Footer() {
             </a>
             <a
                 /* télécharger le CV */
-                href="/files/CV_GOUJON_dev.pdf"
+                href="/files/CV_GOUJON_cyber.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
             >
