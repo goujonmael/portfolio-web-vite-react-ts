@@ -12,7 +12,7 @@ export default function Me() {
   const { t } = useTranslation();
 
   return (
-    <div className="borders">
+    <div className="borders" id="home-about">
       <div className="me2">
         <motion.div className="me" ref={constraintsRef}>
           <div className="me_left_container">
@@ -99,7 +99,9 @@ export default function Me() {
                           {t('home.about.student')}{" "}
                           <a
                             className="but"
-                            href="https://www.univ-tlse3.fr/decouvrir-nos-diplomes/but-informatique-parcours-deploiement-dapplications-communicantes-et-securisees-toulouse"
+                            href="https://www.univ-tlse3.fr/decouvrir-nos-diplomes/licence-parcours-informatique-reseaux-et-telecommunications-irt"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             onMouseEnter={() => setIsIutHovered(true)}
                             onMouseLeave={() => setIsIutHovered(false)}
                           >
@@ -134,6 +136,8 @@ export default function Me() {
                           <a
                             className="airbus"
                             href="https://www.airbus.com/en/products-services/space/telecommunications-and-navigation-satellites"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             onMouseEnter={() => setIsAirbusHovered(true)}
                             onMouseLeave={() => setIsAirbusHovered(false)}
                             style={{

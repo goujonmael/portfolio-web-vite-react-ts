@@ -96,77 +96,6 @@ describe('AppRoutes', () => {
     });
   });
 
-  it('fetches GitHub repos on mount', async () => {
-    const mockRepos = [
-      { id: 1, name: 'repo1', pushed_at: '2025-01-01T00:00:00Z', html_url: 'https://github.com/test/repo1' },
-      { id: 2, name: 'repo2', pushed_at: '2025-01-02T00:00:00Z', html_url: 'https://github.com/test/repo2' }
-    ];
-
-    // Mock fetch
-    global.fetch = vi.fn(() =>
-      Promise.resolve({
-        ok: true,
-        json: () => Promise.resolve(mockRepos),
-      })
-    ) as unknown as typeof fetch;
-
-    renderWithProviders(
-      <MemoryRouter initialEntries={['/']}>
-        <AppRoutes />
-      </MemoryRouter>
-    );
-
-    await waitFor(() => {
-      expect(global.fetch).toHaveBeenCalledWith(
-        expect.stringContaining('github.com/users/goujonmael/repos'),
-        undefined
-      );
-    });
-  });
-
-  it('handles fetch errors gracefully', async () => {
-    // Mock fetch to fail
-    global.fetch = vi.fn(() =>
-      Promise.reject(new Error('Network error'))
-    ) as unknown as typeof fetch;
-
-    renderWithProviders(
-      <MemoryRouter initialEntries={['/']}>
-        <AppRoutes />
-      </MemoryRouter>
-    );
-
-    // Should still render without crashing
-    await waitFor(() => {
-      const header = screen.getByRole('banner');
-      expect(header).toBeInTheDocument();
-    });
-  });
-
-  it('uses cached GitHub repos when available', async () => {
-    const cachedRepos = [
-      { id: 1, name: 'cached-repo', pushed_at: '2025-01-01T00:00:00Z' }
-    ];
-
-    // Set cache
-    localStorage.setItem('github_repos', JSON.stringify({
-      ts: Date.now(),
-      data: cachedRepos
-    }));
-
-    renderWithProviders(
-      <MemoryRouter initialEntries={['/']}>
-        <AppRoutes />
-      </MemoryRouter>
-    );
-
-    // Should not call fetch if cache is valid
-    await waitFor(() => {
-      const header = screen.getByRole('banner');
-      expect(header).toBeInTheDocument();
-    });
-  });
-
   it('updates document title on route change', async () => {
     renderWithProviders(
       <MemoryRouter initialEntries={['/']}>
@@ -204,37 +133,6 @@ describe('AppRoutes', () => {
     expect(blurBackground).toBeInTheDocument();
   });
 
-  it('sorts GitHub repos by pushed_at date', async () => {
-    const mockRepos = [
-      { id: 1, name: 'old-repo', pushed_at: '2024-01-01T00:00:00Z', html_url: 'https://github.com/test/old' },
-      { id: 2, name: 'new-repo', pushed_at: '2025-01-01T00:00:00Z', html_url: 'https://github.com/test/new' },
-      { id: 3, name: 'mid-repo', pushed_at: '2024-06-01T00:00:00Z', html_url: 'https://github.com/test/mid' }
-    ];
-
-    global.fetch = vi.fn(() =>
-      Promise.resolve({
-        ok: true,
-        json: () => Promise.resolve(mockRepos),
-      })
-    ) as unknown as typeof fetch;
-
-    renderWithProviders(
-      <MemoryRouter initialEntries={['/']}>
-        <AppRoutes />
-      </MemoryRouter>
-    );
-
-    await waitFor(() => {
-      expect(global.fetch).toHaveBeenCalled();
-    });
-
-    // Just verify fetch was called and repos are stored
-    await waitFor(() => {
-      const cached = localStorage.getItem('github_repos');
-      expect(cached).toBeTruthy();
-    }, { timeout: 2000 });
-  });
-
   it('handles scroll events', async () => {
     renderWithProviders(
       <MemoryRouter initialEntries={['/']}>
@@ -249,34 +147,6 @@ describe('AppRoutes', () => {
     await waitFor(() => {
       const header = screen.getByRole('banner');
       expect(header).toBeInTheDocument();
-    });
-  });
-
-  it('renders university projects route', async () => {
-    renderWithProviders(
-      <MemoryRouter initialEntries={['/projets-univ']}>
-        <AppRoutes />
-      </MemoryRouter>
-    );
-
-    await waitFor(() => {
-      const heading = screen.getByRole('heading', { level: 1 });
-      expect(heading).toBeInTheDocument();
-      expect(heading.textContent).toMatch(/projects/i);
-    });
-  });
-
-  it('renders personal projects route', async () => {
-    renderWithProviders(
-      <MemoryRouter initialEntries={['/projets-perso']}>
-        <AppRoutes />
-      </MemoryRouter>
-    );
-
-    await waitFor(() => {
-      const heading = screen.getByRole('heading', { level: 1 });
-      expect(heading).toBeInTheDocument();
-      expect(heading.textContent).toMatch(/projects/i);
     });
   });
 

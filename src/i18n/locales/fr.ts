@@ -139,14 +139,41 @@ export const frTranslations = {
   },
   skills: {
     title: "Compétences",
-    description: "Mes compétences techniques et outils maîtrisés",
-    intro: "Acquises lors de ma formation en informatique, spécialité",
-    networkSecurity: "réseau et sécurité"
+    subtitle: "Mes compétences techniques et où je les ai acquises",
+    preview: {
+      title: "Aperçu des catégories",
+      subtitle: "Sélectionnez une catégorie pour afficher les compétences associées et découvrir comment je les utilise.",
+      hint: "Touchez une carte pour explorer ses compétences",
+      active: "Catégorie affichée",
+      empty: "Aucune compétence renseignée pour cette catégorie pour le moment.",
+      count: "{{count}} compétences",
+      button: "Afficher les compétences"
+    },
+    category: {
+      frontend: "Frontend",
+      backend: "Backend",
+      devops: "DevOps",
+      tools: "Outils",
+      soft_skills: "Soft Skills",
+      languages: "Langages",
+      security: "Sécurité"
+    },
+    origin: {
+      university: "Université",
+      internship: "Stage / Alternance",
+      personal_project: "Projet Personnel",
+      youtube: "YouTube / Cours en ligne",
+      freelance: "Freelance",
+      other: "Autre",
+      TryHackMe: "TryHackMe"
+    },
+    viewOnGitHub: "Voir le projet sur GitHub"
   },
   common: {
     loading: "Chargement...",
     error: "Une erreur s'est produite",
-    backToHome: "Retour à l'accueil"
+    backToHome: "Retour à l'accueil",
+    scrollHint: "Faites défiler pour explorer"
   },
   seo: {
     defaultTitle: "Maël Goujon - DevOps & Cyber-Sécurité",

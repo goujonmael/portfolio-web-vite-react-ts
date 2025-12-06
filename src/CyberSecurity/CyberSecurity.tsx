@@ -6,6 +6,7 @@ import './CyberSecurity.css';
 import LazyImage from '../components/LazyImage/LazyImage';
 import THMIcon from '../assets/Icons/THMIcon';
 import PageLayout from '../components/PageLayout/PageLayout';
+import ScrollHint from '../components/ScrollHint/ScrollHint';
 
 interface CertificateData {
     _id: string;
@@ -200,7 +201,9 @@ const CyberSecurity: React.FC = () => {
             seoKeywords={t('seo.cybersecurity.keywords')}
             seoUrl="/cybersecurity"
         >
+            <ScrollHint label={t('common.scrollHint')} targetId="cybersecurity-content" />
             <motion.div 
+                id="cybersecurity-content"
                 className="tryhackme-section"
                 variants={scrollReveal}
                 initial="hidden"

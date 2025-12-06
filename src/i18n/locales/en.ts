@@ -139,14 +139,41 @@ export const enTranslations = {
   },
   skills: {
     title: "Skills",
-    description: "My technical skills and mastered tools",
-    intro: "Acquired during my computer science training, specialty",
-    networkSecurity: "network and security"
+    subtitle: "My technical skills and where I learned them",
+    preview: {
+      title: "Explore each category",
+      subtitle: "Select a category to reveal the related skills and see how I use them.",
+      hint: "Tap a card to focus on its skills",
+      active: "Currently viewing",
+      empty: "No skills are listed in this category yet.",
+      count: "{{count}} skills",
+      button: "Show skills"
+    },
+    category: {
+      frontend: "Frontend",
+      backend: "Backend",
+      devops: "DevOps",
+      tools: "Tools",
+      soft_skills: "Soft Skills",
+      languages: "Languages",
+      security: "Security"
+    },
+    origin: {
+      university: "University",
+      internship: "Internship",
+      personal_project: "Personal Project",
+      youtube: "YouTube / Online Courses",
+      freelance: "Freelance",
+      other: "Other",
+      TryHackMe: "TryHackMe"
+    },
+    viewOnGitHub: "View the project on GitHub"
   },
   common: {
     loading: "Loading...",
     error: "An error occurred",
-    backToHome: "Back to home"
+    backToHome: "Back to home",
+    scrollHint: "Scroll to explore"
   },
   seo: {
     defaultTitle: "Maël Goujon - Full Stack Developer & Cyber Security",

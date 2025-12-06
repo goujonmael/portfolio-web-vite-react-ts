@@ -26,8 +26,6 @@ export default function Header() {
     { to: '/scolarite', label: t('header.education') },
     { to: '/cybersecurity', label: t('header.cybersecurity') },
     { to: '/competences', label: t('header.skills') },
-    { to: '/projets-univ', label: t('header.universityProjects') },
-    { to: '/projets-perso', label: t('header.personalProjects') },
   ];
 
   useEffect(() => {

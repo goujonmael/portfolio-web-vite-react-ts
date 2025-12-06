@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import SEO from '../../components/SEO/SEO';
+import ScrollHint from '../../components/ScrollHint/ScrollHint';
 import './Welcome.css';
 
 export default function Welcome() {
@@ -28,6 +29,11 @@ export default function Welcome() {
                         Portfolio <span style={{ fontFamily: "Lato" }}>{'/>'}</span>
                     </motion.h1>
                 </motion.div>
+                <ScrollHint
+                    className="welcome-scroll-hint"
+                    label={t('common.scrollHint')}
+                    targetId="home-about"
+                />
             </motion.div>
         </>
     );

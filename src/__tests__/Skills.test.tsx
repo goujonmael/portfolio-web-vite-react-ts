@@ -2,17 +2,17 @@ import { describe, it, expect } from 'vitest';
 import React from 'react';
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import Competences from '../Competences/Competences';
+import Skills from '../Skills/Skills';
 import '../i18n/i18n';
 import { MemoryRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 
-describe('Competences', () => {
-  it('renders competences section', () => {
+describe('Skills', () => {
+  it('renders skills section', () => {
     const { getByRole } = render(
       <HelmetProvider>
         <MemoryRouter>
-          <Competences />
+          <Skills />
         </MemoryRouter>
       </HelmetProvider>
     );
