@@ -66,6 +66,19 @@
       animation: blurIn 4s forwards, movePath 6s forwards;
       z-index: -1;
     }
+
+    #ecoindex-badge {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      z-index: 1000;
+      transition: opacity 1s ease;
+    }
+
+    #ecoindex-badge-link {
+      background-color: #2a2a2a !important;
+    }
+
   </style>
 </head>
 
@@ -91,6 +104,25 @@
     });
   </script>
   <script type="module" src="/src/main.tsx"></script>
+
+  <div id="ecoindex-badge" data-theme="dark"></div>
+  <script src="https://cdn.jsdelivr.net/gh/cnumr/ecoindex_badge@3/assets/js/ecoindex-badge.js" defer></script>
+  <script>
+    let scrollTimeout;
+    window.addEventListener('scroll', () => {
+      const badge = document.getElementById('ecoindex-badge');
+      if (badge) {
+        badge.style.opacity = '0';
+        badge.style.pointerEvents = 'none';
+        
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+          badge.style.opacity = '1';
+          badge.style.pointerEvents = 'auto';
+        }, 150);
+      }
+    });
+  </script>
 </body>
 
 </html>
