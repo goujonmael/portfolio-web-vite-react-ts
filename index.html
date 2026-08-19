@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="fr">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8" />
@@ -14,20 +14,20 @@
   </noscript>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script defer src="https://stats.maelg.com/script.js" data-website-id="08664738-109a-4658-9c65-5f4a3d01be7f"></script>
-  <title>Portfolio de Mael Goujon - Étudiant en Informatique et Alternant chez Airbus</title>
+  <title>Maël Goujon — Portfolio — Full Stack Developer & Cyber Security</title>
   <meta name="description"
-    content="Découvrez le portfolio de Mael Goujon, étudiant en informatique et alternant chez Airbus. Passionné par la cybersécurité et le développement logiciel.">
-  <meta name="keywords" content="portfolio, Mael Goujon, cybersécurité, développement logiciel, Airbus, informatique">
-  <meta name="author" content="Mael Goujon">
-  <meta property="og:title" content="Portfolio de Mael Goujon">
+    content="Portfolio of Maël Goujon, computer science student and apprentice at Airbus. Passionate about cyber security and software development.">
+  <meta name="keywords" content="portfolio, Mael Goujon, cyber security, software development, Airbus, computer science">
+  <meta name="author" content="Maël Goujon">
+  <meta property="og:title" content="Maël Goujon — Portfolio">
   <meta property="og:description"
-    content="Découvrez le portfolio de Mael Goujon, étudiant en informatique et alternant chez Airbus. Passionné par la cybersécurité et le développement logiciel.">
+    content="Portfolio of Maël Goujon, computer science student and apprentice at Airbus. Passionate about cyber security and software development.">
   <meta property="og:image" content="https://maelg.com/favicon.svg">
   <meta property="og:url" content="https://maelg.com">
   <meta name="twitter:card" content="https://maelg.com/favicon.svg">
-  <meta name="twitter:title" content="Portfolio de Mael Goujon">
+  <meta name="twitter:title" content="Maël Goujon — Portfolio">
   <meta name="twitter:description"
-    content="Découvrez le portfolio de Mael Goujon, étudiant en informatique et alternant chez Airbus. Passionné par la cybersécurité et le développement logiciel.">
+    content="Portfolio of Maël Goujon, computer science student and apprentice at Airbus. Passionate about cyber security and software development.">
   <meta name="twitter:image" content="https://maelg.com/favicon.svg">
   <link rel="canonical" href="https://maelg.com" />
 
@@ -83,26 +83,15 @@
 </head>
 
 <body style="background-color: #0d1117; color: #c9d1d9; font-family: 'Lato', sans-serif;">
-  <div id="error" style="display: none; color: red; text-align: center; margin-top: 20px;">
-    <h1>Erreur de chargement de l'application</h1>
-    <p>Veuillez vérifier votre console pour plus de détails.</p>
-  </div>
+  <noscript>
+    <div style="color: #ffdfba; text-align: center; margin-top: 20px;">
+      <h1>Maël Goujon — Portfolio</h1>
+      <p>Loading the portfolio of Maël Goujon — Full Stack Developer and Cyber Security apprentice at Airbus. Find my skills, projects, certificates and CV.</p>
+      <p>Main pages: Home, Skills, Education, CyberSecurity, Projects.</p>
+    </div>
+  </noscript>
 
   <div id="root"></div>
-
-  <script>
-    window.addEventListener('load', () => {
-      const loader = document.getElementById('loader');
-      const errorDiv = document.getElementById('error');
-      if (loader) loader.style.display = 'none';
-      if (document.querySelector('#root')) {
-        errorDiv.style.display = 'none';
-      } else {
-        errorDiv.style.display = 'block';
-        console.error('Élément racine non trouvé. Échec du chargement de l\'application.');
-      }
-    });
-  </script>
   <script type="module" src="/src/main.tsx"></script>
 
   <div id="ecoindex-badge" data-theme="dark"></div>

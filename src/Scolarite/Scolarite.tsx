@@ -59,21 +59,7 @@ const Scolarite: React.FC = () => {
             seoKeywords={t('seo.education.keywords')}
             seoUrl="/scolarite"
         >
-            <div className="banner">
-                <div className="banner-content">
-                    <div>{t('education.lookingfor')}</div>
-                    <div>{t('education.lookingforduration')}</div>
-                    <div>{t('education.lookingforstartmonth')}</div>
-                </div>
-                <div className="banner-icons">
-                    <a href="https://www.linkedin.com/in/maël-goujon-88635b227" target="_blank" rel="noopener noreferrer">
-                        <LinkedInIcon />
-                    </a>
-                    <a href="mailto:contact@maelg.com" target="_blank" rel="noopener noreferrer">
-                        <MailIcon />
-                    </a>
-                </div>
-            </div>
+            
             <section>
                 <h2 className="section-title">
                     {t('education.internshipsTitle')}

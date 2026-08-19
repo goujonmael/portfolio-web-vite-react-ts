@@ -20,15 +20,15 @@ export default function AppRoutes() {
   // Update document title and meta description on route change for basic SEO
   useEffect(() => {
     const path = location.pathname;
-    let title = t('meta.title', 'Portfolio de Mael Goujon');
-    const description = t('meta.description', 'Découvrez le portfolio de Mael Goujon, étudiant en informatique.');
+    let title = t('meta.title', "Maël Goujon — Portfolio");
+    const description = t('meta.description', 'Discover the portfolio of Maël Goujon, computer science student.');
 
     if (path.startsWith('/cybersecurity')) {
       title = t('cybersecurity.title', 'CyberSecurity') + ' — ' + title;
     } else if (path.startsWith('/competences')) {
-      title = t('header.skills', 'Compétences') + ' — ' + title;
+      title = t('header.skills', 'Skills') + ' — ' + title;
     } else if (path.startsWith('/scolarite')) {
-      title = t('header.education', 'Scolarité') + ' — ' + title;
+      title = t('header.education', 'Education') + ' — ' + title;
     }
 
     document.title = title;
@@ -56,7 +56,7 @@ export default function AppRoutes() {
       <div className="blur-background"></div>
       <Header />
       <div className="container">
-        <Suspense fallback={<div aria-busy="true">Loading…</div>}>
+        <Suspense fallback={null}>
           <AnimatePresence mode="wait">
             <Routes location={location} key={location.pathname}>
               <Route

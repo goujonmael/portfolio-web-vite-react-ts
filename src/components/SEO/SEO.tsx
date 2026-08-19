@@ -32,6 +32,26 @@ const SEO: React.FC<SEOProps> = ({
   const pageImage = image.startsWith('http') ? image : `${siteUrl}${image}`;
   const currentLang = i18n.language;
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "name": "Maël Goujon",
+        "url": siteUrl,
+        "image": pageImage,
+        "jobTitle": "Développeur Full Stack",
+        "description": pageDescription
+      },
+      {
+        "@type": "WebSite",
+        "url": siteUrl,
+        "name": defaultTitle,
+        "description": defaultDescription
+      }
+    ]
+  };
+
   return (
     <Helmet>
       {/* Primary Meta Tags */}
@@ -65,6 +85,7 @@ const SEO: React.FC<SEOProps> = ({
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta httpEquiv="Content-Language" content={currentLang} />
       <meta name="theme-color" content="#000000" />
+      <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
     </Helmet>
   );
 };
