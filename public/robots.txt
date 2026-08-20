@@ -1,9 +1,9 @@
-# robots.txt for maelg.com
+# robots.txt for cv.maelg.com
 User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://maelg.com/sitemap.xml
+Sitemap: https://cv.maelg.com/sitemap.xml
 
 # Crawl-delay (optional, for polite crawlers)
 Crawl-delay: 1

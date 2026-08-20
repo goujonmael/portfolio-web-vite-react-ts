@@ -90,7 +90,7 @@ https://cards-dev.twitter.com/validator
 # Lighthouse dans Chrome DevTools
 # Ou via CLI:
 npm install -g lighthouse
-lighthouse https://maelg.com --view
+lighthouse https://cv.maelg.com --view
 \`\`\`
 
 ## 📝 Maintenance
@@ -122,7 +122,7 @@ lighthouse https://maelg.com --view
   "@type": "Person",
   "name": "Maël Goujon",
   "jobTitle": "Full Stack Developer",
-  "url": "https://maelg.com"
+  "url": "https://cv.maelg.com"
 }
 </script>
 \`\`\`

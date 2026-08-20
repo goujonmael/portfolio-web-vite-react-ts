@@ -20,7 +20,7 @@ const SEO: React.FC<SEOProps> = ({
 }) => {
   const { t, i18n } = useTranslation();
   
-  const siteUrl = 'https://maelg.com';
+  const siteUrl = 'https://cv.maelg.com';
   const defaultTitle = t('seo.defaultTitle');
   const defaultDescription = t('seo.defaultDescription');
   const defaultKeywords = t('seo.defaultKeywords');

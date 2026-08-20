@@ -38,20 +38,20 @@
 
 ### 1. Google Search Console
 - [ ] Aller sur https://search.google.com/search-console
-- [ ] Ajouter la propriété maelg.com (si pas déjà fait)
-- [ ] Soumettre le sitemap: https://maelg.com/sitemap.xml
+- [ ] Ajouter la propriété cv.maelg.com (si pas déjà fait)
+- [ ] Soumettre le sitemap: https://cv.maelg.com/sitemap.xml
 - [ ] Demander l'indexation des pages principales
 
 ### 2. Test Open Graph (Facebook/LinkedIn)
 - [ ] Aller sur https://developers.facebook.com/tools/debug/
-- [ ] Tester: https://maelg.com
+- [ ] Tester: https://cv.maelg.com
 - [ ] Vérifier l'aperçu de partage
 - [ ] Tester chaque page importante
 - [ ] Si problème: cliquer "Scrape Again"
 
 ### 3. Test Twitter Cards
 - [ ] Aller sur https://cards-dev.twitter.com/validator
-- [ ] Tester: https://maelg.com
+- [ ] Tester: https://cv.maelg.com
 - [ ] Vérifier l'aperçu de la carte
 - [ ] Tester les pages principales
 
@@ -63,7 +63,7 @@
 
 ### 5. Test Mobile
 - [ ] Ouvrir https://search.google.com/test/mobile-friendly
-- [ ] Tester: https://maelg.com
+- [ ] Tester: https://cv.maelg.com
 - [ ] Vérifier que le site est mobile-friendly
 
 ## Monitoring Continu

@@ -1,5 +1,5 @@
 [build]
-  command = "yarn run build"
+  command = "PRERENDER=1 yarn run build"
   publish = "dist"
   base = "/"
   
@@ -9,6 +9,13 @@
 # builds when the secret values are injected at build time.
   SECRETS_SCAN_OMIT_KEYS = "VITE_UMAMI_SCRIPT_URL,VITE_UMAMI_WEBSITE_ID"
   
+# Canonical domain: force portfolio.maelg.com -> cv.maelg.com (avoids duplicate content)
+[[redirects]]
+  force = true
+  from = "https://portfolio.maelg.com/*"
+  to = "https://cv.maelg.com/:splat"
+  status = 301
+
 [[redirects]]
   force = true
   from = "/api/*"
