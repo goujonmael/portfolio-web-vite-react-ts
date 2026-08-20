@@ -1,8 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import './Scolarite.css';
-import LinkedInIcon from '../assets/Icons/LinkedInIcon';
-import MailIcon from '../assets/Icons/MailIcon';
 import { Formation, Internship } from '../types/education';
 import { educationData } from '../data/educationData';
 import PageLayout from '../components/PageLayout/PageLayout';
