@@ -4,14 +4,34 @@
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Connexions établies en amont pour réduire la latence des ressources tierces
+       (polices, statistiques, badge ecoindex). -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload"
-    href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Turret+Road:wght@200;300;400;500;700;800&display=swap"
-    as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preconnect" href="https://stats.maelg.com">
+  <link rel="preconnect" href="https://bff.ecoindex.fr">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+  <!-- Polices Google Fonts chargées de façon non bloquante.
+       media="print" => la feuille de style ne bloque pas le premier rendu,
+       puis /js/load-fonts.js la bascule en "all". Seules les graisses réellement
+       utilisées sont demandées (au lieu de 16 variantes). -->
+  <link id="font-css" rel="stylesheet" media="print" fetchpriority="high"
+    href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Turret+Road:wght@500;800&display=swap">
+  <script defer src="/js/load-fonts.js"></script>
   <noscript>
+    <!-- Repli si JavaScript désactivé : feuille de style classique. -->
     <link rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Turret+Road:wght@200;300;400;500;700;800&display=swap">
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Turret+Road:wght@500;800&display=swap">
   </noscript>
+
+  <!-- Préchargement de l'image du profil : c'est l'élément LCP.
+       Rendue côté client par React, elle doit être détectable dès le HTML initial
+       et prioritaire (fetchpriority=high) pour réduire le délai de chargement. -->
+  <link rel="preload" as="image" type="image/webp" fetchpriority="high"
+    href="/images/Me/me_square_700.webp">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script defer src="https://stats.maelg.com/script.js" data-website-id="08664738-109a-4658-9c65-5f4a3d01be7f"></script>
   <title>Maël Goujon — Portfolio — Full Stack Developer & Cyber Security</title>
@@ -82,7 +102,7 @@
   </style>
 </head>
 
-<body style="background-color: #0d1117; color: #c9d1d9; font-family: 'Lato', sans-serif;">
+<body style="background-color: #0d1117; color: #c9d1d9; font-family: 'Lato', 'Lato Fallback', sans-serif;">
   <noscript>
     <div style="color: #ffdfba; text-align: center; margin-top: 20px;">
       <h1>Maël Goujon — Portfolio</h1>
@@ -96,22 +116,8 @@
 
   <div id="ecoindex-badge" data-theme="dark"></div>
   <script src="https://cdn.jsdelivr.net/gh/cnumr/ecoindex_badge@3/assets/js/ecoindex-badge.js" defer></script>
-  <script>
-    let scrollTimeout;
-    window.addEventListener('scroll', () => {
-      const badge = document.getElementById('ecoindex-badge');
-      if (badge) {
-        badge.style.opacity = '0';
-        badge.style.pointerEvents = 'none';
-        
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(() => {
-          badge.style.opacity = '1';
-          badge.style.pointerEvents = 'auto';
-        }, 150);
-      }
-    });
-  </script>
+  <script src="/js/ecoindex-badge.js" defer></script>
+
 </body>
 
 </html>

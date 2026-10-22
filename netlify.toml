@@ -28,11 +28,30 @@
   status = 200
   to = "https://tryhackme.com/api/v2/certificates/public-list?page=1&limit=10&sort=Newest&username=GoGoGadg3t"
 
-[[_headers]]
+[[headers]]
   for = "/*"
-  [[_headers.values]]
-    Content-Security-Policy = "default-src 'self'; script-src 'self' https://stats.maelg.com; connect-src 'self' https://api.github.com https://tryhackme.com; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com;"
+  [headers.values]
+    Content-Security-Policy = "default-src 'self'; script-src 'self' https://stats.maelg.com https://cdn.jsdelivr.net; connect-src 'self' https://api.github.com https://tryhackme.com https://stats.maelg.com https://bff.ecoindex.fr; img-src 'self' data: blob: https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com data:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
     X-Frame-Options = "DENY"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
     X-Content-Type-Options = "nosniff"
+    Cross-Origin-Opener-Policy = "same-origin"
+
+# Assets hashés par Vite : cache long pour accélérer les visites répétées.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Images : cache d'un jour (pas de hash dans le nom de fichier).
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+# Le HTML de départ doit toujours être revalidé (routing SPA + meta SEO).
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"

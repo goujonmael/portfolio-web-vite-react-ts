@@ -20,7 +20,7 @@ const Contacts = () => {
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.6 }}
       >
-        <h1 className="contacts-title">{t('home.contact.stayInTouch')}</h1>
+        <h2 className="contacts-title">{t('home.contact.stayInTouch')}</h2>
         <p className="contacts-subtitle">
           {t('home.contact.subtitle')}
         </p>
@@ -117,7 +117,7 @@ const Contacts = () => {
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.6, delay: 0.2 }}
       >
-        <h1 className="contacts-title">{t('home.contact.findMe')}</h1>
+        <h2 className="contacts-title">{t('home.contact.findMe')}</h2>
         <p className="contacts-subtitle">
           {t('home.contact.platformsSubtitle')}
         </p>

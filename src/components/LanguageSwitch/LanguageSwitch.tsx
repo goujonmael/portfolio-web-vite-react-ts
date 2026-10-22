@@ -22,30 +22,36 @@ const LanguageSwitch: React.FC = () => {
 
   useEffect(() => {
     if (!switchRef.current) return;
-    const container = switchRef.current;
-    let target: HTMLElement | null = null;
-    if (hoveredIdx !== null) {
-      target = container.querySelectorAll('.language-btn')[hoveredIdx] as HTMLElement;
-    } else {
-      target = container.querySelector('.language-btn.active') as HTMLElement;
-    }
-    if (target) {
-      const contRect = container.getBoundingClientRect();
-      const btnRect = target.getBoundingClientRect();
-      setHighlightStyle({
-        left: btnRect.left - contRect.left + container.scrollLeft,
-        width: btnRect.width,
-        top: btnRect.top - contRect.top + container.scrollTop,
-        height: btnRect.height,
-        opacity: 1,
-      });
-    } else {
-      setHighlightStyle({ opacity: 0 });
-    }
+    // Report des mesures de géométrie au prochain frame pour éviter un reflow
+    // synchrone (forced reflow) juste après le rendu React.
+    const rafId = requestAnimationFrame(() => {
+      const container = switchRef.current;
+      if (!container) return;
+      let target: HTMLElement | null = null;
+      if (hoveredIdx !== null) {
+        target = container.querySelectorAll('.language-btn')[hoveredIdx] as HTMLElement;
+      } else {
+        target = container.querySelector('.language-btn.active') as HTMLElement;
+      }
+      if (target) {
+        const contRect = container.getBoundingClientRect();
+        const btnRect = target.getBoundingClientRect();
+        setHighlightStyle({
+          left: btnRect.left - contRect.left + container.scrollLeft,
+          width: btnRect.width,
+          top: btnRect.top - contRect.top + container.scrollTop,
+          height: btnRect.height,
+          opacity: 1,
+        });
+      } else {
+        setHighlightStyle({ opacity: 0 });
+      }
+    });
+    return () => cancelAnimationFrame(rafId);
   }, [i18n.language, hoveredIdx]);
 
   return (
-    <div className="language-switch" ref={switchRef} role="tablist" aria-label="Language switch" style={{ position: 'relative' }}>
+    <div className="language-switch" ref={switchRef} role="group" aria-label="Language switch" style={{ position: 'relative' }}>
       <div className="language-highlight" style={highlightStyle} />
       {langs.map((lang, idx) => (
         <button

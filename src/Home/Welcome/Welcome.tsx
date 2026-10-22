@@ -26,7 +26,7 @@ export default function Welcome() {
                         {t('home.welcome.title')}
                     </motion.h2>
                     <motion.h1 className='portfolio-title'>
-                        Portfolio <span style={{ fontFamily: "Lato" }}>{'/>'}</span>
+                        Portfolio <span style={{ fontFamily: "'Lato', 'Lato Fallback', sans-serif" }}>{'/>'}</span>
                     </motion.h1>
                 </motion.div>
                 <ScrollHint

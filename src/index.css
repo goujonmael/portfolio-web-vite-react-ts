@@ -1,5 +1,26 @@
-/* google font */
-@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Turret+Road:wght@200;300;400;500;700;800&display=swap");
+/* NOTE: Les polices Google Fonts sont chargées de façon non-bloquante depuis
+   index.html (voir <link id="font-css" media="print"> + /js/load-fonts.js).
+   Un @import url() ici serait une requête CSS bloquante le premier rendu. */
+
+/* Polices de repli compatibles en métriques avec Lato / Turret Road.
+   Elles éviter le décalage de mise en page (CLS) au moment du swap de police. */
+@font-face {
+  font-family: "Lato Fallback";
+  src: local("Arial");
+  size-adjust: 113.92%;
+  ascent-override: 101%;
+  descent-override: 21.5%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: "Turret Road Fallback";
+  src: local("Arial");
+  size-adjust: 118%;
+  ascent-override: 95%;
+  descent-override: 20%;
+  line-gap-override: 0%;
+}
 
 .App {
   font-family: sans-serif;
@@ -48,8 +69,8 @@ body {
   --clear-blue: #0c4651;
   --dark-blue: #073139;
   --header-padding: 5vh;
-  --font-text: "Lato", sans-serif;
-  --font-title: "Turret Road", serif;
+  --font-text: "Lato", "Lato Fallback", sans-serif;
+  --font-title: "Turret Road", "Turret Road Fallback", serif;
   --font-mono: "Courier New", monospace;
   --success-color: #22c55e;
   --warning-color: #f59e0b;

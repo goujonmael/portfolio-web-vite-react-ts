@@ -62,7 +62,7 @@ export default function AppRoutes() {
               <Route
                 path="/"
                 element={
-                  <motion.div
+                  <motion.main
                     initial="initial"
                     animate="animate"
                     exit="exit"
@@ -71,7 +71,7 @@ export default function AppRoutes() {
                     <Welcome />
                     <Me />
                     <Contacts />
-                  </motion.div>
+                  </motion.main>
                 }
               />
 

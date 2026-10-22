@@ -2,7 +2,6 @@ import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import "./Me.css";
-import LazyImage from "../../components/LazyImage/LazyImage";
 
 export default function Me() {
   const [isIutHovered, setIsIutHovered] = useState(false);
@@ -18,12 +17,31 @@ export default function Me() {
           <div className="me_left_container">
             <motion.div className="me_left">
               <div className="profile">
-                <LazyImage
-                  className={`profile_picture ${imageLoaded ? "fade-in" : ""}`}
-                  src="/images/Me/me_square.jpg"
-                  alt="Picture of Mael GOUJON"
-                  onLoad={() => setImageLoaded(true)}
-                />
+                <picture>
+                  <source
+                    type="image/avif"
+                    srcSet="/images/Me/me_square_350.avif 350w, /images/Me/me_square_700.avif 700w"
+                    sizes="(max-width: 600px) 45vw, 350px"
+                  />
+                  <source
+                    type="image/webp"
+                    srcSet="/images/Me/me_square_350.webp 350w, /images/Me/me_square_700.webp 700w"
+                    sizes="(max-width: 600px) 45vw, 350px"
+                  />
+                  <img
+                    className={`profile_picture ${imageLoaded ? "fade-in" : ""}`}
+                    src="/images/Me/me_square_700.jpg"
+                    srcSet="/images/Me/me_square_350.jpg 350w, /images/Me/me_square_700.jpg 700w"
+                    sizes="(max-width: 600px) 45vw, 350px"
+                    width={700}
+                    height={700}
+                    alt="Picture of Mael GOUJON"
+                    loading="eager"
+                    fetchPriority="high"
+                    decoding="async"
+                    onLoad={() => setImageLoaded(true)}
+                  />
+                </picture>
               </div>
               <div className="cadre" />
             </motion.div>

@@ -344,7 +344,7 @@
 .slash {
   font-size: 2.1875rem;
   font-weight: 700;
-  font-family: "Lato";
+  font-family: var(--font-text);
   box-sizing: border-box;
 }
 

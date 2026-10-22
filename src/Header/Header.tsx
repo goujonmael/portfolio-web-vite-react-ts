@@ -30,29 +30,35 @@ export default function Header() {
 
   useEffect(() => {
     if (!navRef.current) return;
-    const nav = navRef.current;
-    let target: HTMLElement | null = null;
-    if (hoveredIndex !== null) {
-      // Prend le lien survolé
-      const links = nav.querySelectorAll('.nav-a, .nav-a-active');
-      target = links[hoveredIndex] as HTMLElement;
-    } else {
-      // Prend le lien actif
-      target = nav.querySelector('.nav-a-active') as HTMLElement;
-    }
-    if (target) {
-      const navRect = nav.getBoundingClientRect();
-      const targetRect = target.getBoundingClientRect();
-      setHighlightStyle({
-        left: targetRect.left - navRect.left + nav.scrollLeft,
-        width: targetRect.width,
-        top: targetRect.top - navRect.top + nav.scrollTop,
-        height: targetRect.height,
-        opacity: 1,
-      });
-    } else {
-      setHighlightStyle({ opacity: 0 });
-    }
+    // Report des mesures de géométrie au prochain frame : lire getBoundingClientRect()
+    // juste après le commit React force un reflow synchrone (forced reflow).
+    const rafId = requestAnimationFrame(() => {
+      const nav = navRef.current;
+      if (!nav) return;
+      let target: HTMLElement | null = null;
+      if (hoveredIndex !== null) {
+        // Prend le lien survolé
+        const links = nav.querySelectorAll('.nav-a, .nav-a-active');
+        target = links[hoveredIndex] as HTMLElement;
+      } else {
+        // Prend le lien actif
+        target = nav.querySelector('.nav-a-active') as HTMLElement;
+      }
+      if (target) {
+        const navRect = nav.getBoundingClientRect();
+        const targetRect = target.getBoundingClientRect();
+        setHighlightStyle({
+          left: targetRect.left - navRect.left + nav.scrollLeft,
+          width: targetRect.width,
+          top: targetRect.top - navRect.top + nav.scrollTop,
+          height: targetRect.height,
+          opacity: 1,
+        });
+      } else {
+        setHighlightStyle({ opacity: 0 });
+      }
+    });
+    return () => cancelAnimationFrame(rafId);
   }, [location, t, hoveredIndex]);
 
   // Close mobile menu when route changes
