@@ -5,9 +5,15 @@ import { useTranslation } from "react-i18next";
 import { AnimatePresence, motion } from "framer-motion";
 import { pageVariants } from "./utils/animations";
 
-// Lazy-loaded route components for better performance
-const Welcome = lazy(() => import("./Home/Welcome/Welcome"));
-const Me = lazy(() => import("./Home/Me/Me"));
+// Welcome and Me form the above-the-fold content of the home route (Me carries
+// the LCP image), so they are imported eagerly: lazy-loading them forced the
+// whole Suspense boundary to wait for these chunks before painting anything,
+// delaying FCP/LCP. Contacts sits below the fold and keeps its own Suspense so
+// it loads in the background without blocking Welcome/Me. The deeper routes stay
+// lazy since they are only reached by navigation.
+import Welcome from "./Home/Welcome/Welcome";
+import Me from "./Home/Me/Me";
+
 const Contacts = lazy(() => import("./Home/Contacts/Contacts"));
 const CyberSecurity = lazy(() => import("./CyberSecurity/CyberSecurity"));
 const Skills = lazy(() => import("./Skills/Skills"));
@@ -70,7 +76,9 @@ export default function AppRoutes() {
                   >
                     <Welcome />
                     <Me />
-                    <Contacts />
+                    <Suspense fallback={null}>
+                      <Contacts />
+                    </Suspense>
                   </motion.main>
                 }
               />

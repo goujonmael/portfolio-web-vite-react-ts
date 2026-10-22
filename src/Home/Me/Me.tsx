@@ -37,7 +37,6 @@ export default function Me() {
                     height={700}
                     alt="Picture of Mael GOUJON"
                     loading="eager"
-                    fetchPriority="high"
                     decoding="async"
                     onLoad={() => setImageLoaded(true)}
                   />

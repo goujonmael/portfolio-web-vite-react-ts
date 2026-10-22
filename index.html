@@ -28,9 +28,14 @@
 
   <!-- Préchargement de l'image du profil : c'est l'élément LCP.
        Rendue côté client par React, elle doit être détectable dès le HTML initial
-       et prioritaire (fetchpriority=high) pour réduire le délai de chargement. -->
-  <link rel="preload" as="image" type="image/webp" fetchpriority="high"
-    href="/images/Me/me_square_700.webp">
+       et prioritaire (fetchpriority=high) pour réduire le délai de chargement.
+       On précharge la variante AVIF (préférée par <picture>) avec le même
+       srcset/sizes que la balise image, pour que le navigateur précharge
+       exactement la candidate qu'il affichera (la 350 sur mobile) et non une
+       taille/format qui serait gaspillée. -->
+  <link rel="preload" as="image" type="image/avif" fetchpriority="high"
+    imagesrcset="/images/Me/me_square_350.avif 350w, /images/Me/me_square_700.avif 700w"
+    imagesizes="(max-width: 600px) 45vw, 350px">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script defer src="https://stats.maelg.com/script.js" data-website-id="08664738-109a-4658-9c65-5f4a3d01be7f"></script>
