@@ -478,3 +478,15 @@ p {
     width: 90%;
   }
 }
+/* ============================================================
+   Animations d'entrée en CSS pur (remplacement de framer-motion
+   sur le chemin de rendu initial, pour sortir le moteur de
+   main.js et réduire le render delay du LCP).
+   ============================================================ */
+
+/* Conteneur de route : fade + slide (équivalent pageVariants initial/animate) */
+.route-enter {
+  /* Pas d'animation sur le conteneur de route : un fade (opacity) ou un
+     transform ici retardait le paint de l'image LCP / déclenchait un CLS.
+     Le contenu apparaît donc directement au montage. */
+}

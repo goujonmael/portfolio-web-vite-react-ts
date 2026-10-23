@@ -2,8 +2,6 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import Header from "./Header/Header";
 import { Suspense, lazy, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { AnimatePresence, motion } from "framer-motion";
-import { pageVariants } from "./utils/animations";
 
 // Welcome and Me form the above-the-fold content of the home route (Me carries
 // the LCP image), so they are imported eagerly: lazy-loading them forced the
@@ -63,32 +61,25 @@ export default function AppRoutes() {
       <Header />
       <div className="container">
         <Suspense fallback={null}>
-          <AnimatePresence mode="wait">
-            <Routes location={location} key={location.pathname}>
-              <Route
-                path="/"
-                element={
-                  <motion.main
-                    initial="initial"
-                    animate="animate"
-                    exit="exit"
-                    variants={pageVariants}
-                  >
-                    <Welcome />
-                    <Me />
-                    <Suspense fallback={null}>
-                      <Contacts />
-                    </Suspense>
-                  </motion.main>
-                }
-              />
+          <Routes location={location} key={location.pathname}>
+            <Route
+              path="/"
+              element={
+                <main className="route-enter">
+                  <Welcome />
+                  <Me />
+                  <Suspense fallback={null}>
+                    <Contacts />
+                  </Suspense>
+                </main>
+              }
+            />
 
-              <Route path="/cybersecurity" element={<CyberSecurity />} />
-              <Route path="/competences" element={<Skills />} />
-              <Route path="/scolarite" element={<Scolarite />} />
-              <Route path="*" element={<div>Page not found</div>} />
-            </Routes>
-          </AnimatePresence>
+            <Route path="/cybersecurity" element={<CyberSecurity />} />
+            <Route path="/competences" element={<Skills />} />
+            <Route path="/scolarite" element={<Scolarite />} />
+            <Route path="*" element={<div>Page not found</div>} />
+          </Routes>
         </Suspense>
       </div>
     </div>

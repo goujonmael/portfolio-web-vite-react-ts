@@ -1,7 +1,6 @@
 
 import { useState, useRef, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
 import "./Header.css";
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -81,24 +80,13 @@ export default function Header() {
   return (
     <header className="header" role="banner" aria-label="Main header">
       <div className="header-desktop">
-        <motion.div
-          className="language-switch-container"
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
+        <div className="language-switch-container">
           <LanguageSwitch />
-        </motion.div>
+        </div>
         <div className="nav-desktop" ref={navRef} style={{ position: 'relative' }}>
-          <motion.div
+          <div
             className="nav-highlight"
             style={highlightStyle}
-            layout
-            transition={{
-              type: "spring",
-              stiffness: 380,
-              damping: 30,
-            }}
           />
           {navLinks.map((link, idx) => (
             <NavLink
@@ -109,13 +97,9 @@ export default function Header() {
               onMouseEnter={() => setHoveredIndex(idx)}
               onMouseLeave={() => setHoveredIndex(null)}
             >
-              <motion.span
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                transition={{ type: "spring", stiffness: 400, damping: 17 }}
-              >
+              <span className="nav-label">
                 {link.label}
-              </motion.span>
+              </span>
             </NavLink>
           ))}
         </div>
@@ -123,14 +107,9 @@ export default function Header() {
 
       {/* Mobile Header */}
       <div className="header-mobile">
-        <motion.div
-          className="language-switch-container"
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
+        <div className="language-switch-container">
           <LanguageSwitch />
-        </motion.div>
+        </div>
         <button
           className={`burger-menu ${isMobileMenuOpen ? 'open' : ''}`}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -144,31 +123,13 @@ export default function Header() {
       </div>
 
       {/* Mobile Menu Overlay and Sidebar */}
-      <AnimatePresence mode="wait">
-        {isMobileMenuOpen && (
-          <>
-            <motion.div
-              className="nav-overlay"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{
-                duration: 0.2,
-                ease: "easeInOut"
-              }}
-              onClick={() => setIsMobileMenuOpen(false)}
-            />
-            <motion.div
-              className="nav-sidebar"
-              initial={{ x: '100%' }}
-              animate={{ x: 0 }}
-              exit={{ x: '100%' }}
-              transition={{
-                type: "tween",
-                duration: 0.3,
-                ease: [0.4, 0, 0.2, 1]
-              }}
-            >
+      {isMobileMenuOpen && (
+        <>
+          <div
+            className="nav-overlay"
+            onClick={() => setIsMobileMenuOpen(false)}
+          />
+          <div className="nav-sidebar">
               <nav className="nav-links" role="navigation">
                 {navLinks.map((link) => (
                   <NavLink
@@ -220,10 +181,9 @@ export default function Header() {
                   {t('home.contact.title')}
                 </a>
               </div>
-            </motion.div>
+            </div>
           </>
         )}
-      </AnimatePresence>
     </header>
   );
 }

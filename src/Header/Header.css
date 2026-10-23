@@ -130,6 +130,17 @@
   will-change: opacity;
   transform: translateZ(0);
   -webkit-transform: translateZ(0);
+  /* Entrée (remplace l'animation framer de l'overlay) */
+  animation: menuFade 0.2s ease-in-out both;
+}
+
+@keyframes menuFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .nav-sidebar {
@@ -158,6 +169,17 @@
   -webkit-backface-visibility: hidden;
   perspective: 1000px;
   -webkit-perspective: 1000px;
+  /* Entrée latérale (remplace x: 100% -> 0 de framer-motion) */
+  animation: menuSlide 0.3s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+@keyframes menuSlide {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
 
 .nav-header {
@@ -223,6 +245,33 @@
 
 .language-switch-container {
   margin-right: 0;
+  /* Équivalent CSS de l'entrée framer (opacity 0, x -20 -> x 0, 0.5s, delay 0.2s) */
+  animation: headerLangIn 0.5s ease-out 0.2s both;
+}
+
+@keyframes headerLangIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Étiquette des liens de nav : scale au survol (remplace whileHover/whileTap) */
+.nav-a .nav-label,
+.nav-a-active .nav-label {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+.nav-a:hover .nav-label {
+  transform: scale(1.05);
+}
+.nav-a:active .nav-label,
+.nav-a-active:active .nav-label {
+  transform: scale(0.95);
 }
 
 /* Desktop specific styles for navigation links */

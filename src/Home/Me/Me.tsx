@@ -1,5 +1,4 @@
 import { useRef, useState } from "react";
-import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import "./Me.css";
 
@@ -13,9 +12,9 @@ export default function Me() {
   return (
     <div className="borders" id="home-about">
       <div className="me2">
-        <motion.div className="me" ref={constraintsRef}>
+        <div className="me" ref={constraintsRef}>
           <div className="me_left_container">
-            <motion.div className="me_left">
+            <div className="me_left">
               <div className="profile">
                 <picture>
                   <source
@@ -43,15 +42,15 @@ export default function Me() {
                 </picture>
               </div>
               <div className="cadre" />
-            </motion.div>
+            </div>
           </div>
           <div className="me_right_container">
             <div className="me_right">
-              <motion.h2 className="name">
+              <h2 className="name">
                 GOUJON
                 <br />
                 Mael
-              </motion.h2>
+              </h2>
               <span className="description">
                 <table>
                   <tbody>
@@ -77,23 +76,12 @@ export default function Me() {
                       <td style={{ paddingLeft: "0.3rem" }}>
                         <span style={{ color: "var(--text)"}}>
                           {isIutHovered && (
-                            <motion.div
-                              animate={{
-                                x: [0, 10, 20, 30, 40, 50, 55],
-                                y: [-25],
-                                opacity: [0, 1],
-                              }}
-                              transition={{
-                                duration: 1,
-                                type: "spring",
-                                bounce: 0.6,
-                                stiffness: 200,
-                              }}
+                            <div
+                              className="badge-iut"
                               style={{
                                 width: 30,
                                 height: 30,
                                 position: "absolute",
-                                opacity: 0,
                               }}
                             >
                               <svg
@@ -111,7 +99,7 @@ export default function Me() {
                                 <line x1="256" y1="320" x2="256" y2="448"
                                   style={{ fill: "none", stroke: "currentColor", strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: "32px" }} />
                               </svg>
-                            </motion.div>
+                            </div>
                           )}
                           {t('home.about.student')}{" "}
                           <a
@@ -164,9 +152,8 @@ export default function Me() {
                           >
                             Airbus
                             {isAirbusHovered && (
-                              <motion.div
-                                animate={{ x: [0, 50, 0] }}
-                                transition={{ duration: 1, ease: "linear" }}
+                              <div
+                                className="badge-airbus"
                                 style={{
                                   width: 30,
                                   height: 30,
@@ -190,7 +177,7 @@ export default function Me() {
                                     <path fill="currentColor" d="M401.143,401.108c10.928-10.928,17.492-24.645,19.748-38.82l-18.396-2.949   c-1.702,10.532-6.494,20.538-14.542,28.586v0.008c-8.066,8.049-18.063,12.849-28.586,14.543l2.967,18.396   c14.157-2.265,27.866-8.829,38.792-19.757L401.143,401.108z" />
                                   </g>
                                 </svg>
-                              </motion.div>
+                              </div>
                             )}
                           </a>
                         </span>
@@ -230,7 +217,7 @@ export default function Me() {
               </span>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </div>
   );

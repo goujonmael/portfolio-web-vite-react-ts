@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import SEO from '../../components/SEO/SEO';
 import ScrollHint from '../../components/ScrollHint/ScrollHint';
@@ -15,26 +14,22 @@ export default function Welcome() {
                 keywords={t('seo.home.keywords')}
                 url="/"
             />
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 1 }}
-                className='Welcome'
-            >
-                <motion.div>
-                    <motion.h2 className='hello'>
+            {/* L'animation d'entrée (fade) est gérée en CSS sur .Welcome */}
+            <div className='Welcome'>
+                <div>
+                    <h2 className='hello'>
                         {t('home.welcome.title')}
-                    </motion.h2>
-                    <motion.h1 className='portfolio-title'>
+                    </h2>
+                    <h1 className='portfolio-title'>
                         Portfolio <span style={{ fontFamily: "'Lato', 'Lato Fallback', sans-serif" }}>{'/>'}</span>
-                    </motion.h1>
-                </motion.div>
+                    </h1>
+                </div>
                 <ScrollHint
                     className="welcome-scroll-hint"
                     label={t('common.scrollHint')}
                     targetId="home-about"
                 />
-            </motion.div>
+            </div>
         </>
     );
 }
