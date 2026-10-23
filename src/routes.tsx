@@ -12,7 +12,20 @@ import { useTranslation } from "react-i18next";
 import Welcome from "./Home/Welcome/Welcome";
 import Me from "./Home/Me/Me";
 
-const Contacts = lazy(() => import("./Home/Contacts/Contacts"));
+// Contacts est sous le pli : son import (et le chunk framer-motion qu'il tire,
+// ~36 KiB) est différé jusqu'au repos du navigateur pour le sortir du chemin
+// critique initial et réduire la fenêtre de chargement (LCP / Speed Index).
+const Contacts = lazy(async () => {
+  // Attendre le repos du navigateur avant de charger le chunk de Contacts.
+  await new Promise<void>((resolve) => {
+    if (typeof window !== "undefined" && "requestIdleCallback" in window) {
+      window.requestIdleCallback(() => resolve(), { timeout: 2000 });
+    } else {
+      setTimeout(resolve, 200);
+    }
+  });
+  return import("./Home/Contacts/Contacts");
+});
 const CyberSecurity = lazy(() => import("./CyberSecurity/CyberSecurity"));
 const Skills = lazy(() => import("./Skills/Skills"));
 const Scolarite = lazy(() => import("./Scolarite/Scolarite"));
