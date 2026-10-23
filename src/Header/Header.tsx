@@ -15,7 +15,12 @@ export default function Header() {
   const { t } = useTranslation();
   const location = useLocation();
   const navRef = useRef<HTMLDivElement>(null);
-  const [highlightStyle, setHighlightStyle] = useState<React.CSSProperties>({ opacity: 0 });
+  // Position du surlignage appliquée via ref (DOM direct) et non via un prop
+  // style : pendant l'hydration, React ne vérifie que les attributs qu'il rend.
+  // Un style rendu dynamiquement (= état post-mount) mismatcherait avec le HTML
+  // pré-rendu et ferait échouer l'hydration (erreur React #418). Ici React rend
+  // <div class="nav-highlight"> sans style ; l'effet applique la position.
+  const highlightRef = useRef<HTMLDivElement>(null);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -43,18 +48,18 @@ export default function Header() {
         // Prend le lien actif
         target = nav.querySelector('.nav-a-active') as HTMLElement;
       }
+      const el = highlightRef.current;
+      if (!el) return;
       if (target) {
         const navRect = nav.getBoundingClientRect();
         const targetRect = target.getBoundingClientRect();
-        setHighlightStyle({
-          left: targetRect.left - navRect.left + nav.scrollLeft,
-          width: targetRect.width,
-          top: targetRect.top - navRect.top + nav.scrollTop,
-          height: targetRect.height,
-          opacity: 1,
-        });
+        el.style.left = `${targetRect.left - navRect.left + nav.scrollLeft}px`;
+        el.style.width = `${targetRect.width}px`;
+        el.style.top = `${targetRect.top - navRect.top + nav.scrollTop}px`;
+        el.style.height = `${targetRect.height}px`;
+        el.style.opacity = '1';
       } else {
-        setHighlightStyle({ opacity: 0 });
+        el.style.opacity = '0';
       }
     });
     return () => cancelAnimationFrame(rafId);
@@ -86,7 +91,7 @@ export default function Header() {
         <div className="nav-desktop" ref={navRef} style={{ position: 'relative' }}>
           <div
             className="nav-highlight"
-            style={highlightStyle}
+            ref={highlightRef}
           />
           {navLinks.map((link, idx) => (
             <NavLink
