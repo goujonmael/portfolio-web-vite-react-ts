@@ -1,11 +1,5 @@
 [build]
-  # Le prerender a besoin d'un Chromium récent : puppeteer 1.20 en embarque un
-  # (~2019) où le bundle React moderne ne s'exécute pas (d'où un #root vide).
-  # On installe un Chrome stable via @puppeteer/browsers (mis en cache dans
-  # ~/.cache/puppeteer par Netlify) et on pointe PUPPETEER_EXECUTABLE_PATH
-  # dessus. Si l'installation échoue, le plugin prerender avale l'erreur et le
-  # build continue (#root vide = état sans pré-rendu, inoffensif).
-  command = "npx --yes @puppeteer/browsers install chrome@stable --path \"$HOME/.cache/puppeteer\" >/dev/null 2>&1 || true; export PUPPETEER_EXECUTABLE_PATH=$(find \"$HOME/.cache/puppeteer\" -type f -name chrome 2>/dev/null | head -1); echo \"[prerender] Chrome: ${PUPPETEER_EXECUTABLE_PATH:-aucun}\"; PRERENDER=1 yarn run build"
+  command = "yarn run build"
   publish = "dist"
   base = "/"
   
