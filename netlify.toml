@@ -1,11 +1,11 @@
 [build]
   # Le prerender a besoin d'un Chromium récent : puppeteer 1.20 en embarque un
   # (~2019) où le bundle React moderne ne s'exécute pas (d'où un #root vide).
-  # On utilise CHROME_PATH (fourni par l'intégration Chromium de Netlify) ou un
-  # Chrome système détecté. Sans aucun des deux, PUPPETEER_EXECUTABLE_PATH est
-  # vide, puppeteer prend son Chromium embarqué, le plugin avale l'erreur et le
+  # On installe un Chrome stable via @puppeteer/browsers (mis en cache dans
+  # ~/.cache/puppeteer par Netlify) et on pointe PUPPETEER_EXECUTABLE_PATH
+  # dessus. Si l'installation échoue, le plugin prerender avale l'erreur et le
   # build continue (#root vide = état sans pré-rendu, inoffensif).
-  command = "export PUPPETEER_EXECUTABLE_PATH=${CHROME_PATH:-$(command -v google-chrome-stable || command -v google-chrome || command -v chromium || command -v chromium-browser || true)}; echo \"[prerender] Chrome: ${PUPPETEER_EXECUTABLE_PATH:-aucun (integree Chromium ?)}\"; PRERENDER=1 yarn run build"
+  command = "npx --yes @puppeteer/browsers install chrome@stable --path \"$HOME/.cache/puppeteer\" >/dev/null 2>&1 || true; export PUPPETEER_EXECUTABLE_PATH=$(find \"$HOME/.cache/puppeteer\" -type f -name chrome 2>/dev/null | head -1); echo \"[prerender] Chrome: ${PUPPETEER_EXECUTABLE_PATH:-aucun}\"; PRERENDER=1 yarn run build"
   publish = "dist"
   base = "/"
   
@@ -14,11 +14,6 @@
 # variables (the values should not be checked into the repository). This avoids failing
 # builds when the secret values are injected at build time.
   SECRETS_SCAN_OMIT_KEYS = "VITE_UMAMI_SCRIPT_URL,VITE_UMAMI_WEBSITE_ID"
-
-# Fournit un Chromium récent au build + définit CHROME_PATH, indispensable au
-# prerender (puppeteer 1.20 embarque un Chromium ~2019 où React ne monte pas).
-[[plugins]]
-  package = "netlify-plugin-chromium"
   
 # Canonical domain: force portfolio.maelg.com -> cv.maelg.com (avoids duplicate content)
 [[redirects]]
