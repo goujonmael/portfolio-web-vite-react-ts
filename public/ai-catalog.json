@@ -1,0 +1,17 @@
+{
+  "specVersion": "1.0",
+  "entries": [
+    {
+      "identifier": "urn:air:maelg.com:portfolio",
+      "displayName": "Maël Goujon — Portfolio",
+      "type": "application/agent-card+json",
+      "url": "https://cv.maelg.com/",
+      "description": "Portfolio et CV de Maël Goujon, étudiant en informatique (réseaux & télécommunications) et apprenti chez Airbus, orienté cybersécurité.",
+      "representativeQueries": [
+        "Qui est Maël Goujon ?",
+        "Quel est le parcours de Maël Goujon ?",
+        "Quelles sont les compétences en cybersécurité de Maël Goujon ?"
+      ]
+    }
+  ]
+}

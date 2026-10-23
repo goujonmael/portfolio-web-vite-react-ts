@@ -1,0 +1,16 @@
+# Maël Goujon — Portfolio
+
+> Portfolio et CV de Maël Goujon, étudiant en informatique (réseaux & télécommunications) et apprenti chez Airbus, orienté cybersécurité.
+
+## Pages
+
+- [Accueil](https://cv.maelg.com/): Présentation, à propos et contacts
+- [Scolarité](https://cv.maelg.com/scolarite): Parcours de formation et diplômes
+- [Cybersécurité](https://cv.maelg.com/cybersecurity): Parcours en cybersécurité et badges TryHackMe
+- [Compétences](https://cv.maelg.com/competences): Compétences techniques
+
+## Profils
+
+- [LinkedIn](https://www.linkedin.com/in/mael-goujon-88635b227): Profil professionnel
+- [GitHub](https://github.com/goujonmael): Projets et code
+- [CV (PDF)](https://cv.maelg.com/files/CV_GOUJON_cyber.pdf): CV au format PDF
