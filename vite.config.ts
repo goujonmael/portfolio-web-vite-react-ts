@@ -25,6 +25,23 @@ export default defineConfig({
       prerender({
         staticDir: resolve(__dirname, 'dist'),
         routes: ['/', '/competences', '/scolarite', '/cybersecurity'],
+        renderer: new (prerender as any).PuppeteerRenderer({
+          // Attendre que React ait monté le contenu de la route avant de capturer.
+          // .container est vide tant que le <Suspense> (fallback null) n'a pas résolu,
+          // donc son premier enfant n'existe qu'une fois le contenu lazy monté.
+          renderAfterElementExists: '.container > *',
+        }),
+        // Pendant le rendu Puppeteer, /js/load-fonts.js bascule la feuille de
+        // polices en media="all" (render-blocking) au DOMContentLoaded. Comme la
+        // capture a lieu APRÈS, on rétablit media="print" pour que le HTML
+        // pré-rendu servi aux utilisateurs garde des polices non bloquantes.
+        postProcess(renderedRoute: { html: string }) {
+          renderedRoute.html = renderedRoute.html.replace(
+            /(<link id="font-css"[^>]*?media=")all(")/g,
+            '$1print$2',
+          );
+          return renderedRoute;
+        },
       })
     ] : []),
   ],

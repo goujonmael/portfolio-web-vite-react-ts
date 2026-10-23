@@ -8,17 +8,6 @@
     align-items: center;
     box-sizing: border-box;
     padding: 4rem;
-    /* Équivalent CSS du fade framer-motion (opacity 0 -> 1, 1s) */
-    animation: welcomeFade 1s ease-out both;
-}
-
-@keyframes welcomeFade {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
 }
 
 .welcome-scroll-hint {

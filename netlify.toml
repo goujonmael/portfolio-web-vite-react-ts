@@ -1,5 +1,5 @@
 [build]
-  command = "yarn run build"
+  command = "PRERENDER=1 yarn run build"
   publish = "dist"
   base = "/"
   
