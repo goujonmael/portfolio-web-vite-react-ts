@@ -1,5 +1,10 @@
 [build]
-  command = "PRERENDER=1 yarn run build"
+  # Détecte un Chrome système pour le prerender (puppeteer 1.20 embarque un
+  # Chromium trop vieux où le bundle React moderne ne s'exécute pas, d'où un
+  # #root vide). Si aucun Chrome n'est trouvé, PUPPETEER_EXECUTABLE_PATH est vide
+  # et puppeteer utilise son Chromium embarqué (pré-rendu vide, inoffensif :
+  # le plugin avale l'erreur et le build continue).
+  command = "export PUPPETEER_EXECUTABLE_PATH=$(command -v google-chrome-stable || command -v google-chrome || command -v chromium || command -v chromium-browser || true); echo \"[prerender] Chrome: ${PUPPETEER_EXECUTABLE_PATH:-aucun}\"; PRERENDER=1 yarn run build"
   publish = "dist"
   base = "/"
   
