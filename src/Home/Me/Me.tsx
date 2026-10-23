@@ -5,6 +5,7 @@ import "./Me.css";
 export default function Me() {
   const [isIutHovered, setIsIutHovered] = useState(false);
   const [isAirbusHovered, setIsAirbusHovered] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
   const constraintsRef = useRef(null);
   const { t } = useTranslation();
 
@@ -27,7 +28,7 @@ export default function Me() {
                     sizes="(max-width: 600px) 45vw, 350px"
                   />
                   <img
-                    className="profile_picture"
+                    className={`profile_picture ${imageLoaded ? "fade-in" : ""}`}
                     src="/images/Me/me_square_700.jpg"
                     srcSet="/images/Me/me_square_350.jpg 350w, /images/Me/me_square_700.jpg 700w"
                     sizes="(max-width: 600px) 45vw, 350px"
@@ -36,6 +37,7 @@ export default function Me() {
                     alt="Picture of Mael GOUJON"
                     loading="eager"
                     decoding="async"
+                    onLoad={() => setImageLoaded(true)}
                   />
                 </picture>
               </div>
